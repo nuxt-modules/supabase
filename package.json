@@ -1,0 +1,38 @@
+{
+  "name": "@nuxtjs/supabase",
+  "version": "0.0.0",
+  "description": "Supabase module for Nuxt3",
+  "repository": "nuxt-community/supabase-module",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "require": "./dist/module.cjs",
+      "import": "./dist/module.mjs"
+    }
+  },
+  "main": "dist/module.mjs",
+  "module": "dist/module.mjs",
+  "types": "dist/module.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "nuxt dev example",
+    "lint": "eslint --ext .js,.ts,.vue .",
+    "prepublishOnly": "yarn build",
+    "release": "yarn lint && standard-version && git push --follow-tags"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config-typescript": "^8.0.0",
+    "@supabase/supabase-js": "^1.28.5",
+    "eslint": "^8.4.0",
+    "nuxt3": "^3.0.0-27313139.1c88580",
+    "standard-version": "^9.3.2",
+    "typescript": "^4.5.2",
+    "unbuild": "^0.6.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
