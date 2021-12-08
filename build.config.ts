@@ -7,6 +7,6 @@ export default defineBuildConfig({
     { input: 'src/composables/', outDir: 'dist/composables' },
     { input: 'src/types/', outDir: 'dist/types' }
   ],
-  externals: ['@nuxt/kit', '@nuxt/schema', 'defu', 'pathe'],
+  externals: ['@nuxt/kit', '@nuxt/schema', 'defu', 'pathe', '@supabase/supabase-js'],
   declaration: true
 })
