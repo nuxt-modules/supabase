@@ -1,5 +1,5 @@
 {
-  "name": "@larbish/supabase",
+  "name": "@nuxtjs/supabase",
   "version": "0.0.0",
   "description": "Supabase module for Nuxt3",
   "repository": {
@@ -26,9 +26,11 @@
     "prepublishOnly": "yarn build",
     "release": "yarn lint && standard-version && git push --follow-tags"
   },
+  "dependencies": {
+    "@supabase/supabase-js": "^1.28.5"
+  },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^8.0.0",
-    "@supabase/supabase-js": "^1.28.5",
     "eslint": "^8.4.0",
     "nuxt3": "^3.0.0-27313139.1c88580",
     "standard-version": "^9.3.2",

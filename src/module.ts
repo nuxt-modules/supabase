@@ -23,13 +23,13 @@ export default defineNuxtModule<SupabaseOptions>({
     }
 
     // Add supabase server plugin to load the user on server-side
-    addPlugin(resolve(__dirname, './plugins/supabase.server.ts'))
-    addPlugin(resolve(__dirname, './plugins/supabase.client.ts'))
+    addPlugin(resolve(__dirname, './plugins/supabase.server'))
+    addPlugin(resolve(__dirname, './plugins/supabase.client'))
 
     // Add supabase session endpoint to store the session on server-side
     addServerMiddleware({
       path: '/api/_supabase/session',
-      handler: resolve(__dirname, './server/api/session.ts')
+      handler: resolve(__dirname, './server/api/session')
     })
 
     // Add supabase composables
@@ -38,7 +38,14 @@ export default defineNuxtModule<SupabaseOptions>({
     })
 
     // Add supabase to build transpile
-    nuxt.options.build.transpile.push('@nuxtjs/supabase')
+    nuxt.options.build.transpile.push(
+      '@supabase/supabase-js',
+      '@supabase/gotrue-js',
+      '@supabase/realtime-js',
+      '@supabase/storage-js',
+      '@supabase/postgrest-js'
+      // 'cross-fetch'
+    )
   }
 })
 
