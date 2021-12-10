@@ -39,12 +39,11 @@ export default defineNuxtModule<SupabaseOptions>({
 
     // Add supabase to build transpile
     nuxt.options.build.transpile.push(
-      '@supabase/supabase-js',
-      '@supabase/gotrue-js',
-      '@supabase/realtime-js',
-      '@supabase/storage-js',
-      '@supabase/postgrest-js'
-      // 'cross-fetch'
+      '@supabase/supabase-js/dist/module',
+      '@supabase/gotrue-js/dist/module',
+      '@supabase/realtime-js/dist/module',
+      '@supabase/storage-js/dist/module',
+      '@supabase/postgrest-js/dist/module'
     )
   }
 })
