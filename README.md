@@ -2,11 +2,11 @@
 
 # @nuxtjs/supabase
 
-[![npm version][npm-version-src]][npm-version-href]
+<!-- [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![Github Actions CI][github-actions-ci-src]][github-actions-ci-href]
 [![Codecov][codecov-src]][codecov-href]
-[![License][license-src]][license-href]
+[![License][license-src]][license-href] -->
 
 > [supabase](https://supabase.com) module for [Nuxt 3](https://v3.nuxtjs.org)
 
@@ -32,7 +32,7 @@
 [MIT License](./LICENSE)
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/@nuxtjs/supabase/latest.svg
+<!-- [npm-version-src]: https://img.shields.io/npm/v/@nuxtjs/supabase/latest.svg
 [npm-version-href]: https://npmjs.com/package/@nuxtjs/supabase
 
 [npm-downloads-src]: https://img.shields.io/npm/dt/@nuxtjs/supabase.svg
@@ -45,4 +45,4 @@
 [codecov-href]: https://codecov.io/gh/nuxt-community/supabase-module
 
 [license-src]: https://img.shields.io/npm/l/@nuxtjs/supabase.svg
-[license-href]: https://npmjs.com/package/@nuxtjs/supabase
+[license-href]: https://npmjs.com/package/@nuxtjs/supabase -->
