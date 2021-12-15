@@ -37,14 +37,12 @@ export default defineNuxtModule<SupabaseOptions>({
       dirs.push(resolve(__dirname, './composables'))
     })
 
-    // Add supabase to build transpile
-    nuxt.options.build.transpile.push(
-      '@supabase/supabase-js/dist/module',
-      '@supabase/gotrue-js/dist/module',
-      '@supabase/realtime-js/dist/module',
-      '@supabase/storage-js/dist/module',
-      '@supabase/postgrest-js/dist/module'
-    )
+    // Make nuxt pointing to the CJS files
+    nuxt.options.alias['@supabase/supabase-js'] = '@supabase/supabase-js/dist/main'
+    nuxt.options.alias['@supabase/gotrue-js'] = '@supabase/gotrue-js/dist/main'
+    nuxt.options.alias['@supabase/realtime-js'] = '@supabase/realtime-js/dist/main'
+    nuxt.options.alias['@supabase/storage-js'] = '@supabase/storage-js/dist/main'
+    nuxt.options.alias['@supabase/postgrest-js'] = '@supabase/postgrest-js/dist/main'
   }
 })
 
