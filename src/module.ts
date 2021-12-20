@@ -38,11 +38,11 @@ export default defineNuxtModule<SupabaseOptions>({
     })
 
     // Make nuxt pointing to the CJS files
-    nuxt.options.alias['@supabase/supabase-js'] = '@supabase/supabase-js/dist/main'
-    nuxt.options.alias['@supabase/gotrue-js'] = '@supabase/gotrue-js/dist/main'
-    nuxt.options.alias['@supabase/realtime-js'] = '@supabase/realtime-js/dist/main'
-    nuxt.options.alias['@supabase/storage-js'] = '@supabase/storage-js/dist/main'
-    nuxt.options.alias['@supabase/postgrest-js'] = '@supabase/postgrest-js/dist/main'
+    // nuxt.options.alias['@supabase/supabase-js'] = '@supabase/supabase-js/dist/main'
+    // nuxt.options.alias['@supabase/gotrue-js'] = '@supabase/gotrue-js/dist/main'
+    // nuxt.options.alias['@supabase/realtime-js'] = '@supabase/realtime-js/dist/main'
+    // nuxt.options.alias['@supabase/storage-js'] = '@supabase/storage-js/dist/main'
+    // nuxt.options.alias['@supabase/postgrest-js'] = '@supabase/postgrest-js/dist/main'
   }
 })
 
