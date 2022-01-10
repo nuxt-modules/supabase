@@ -1,6 +1,6 @@
 {
   "name": "@larbish/supabase",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "Supabase module for Nuxt3",
   "repository": {
     "type": "git",
@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "exports": {
-    ".":  "./dist/module.mjs"
+    ".": "./dist/module.mjs"
   },
   "main": "./dist/module.mjs",
   "types": "./dist/module.d.ts",
