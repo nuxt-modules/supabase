@@ -11,4 +11,3 @@ export type SupabaseAuthProvider =
   | 'linkedin'
   | 'reddit'
   | 'auth0'
-

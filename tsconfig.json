@@ -1,15 +1,13 @@
 {
   "compilerOptions": {
-    "allowJs": true,
     "baseUrl": ".",
-    "strict": true,
     "target": "ESNext",
     "module": "ESNext",
-    "lib": ["ESNext", "DOM"],
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "declaration": false,
+    "moduleResolution": "Node",
     "skipLibCheck": true,
+    "strict": false,
+    "allowJs": true,
+    "noEmit": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "types": [
@@ -19,5 +17,8 @@
     "paths": {
       "#app": ["./node_modules/nuxt3/dist/app"]
     }
-  }
+  },
+  "include": [
+    "src"
+  ]
 }

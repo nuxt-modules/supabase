@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'url'
 import defu from 'defu'
 import { resolve } from 'pathe'
 import { defineNuxtModule, addPlugin, addServerMiddleware } from '@nuxt/kit'
@@ -28,7 +29,7 @@ export interface ModuleOptions {
    * @type object
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
-  options?: SupabaseClientOptions
+  client?: SupabaseClientOptions
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -36,13 +37,14 @@ export default defineNuxtModule<ModuleOptions>({
     name: '@nuxtjs/supabase',
     configKey: 'supabase',
     compatibility: {
-      nuxt: '^3.0.0',
+      nuxt: '^3.0.0 || ^2.16.0',
       bridge: true
     }
   },
   defaults: {
     url: process.env.SUPABASE_URL as string,
-    key: process.env.SUPABASE_KEY as string
+    key: process.env.SUPABASE_KEY as string,
+    client: {}
   },
   setup (options, nuxt) {
     // Make sure url and key are set
@@ -56,16 +58,17 @@ export default defineNuxtModule<ModuleOptions>({
     // Default runtimeConfig
     nuxt.options.publicRuntimeConfig.supabase = defu(nuxt.options.publicRuntimeConfig.supabase, {
       url: options.url,
-      key: options.key
+      key: options.key,
+      client: options.client
     })
 
     // Transpile runtime
-    const runtimeDir = resolve(__dirname, './runtime')
+    const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     nuxt.options.build.transpile.push(runtimeDir)
 
     // Add supabase server plugin to load the user on server-side
-    addPlugin(resolve(runtimeDir, 'plugins/supabase.server'))
-    addPlugin(resolve(runtimeDir, 'plugins/supabase.client'))
+    addPlugin(resolve(runtimeDir, 'plugins', 'supabase.server'))
+    addPlugin(resolve(runtimeDir, 'plugins', 'supabase.client'))
 
     // Add supabase session endpoint to store the session on server-side
     addServerMiddleware({
@@ -83,12 +86,5 @@ export default defineNuxtModule<ModuleOptions>({
         include: ['@supabase/supabase-js']
       }
     }
-
-    // Make nuxt pointing to the CJS files
-    // nuxt.options.alias['@supabase/supabase-js'] = '@supabase/supabase-js/dist/main'
-    // nuxt.options.alias['@supabase/gotrue-js'] = '@supabase/gotrue-js/dist/main'
-    // nuxt.options.alias['@supabase/realtime-js'] = '@supabase/realtime-js/dist/main'
-    // nuxt.options.alias['@supabase/storage-js'] = '@supabase/storage-js/dist/main'
-    // nuxt.options.alias['@supabase/postgrest-js'] = '@supabase/postgrest-js/dist/main'
   }
 })
