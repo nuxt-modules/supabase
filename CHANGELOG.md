@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.11](https://github.com/larbish/supabase-module/compare/v0.0.10...v0.0.11) (2022-01-25)
+
+
+### Bug Fixes
+
+* **vite:** Add supabase to vite options ([c9ebe75](https://github.com/larbish/supabase-module/commit/c9ebe7599994b8b7c8acd8c98b1d73d0da64b4f3))
+
 ### [0.0.10](https://github.com/larbish/supabase-module/compare/v0.0.8...v0.0.10) (2022-01-25)
 
 
