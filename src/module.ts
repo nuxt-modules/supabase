@@ -78,6 +78,12 @@ export default defineNuxtModule<ModuleOptions>({
       dirs.push(resolve(runtimeDir, 'composables'))
     })
 
+    nuxt.options.vite = {
+      optimizeDeps: {
+        include: ['@supabase/supabase-js']
+      }
+    }
+
     // Make nuxt pointing to the CJS files
     // nuxt.options.alias['@supabase/supabase-js'] = '@supabase/supabase-js/dist/main'
     // nuxt.options.alias['@supabase/gotrue-js'] = '@supabase/gotrue-js/dist/main'
