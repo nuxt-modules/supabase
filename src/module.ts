@@ -1,10 +1,37 @@
 import defu from 'defu'
 import { resolve } from 'pathe'
 import { defineNuxtModule, addPlugin, addServerMiddleware } from '@nuxt/kit'
-import type { Nuxt } from '@nuxt/schema'
-import { SupabaseOptions } from './runtime/types'
+import { SupabaseClientOptions } from '@supabase/supabase-js'
 
-export default defineNuxtModule<SupabaseOptions>({
+export interface ModuleOptions {
+  /**
+   * Supabase API URL
+   * @default process.env.SUPABASE_URL
+   * @example 'https://*.supabase.co'
+   * @type string
+   * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
+   */
+  url: string
+
+  /**
+   * Supabase API key
+   * @default process.env.SUPABASE_KEY
+   * @example '123456789'
+   * @type string
+   * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
+   */
+  key: string
+
+  /**
+   * Supabase Client options
+   * @default {}
+   * @type object
+   * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
+   */
+  options?: SupabaseClientOptions
+}
+
+export default defineNuxtModule<ModuleOptions>({
   meta: {
     name: '@nuxtjs/supabase',
     configKey: 'supabase',
@@ -17,7 +44,7 @@ export default defineNuxtModule<SupabaseOptions>({
     url: process.env.SUPABASE_URL as string,
     key: process.env.SUPABASE_KEY as string
   },
-  setup (options: SupabaseOptions, nuxt: Nuxt) {
+  setup (options, nuxt) {
     // Make sure url and key are set
     if (!options.url) {
       throw new Error('Missing `SUPABASE_URL` in `.env`')
@@ -59,19 +86,3 @@ export default defineNuxtModule<SupabaseOptions>({
     // nuxt.options.alias['@supabase/postgrest-js'] = '@supabase/postgrest-js/dist/main'
   }
 })
-
-export * from './runtime/types'
-
-declare module '@nuxt/schema' {
-  interface ConfigSchema {
-    publicRuntimeConfig?: {
-      supabase?: SupabaseOptions
-    }
-  }
-  interface NuxtConfig {
-    supabase?: SupabaseOptions
-  }
-  interface NuxtOptions {
-    supabase?: SupabaseOptions
-  }
-}
