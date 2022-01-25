@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/larbish/supabase-module/compare/v0.0.8...v0.0.10) (2022-01-25)
+
+
+### Features
+
+* **chore:** Upgrade follow redirects ([a4959db](https://github.com/larbish/supabase-module/commit/a4959db2c2124d5eb1143f9a93372235b7fa88e4))
+* **chore:** Upgrade supabase sdk ([1ec234a](https://github.com/larbish/supabase-module/commit/1ec234a809e984d93f6ac489b96bb4c6d1247e9c))
+* **chore:** Use nuxt module builder ([23ead3e](https://github.com/larbish/supabase-module/commit/23ead3ec7fdb18b160ee443941217596fbf5513b))
+
 ### [0.0.8](https://github.com/larbish/supabase-module/compare/v0.0.7...v0.0.8) (2022-01-19)
 
 ### 0.0.7 (2022-01-10)
