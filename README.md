@@ -8,7 +8,7 @@
 [![Codecov][codecov-src]][codecov-href]
 [![License][license-src]][license-href] -->
 
-> [supabase](https://supabase.com) module for [Nuxt 3](https://v3.nuxtjs.org)
+> [Supabase](https://supabase.com) module for [Nuxt](https://v3.nuxtjs.org)
 
 - [✨ &nbsp;Release Notes](https://github.com/nuxt-community/supabase-module/releases)
 - [📖 &nbsp;Read the documentation](https://supabase.nuxtjs.org)
