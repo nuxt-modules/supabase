@@ -1,4 +1,4 @@
-[![@nuxtjs/supabase](https://supabase.nuxtjs.org/preview.png)](https://supabase.nuxtjs.org)
+[![@nuxtjs/supabase](./docs/static/preview.png)](https://supabase.nuxtjs.org)
 
 # @nuxtjs/supabase
 
