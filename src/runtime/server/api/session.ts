@@ -1,18 +1,41 @@
-import { useCookies, useBody } from 'h3'
-import { createClient } from '@supabase/supabase-js'
+import type { IncomingMessage, ServerResponse } from 'http'
+import { useBody, setCookie } from 'h3'
 import config from '#config'
 
-const supabase = createClient(config.supabase.url, config.supabase.key, config.supabase.options)
+export default async (req: IncomingMessage, res: ServerResponse) => {
+  const body = await useBody(req)
+  const cookieOptions = config.supabase.cookies
 
-export default async (req: any, res: any) => {
-  // Mock for supabase API expecting to use Express 👀
-  // TODO: open an issue for Supabase gotrue-js
-  req.body = await useBody(req)
-  req.cookies = useCookies(req)
+  const { event, session } = body
 
-  res.status = () => ({ json: () => ({}) })
+  if (!event) { throw new Error('Auth event missing!') }
 
-  supabase.auth.api.setAuthCookie(req, res)
+  if (event === 'SIGNED_IN') {
+    if (!session) { throw new Error('Auth session missing!') }
+    setCookie(
+      res,
+      `${cookieOptions.name}-access-token`,
+      session.access_token,
+      {
+        domain: cookieOptions.domain,
+        maxAge: cookieOptions.lifetime ?? 0,
+        path: cookieOptions.path,
+        sameSite: cookieOptions.sameSite
+      }
+    )
+  }
+
+  if (event === 'SIGNED_OUT') {
+    setCookie(
+      res,
+      `${cookieOptions.name}-access-token`,
+      '',
+      {
+        maxAge: -1,
+        path: cookieOptions.path
+      }
+    )
+  }
 
   return 'auth cookie set'
 }
