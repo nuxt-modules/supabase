@@ -668,10 +668,10 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@supabase/gotrue-js@^1.22.0":
-  version "1.22.0"
-  resolved "https://registry.yarnpkg.com/@supabase/gotrue-js/-/gotrue-js-1.22.0.tgz#5c290890af2361099297efe25747321ff155142f"
-  integrity sha512-6r8YJvl8+mEBO6a5xoFr9K0kVw7C0FmcudFFAop+2FNSo6BXR/eEsPx/yAgVgv+1GowG4n2kOm0TYB7EvcH2QQ==
+"@supabase/gotrue-js@^1.22.1":
+  version "1.22.1"
+  resolved "https://registry.yarnpkg.com/@supabase/gotrue-js/-/gotrue-js-1.22.1.tgz#28cba21713a25045e94f99fa26b66dbb3b808f92"
+  integrity sha512-Uqiw03Sd/PYGrjq/sfEGyRcZh868y2B2fxVtZgkUAGDHnQ84K1MpsGiIMCL6x/9JPKDCOkzpSZQdKIohcY8l2Q==
   dependencies:
     cross-fetch "^3.0.6"
 
@@ -682,30 +682,30 @@
   dependencies:
     cross-fetch "^3.0.6"
 
-"@supabase/realtime-js@^1.3.5":
-  version "1.3.5"
-  resolved "https://registry.yarnpkg.com/@supabase/realtime-js/-/realtime-js-1.3.5.tgz#6ade8a97ae4c600bbe8b7615fd987e2bd956c582"
-  integrity sha512-If+C0A6eT1BflFOOZNlnGw/91gNuj7f/M19/WutsPM0pjhx++8Dj0YH8z+tbgxX0nf/2UGVUMMgTBckzpk9R3g==
+"@supabase/realtime-js@^1.3.6":
+  version "1.3.6"
+  resolved "https://registry.yarnpkg.com/@supabase/realtime-js/-/realtime-js-1.3.6.tgz#113d882829827671533673fa719479e40d522a45"
+  integrity sha512-nkQv9A3Z6PgXl32rrQT+mG0oICSpTCTbjChh43GfSIaXXSZ10u5wMzaNqtp4jpqpyjwd8Zr2bDgwAo986T+xyw==
   dependencies:
     "@types/websocket" "^1.0.3"
     websocket "^1.0.34"
 
-"@supabase/storage-js@^1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@supabase/storage-js/-/storage-js-1.5.1.tgz#0f451210972284a10c0e2edeea40daac9001c969"
-  integrity sha512-W82st1RvkChVJ/FTCcPXFXfS3V0Z4rZuMnoDnB9/NI5i9r9zspZS40tHpUQ+vbN6R6k0pfr/Waa1jcEd3YAtrQ==
+"@supabase/storage-js@^1.6.0":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@supabase/storage-js/-/storage-js-1.6.1.tgz#80fdf4356ccc46bd4bc5f3e61583f7be5163fa92"
+  integrity sha512-0U+yleWmEGd2JynngUpQk/43H/PkNcampGDXcKxj/J+CpAduzdU0Qx9YpL7+a74Q0IeBv4AZUGUA+uxams9XVA==
   dependencies:
     cross-fetch "^3.1.0"
 
-"@supabase/supabase-js@^1.30.2":
-  version "1.30.2"
-  resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-1.30.2.tgz#f18e590197211db734a914aa5a70c2a21f03d0b1"
-  integrity sha512-r/hOnJ6Rx91NnAnT+/eFcrknAYCERvLi6y9lNRgfXqYZ9XFKNh9O8tSVSTmb9INS2vPfSY6fuPCS7M4791tOWw==
+"@supabase/supabase-js@^1.30.4":
+  version "1.30.4"
+  resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-1.30.4.tgz#0dcf90739acbf6fa7fecd3742b0ba8a6f14a8a67"
+  integrity sha512-ThBjmQGw0ZD0C7IxOdISCrRMTr1VpcjHI8hqENw61K5Uz0iqWK58HQOHFNkTRAhnrzReLI/pm2O3ifIch30cJQ==
   dependencies:
-    "@supabase/gotrue-js" "^1.22.0"
+    "@supabase/gotrue-js" "^1.22.1"
     "@supabase/postgrest-js" "^0.36.0"
-    "@supabase/realtime-js" "^1.3.5"
-    "@supabase/storage-js" "^1.5.1"
+    "@supabase/realtime-js" "^1.3.6"
+    "@supabase/storage-js" "^1.6.0"
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
