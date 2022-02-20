@@ -1,11 +1,21 @@
 import { AuthChangeEvent, Session } from '@supabase/supabase-js'
+import { defineNuxtPlugin, NuxtApp } from '#app'
 import { useSupabaseClient } from '../composables/useSupabaseClient'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
-import { defineNuxtPlugin, NuxtApp } from '#app'
+import { useSupabaseToken } from '../composables/useSupabaseToken'
 
-export default defineNuxtPlugin((nuxtApp: NuxtApp) => {
+export default defineNuxtPlugin(async (nuxtApp: NuxtApp) => {
   const user = useSupabaseUser()
   const client = useSupabaseClient()
+
+  // If user has not been set on server side (for instance in SPA), set it for client
+  if (!user.value) {
+    const token = useSupabaseToken()
+    if (token.value) {
+      const { user: supabaseUser, error } = await client.auth.api.getUser(token.value)
+      user.value = error ? null : supabaseUser
+    }
+  }
 
   // Once Nuxt app is mounted
   nuxtApp.hooks.hook('app:mounted', () => {
