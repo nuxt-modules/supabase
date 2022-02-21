@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://github.com/larbish/supabase-module/compare/v0.0.11...v0.0.12) (2022-02-21)
+
+
+### Features
+
+* **auth:** Handle auth for client only rendering ([83e3f38](https://github.com/larbish/supabase-module/commit/83e3f38581ba521485ff69153ed89f62e31260c5))
+* **auth:** Handle manually instead of using supabase api ([ca03b53](https://github.com/larbish/supabase-module/commit/ca03b5319d212d72e9928b04eda73076d62f85c6))
+
 ### [0.0.11](https://github.com/larbish/supabase-module/compare/v0.0.10...v0.0.11) (2022-01-25)
 
 
