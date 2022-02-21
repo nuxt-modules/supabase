@@ -1,5 +1,5 @@
 {
-  "name": "@nuxtjs/supabase",
+  "name": "@larbish/supabase",
   "version": "0.0.11",
   "description": "Supabase module for Nuxt3",
   "repository": {
@@ -35,7 +35,7 @@
     "@nuxt/module-builder": "^0.1.7",
     "@nuxtjs/eslint-config-typescript": "^8.0.0",
     "eslint": "^8.9.0",
-    "nuxt3": "latest",
+    "nuxt3": "^3.0.0-27419629.87eb7d0",
     "standard-version": "^9.3.2"
   },
   "publishConfig": {

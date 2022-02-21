@@ -1,24 +1,20 @@
-import { useCookies } from 'h3'
+// import { useCookie } from 'h3'
+import { defineNuxtPlugin } from '#app'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
 import { useSupabaseClient } from '../composables/useSupabaseClient'
-import { defineNuxtPlugin } from '#app'
+import { useSupabaseToken } from '../composables/useSupabaseToken'
 
-export default defineNuxtPlugin(async (nuxtApp) => {
+// Set subabase user on server side
+export default defineNuxtPlugin(async () => {
   const user = useSupabaseUser()
   const client = useSupabaseClient()
+  const token = useSupabaseToken()
 
-  const req = nuxtApp.ssrContext!.req
+  if (!token.value) {
+    return
+  }
 
-  // Supabase needs to read from req.cookies
-  req.cookies = useCookies(req)
+  const { user: supabaseUser, error } = await client.auth.api.getUser(token.value)
 
-  // Fix SSR called to RLS protected tables
-  // https://github.com/supabase/supabase/issues/1735#issuecomment-922284089
-  // @ts-ignore
-  client.auth.session = () => ({
-    access_token: req.cookies['sb:token']
-  })
-
-  // Check authenticated user during SSR
-  user.value = (await client.auth.api.getUserByCookie(req)).user
+  user.value = error ? null : supabaseUser
 })

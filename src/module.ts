@@ -2,7 +2,7 @@ import { fileURLToPath } from 'url'
 import defu from 'defu'
 import { resolve } from 'pathe'
 import { defineNuxtModule, addPlugin, addServerMiddleware } from '@nuxt/kit'
-import { SupabaseClientOptions } from '@supabase/supabase-js'
+import { CookieOptions, SupabaseClientOptions } from '@supabase/supabase-js'
 
 export interface ModuleOptions {
   /**
@@ -30,6 +30,20 @@ export interface ModuleOptions {
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
   client?: SupabaseClientOptions
+
+  /**
+   * Supabase Client options
+   * @default {
+      name: 'sb',
+      lifetime: 60 * 60 * 8,
+      domain: '',
+      path: '/',
+      sameSite: 'lax'
+    }
+   * @type object
+   * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
+   */
+  cookies?: CookieOptions
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -44,7 +58,14 @@ export default defineNuxtModule<ModuleOptions>({
   defaults: {
     url: process.env.SUPABASE_URL as string,
     key: process.env.SUPABASE_KEY as string,
-    client: {}
+    client: {},
+    cookies: {
+      name: 'sb',
+      lifetime: 60 * 60 * 8,
+      domain: '',
+      path: '/',
+      sameSite: 'lax'
+    }
   },
   setup (options, nuxt) {
     // Make sure url and key are set
@@ -59,7 +80,8 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.publicRuntimeConfig.supabase = defu(nuxt.options.publicRuntimeConfig.supabase, {
       url: options.url,
       key: options.key,
-      client: options.client
+      client: options.client,
+      cookies: options.cookies
     })
 
     // Transpile runtime
