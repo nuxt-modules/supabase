@@ -103,10 +103,11 @@ export default defineNuxtModule<ModuleOptions>({
       dirs.push(resolve(runtimeDir, 'composables'))
     })
 
-    nuxt.options.vite = {
-      optimizeDeps: {
-        include: ['@supabase/supabase-js']
-      }
-    }
+    // nuxt.options.build.transpile.push('cross-fetch')
+    // nuxt.options.vite = {
+    //   optimizeDeps: {
+    //     include: ['cross-fetch']
+    //   }
+    // }
   }
 })
