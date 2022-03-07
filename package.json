@@ -1,6 +1,6 @@
 {
   "name": "@larbish/supabase",
-  "version": "0.0.14",
+  "version": "0.0.19",
   "description": "Supabase module for Nuxt3",
   "repository": {
     "type": "git",

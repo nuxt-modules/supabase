@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.19](https://github.com/larbish/supabase-module/compare/v0.0.14...v0.0.19) (2022-03-07)
+
+
+### Bug Fixes
+
+* **build:** esm error with cross fetch nested dep ([66d0aa1](https://github.com/larbish/supabase-module/commit/66d0aa1e515dff3b43ed9903c48a033197749f96))
+
 ### [0.0.14](https://github.com/larbish/supabase-module/compare/v0.0.13...v0.0.14) (2022-03-01)
 
 ### [0.0.13](https://github.com/larbish/supabase-module/compare/v0.0.12...v0.0.13) (2022-02-21)
