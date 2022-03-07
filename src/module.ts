@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url'
 import defu from 'defu'
 import { resolve } from 'pathe'
-import { defineNuxtModule, addPlugin, addServerMiddleware } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, addServerMiddleware, extendViteConfig } from '@nuxt/kit'
 import { CookieOptions, SupabaseClientOptions } from '@supabase/supabase-js'
 
 export interface ModuleOptions {
@@ -103,11 +103,11 @@ export default defineNuxtModule<ModuleOptions>({
       dirs.push(resolve(runtimeDir, 'composables'))
     })
 
-    // nuxt.options.build.transpile.push('cross-fetch')
-    // nuxt.options.vite = {
-    //   optimizeDeps: {
-    //     include: ['cross-fetch']
-    //   }
-    // }
+    // Fix esm error with cross-fetch use by supabase/supabase-js
+    extendViteConfig((config) => {
+      config.optimizeDeps = config.optimizeDeps || {}
+      config.optimizeDeps.include = config.optimizeDeps.include || []
+      config.optimizeDeps.include.push('cross-fetch')
+    })
   }
 })
