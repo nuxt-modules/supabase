@@ -107,7 +107,7 @@ export default defineNuxtModule<ModuleOptions>({
     extendViteConfig((config) => {
       config.optimizeDeps = config.optimizeDeps || {}
       config.optimizeDeps.include = config.optimizeDeps.include || []
-      config.optimizeDeps.include.push('cross-fetch', 'w3cwebsocket')
+      config.optimizeDeps.include.push('cross-fetch')
     })
   }
 })
