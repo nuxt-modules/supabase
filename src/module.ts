@@ -103,11 +103,18 @@ export default defineNuxtModule<ModuleOptions>({
       dirs.push(resolve(runtimeDir, 'composables'))
     })
 
-    // Fix esm error with cross-fetch use by supabase/supabase-js
+    // Optimize cross-fetch
     extendViteConfig((config) => {
       config.optimizeDeps = config.optimizeDeps || {}
       config.optimizeDeps.include = config.optimizeDeps.include || []
       config.optimizeDeps.include.push('cross-fetch')
     })
+
+    // Optimize websocket only at dev time
+    if (nuxt.options.dev) {
+      extendViteConfig((config) => {
+        config.optimizeDeps.include.push('websocket')
+      })
+    }
   }
 })
