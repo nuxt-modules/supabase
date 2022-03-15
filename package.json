@@ -1,11 +1,8 @@
 {
-  "name": "@larbish/supabase",
+  "name": "@nuxtjs/supabase",
   "version": "0.0.25",
-  "description": "Supabase module for Nuxt3",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/larbish/supabase-module.git"
-  },
+  "description": "Supabase module for Nuxt",
+  "repository": "nuxt-community/supabase-module",
   "license": "MIT",
   "exports": {
     ".": {
@@ -37,15 +34,5 @@
     "eslint": "^8.10.0",
     "nuxt3": "latest",
     "standard-version": "^9.3.2"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "bugs": {
-    "url": "https://github.com/nuxt-community/supabase-module/issues"
-  },
-  "homepage": "https://github.com/nuxt-community/supabase-module#readme",
-  "directories": {
-    "example": "example"
   }
 }
