@@ -10,16 +10,16 @@
 
 > [Supabase](https://supabase.com) module for [Nuxt](https://v3.nuxtjs.org)
 
-- [✨ &nbsp;Release Notes](https://github.com/nuxt-community/supabase-module/releases)
+- [✨ &nbsp;Changelog](https://github.com/nuxt-community/supabase-module/blob/main/CHANGELOG.md)
 - [📖 &nbsp;Read the documentation](https://supabase.nuxtjs.org)
 
 ## Features
 
 - Nuxt 3 ready
-- Authentication support using Supabase client
+- Vue 3 composables
+- Authentication support
+- Use supabase-js isomorphic client
 - TypeScript support
-
-[📖 &nbsp;Read the documentation](https://supabase.nuxtjs.org)
 
 ## Development
 
