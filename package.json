@@ -17,7 +17,6 @@
   ],
   "scripts": {
     "build": "nuxt-module-build",
-    "dev": "nuxi dev example",
     "lint": "eslint --ext .js,.ts,.vue .",
     "prepack": "yarn build",
     "release": "yarn lint && standard-version && git push --follow-tags"
