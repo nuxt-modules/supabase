@@ -38,7 +38,7 @@
 [npm-downloads-src]: https://img.shields.io/npm/dt/@nuxtjs/supabase.svg
 [npm-downloads-href]: https://npmjs.com/package/@nuxtjs/supabase
 
-[github-actions-ci-src]: https://github.com/nuxt-community/supabase-module/workflows/ci/badge.svg
+[github-actions-ci-src]: https://github.com/nuxt-community/supabase-module/workflows/ci-main/badge.svg
 [github-actions-ci-href]: https://github.com/nuxt-community/supabase-module/actions?query=workflow%3Aci
 
 [codecov-src]: https://img.shields.io/codecov/c/github/nuxt-community/supabase-module.svg
