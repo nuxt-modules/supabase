@@ -11,6 +11,7 @@
 
 - [✨ &nbsp;Changelog](https://github.com/nuxt-community/supabase-module/blob/main/CHANGELOG.md)
 - [📖 &nbsp;Read the documentation](https://supabase.nuxtjs.org)
+- [▶️ &nbsp;Demo](./demo)
 
 ## Features
 

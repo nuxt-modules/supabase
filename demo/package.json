@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "engines": {
+    "node": ">=14.19.1"
+  },
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs",
+    "lint": "eslint --ext .ts,.js,.vue ."
+  },
+  "devDependencies": {
+    "@iconify-json/mdi": "^1.1.3",
+    "@nuxthq/ui": "npm:@nuxthq/ui-edge@latest",
+    "@nuxtjs/color-mode": "^3.0.2",
+    "@nuxtjs/eslint-config-typescript": "^9.0.0",
+    "@nuxtjs/supabase": "^0.1.1",
+    "@vueuse/components": "^8.0.1",
+    "eslint": "^8.11.0",
+    "nuxt3": "latest",
+    "typescript": "^4.6.2"
+  }
+}
