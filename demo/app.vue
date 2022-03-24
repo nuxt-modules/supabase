@@ -27,6 +27,6 @@ const toggleDark = () => {
 
 const logout = async () => {
   await client.auth.signOut()
-  router.push('../')
+  router.back()
 }
 </script>
