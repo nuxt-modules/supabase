@@ -5,7 +5,6 @@
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![Github Actions CI][github-actions-ci-src]][github-actions-ci-href]
-[![Codecov][codecov-src]][codecov-href]
 [![License][license-src]][license-href]
 
 > [Supabase](https://supabase.com) module for [Nuxt](https://v3.nuxtjs.org)
@@ -20,6 +19,10 @@
 - Authentication support
 - Use supabase-js isomorphic client
 - TypeScript support
+
+## Usage
+
+Checkout https://supabase.nuxtjs.org
 
 ## Development
 
