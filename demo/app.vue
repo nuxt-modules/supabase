@@ -18,7 +18,6 @@
 <script setup lang="ts">
 const client = useSupabaseClient()
 const user = useSupabaseUser()
-const router = useRouter()
 const colorMode = useColorMode()
 
 const toggleDark = () => {
@@ -27,6 +26,6 @@ const toggleDark = () => {
 
 const logout = async () => {
   await client.auth.signOut()
-  router.back()
+  document.location.href = '/'
 }
 </script>
