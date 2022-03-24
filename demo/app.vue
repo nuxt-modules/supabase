@@ -2,7 +2,18 @@
   <div class="min-h-screen u-bg-black">
     <Title>Nuxt 3 x Supabase</Title>
     <div class="flex items-center justify-between">
-      <UButton size="xl" variant="transparent" :icon="colorMode.preference === 'dark' ? 'heroicons-outline:moon' : 'heroicons-outline:sun'" @click="toggleDark" />
+      <div>
+        <UButton size="xl" variant="transparent" :icon="colorMode.preference === 'dark' ? 'heroicons-outline:moon' : 'heroicons-outline:sun'" @click="toggleDark" />
+        <UButton
+          size="xl"
+          label="Source"
+          variant="transparent"
+          target="_blank"
+          to="https://github.com/nuxt-community/supabase-module/tree/main/demo"
+          icon="heroicons-outline:external-link"
+          @click="toggleDark"
+        />
+      </div>
       <UButton v-if="!!user" class="u-text-white" size="xl" variant="transparent" @click="logout">
         Logout
       </UButton>
