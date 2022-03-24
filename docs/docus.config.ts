@@ -3,7 +3,7 @@ export default {
   url: 'https://supabase.nuxtjs.org',
   theme: {
     colors: {
-      primary: '#34d399',
+      primary: '#3DCF8E',
       prism: {
         background: '#F4F4F5 dark:#1F2937'
       }
