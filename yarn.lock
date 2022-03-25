@@ -4673,7 +4673,7 @@ number-is-nan@^1.0.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
-nuxt3@^3.0.0-27470343.19842ce:
+nuxt3@^3.0.0-27470218:
   version "3.0.0-27470343.19842ce"
   resolved "https://registry.yarnpkg.com/nuxt3/-/nuxt3-3.0.0-27470343.19842ce.tgz#760f9f08ba20db96efead2554c9ac02e8ea3a372"
   integrity sha512-3FYNbZE+jZ27M0tlPHumQSE2sgkIZ0NdsxU9kU+D+5l2Nmnm6vk0YV6BQWVdpc0nM+SMgDK1dnfVbOfrdbgqZw==
