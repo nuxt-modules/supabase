@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@nuxt/kit": "npm:@nuxt/kit-edge@latest",
-    "@supabase/supabase-js": "^1.31.2",
+    "@supabase/supabase-js": "^1.32.1",
     "defu": "^6.0.0",
     "pathe": "^0.2.0"
   },
@@ -31,7 +31,7 @@
     "@nuxt/module-builder": "^0.1.7",
     "@nuxtjs/eslint-config-typescript": "^9.0.0",
     "eslint": "^8.11.0",
-    "nuxt3": "^3.0.0-27467464.a0c4d6e",
+    "nuxt3": "^3.0.0-27470343.19842ce",
     "standard-version": "^9.3.2"
   }
 }
