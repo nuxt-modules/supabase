@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.3](https://github.com/nuxt-community/supabase-module/compare/v0.1.2...v0.1.3) (2022-03-27)
+
+
+### Features
+
+* **app:** add link to source code ([1c7bd17](https://github.com/nuxt-community/supabase-module/commit/1c7bd173149c6868865e5aadd531e1333e16f87e))
+* **demo:** linethrough completed tasks ([4081126](https://github.com/nuxt-community/supabase-module/commit/408112671c90b9252f1c3a59f0c1da57b891a04c))
+
+
+### Bug Fixes
+
+* **demo:** router push on logout ([f8c279e](https://github.com/nuxt-community/supabase-module/commit/f8c279eaa989758a9619ccb53e06ca9415718531))
+* **demo:** routing back on logout ([9365164](https://github.com/nuxt-community/supabase-module/commit/9365164744061c9867b1830751b2e2374e4827ac))
+* **demo:** set location href on logout ([580f2bd](https://github.com/nuxt-community/supabase-module/commit/580f2bd20a87b05a56580202236726ccbce31ed2))
+
 ### [0.1.2](https://github.com/nuxt-community/supabase-module/compare/v0.1.1...v0.1.2) (2022-03-24)
 
 ### [0.1.1](https://github.com/nuxt-community/supabase-module/compare/v0.1.0...v0.1.1) (2022-03-16)
