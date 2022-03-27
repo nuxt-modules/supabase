@@ -621,13 +621,13 @@
     eslint-plugin-unicorn "^41.0.0"
     eslint-plugin-vue "^8.5.0"
 
-"@nuxtjs/supabase@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/supabase/-/supabase-0.1.2.tgz#75b891e526d9425f249742eabe788d7d9f114533"
-  integrity sha512-Il6sQhOGdLHCjcEMFL4hcs4BaaqtVHPJUF9nmjo4BSxyoqzUY3H9ufyAnfXVuvUah5aelEQA89qQehueBA8D5g==
+"@nuxtjs/supabase@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/supabase/-/supabase-0.1.4.tgz#7d97505c2cfa1894581a00d275e3a35ee10bb2c1"
+  integrity sha512-qt5zdVbymVBXinEZvuGL9ZBp+QSGP0yfFFHVdK+Kcynx8d/6YEs7Wpkwgsy+ICu3MLNw5Xn126q28MXrifgzbg==
   dependencies:
     "@nuxt/kit" "npm:@nuxt/kit-edge@latest"
-    "@supabase/supabase-js" "^1.31.2"
+    "@supabase/supabase-js" "^1.32.2"
     defu "^6.0.0"
     pathe "^0.2.0"
 
@@ -738,10 +738,10 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@supabase/functions-js@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@supabase/functions-js/-/functions-js-1.2.0.tgz#8f114a52ba6aa511b69172321796e8f0225b1dcc"
-  integrity sha512-vT/dEuwY7occ5Upuev0vuGCAo/cVltbv+8mOKugA5Lsf9W5S0PlXy4di/cGF6ryvsQfYXr1ebEWNlgKgGUOCtA==
+"@supabase/functions-js@^1.2.2":
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/@supabase/functions-js/-/functions-js-1.2.4.tgz#0e5925add6f14174d3198508cb6d773080e65414"
+  integrity sha512-sMWSTMTOUzbqCwfpGQ4kR4E8uU6NyUgSZBzuN3JKC4grfnE++SkjG5jFRGVpd8uNtA2FYPBmckoxOzjeOLo13g==
   dependencies:
     cross-fetch "^3.1.5"
 
@@ -777,12 +777,12 @@
   dependencies:
     cross-fetch "^3.1.0"
 
-"@supabase/supabase-js@^1.31.2":
-  version "1.32.1"
-  resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-1.32.1.tgz#ea88ce9cd8b4971e7c4447269306954f278da0ce"
-  integrity sha512-GAm7MRcCzrcbzGELHrpU0zHQm58ZJ+b7RBLkJxC7MzdAsNDJv/F7921f4WDbKtLn4cASGImJR2xElLiXK5NqAA==
+"@supabase/supabase-js@^1.32.2":
+  version "1.32.2"
+  resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-1.32.2.tgz#af3cc8ee377c24e9e94e51fcf448d0003658fcdd"
+  integrity sha512-cM9CHG2vLUJzzOj8Cers36BYTb5c1v7HeHbtOXkPUh76oTO7w2d+jtvqZBzR72Nz7ykYmCVw5YccHR2FuxoLHQ==
   dependencies:
-    "@supabase/functions-js" "^1.2.0"
+    "@supabase/functions-js" "^1.2.2"
     "@supabase/gotrue-js" "^1.22.8"
     "@supabase/postgrest-js" "^0.37.1"
     "@supabase/realtime-js" "^1.4.0"
