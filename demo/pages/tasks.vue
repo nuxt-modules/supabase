@@ -34,9 +34,9 @@ async function addTask () {
   newTask.value = ''
   loading.value = false
 }
-
-const updateTask = (task: Task) => client.from<Task>('tasks').update({ completed: task.completed }).match({ id: task.id })
-
+const completeTask = async (task: Task) => {
+  await client.from<Task>('tasks').update({ completed: task.completed }).match({ id: task.id })
+}
 const removeTask = async (task: Task) => {
   tasks.value = tasks.value.filter(t => t.id !== task.id)
   await client.from<Task>('tasks').delete().match({ id: task.id })
@@ -85,7 +85,7 @@ const removeTask = async (task: Task) => {
                   :name="String(task.id)"
                   icon-off="heroicons-solid:x"
                   icon-on="heroicons-solid:check"
-                  @click="updateTask(task)"
+                  @click="completeTask(task)"
                 />
                 <UButton
                   class="ml-3 text-red-600"
