@@ -1,14 +1,14 @@
 <script setup lang="ts">
 const router = useRouter()
+const client = useSupabaseClient()
 const user = useSupabaseUser()
-const { auth } = useSupabaseClient()
 const colorMode = useColorMode()
 const toggleDark = () => {
   colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
 }
 const colorModeIcon = computed(() => colorMode.preference === 'dark' ? 'heroicons-outline:moon' : 'heroicons-outline:sun')
 const logout = async () => {
-  await auth.signOut()
+  await client.auth.signOut()
   router.push('/')
 }
 </script>
