@@ -16,22 +16,29 @@ const logout = async () => {
 <template>
   <div>
     <Title>Nuxt 3 x Supabase</Title>
-    <div class="flex items-center justify-between">
-      <div>
-        <UButton size="xl" variant="transparent" :icon="colorModeIcon" @click="toggleDark" />
+    <div class="flex items-center md:justify-between justify-center">
+      <div class="hidden md:block">
         <UButton
-          size="xl"
           label="Source"
           variant="transparent"
           target="_blank"
           to="https://github.com/nuxt-community/supabase-module/tree/main/demo"
           icon="heroicons-outline:external-link"
-          @click="toggleDark"
+        />
+        <UButton
+          label="Hosted on Netlify"
+          variant="transparent"
+          target="_blank"
+          to="https://netlify.com"
+          icon="heroicons-outline:external-link"
         />
       </div>
-      <UButton v-if="user" class="u-text-white" size="xl" variant="transparent" @click="logout">
-        Logout
-      </UButton>
+      <div class="flex items-center">
+        <UButton variant="transparent" :icon="colorModeIcon" @click="toggleDark" />
+        <UButton v-if="user" class="u-text-white" variant="transparent" @click="logout">
+          Logout
+        </UButton>
+      </div>
     </div>
   </div>
 </template>
