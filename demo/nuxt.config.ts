@@ -8,9 +8,7 @@ export default defineNuxtConfig({
     // UI lib (will be soon open sourced)
     '@nuxthq/ui',
     // https://github.com/nuxt-community/color-mode-module
-    '@nuxtjs/color-mode',
-    // https://vueuse.org/guide/#installation
-    '@vueuse/nuxt'
+    '@nuxtjs/color-mode'
   ],
   ui: {
     colors: {
