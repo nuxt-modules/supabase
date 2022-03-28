@@ -1,20 +1,15 @@
 <script setup lang="ts">
 import { Task } from '~/types/tasks'
 
-definePageMeta({
-  middleware: 'auth'
-})
+// TODO: prevent accessing when guest
 
 const client = useSupabaseClient()
 const user = useSupabaseUser()
 const loading = ref(null)
 const newTask = ref('')
 
-const { data: tasks } = await useAsyncData('tasks', async () => {
-  return await client.from<Task>('tasks').select('id, title, completed').eq('user', user.value.id).order('created_at')
-}, {
-  transform: result => result.body
-})
+// TODO: fetch tasks for user with SSR & hydration
+const tasks = ref([])
 
 async function addTask () {
   if (newTask.value.trim().length === 0) {
