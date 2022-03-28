@@ -11,10 +11,7 @@ const loading = ref(null)
 const newTask = ref('')
 
 const { data: tasks } = await useAsyncData('tasks', async () => {
-  return await client.from<Task>('tasks')
-    .select('id, title, completed')
-    .eq('user', user.value.id)
-    .order('created_at')
+  return await client.from<Task>('tasks').select('id, title, completed').eq('user', user.value.id).order('created_at')
 }, {
   transform: result => result.body
 })
