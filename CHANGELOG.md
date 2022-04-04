@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/nuxt-community/supabase-module/compare/v0.1.4...v0.1.5) (2022-04-04)
+
+
+### Bug Fixes
+
+* remove lodash.clonedeep ([b5c5c60](https://github.com/nuxt-community/supabase-module/commit/b5c5c60358ab192b98c8a63185f58a2eb0ab706a))
+
 ### [0.1.4](https://github.com/nuxt-community/supabase-module/compare/v0.1.3...v0.1.4) (2022-03-27)
 
 ### [0.1.3](https://github.com/nuxt-community/supabase-module/compare/v0.1.2...v0.1.3) (2022-03-27)
