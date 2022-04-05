@@ -26,6 +26,10 @@
 
 Checkout https://supabase.nuxtjs.org
 
+## Nuxt 2
+
+If you are looking for a solution with Nuxt 2, checkout https://github.com/supabase-community/nuxt-supabase
+
 ## Development
 
 1. Clone this repository
