@@ -1,10 +1,11 @@
 import type { IncomingMessage, ServerResponse } from 'http'
-import { useBody, setCookie } from 'h3'
+import { useBody, setCookie, assertMethod } from 'h3'
 import { useRuntimeConfig } from '#nitro'
 
 const config = useRuntimeConfig()
 
 export default async (req: IncomingMessage, res: ServerResponse) => {
+  assertMethod(req, 'POST')
   const body = await useBody(req)
   const cookieOptions = config.supabase.cookies
 

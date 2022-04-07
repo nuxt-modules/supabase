@@ -51,8 +51,7 @@ export default defineNuxtModule<ModuleOptions>({
     name: '@nuxtjs/supabase',
     configKey: 'supabase',
     compatibility: {
-      nuxt: '^3.0.0 || ^2.16.0',
-      bridge: true
+      nuxt: '^3.0.0'
     }
   },
   defaults: {
@@ -94,7 +93,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Add supabase session endpoint to store the session on server-side
     addServerMiddleware({
-      path: '/api/_supabase/session',
+      route: '/api/_supabase/session',
       handler: resolve(runtimeDir, 'server/api/session')
     })
 
