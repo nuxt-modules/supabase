@@ -2,9 +2,10 @@ import type { IncomingMessage, ServerResponse } from 'http'
 import { useBody, setCookie } from 'h3'
 import { useRuntimeConfig } from '#nitro'
 
+const config = useRuntimeConfig()
+
 export default async (req: IncomingMessage, res: ServerResponse) => {
   const body = await useBody(req)
-  const config = useRuntimeConfig()
   const cookieOptions = config.supabase.cookies
 
   const { event, session } = body
