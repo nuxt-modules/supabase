@@ -76,7 +76,7 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     // Default runtimeConfig
-    nuxt.options.publicRuntimeConfig.supabase = defu(nuxt.options.publicRuntimeConfig.supabase, {
+    nuxt.options.runtimeConfig.public.supabase = defu(nuxt.options.runtimeConfig.public.supabase, {
       url: options.url,
       key: options.key,
       client: options.client,

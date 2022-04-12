@@ -6,7 +6,7 @@ import { useSupabaseToken } from './useSupabaseToken'
 export const useSupabaseClient = (): SupabaseClient => {
   const nuxtApp = useNuxtApp()
   const token = useSupabaseToken()
-  const { supabase: { url, key, options } } = useRuntimeConfig()
+  const { supabase: { url, key, options } } = useRuntimeConfig().public
 
   // No need to recreate client if exists
   if (!nuxtApp._supabaseClient) {

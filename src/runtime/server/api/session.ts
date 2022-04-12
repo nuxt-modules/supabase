@@ -2,7 +2,7 @@ import type { IncomingMessage, ServerResponse } from 'http'
 import { useBody, setCookie, assertMethod } from 'h3'
 import { useRuntimeConfig } from '#nitro'
 
-const config = useRuntimeConfig()
+const config = useRuntimeConfig().public
 
 export default async (req: IncomingMessage, res: ServerResponse) => {
   assertMethod(req, 'POST')
