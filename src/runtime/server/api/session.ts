@@ -1,22 +1,21 @@
-import type { IncomingMessage, ServerResponse } from 'http'
-import { useBody, setCookie, assertMethod } from 'h3'
+import { useBody, setCookie, assertMethod, defineEventHandler } from 'h3'
 import { useRuntimeConfig } from '#nitro'
 
 const config = useRuntimeConfig().public
 
-export default async (req: IncomingMessage, res: ServerResponse) => {
-  assertMethod(req, 'POST')
-  const body = await useBody(req)
+export default defineEventHandler(async (event) => {
+  assertMethod(event, 'POST')
+  const body = await useBody(event)
   const cookieOptions = config.supabase.cookies
 
-  const { event, session } = body
+  const { event: signEvent, session } = body
 
   if (!event) { throw new Error('Auth event missing!') }
 
-  if (event === 'SIGNED_IN') {
+  if (signEvent === 'SIGNED_IN') {
     if (!session) { throw new Error('Auth session missing!') }
     setCookie(
-      res,
+      event,
       `${cookieOptions.name}-access-token`,
       session.access_token,
       {
@@ -28,9 +27,9 @@ export default async (req: IncomingMessage, res: ServerResponse) => {
     )
   }
 
-  if (event === 'SIGNED_OUT') {
+  if (signEvent === 'SIGNED_OUT') {
     setCookie(
-      res,
+      event,
       `${cookieOptions.name}-access-token`,
       '',
       {
@@ -41,4 +40,4 @@ export default async (req: IncomingMessage, res: ServerResponse) => {
   }
 
   return 'auth cookie set'
-}
+})
