@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/nuxt-community/supabase-module/compare/v0.1.7...v0.1.8) (2022-04-13)
+
+
+### Features
+
+* **server:** handle session with defineEventHandler ([e646b1c](https://github.com/nuxt-community/supabase-module/commit/e646b1ce03773bf44932824726f280ad15455ec2))
+
+
+### Bug Fixes
+
+* **app:** update runtime config override ([260ebc7](https://github.com/nuxt-community/supabase-module/commit/260ebc7be39dfa65902ad4fe6a49639c99a69da8))
+
 ### [0.1.7](https://github.com/nuxt-community/supabase-module/compare/v0.1.6...v0.1.7) (2022-04-07)
 
 
