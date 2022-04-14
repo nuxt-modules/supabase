@@ -1,11 +1,10 @@
 <script setup lang="ts">
 const user = useSupabaseUser()
 const { auth } = useSupabaseClient()
-const router = useRouter()
 
 watchEffect(() => {
   if (user.value) {
-    router.push('/tasks')
+    navigateTo('/tasks')
   }
 })
 </script>
