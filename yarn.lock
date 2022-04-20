@@ -2642,7 +2642,7 @@ eslint-visitor-keys@^3.0.0, eslint-visitor-keys@^3.1.0, eslint-visitor-keys@^3.3
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.3.0.tgz#f6480fa6b1f30efe2d1968aa8ac745b862469826"
   integrity sha512-mQ+suqKJVyeuwGYHAdjMFqjCyfl8+Ldnxuyp3ldiMBFKkvytrXUZWaiPCEav8qDHKty44bD+qV1IP4T+w+xXRA==
 
-eslint@^8.13.0:
+eslint@^8.12.0:
   version "8.13.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.13.0.tgz#6fcea43b6811e655410f5626cfcf328016badcd7"
   integrity sha512-D+Xei61eInqauAyTJ6C0q6x9mx7kTUC1KZ0m0LSEexR0V+e94K12LmWX076ZIsldwfQ2RONdaJe0re0TRGQbRQ==
@@ -4463,7 +4463,7 @@ number-is-nan@^1.0.0:
   optionalDependencies:
     fsevents "~2.3.2"
 
-nuxt3@latest:
+nuxt3@^3.0.0-27495976.e31c604:
   version "3.0.0-27495976.e31c604"
   resolved "https://registry.yarnpkg.com/nuxt3/-/nuxt3-3.0.0-27495976.e31c604.tgz#8feae9f32923046816f7df24312910d6bb0b1d71"
   integrity sha512-qYFo11wwymJIP3Llt3oMhBkPsZjBcChC8aZL0BBRxXCE4TCPdEvqtyiDBeUY2+Ok35psKNDEFlIjdMghUOrmGQ==
