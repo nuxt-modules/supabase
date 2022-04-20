@@ -1,5 +1,5 @@
 import { useBody, setCookie, assertMethod, defineEventHandler } from 'h3'
-import { useRuntimeConfig } from '#nitro'
+import { useRuntimeConfig } from '#imports'
 
 const config = useRuntimeConfig().public
 
