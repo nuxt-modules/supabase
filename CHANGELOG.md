@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/nuxt-community/supabase-module/compare/v0.1.8...v0.1.9) (2022-04-20)
+
+
+### Bug Fixes
+
+* use #imports instead of #nitro ([42af598](https://github.com/nuxt-community/supabase-module/commit/42af598b7d9f3adf2c577c20e9cfb68bbb17d52b))
+
 ### [0.1.8](https://github.com/nuxt-community/supabase-module/compare/v0.1.7...v0.1.8) (2022-04-13)
 
 
