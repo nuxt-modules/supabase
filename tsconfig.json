@@ -15,7 +15,7 @@
       "@nuxt/kit"
     ],
     "paths": {
-      "#app": ["./node_modules/nuxt3/dist/app"]
+      "#app": ["./node_modules/nuxt/dist/app"]
     }
   },
   "include": [
