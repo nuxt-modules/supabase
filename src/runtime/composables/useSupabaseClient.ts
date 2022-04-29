@@ -1,7 +1,6 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js'
-// import { useCookie } from 'h3'
-import { useRuntimeConfig, useNuxtApp } from '#app'
 import { useSupabaseToken } from './useSupabaseToken'
+import { useRuntimeConfig, useNuxtApp } from '#imports'
 
 export const useSupabaseClient = (): SupabaseClient => {
   const nuxtApp = useNuxtApp()
