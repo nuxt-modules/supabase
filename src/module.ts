@@ -1,7 +1,6 @@
 import { fileURLToPath } from 'url'
 import { defu } from 'defu'
-import { resolve } from 'pathe'
-import { defineNuxtModule, addPlugin, addServerMiddleware, extendViteConfig } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, addServerMiddleware, extendViteConfig, resolveModule, createResolver } from '@nuxt/kit'
 import { CookieOptions, SupabaseClientOptions } from '@supabase/supabase-js'
 
 export interface ModuleOptions {
@@ -67,6 +66,9 @@ export default defineNuxtModule<ModuleOptions>({
     }
   },
   setup (options, nuxt) {
+    const { resolve } = createResolver(import.meta.url)
+    const resolveRuntimeModule = (path: string) => resolveModule(path, { paths: resolve('./runtime') })
+
     // Make sure url and key are set
     if (!options.url) {
       throw new Error('Missing `SUPABASE_URL` in `.env`')
@@ -107,8 +109,8 @@ export default defineNuxtModule<ModuleOptions>({
       nitroConfig.autoImport = nitroConfig.autoImport || {}
       nitroConfig.autoImport.imports = nitroConfig.autoImport.imports || []
       nitroConfig.autoImport.imports.push(
-        { name: 'serverSupabaseClient', from: resolve(runtimeDir, 'server', 'services', 'serverSupabaseClient') },
-        { name: 'serverSupabaseUser', from: resolve(runtimeDir, 'server', 'services', 'serverSupabaseUser') }
+        { name: 'serverSupabaseClient', from: resolveRuntimeModule('./server/services/serverSupabaseClient') },
+        { name: 'serverSupabaseUser', from: resolveRuntimeModule('./server/services/serverSupabaseUser') }
       )
     })
 
