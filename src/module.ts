@@ -97,9 +97,19 @@ export default defineNuxtModule<ModuleOptions>({
       handler: resolve(runtimeDir, 'server/api/session')
     })
 
-    // Add supabase composables
+    // Add vue composables (client side context)
     nuxt.hook('autoImports:dirs', (dirs) => {
       dirs.push(resolve(runtimeDir, 'composables'))
+    })
+
+    // Add nitro services (server side context)
+    nuxt.hook('nitro:config', (nitroConfig) => {
+      nitroConfig.autoImport = nitroConfig.autoImport || {}
+      nitroConfig.autoImport.imports = nitroConfig.autoImport.imports || []
+      nitroConfig.autoImport.imports.push(
+        { name: 'serverSupabaseClient', from: resolve(runtimeDir, 'server', 'services', 'serverSupabaseClient') },
+        { name: 'serverSupabaseUser', from: resolve(runtimeDir, 'server', 'services', 'serverSupabaseUser') }
+      )
     })
 
     // Optimize cross-fetch
