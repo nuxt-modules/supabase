@@ -16,6 +16,7 @@
     "dist"
   ],
   "scripts": {
+    "dev": "nuxi dev playground",
     "build": "nuxt-module-build",
     "lint": "eslint --ext .js,.ts,.vue .",
     "prepack": "yarn build",
