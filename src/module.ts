@@ -107,6 +107,10 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     nuxt.hook('nitro:config', (nitroConfig) => {
+      // Inline module runtime in Nitro bundle
+      nitroConfig.externals = defu(typeof nitroConfig.externals === 'object' ? nitroConfig.externals : {}, {
+        inline: [resolve('./runtime')]
+      })
       nitroConfig.alias['#supabase/server'] = resolveRuntimeModule('./server/services')
     })
 
