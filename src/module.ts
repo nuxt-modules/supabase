@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url'
 import { defu } from 'defu'
 import { resolve } from 'pathe'
-import { defineNuxtModule, addPlugin, addServerMiddleware, extendViteConfig } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, addServerHandler, extendViteConfig } from '@nuxt/kit'
 import { CookieOptions, SupabaseClientOptions } from '@supabase/supabase-js'
 
 export interface ModuleOptions {
@@ -92,7 +92,7 @@ export default defineNuxtModule<ModuleOptions>({
     addPlugin(resolve(runtimeDir, 'plugins', 'supabase.client'))
 
     // Add supabase session endpoint to store the session on server-side
-    addServerMiddleware({
+    addServerHandler({
       route: '/api/_supabase/session',
       handler: resolve(runtimeDir, 'server/api/session')
     })
