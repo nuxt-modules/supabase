@@ -69,10 +69,12 @@ export default defineNuxtModule<ModuleOptions>({
   setup (options, nuxt) {
     // Make sure url and key are set
     if (!options.url) {
-      throw new Error('Missing `SUPABASE_URL` in `.env`')
+      // eslint-disable-next-line no-console
+      console.warn('Missing `SUPABASE_URL` in `.env`')
     }
     if (!options.key) {
-      throw new Error('Missing `SUPABASE_KEY` in `.env`')
+      // eslint-disable-next-line no-console
+      console.warn('Missing `SUPABASE_KEY` in `.env`')
     }
 
     // Default runtimeConfig
