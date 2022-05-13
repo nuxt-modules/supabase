@@ -6,7 +6,7 @@ export const serverSupabaseUser = async (event: CompatibilityEvent): Promise<Use
   const client = serverSupabaseClient(event)
 
   if (!event.context._token) {
-    return
+    return null
   }
 
   const { user: supabaseUser, error } = await client.auth.api.getUser(event.context._token)
