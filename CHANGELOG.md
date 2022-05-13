@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.14](https://github.com/nuxt-community/supabase-module/compare/v0.1.13...v0.1.14) (2022-05-13)
+
+
+### Bug Fixes
+
+* **module:** inline module runtime in nitro bundle ([aec9ede](https://github.com/nuxt-community/supabase-module/commit/aec9edeb5a055290acf83343d83e78886d7cd58a))
+
 ### [0.1.13](https://github.com/nuxt-community/supabase-module/compare/v0.1.12...v0.1.13) (2022-05-13)
 
 
