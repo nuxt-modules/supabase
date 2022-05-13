@@ -34,7 +34,9 @@ If you are looking for a solution with Nuxt 2, checkout https://github.com/supab
 
 1. Clone this repository
 2. Install dependencies using `yarn install` or `npm install`
-3. Start development server using `yarn dev` or `npm run dev`
+3. Prepare development server using `yarn dev:prepare` or `npm run dev:prepare`
+4. Build module using `yarn build` or `npm build`
+5. Launch playground using `yarn dev` or `npm run dev`
 
 ## License
 
