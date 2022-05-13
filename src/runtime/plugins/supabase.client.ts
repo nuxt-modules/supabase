@@ -2,9 +2,9 @@ import { AuthChangeEvent, Session } from '@supabase/supabase-js'
 import { useSupabaseClient } from '../composables/useSupabaseClient'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
 import { useSupabaseToken } from '../composables/useSupabaseToken'
-import { defineNuxtPlugin, type NuxtApp } from '#imports'
+import { defineNuxtPlugin } from '#imports'
 
-export default defineNuxtPlugin(async (nuxtApp: NuxtApp) => {
+export default defineNuxtPlugin(async (nuxtApp) => {
   const user = useSupabaseUser()
   const client = useSupabaseClient()
 

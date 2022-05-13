@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
         domain: cookieOptions.domain,
         maxAge: cookieOptions.lifetime ?? 0,
         path: cookieOptions.path,
-        sameSite: cookieOptions.sameSite
+        sameSite: cookieOptions.sameSite as boolean | 'lax' | 'strict' | 'none'
       }
     )
   }
