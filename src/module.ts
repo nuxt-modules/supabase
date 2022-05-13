@@ -107,7 +107,7 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     nuxt.hook('nitro:config', (nitroConfig) => {
-      nitroConfig.alias['#content/supabase'] = resolveRuntimeModule('./server/services')
+      nitroConfig.alias['#supabase/server'] = resolveRuntimeModule('./server/services')
     })
 
     addTemplate({
