@@ -1,7 +1,6 @@
 import { fileURLToPath } from 'url'
 import { defu } from 'defu'
-import { resolve } from 'pathe'
-import { defineNuxtModule, addPlugin, addServerHandler, extendViteConfig } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, addServerHandler, extendViteConfig, createResolver, resolveModule, addTemplate } from '@nuxt/kit'
 import { CookieOptions, SupabaseClientOptions } from '@supabase/supabase-js'
 
 export interface ModuleOptions {
@@ -67,6 +66,9 @@ export default defineNuxtModule<ModuleOptions>({
     }
   },
   setup (options, nuxt) {
+    const { resolve } = createResolver(import.meta.url)
+    const resolveRuntimeModule = (path: string) => resolveModule(path, { paths: resolve('./runtime') })
+
     // Make sure url and key are set
     if (!options.url) {
       // eslint-disable-next-line no-console
@@ -102,6 +104,24 @@ export default defineNuxtModule<ModuleOptions>({
     // Add supabase composables
     nuxt.hook('autoImports:dirs', (dirs) => {
       dirs.push(resolve(runtimeDir, 'composables'))
+    })
+
+    nuxt.hook('nitro:config', (nitroConfig) => {
+      nitroConfig.alias['#content/supabase'] = resolveRuntimeModule('./server/services')
+    })
+
+    addTemplate({
+      filename: 'types/supabase.d.ts',
+      getContents: () => [
+        'declare module \'#supabase/server\' {',
+        `  const serverSupabaseClient: typeof import('${resolve('./runtime/server/services')}').serverSupabaseClient`,
+        `  const serverSupabaseUser: typeof import('${resolve('./runtime/server/services')}').serverSupabaseUser`,
+        '}'
+      ].join('\n')
+    })
+
+    nuxt.hook('prepare:types', (options) => {
+      options.references.push({ path: resolve(nuxt.options.buildDir, 'types/supabase.d.ts') })
     })
 
     // Optimize cross-fetch
