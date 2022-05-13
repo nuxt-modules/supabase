@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.13](https://github.com/nuxt-community/supabase-module/compare/v0.1.12...v0.1.13) (2022-05-13)
+
+
+### Features
+
+* **server:** add server routes services ([#36](https://github.com/nuxt-community/supabase-module/issues/36)) ([696d3e8](https://github.com/nuxt-community/supabase-module/commit/696d3e8d19b8db79c85e86b79a3ba4dd31bb2343))
+
+
+### Bug Fixes
+
+* **ci:** add prepare dev step ([e688ca0](https://github.com/nuxt-community/supabase-module/commit/e688ca05dfa15eda8d28fb9356fe218b49172973))
+* **client:** options from config ([4c5595c](https://github.com/nuxt-community/supabase-module/commit/4c5595c11caf7a55621d297f6a0183a756175473))
+* **module:** update depreacted kit method ([a901b13](https://github.com/nuxt-community/supabase-module/commit/a901b133a28c8af843439191aa939ad46069c5d4))
+
 ### [0.1.12](https://github.com/nuxt-community/supabase-module/compare/v0.1.11...v0.1.12) (2022-05-13)
 
 ### [0.1.11](https://github.com/nuxt-community/supabase-module/compare/v0.1.10...v0.1.11) (2022-05-06)
