@@ -3,19 +3,21 @@
     <h1>
       Supabase module playground!
     </h1>
-    <button @click="callApi">
-      Call API
+    <button @click="fetchMe">
+      Fetch me from server route !
     </button>
     <pre>
-      {{ data }}
+      {{ user }}
     </pre>
   </div>
 </template>
 
 <script setup>
-const data = ref(null)
+const user = ref(null)
 
-const callApi = async () => {
-  data.value = await useFetch('/api/test')
-}
+const { data } = await useFetch('/api/me', {
+  headers: useRequestHeaders(['cookie'])
+})
+
+user.value = data
 </script>
