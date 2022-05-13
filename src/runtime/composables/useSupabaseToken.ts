@@ -1,4 +1,4 @@
-import { useCookie, useRuntimeConfig } from '#app'
+import { useCookie, useRuntimeConfig } from '#imports'
 
 export const useSupabaseToken = () => {
   const { supabase: { cookies: cookieOptions } } = useRuntimeConfig().public
