@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.15](https://github.com/nuxt-community/supabase-module/compare/v0.1.14...v0.1.15) (2022-05-30)
+
+
+### Bug Fixes
+
+* **plugins:** set token to null if user not found ([4f916bb](https://github.com/nuxt-community/supabase-module/commit/4f916bb407e4718c9dbdc7164c89dfc1f6006806))
+
 ### [0.1.14](https://github.com/nuxt-community/supabase-module/compare/v0.1.13...v0.1.14) (2022-05-13)
 
 
