@@ -1,0 +1,34 @@
+title: Nuxt x Supabase
+
+layout: docs
+
+url: "https://supabase.nuxtjs.org/"
+
+description: Supabase integration for Nuxt.
+
+socials:
+  github: "nuxt-community/supabase-module"
+  twitter: false
+
+debug: false
+
+cover:
+  src: https://raw.githubusercontent.com/nuxt-community/supabase-module/main/docs/static/preview.png
+  alt: A screenshot of the nuxt/supabase module.
+
+header:
+  title: false
+  logo: true
+
+footer:
+  credits:
+    icon: IconDocus
+    text: Powered by Docus
+    href: https://docus.com
+  icons:
+  - label: NuxtJS
+    href: https://nuxtjs.org
+    component: IconNuxt
+  - label: Vue Telescope
+    href: https://vuetelescope.com
+    component: IconVueTelescope
