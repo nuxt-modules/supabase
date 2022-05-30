@@ -13,7 +13,13 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     const token = useSupabaseToken()
     if (token.value) {
       const { user: supabaseUser, error } = await client.auth.api.getUser(token.value)
-      user.value = error ? null : supabaseUser
+
+      if (error) {
+        token.value = null
+        user.value = null
+      } else {
+        user.value = supabaseUser
+      }
     }
   }
 

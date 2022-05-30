@@ -15,5 +15,12 @@ export default defineNuxtPlugin(async () => {
 
   const { user: supabaseUser, error } = await client.auth.api.getUser(token.value)
 
+  if (error) {
+    token.value = null
+    user.value = null
+  } else {
+    user.value = supabaseUser
+  }
+
   user.value = error ? null : supabaseUser
 })
