@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.16](https://github.com/nuxt-community/supabase-module/compare/v0.1.15...v0.1.16) (2022-06-01)
+
+
+### Features
+
+* **server:** service role client to bypass RLS ([#43](https://github.com/nuxt-community/supabase-module/issues/43)) ([ba70a97](https://github.com/nuxt-community/supabase-module/commit/ba70a976be97acb3c438d59e45b789ee917bee6b))
+
 ### [0.1.15](https://github.com/nuxt-community/supabase-module/compare/v0.1.14...v0.1.15) (2022-05-30)
 
 
