@@ -16,5 +16,5 @@ export const serverSupabaseClient = (event: CompatibilityEvent): SupabaseClient 
     event.context._token = token
   }
 
-  return event.context._supabaseClient
+  return event.context._supabaseClient as SupabaseClient
 }
