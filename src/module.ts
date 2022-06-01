@@ -14,13 +14,22 @@ export interface ModuleOptions {
   url: string
 
   /**
-   * Supabase API key
+   * Supabase Client API Key
    * @default process.env.SUPABASE_KEY
    * @example '123456789'
    * @type string
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
   key: string
+
+  /**
+   * Supabase Service key
+   * @default process.env.SUPABASE_SERVICE_KEY
+   * @example '123456789'
+   * @type string
+   * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
+   */
+  serviceKey: string
 
   /**
    * Supabase Client options
@@ -56,6 +65,7 @@ export default defineNuxtModule<ModuleOptions>({
   defaults: {
     url: process.env.SUPABASE_URL as string,
     key: process.env.SUPABASE_KEY as string,
+    serviceKey: process.env.SUPABASE_SERVICE_KEY as string,
     client: {},
     cookies: {
       name: 'sb',
@@ -79,12 +89,17 @@ export default defineNuxtModule<ModuleOptions>({
       console.warn('Missing `SUPABASE_KEY` in `.env`')
     }
 
-    // Default runtimeConfig
+    // Public runtimeConfig
     nuxt.options.runtimeConfig.public.supabase = defu(nuxt.options.runtimeConfig.public.supabase, {
       url: options.url,
       key: options.key,
       client: options.client,
       cookies: options.cookies
+    })
+
+    // Private runtimeConfig
+    nuxt.options.runtimeConfig.supabase = defu(nuxt.options.runtimeConfig.supabase, {
+      serviceKey: options.serviceKey
     })
 
     // Transpile runtime
@@ -119,6 +134,7 @@ export default defineNuxtModule<ModuleOptions>({
       getContents: () => [
         'declare module \'#supabase/server\' {',
         `  const serverSupabaseClient: typeof import('${resolve('./runtime/server/services')}').serverSupabaseClient`,
+        `  const serverSupabaseServiceRole: typeof import('${resolve('./runtime/server/services')}').serverSupabaseServiceRole`,
         `  const serverSupabaseUser: typeof import('${resolve('./runtime/server/services')}').serverSupabaseUser`,
         '}'
       ].join('\n')

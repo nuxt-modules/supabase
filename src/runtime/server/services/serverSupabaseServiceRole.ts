@@ -3,19 +3,19 @@ import { CompatibilityEvent } from 'h3'
 import { useRuntimeConfig } from '#imports'
 
 export const serverSupabaseServiceRole = (event: CompatibilityEvent): SupabaseClient => {
-  const { supabase: { serviceRoleKey }, public: { supabase: { url, client: clientOptions } } } = useRuntimeConfig()
+  const { supabase: { serviceKey }, public: { supabase: { url, client: clientOptions } } } = useRuntimeConfig()
 
   // Make sure service key is set
-  if (!serviceRoleKey) {
+  if (!serviceKey) {
     throw new Error('Missing `SUPABASE_SERVICE_KEY` in `.env`')
   }
 
   // No need to recreate client if exists in request context
-  if (!event.context._supabaseClient) {
-    const supabaseClient = createClient(url, serviceRoleKey, clientOptions)
+  if (!event.context._supabaseServiceRole) {
+    const supabaseClient = createClient(url, serviceKey, clientOptions)
 
-    event.context._supabaseClient = supabaseClient
+    event.context._supabaseServiceRole = supabaseClient
   }
 
-  return event.context._supabaseClient
+  return event.context._supabaseServiceRole as SupabaseClient
 }
