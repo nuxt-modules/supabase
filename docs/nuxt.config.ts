@@ -3,6 +3,7 @@ import { defineNuxtConfig } from 'nuxt'
 export default defineNuxtConfig({
   modules: ['vue-plausible', '@docus/github'],
   extends: ['./node_modules/@docus/docs-theme'],
+  theme: {},
   github: {
     owner: 'nuxt-community',
     repo: 'supabase-module',
