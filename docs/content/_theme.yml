@@ -8,12 +8,12 @@ description: Supabase integration for Nuxt.
 
 socials:
   github: "nuxt-community/supabase-module"
-  twitter: false
+  twitter: "@nuxt_js"
 
 debug: false
 
 cover:
-  src: https://raw.githubusercontent.com/nuxt-community/supabase-module/main/docs/static/preview.png
+  src: https://raw.githubusercontent.com/nuxt-community/supabase-module/main/docs/public/preview.png
   alt: A screenshot of the nuxt/supabase module.
 
 header:
