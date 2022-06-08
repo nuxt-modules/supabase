@@ -77,13 +77,14 @@ const removeTask = async (task: Task) => {
               wrapper-class="flex items-center justify-between w-full"
             >
               <div class="flex items-center justify-between">
-                <UToggle
-                  v-model="task.completed"
-                  :name="String(task.id)"
-                  icon-off="heroicons-solid:x"
-                  icon-on="heroicons-solid:check"
-                  @click="completeTask(task)"
-                />
+                <div @click="completeTask(task)">
+                  <UToggle
+                    v-model="task.completed"
+                    :name="String(task.id)"
+                    icon-off="heroicons-solid:x"
+                    icon-on="heroicons-solid:check"
+                  />
+                </div>
                 <UButton
                   class="ml-3 text-red-600"
                   size="sm"
