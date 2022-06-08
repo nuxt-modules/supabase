@@ -33,7 +33,7 @@
   "devDependencies": {
     "@nuxt/module-builder": "^0.1.7",
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
-    "eslint": "^8.16.0",
+    "eslint": "^8.17.0",
     "nuxt": "^3.0.0-rc.3",
     "standard-version": "^9.5.0"
   }
