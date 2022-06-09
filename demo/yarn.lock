@@ -647,10 +647,19 @@
     pathe "^0.3.0"
     tailwindcss "^3.0.24"
 
-"@nuxtjs/color-mode@^3.0.3", "@nuxtjs/color-mode@^3.1.3":
+"@nuxtjs/color-mode@^3.0.3":
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/@nuxtjs/color-mode/-/color-mode-3.1.3.tgz#ee94a68bc824e81a1a6ec6a3100390ce2674593d"
   integrity sha512-/GSgVnvS4nTtg5uUsRZSpp3F0byU5tXXbef/WrfNQ9VYCYLa88itrWj9QcWVroIBztK+nQ7POV5mSjmb90/m4Q==
+  dependencies:
+    "@nuxt/kit" "^3.0.0-rc.3"
+    lodash.template "^4.5.0"
+    pathe "^0.3.0"
+
+"@nuxtjs/color-mode@^3.1.4":
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/color-mode/-/color-mode-3.1.4.tgz#7b54af2b3a21d07acac158ded8b2e8f45b4d4a24"
+  integrity sha512-3pxZNbZCFCzBgkyJLU/YvC2L2l1yRvITuD91zfJoIGm52PTx66y/Q1/UW8i9YFDVhJvvRd67s6eWvgaKQtTPlw==
   dependencies:
     "@nuxt/kit" "^3.0.0-rc.3"
     lodash.template "^4.5.0"
@@ -4480,7 +4489,7 @@ nuxi@^3.0.0-rc.3:
   optionalDependencies:
     fsevents "~2.3.2"
 
-nuxt@^3.0.0-rc.1:
+nuxt@^3.0.0-rc.3:
   version "3.0.0-rc.3"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-3.0.0-rc.3.tgz#ab1a36a19f91f86d5fa42a7d6bb2dec4ae7cf824"
   integrity sha512-Ch68sD9Npt3BN0ZphvtRurVhFqtm1sAu4VDoXghmsRoVAwpT2ZDeDWaQJ9PSmXHYwyEaXPIZ9B2EDXPKETh0cQ==
