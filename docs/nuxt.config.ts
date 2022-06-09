@@ -1,14 +1,14 @@
 import { defineNuxtConfig } from 'nuxt'
 
 export default defineNuxtConfig({
-  modules: ['vue-plausible'],
+  modules: ['@nuxthq/admin', '@docus/github', 'vue-plausible'],
   extends: ['./node_modules/@docus/docs-theme'],
   theme: {},
-  // github: {
-  //   owner: 'nuxt-community',
-  //   repo: 'supabase-module',
-  //   branch: 'main'
-  // },
+  github: {
+    owner: 'nuxt-community',
+    repo: 'supabase-module',
+    branch: 'main'
+  },
   plausible: {
     domain: 'supabase.nuxtjs.org'
   },

@@ -1,4 +1,4 @@
-title: Nuxt x Supabase
+title: Nuxt Supabase
 
 layout: docs
 
@@ -11,6 +11,11 @@ socials:
   twitter: "@nuxt_js"
 
 debug: false
+
+github:
+  root: docs/content
+  edit: true
+  releases: true
 
 cover:
   src: https://raw.githubusercontent.com/nuxt-community/supabase-module/main/docs/public/preview.png
