@@ -18,6 +18,7 @@
 
 - Nuxt 3 ready
 - Vue 3 composables
+- Usage in API server routes
 - Authentication support
 - Use supabase-js isomorphic client
 - TypeScript support
