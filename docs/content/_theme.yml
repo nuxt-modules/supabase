@@ -8,7 +8,7 @@ description: Supabase integration for Nuxt.
 
 socials:
   github: "nuxt-community/supabase-module"
-  twitter: "@nuxt_js"
+  twitter: "nuxt_js"
 
 debug: false
 
