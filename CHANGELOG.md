@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.17](https://github.com/nuxt-community/supabase-module/compare/v0.1.16...v0.1.17) (2022-06-17)
+
+
+### Bug Fixes
+
+* **readme:** preview image url ([4282d92](https://github.com/nuxt-community/supabase-module/commit/4282d92b41f568abac1d147910ed71bb39031d63))
+
 ### [0.1.16](https://github.com/nuxt-community/supabase-module/compare/v0.1.15...v0.1.16) (2022-06-01)
 
 
