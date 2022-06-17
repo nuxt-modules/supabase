@@ -21,6 +21,4 @@ export default defineNuxtPlugin(async () => {
   } else {
     user.value = supabaseUser
   }
-
-  user.value = error ? null : supabaseUser
 })
