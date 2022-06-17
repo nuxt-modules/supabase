@@ -18,8 +18,8 @@ github:
   releases: true
 
 cover:
-  src: https://raw.githubusercontent.com/nuxt-community/supabase-module/main/docs/public/preview.png
-  alt: A screenshot of the nuxt/supabase module.
+  src: /cover.jpg
+  alt: A screenshot of the Nuxt Supabase module.
 
 header:
   title: false
