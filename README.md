@@ -1,6 +1,6 @@
 [![@nuxtjs/supabase](./docs/public/cover.jpg)](https://supabase.nuxtjs.org)
 
-# @nuxtjs/supabase
+# Nuxt Supabase
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
