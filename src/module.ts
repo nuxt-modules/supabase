@@ -106,6 +106,18 @@ export default defineNuxtModule<ModuleOptions>({
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     nuxt.options.build.transpile.push(runtimeDir)
 
+    // Transpile @supabase/ packages
+    // TODO: Remove when packages fixed with valid ESM exports
+    // https://github.com/nuxt-community/supabase-module/issues/54
+    nuxt.options.build.transpile.push(
+      '@supabase/functions-js',
+      '@supabase/gotrue-js',
+      '@supabase/postgrest-js',
+      '@supabase/realtime-js',
+      '@supabase/storage-js',
+      '@supabase/supabase-js'
+    )
+
     // Add supabase server plugin to load the user on server-side
     addPlugin(resolve(runtimeDir, 'plugins', 'supabase.server'))
     addPlugin(resolve(runtimeDir, 'plugins', 'supabase.client'))
