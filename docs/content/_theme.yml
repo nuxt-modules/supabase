@@ -9,6 +9,10 @@ description: Supabase integration for Nuxt.
 socials:
   github: "nuxt-community/supabase-module"
   twitter: "nuxt_js"
+  supabase:
+    label: Supabase
+    icon: simple-icons:supabase
+    href: https://supabase.com
 
 debug: false
 
