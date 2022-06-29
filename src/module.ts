@@ -134,6 +134,8 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     nuxt.hook('nitro:config', (nitroConfig) => {
+      nitroConfig.alias = nitroConfig.alias || {}
+
       // Inline module runtime in Nitro bundle
       nitroConfig.externals = defu(typeof nitroConfig.externals === 'object' ? nitroConfig.externals : {}, {
         inline: [resolve('./runtime')]
@@ -166,6 +168,8 @@ export default defineNuxtModule<ModuleOptions>({
     // Optimize websocket only at dev time
     if (nuxt.options.dev) {
       extendViteConfig((config) => {
+        config.optimizeDeps = config.optimizeDeps || {}
+        config.optimizeDeps.include = config.optimizeDeps.include || []
         config.optimizeDeps.include.push('websocket')
       })
     }
