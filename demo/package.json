@@ -10,13 +10,13 @@
     "lint": "eslint --ext .ts,.js,.vue ."
   },
   "devDependencies": {
-    "@iconify-json/mdi": "^1.1.19",
+    "@iconify-json/mdi": "^1.1.24",
     "@nuxthq/ui": "npm:@nuxthq/ui-edge@latest",
     "@nuxtjs/color-mode": "^3.1.4",
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
-    "@nuxtjs/supabase": "^0.1.16",
-    "eslint": "^8.17.0",
-    "nuxt": "^3.0.0-rc.3",
-    "typescript": "^4.7.3"
+    "@nuxtjs/supabase": "^0.1.18",
+    "eslint": "^8.18.0",
+    "nuxt": "^3.0.0-rc.4",
+    "typescript": "^4.7.4"
   }
 }
