@@ -1,7 +1,7 @@
 {
   "private": true,
   "engines": {
-    "node": ">=v16.15.1"
+    "node": ">=v16.16.0"
   },
   "scripts": {
     "dev": "nuxi dev",
@@ -16,7 +16,7 @@
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "@nuxtjs/supabase": "^0.1.19",
     "eslint": "^8.20.0",
-    "nuxt": "^3.0.0-rc.4",
+    "nuxt": "^3.0.0-rc.5",
     "typescript": "^4.7.4"
   }
 }
