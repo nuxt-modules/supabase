@@ -2,11 +2,14 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js'
 import { useSupabaseToken } from './useSupabaseToken'
 import { useRuntimeConfig, useNuxtApp } from '#imports'
 
-export const useSupabaseClient = (): SupabaseClient => {
+export const useSupabaseClient = (schema?: string): SupabaseClient => {
   const nuxtApp = useNuxtApp()
   const token = useSupabaseToken()
   const { supabase: { url, key, client: options } } = useRuntimeConfig().public
-
+  
+  // override the default schema if optional parameter has been set
+  options.schema = schema || 'public';
+  
   // No need to recreate client if exists
   if (!nuxtApp._supabaseClient) {
     nuxtApp._supabaseClient = createClient(url, key, options)
