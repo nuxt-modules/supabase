@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.22](https://github.com/nuxt-community/supabase-module/compare/v0.1.21...v0.1.22) (2022-08-16)
+
+
+### Bug Fixes
+
+* **module:** transpile websocket for production ([6602020](https://github.com/nuxt-community/supabase-module/commit/66020204e8aad98db94a83964f1bb988642c90f3))
+
 ### [0.1.21](https://github.com/nuxt-community/supabase-module/compare/v0.1.20...v0.1.21) (2022-08-16)
 
 
