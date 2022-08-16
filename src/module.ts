@@ -1,7 +1,8 @@
 import { fileURLToPath } from 'url'
 import { defu } from 'defu'
 import { defineNuxtModule, addPlugin, addServerHandler, extendViteConfig, createResolver, resolveModule, addTemplate } from '@nuxt/kit'
-import { CookieOptions, SupabaseClientOptions } from '@supabase/supabase-js'
+import type { SupabaseClientOptions } from '@supabase/supabase-js'
+import { CookieOptions } from './runtime/types'
 
 export interface ModuleOptions {
   /**
@@ -37,7 +38,7 @@ export interface ModuleOptions {
    * @type object
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
-  client?: SupabaseClientOptions
+  client?: SupabaseClientOptions<String>
 
   /**
    * Supabase Client options
@@ -165,8 +166,15 @@ export default defineNuxtModule<ModuleOptions>({
       config.optimizeDeps.include.push('cross-fetch')
     })
 
-    // Transpile websocket only for non dev environments
-    if (!nuxt.options.dev) {
+    // Optimize websocket only at dev time
+    if (nuxt.options.dev) {
+      extendViteConfig((config) => {
+        config.optimizeDeps = config.optimizeDeps || {}
+        config.optimizeDeps.include = config.optimizeDeps.include || []
+        config.optimizeDeps.include.push('websocket')
+      })
+      // Transpile websocket only for non dev environments
+    } else {
       nuxt.options.build.transpile.push('websocket')
     }
   }
