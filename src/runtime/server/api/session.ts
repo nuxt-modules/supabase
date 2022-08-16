@@ -1,11 +1,11 @@
-import { useBody, setCookie, assertMethod, defineEventHandler } from 'h3'
+import { readBody, setCookie, assertMethod, defineEventHandler } from 'h3'
 import { useRuntimeConfig } from '#imports'
 
 const config = useRuntimeConfig().public
 
 export default defineEventHandler(async (event) => {
   assertMethod(event, 'POST')
-  const body = await useBody(event)
+  const body = await readBody(event)
   const cookieOptions = config.supabase.cookies
 
   const { event: signEvent, session } = body
