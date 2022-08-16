@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.21](https://github.com/nuxt-community/supabase-module/compare/v0.1.20...v0.1.21) (2022-08-16)
+
+
+### Bug Fixes
+
+* **module:** optimize websocket deps ([f24dfe9](https://github.com/nuxt-community/supabase-module/commit/f24dfe91dc1f1d1b8c70e84b694621aedaccedb6))
+
 ### [0.1.20](https://github.com/nuxt-community/supabase-module/compare/v0.1.19...v0.1.20) (2022-08-16)
 
 ### [0.1.19](https://github.com/nuxt-community/supabase-module/compare/v0.1.18...v0.1.19) (2022-07-18)
