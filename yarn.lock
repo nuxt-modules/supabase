@@ -699,52 +699,53 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
-"@supabase/functions-js@^1.3.4":
-  version "1.3.4"
-  resolved "https://registry.yarnpkg.com/@supabase/functions-js/-/functions-js-1.3.4.tgz#44f86f7cf949baa7f1bb414f3b8c0985a19df633"
-  integrity sha512-yYVgkECjv7IZEBKBI3EB5Q7R1p0FJ10g8Q9N7SWKIHUU6i6DnbEGHIMFLyQRm1hmiNWD8fL7bRVEYacmTRJhHw==
+"@supabase/functions-js@^1.4.0-next.5":
+  version "1.4.0-next.5"
+  resolved "https://registry.yarnpkg.com/@supabase/functions-js/-/functions-js-1.4.0-next.5.tgz#283ef08c6310a1e3c2d566ad2299a0710033ed08"
+  integrity sha512-y2lPF1+U5e0DbJo3wKbTQsIB+3Vqq3PZ0pOAjt4RhI9MZBl/or88KcAHzBey+lG38NjQtAo9y0yx0r1mZGm8zQ==
   dependencies:
     cross-fetch "^3.1.5"
 
-"@supabase/gotrue-js@^1.22.21":
-  version "1.22.22"
-  resolved "https://registry.yarnpkg.com/@supabase/gotrue-js/-/gotrue-js-1.22.22.tgz#ac504300336fb8612626340b869e8ab805d7bf52"
-  integrity sha512-exbCopLo4tLawKZR25wEdipm+IRVujuqFRR4h2wiXd11YA+N8rfgg/4S4L6BTFHmzV+KMjy0kDF3yMbsjIR/xA==
-  dependencies:
-    cross-fetch "^3.0.6"
-
-"@supabase/postgrest-js@^0.37.4":
-  version "0.37.4"
-  resolved "https://registry.yarnpkg.com/@supabase/postgrest-js/-/postgrest-js-0.37.4.tgz#8bc2a1353e139962dca931a8e7c8416d60b4a8ed"
-  integrity sha512-x+c2rk1fz9s6f1PrGxCJ0QTUgXPDI0G3ngIqD5sSiXhhCyfl8Q5V92mXl2EYtlDhkiUkjFNrOZFhXVbXOHgvDw==
+"@supabase/gotrue-js@^1.23.0-next.24":
+  version "1.23.0-next.24"
+  resolved "https://registry.yarnpkg.com/@supabase/gotrue-js/-/gotrue-js-1.23.0-next.24.tgz#ceac44be2692f866febd400aeebff2ede7e6f74e"
+  integrity sha512-fCnDh70OsH6lD3fc1w0cz7lTh3dWyme+TffGDUZCStHPxHVB/yGpGJu8COspWwl+8W6JVLD5bSc/OqNtQ5bh7g==
   dependencies:
     cross-fetch "^3.1.5"
 
-"@supabase/realtime-js@^1.7.4":
-  version "1.7.4"
-  resolved "https://registry.yarnpkg.com/@supabase/realtime-js/-/realtime-js-1.7.4.tgz#701a4f87b3068b239d9f937ccde8850a174acf88"
-  integrity sha512-h/Jk3PCLkIVonsNavof/LvHbvF41UD+D+mWcA3m8yHzJ2TLbV3S4XDYId+A3AkvFOAork7Ns/9O8rK0uY4F4zw==
+"@supabase/postgrest-js@^1.0.0-next.7":
+  version "1.0.0-next.7"
+  resolved "https://registry.yarnpkg.com/@supabase/postgrest-js/-/postgrest-js-1.0.0-next.7.tgz#36528956907626816382356d36b743c16f10ba0e"
+  integrity sha512-UefMDfIJ0aqZoJhIWLHbrrksIiqH+Sv9uml0sfISNX4nm4Q+hqm0aR32pFzr6VfMP7sXK1PaYKyPqGv0a4h7LA==
+  dependencies:
+    cross-fetch "^3.1.5"
+
+"@supabase/realtime-js@^1.8.0-next.17":
+  version "1.8.0-next.17"
+  resolved "https://registry.yarnpkg.com/@supabase/realtime-js/-/realtime-js-1.8.0-next.17.tgz#72b88a1c48bc948b6b91e2745328cef4a6019196"
+  integrity sha512-mtL5TAp5v/ZXyfRLqVduqzUnMHmaKHeroZir+efoScNmwy7b4t1pd3xpARcLV24ahtn7ZBKAY8WRiTH2rOtQpQ==
   dependencies:
     "@types/phoenix" "^1.5.4"
     websocket "^1.0.34"
 
-"@supabase/storage-js@^1.7.2":
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/@supabase/storage-js/-/storage-js-1.7.3.tgz#b53cd6d289e2223919e6526364fd46977a643fbe"
-  integrity sha512-jnIZWqOc9TGclOozgX9v/RWGFCgJAyW/yvmauexgRZhWknUXoA4b2i8tj7vfwE0WTvNRuA5JpXID98rfJeSG7Q==
+"@supabase/storage-js@^1.8.0-next.6":
+  version "1.8.0-next.6"
+  resolved "https://registry.yarnpkg.com/@supabase/storage-js/-/storage-js-1.8.0-next.6.tgz#4d95c289928d73a771ebf712ab11e26d5ef0c6ed"
+  integrity sha512-7cLxxvCwlUBe0b6DltI/i/EAFE8RxvouL7FIcW8ysyd30+rAOq14BIbuJjx1PForxQzapcBoaZBUHf+x3xyssw==
   dependencies:
-    cross-fetch "^3.1.0"
+    cross-fetch "^3.1.5"
 
-"@supabase/supabase-js@^1.35.6":
-  version "1.35.6"
-  resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-1.35.6.tgz#df5a2c132035ab9e5462ed474587902b3e767a66"
-  integrity sha512-KDRXRr+kdGwruIUizZPALbe5YccMYFVyZJf1sFWKLncaLYSFiM6iKFnqCrNeQ4JFoZZiICkiTl1FUuai62jVpg==
+"@supabase/supabase-js@^1.36.0-next.27":
+  version "1.36.0-next.27"
+  resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-1.36.0-next.27.tgz#9fac1e0d341b72a1bfc2ede47cde9b76ec7903bb"
+  integrity sha512-vK22cAmYlVByJ7B/a9jup9nu9CBevSvti4JDvbIEbtRXxUQEnMAYgT+sv/XZZF8B4GcgPxDHD8lvTOtNyUUiSw==
   dependencies:
-    "@supabase/functions-js" "^1.3.4"
-    "@supabase/gotrue-js" "^1.22.21"
-    "@supabase/postgrest-js" "^0.37.4"
-    "@supabase/realtime-js" "^1.7.4"
-    "@supabase/storage-js" "^1.7.2"
+    "@supabase/functions-js" "^1.4.0-next.5"
+    "@supabase/gotrue-js" "^1.23.0-next.24"
+    "@supabase/postgrest-js" "^1.0.0-next.7"
+    "@supabase/realtime-js" "^1.8.0-next.17"
+    "@supabase/storage-js" "^1.8.0-next.6"
+    cross-fetch "^3.1.5"
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
@@ -1841,7 +1842,7 @@ create-require@^1.1.1:
   resolved "https://registry.yarnpkg.com/create-require/-/create-require-1.1.1.tgz#c1d7e8f1e5f6cfc9ff65f9cd352d37348756c333"
   integrity sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==
 
-cross-fetch@^3.0.6, cross-fetch@^3.1.0, cross-fetch@^3.1.5:
+cross-fetch@^3.1.5:
   version "3.1.5"
   resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.1.5.tgz#e1389f44d9e7ba767907f7af8454787952ab534f"
   integrity sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==
@@ -2050,9 +2051,9 @@ defu@^5.0.1:
   integrity sha512-EPS1carKg+dkEVy3qNTqIdp2qV7mUP08nIsupfwQpz++slCVRw7qbQyWvSTig+kFPwz2XXp5/kIIkH+CwrJKkQ==
 
 defu@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/defu/-/defu-6.0.0.tgz#b397a6709a2f3202747a3d9daf9446e41ad0c5fc"
-  integrity sha512-t2MZGLf1V2rV4VBZbWIaXKdX/mUcYW0n2znQZoADBkGGxYL8EWqCuCZBmJPJ/Yy9fofJkyuuSuo5GSwo0XdEgw==
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/defu/-/defu-6.0.1.tgz#17a683df13342d31c31914353a803310a687aa70"
+  integrity sha512-rZrZJDGZkdmVhFer2Q7ItCOcpPaAU8nDvDOBHTJNiYkvgvUeomBkJTuzRKNQoWgXUFJLx1tDhp3lqdS/twWUdw==
 
 delegates@^1.0.0:
   version "1.0.0"
@@ -6359,9 +6360,9 @@ vite-plugin-checker@^0.4.9:
     vscode-uri "^3.0.2"
 
 "vite@^2.9.12 || ^3.0.0-0", vite@~3.0.6:
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/vite/-/vite-3.0.7.tgz#f1e379857e9c5d652126f8b20d371e1365eb700f"
-  integrity sha512-dILhvKba1mbP1wCezVQx/qhEK7/+jVn9ciadEcyKMMhZpsuAi/eWZfJRMkmYlkSFG7Qq9NvJbgFq4XOBxugJsA==
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-3.0.8.tgz#aa095ad8e3e5da46d9ec7e878f262678965d6531"
+  integrity sha512-AOZ4eN7mrkJiOLuw8IA7piS4IdOQyQCA81GxGsAQvAZzMRi9ZwGB3TOaYsj4uLAWK46T5L4AfQ6InNGlxX30IQ==
   dependencies:
     esbuild "^0.14.47"
     postcss "^8.4.16"

@@ -13,7 +13,7 @@ export const useSupabaseClient = (): SupabaseClient => {
 
     //  Inject user's access_token in supabase client to make use of RLS on the server side
     if (nuxtApp.ssrContext) {
-      nuxtApp._supabaseClient.auth.setAuth(token.value)
+      nuxtApp._supabaseClient.auth.setSession(token.value)
     }
   }
 
