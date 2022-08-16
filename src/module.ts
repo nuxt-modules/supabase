@@ -158,20 +158,11 @@ export default defineNuxtModule<ModuleOptions>({
       options.references.push({ path: resolve(nuxt.options.buildDir, 'types/supabase.d.ts') })
     })
 
-    // Optimize cross-fetch
+    // Optimize cross-fetch and websocket
     extendViteConfig((config) => {
       config.optimizeDeps = config.optimizeDeps || {}
       config.optimizeDeps.include = config.optimizeDeps.include || []
-      config.optimizeDeps.include.push('cross-fetch')
+      config.optimizeDeps.include.push('cross-fetch', 'websocket')
     })
-
-    // Optimize websocket only at dev time
-    if (nuxt.options.dev) {
-      extendViteConfig((config) => {
-        config.optimizeDeps = config.optimizeDeps || {}
-        config.optimizeDeps.include = config.optimizeDeps.include || []
-        config.optimizeDeps.include.push('websocket')
-      })
-    }
   }
 })
