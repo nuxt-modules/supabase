@@ -1,7 +1,8 @@
 import { fileURLToPath } from 'url'
 import { defu } from 'defu'
 import { defineNuxtModule, addPlugin, addServerHandler, extendViteConfig, createResolver, resolveModule, addTemplate } from '@nuxt/kit'
-import { CookieOptions, SupabaseClientOptions } from '@supabase/supabase-js'
+import type { SupabaseClientOptions } from '@supabase/supabase-js'
+import { CookieOptions } from './runtime/types'
 
 export interface ModuleOptions {
   /**
@@ -37,7 +38,7 @@ export interface ModuleOptions {
    * @type object
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
-  client?: SupabaseClientOptions
+  client?: SupabaseClientOptions<String>
 
   /**
    * Supabase Client options
