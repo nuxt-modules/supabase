@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0-5](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-4...v0.2.0-5) (2022-08-17)
+
+
+### Bug Fixes
+
+* **client:** recreate client when token has changed ([15b0217](https://github.com/nuxt-community/supabase-module/commit/15b02177b13b1e93cc9b697a4ba3494719b031ec))
+
 ## [0.2.0-4](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-3...v0.2.0-4) (2022-08-17)
 
 
