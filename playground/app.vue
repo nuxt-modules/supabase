@@ -32,21 +32,29 @@
 </template>
 
 <script setup lang="ts">
-const client = useSupabaseClient()
+let client = useSupabaseClient()
 const user = useSupabaseUser()
 const userFromServer = ref(null)
 const userFromComposable = ref(null)
 
-const { data } = await useAsyncData('profile', async () => {
+const { data, refresh } = await useAsyncData('profile', async () => {
   const { data } = await client.from('pushupers')
     .select('firstname, lastname, avatar, email')
     .eq('email', user.value.email)
     .single()
 
+  userFromComposable.value = data
+
   return data
 })
 
-userFromComposable.value = data.value
+userFromComposable.value = data
+
+watch(user, () => {
+  // Need to recreate client because we're staying on the same page (app.vue only)
+  client = useSupabaseClient()
+  refresh()
+})
 
 const fetchMeFromServerRoute = async () => {
   const { data } = await useFetch('/api/me', { headers: useRequestHeaders(['cookie']), key: `me:${userFromComposable.value.firstname}` })
