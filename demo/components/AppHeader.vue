@@ -12,7 +12,10 @@ const colorModeIcon = computed(() => colorMode.preference === 'dark' ? 'heroicon
 
 const logout = async () => {
   await client.auth.signOut()
-  router.push('/')
+  // Trick to wait for the authChanged event to have been fired
+  watch(user, () => {
+    navigateTo('/')
+  })
 }
 </script>
 
