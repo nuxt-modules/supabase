@@ -11,32 +11,37 @@ const loading = ref(null)
 const newTask = ref('')
 
 const { data: tasks } = await useAsyncData('tasks', async () => {
-  const { data } = await client.from<Task>('tasks').select('id, title, completed').eq('user', user.value.id).order('created_at')
+  const { data } = await client.from('tasks').select('id, title, completed').eq('user', user.value.id).order('created_at')
 
   return data
 })
 
 async function addTask () {
-  if (newTask.value.trim().length === 0) {
-    return
-  }
+  if (newTask.value.trim().length === 0) { return }
+
   loading.value = true
 
-  const { data } = await client.from<Task>('tasks').upsert({
-    user: user.value.id,
-    title: newTask.value,
-    completed: false
-  })
-  tasks.value.push(data[0])
+  const { data } = await client.from('tasks')
+    .upsert({
+      user: user.value.id,
+      title: newTask.value,
+      completed: false
+    })
+    .select('id, title, completed')
+    .single()
+
+  tasks.value.push(data)
   newTask.value = ''
   loading.value = false
 }
+
 const completeTask = async (task: Task) => {
-  await client.from<Task>('tasks').update({ completed: task.completed }).match({ id: task.id })
+  await client.from('tasks').update({ completed: task.completed }).match({ id: task.id })
 }
+
 const removeTask = async (task: Task) => {
   tasks.value = tasks.value.filter(t => t.id !== task.id)
-  await client.from<Task>('tasks').delete().match({ id: task.id })
+  await client.from('tasks').delete().match({ id: task.id })
 }
 </script>
 
