@@ -67,7 +67,7 @@ const removeTask = async (task: Task) => {
         Add
       </UButton>
     </form>
-    <UCard v-if="tasks.length > 0" body-class="px-6 py-2 overflow-hidden">
+    <UCard v-if="tasks?.length > 0" body-class="px-6 py-2 overflow-hidden">
       <ul>
         <li
           v-for="task of tasks"
