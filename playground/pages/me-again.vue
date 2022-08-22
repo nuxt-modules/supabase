@@ -1,3 +1,4 @@
+
 <template>
   <div v-if="user">
     <h2>
@@ -13,11 +14,8 @@
       Change my name !
     </button>
     <pre>
-      {{ userFromComposable }}
-    </pre>
-    <NuxtLink to="/me-again" label="me">
-      Go to new page to test token
-    </NuxtLink>
+        {{ userFromComposable }}
+       </pre>
   </div>
 </template>
 
@@ -27,7 +25,7 @@ const user = useSupabaseUser()
 const userFromServer = ref(null)
 const userFromComposable = ref(null)
 
-const { data } = await useAsyncData('me', async () => {
+const { data } = await useAsyncData('me-again', async () => {
   const { data } = await client.from('pushupers')
     .select('firstname, lastname, avatar, email')
     .eq('email', user.value.email)

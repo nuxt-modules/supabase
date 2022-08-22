@@ -1,12 +1,14 @@
 import { AuthChangeEvent, Session } from '@supabase/supabase-js'
+import { watch } from 'vue'
 import { useSupabaseClient } from '../composables/useSupabaseClient'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
 import { useSupabaseToken } from '../composables/useSupabaseToken'
-import { defineNuxtPlugin } from '#imports'
+import { defineNuxtPlugin, useRuntimeConfig } from '#imports'
 
 export default defineNuxtPlugin(async (nuxtApp) => {
   const user = useSupabaseUser()
   const client = useSupabaseClient()
+  const redirect = useRuntimeConfig().public.supabase.redirect
 
   // If user has not been set on server side (for instance in SPA), set it for client
   if (!user.value) {
@@ -21,6 +23,22 @@ export default defineNuxtPlugin(async (nuxtApp) => {
         user.value = supabaseUser
       }
     }
+  }
+
+  // If user is not set, redirect to login page
+  if (redirect && redirect.login) {
+    watch(user, (newUser) => {
+      if (newUser) { return }
+
+      // Do not redirect if already on login page
+      const route = useRoute()
+      if (route.fullPath === redirect.login) { return }
+
+      // Navigate to login page on frontside
+      setTimeout(() => {
+        navigateTo(redirect.login)
+      }, 0)
+    }, { immediate: true })
   }
 
   // Once Nuxt app is mounted

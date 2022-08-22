@@ -3,7 +3,7 @@ const user = useSupabaseUser()
 
 watchEffect(() => {
   if (user.value) {
-    navigateTo('/')
+    navigateTo('/me')
   }
 })
 </script>

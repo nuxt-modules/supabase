@@ -7,5 +7,10 @@ export default defineNuxtConfig({
   ],
   myModule: {
     addPlugin: true
+  },
+  supabase: {
+    cookies: {
+      lifetime: 10
+    }
   }
 })

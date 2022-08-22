@@ -34,6 +34,15 @@ export interface ModuleOptions {
 
   /**
    * Supabase Client options
+   * @default {
+      login: '/login'
+    }
+   * @type object
+   */
+  redirect?: { login: string } | false
+
+  /**
+   * Supabase Client options
    * @default {}
    * @type object
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
@@ -50,7 +59,6 @@ export interface ModuleOptions {
       sameSite: 'lax'
     }
    * @type object
-   * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
   cookies?: CookieOptions
 }
@@ -68,6 +76,9 @@ export default defineNuxtModule<ModuleOptions>({
     key: process.env.SUPABASE_KEY as string,
     serviceKey: process.env.SUPABASE_SERVICE_KEY as string,
     client: {},
+    redirect: {
+      login: '/'
+    },
     cookies: {
       name: 'sb',
       lifetime: 60 * 60 * 8,
@@ -95,6 +106,7 @@ export default defineNuxtModule<ModuleOptions>({
       url: options.url,
       key: options.key,
       client: options.client,
+      redirect: options.redirect,
       cookies: options.cookies
     })
 
