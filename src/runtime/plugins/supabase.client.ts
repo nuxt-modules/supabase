@@ -3,7 +3,7 @@ import { watch } from 'vue'
 import { useSupabaseClient } from '../composables/useSupabaseClient'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
 import { useSupabaseToken } from '../composables/useSupabaseToken'
-import { defineNuxtPlugin, useRuntimeConfig } from '#imports'
+import { defineNuxtPlugin, useRuntimeConfig, useRoute, navigateTo } from '#imports'
 
 export default defineNuxtPlugin(async (nuxtApp) => {
   const user = useSupabaseUser()
