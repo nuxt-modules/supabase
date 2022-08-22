@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0-8](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-7...v0.2.0-8) (2022-08-22)
+
+
+### Features
+
+* **plugin:** add callback url ([82df0da](https://github.com/nuxt-community/supabase-module/commit/82df0da5ee06a28b75199012994a958287edfd24))
+
 ## [0.2.0-7](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-6...v0.2.0-7) (2022-08-22)
 
 
