@@ -32,7 +32,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
 
       // Do not redirect if already on login page or on callback page
       const route = useRoute()
-      if ([redirect.login, redirect.callback].includes(route.fullPath)) { return }
+      if ([redirect.login, redirect.callback].includes(route.path)) { return }
 
       setTimeout(() => {
         navigateTo(redirect.login)
