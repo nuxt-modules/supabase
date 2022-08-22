@@ -2,7 +2,7 @@ import { fileURLToPath } from 'url'
 import { defu } from 'defu'
 import { defineNuxtModule, addPlugin, addServerHandler, extendViteConfig, createResolver, resolveModule, addTemplate } from '@nuxt/kit'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
-import { CookieOptions } from './runtime/types'
+import { CookieOptions, RedirectOptions } from './runtime/types'
 
 export interface ModuleOptions {
   /**
@@ -33,13 +33,14 @@ export interface ModuleOptions {
   serviceKey: string
 
   /**
-   * Supabase Client options
+   * Redirection options
    * @default {
-      login: '/login'
+      login: '/',
+      callback: '/confirm',
     }
-   * @type object
+   * @type object | boolean
    */
-  redirect?: { login: string } | false
+  redirect?: RedirectOptions | false
 
   /**
    * Supabase Client options
@@ -77,7 +78,8 @@ export default defineNuxtModule<ModuleOptions>({
     serviceKey: process.env.SUPABASE_SERVICE_KEY as string,
     client: {},
     redirect: {
-      login: '/'
+      login: '/',
+      callback: '/confirm'
     },
     cookies: {
       name: 'sb',

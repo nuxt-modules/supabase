@@ -30,11 +30,10 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     watch(user, (newUser) => {
       if (newUser) { return }
 
-      // Do not redirect if already on login page
+      // Do not redirect if already on login page or on callback page
       const route = useRoute()
-      if (route.fullPath === redirect.login) { return }
+      if ([redirect.login, redirect.callback].includes(route.fullPath)) { return }
 
-      // Navigate to login page on frontside
       setTimeout(() => {
         navigateTo(redirect.login)
       }, 0)
