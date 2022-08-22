@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0-6](https://github.com/nuxt-community/supabase-module/compare/v0.1.23...v0.2.0-6) (2022-08-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **module:** upgrade to supabase 2.0
+
+### Features
+
+* **auth:** redirect to login page if user is null ([ed2a6a5](https://github.com/nuxt-community/supabase-module/commit/ed2a6a5c6c1fc0b2894a18516f6064bffff61691))
+* **module:** upgrade to supabase 2.0 ([9cb1432](https://github.com/nuxt-community/supabase-module/commit/9cb143216694f53ae16598e5ad6eff7ec94ecaeb))
+* **playground:** multi pages ([c0a7840](https://github.com/nuxt-community/supabase-module/commit/c0a784018245f75b9e22c17a997cb5b8ba1e3767))
+
+
+### Bug Fixes
+
+* **client:** recreate client when token has changed ([3dea0e2](https://github.com/nuxt-community/supabase-module/commit/3dea0e26ec78a4f922dc422a8705be28283b2096))
+* **demo:** logout ([4c22c13](https://github.com/nuxt-community/supabase-module/commit/4c22c1326bc686892984bef7296235bd35aa27f4))
+* **lint:** multi word component off ([0416e9d](https://github.com/nuxt-community/supabase-module/commit/0416e9d0411d26c67e102495d93fb2770f84fb11))
+* **ssr:** set token when initializaing client ([bce6ccd](https://github.com/nuxt-community/supabase-module/commit/bce6ccdd9e8b47ecff30f8bbcc8fcf3feada0d8a))
+* **tasks:** ts error when unauthenticated server side ([1ba04a6](https://github.com/nuxt-community/supabase-module/commit/1ba04a66c704713f152fa8559c9f76e66b333394))
+
 ## [0.2.0-5](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-4...v0.2.0-5) (2022-08-17)
 
 
