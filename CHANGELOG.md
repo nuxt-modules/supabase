@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0-10](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-9...v0.2.0-10) (2022-08-22)
+
+
+### Bug Fixes
+
+* **plugin:** route comparison ([4fc0ad8](https://github.com/nuxt-community/supabase-module/commit/4fc0ad8293f68a9589ff2ac732f1e77808a2cdc3))
+
 ## [0.2.0-9](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-8...v0.2.0-9) (2022-08-22)
 
 
