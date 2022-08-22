@@ -707,10 +707,10 @@
     eslint-plugin-unicorn "^42.0.0"
     eslint-plugin-vue "^8.7.1"
 
-"@nuxtjs/supabase@^0.2.0-4":
-  version "0.2.0-5"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/supabase/-/supabase-0.2.0-5.tgz#9292275969db309d0248611a1ee7282a9aca01d8"
-  integrity sha512-+/Gi+4PA0EkOlRPdtA3oa+pwHcthLqDHvxhcXAHo1qHc9qEGrEV/J8vCZLtSdFyAHioMFI9awrGSwpU7mP4hXw==
+"@nuxtjs/supabase@^0.2.0-7":
+  version "0.2.0-7"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/supabase/-/supabase-0.2.0-7.tgz#9548442ececf3e4d68b4bee38addbd7827334ee9"
+  integrity sha512-cJQwxzrXToqbeWXWOS8fu51oVeLCtm9b5Lg6iUXF+n3tHuqkoWtKtg0k/h4iQ4YwAB6y//kYyvDv+oZrmFVmIA==
   dependencies:
     "@nuxt/kit" "^3.0.0-rc.8"
     "@supabase/supabase-js" "2.0.0-rc.1"
@@ -4564,7 +4564,7 @@ nuxi@3.0.0-rc.8:
   optionalDependencies:
     fsevents "~2.3.2"
 
-nuxt@^3.0.0-rc.4:
+nuxt@^3.0.0-rc.8:
   version "3.0.0-rc.8"
   resolved "https://registry.yarnpkg.com/nuxt/-/nuxt-3.0.0-rc.8.tgz#91d5a7d1cfaf36c09cc6bef28724f30a61c88835"
   integrity sha512-4LLs/I4BJz8j20mHfPEMDhnYV2GJGK8jE7pHqJ3L0r2QZg4JrCHSUWXi07+gERvHcKCnv6zGyTmPspJx/9A9Qw==
