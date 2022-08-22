@@ -79,7 +79,7 @@ export default defineNuxtModule<ModuleOptions>({
     client: {},
     redirect: {
       login: '/',
-      callback: '/confirm'
+      callback: '/'
     },
     cookies: {
       name: 'sb',
