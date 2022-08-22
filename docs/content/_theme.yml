@@ -7,7 +7,7 @@ url: "https://supabase.nuxtjs.org/"
 description: Supabase integration for Nuxt.
 
 socials:
-  github: "nuxt-community/supabase-module"
+  github: "nuxt-modules/supabase"
   twitter: "nuxt_js"
   supabase:
     label: Supabase
