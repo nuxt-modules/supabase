@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0-11](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-10...v0.2.0-11) (2022-08-31)
+
+
+### Features
+
+* **server:** redirect to login page ([83248f0](https://github.com/nuxt-community/supabase-module/commit/83248f008e2bf65635c5511f6707cc2f1e48a2e5))
+
 ## [0.2.0-10](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-9...v0.2.0-10) (2022-08-22)
 
 
