@@ -10,7 +10,8 @@ export default defineNuxtPlugin(async () => {
   const token = useSupabaseToken()
 
   if (!token.value) {
-    return
+    user.value = null
+    return redirectToLogin()
   }
 
   const { data: { user: supabaseUser }, error } = await client.auth.getUser(token.value)
@@ -18,7 +19,22 @@ export default defineNuxtPlugin(async () => {
   if (error) {
     token.value = null
     user.value = null
+
+    return redirectToLogin()
   } else {
     user.value = supabaseUser
   }
 })
+
+const redirectToLogin = async () => {
+  const redirect = useRuntimeConfig().public.supabase.redirect
+
+  if (redirect && redirect.login) {
+    const route = useRoute()
+    if ([redirect.login, redirect.callback].includes(route.path)) {
+      return
+    }
+
+    await navigateTo(redirect.login)
+  }
+}
