@@ -1,7 +1,7 @@
 import { useSupabaseUser } from '../composables/useSupabaseUser'
 import { useSupabaseClient } from '../composables/useSupabaseClient'
 import { useSupabaseToken } from '../composables/useSupabaseToken'
-import { defineNuxtPlugin, useRuntimeConfig, useRoute } from '#imports'
+import { defineNuxtPlugin, useRuntimeConfig, useRoute, navigateTo } from '#imports'
 
 // Set subabase user on server side
 export default defineNuxtPlugin(async () => {
