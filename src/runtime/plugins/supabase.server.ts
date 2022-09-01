@@ -1,17 +1,18 @@
 import { useSupabaseUser } from '../composables/useSupabaseUser'
 import { useSupabaseClient } from '../composables/useSupabaseClient'
 import { useSupabaseToken } from '../composables/useSupabaseToken'
-import { defineNuxtPlugin, useRuntimeConfig, useRoute, navigateTo } from '#imports'
+import { redirectToLogin } from '../utils/redirect'
+import { defineNuxtPlugin } from '#imports'
 
 // Set subabase user on server side
 export default defineNuxtPlugin(async () => {
   const user = useSupabaseUser()
   const client = useSupabaseClient()
   const token = useSupabaseToken()
+  const route = useRoute()
 
   if (!token.value) {
-    user.value = null
-    return redirectToLogin()
+    return
   }
 
   const { data: { user: supabaseUser }, error } = await client.auth.getUser(token.value)
@@ -20,21 +21,8 @@ export default defineNuxtPlugin(async () => {
     token.value = null
     user.value = null
 
-    return redirectToLogin()
+    await redirectToLogin(route.path)
   } else {
     user.value = supabaseUser
   }
 })
-
-const redirectToLogin = async () => {
-  const redirect = useRuntimeConfig().public.supabase.redirect
-
-  if (redirect && redirect.login) {
-    const route = useRoute()
-    if ([redirect.login, redirect.callback].includes(route.path)) {
-      return
-    }
-
-    await navigateTo(redirect.login)
-  }
-}

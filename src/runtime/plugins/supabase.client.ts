@@ -3,12 +3,12 @@ import { watch } from 'vue'
 import { useSupabaseClient } from '../composables/useSupabaseClient'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
 import { useSupabaseToken } from '../composables/useSupabaseToken'
-import { defineNuxtPlugin, useRuntimeConfig, useRoute, navigateTo } from '#imports'
+import { redirectToLogin } from '../utils/redirect'
+import { defineNuxtPlugin } from '#imports'
 
 export default defineNuxtPlugin(async (nuxtApp) => {
   const user = useSupabaseUser()
   const client = useSupabaseClient()
-  const redirect = useRuntimeConfig().public.supabase.redirect
 
   // If user has not been set on server side (for instance in SPA), set it for client
   if (!user.value) {
@@ -25,20 +25,14 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     }
   }
 
-  // If user is not set, redirect to login page
-  if (redirect && redirect.login) {
-    watch(user, (newUser) => {
-      if (newUser) { return }
-
-      // Do not redirect if already on login page or on callback page
+  // Watch user to redirect on login page if not set (works when token is expired)
+  watch(user, async (newUser) => {
+    if (!newUser) {
+      console.log('client watch redirect :')
       const route = useRoute()
-      if ([redirect.login, redirect.callback].includes(route.path)) { return }
-
-      setTimeout(() => {
-        navigateTo(redirect.login)
-      }, 0)
-    }, { immediate: true })
-  }
+      await redirectToLogin(route.path)
+    }
+  })
 
   // Once Nuxt app is mounted
   nuxtApp.hooks.hook('app:mounted', () => {
@@ -51,7 +45,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
   })
 })
 
-function setServerSession (event: AuthChangeEvent, session: Session | null): Promise<any> {
+const setServerSession = (event: AuthChangeEvent, session: Session | null) => {
   return $fetch('/api/_supabase/session', {
     method: 'POST',
     body: { event, session }
