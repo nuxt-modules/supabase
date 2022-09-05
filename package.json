@@ -34,7 +34,7 @@
     "@nuxt/module-builder": "^0.1.7",
     "@nuxtjs/eslint-config-typescript": "^10.0.0",
     "eslint": "^8.22.0",
-    "nuxt": "^3.0.0-rc.8",
+    "nuxt": "^3.0.0-rc.9",
     "standard-version": "^9.5.0"
   }
 }
