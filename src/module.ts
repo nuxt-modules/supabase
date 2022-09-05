@@ -129,7 +129,7 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     // Add supabase composables
-    nuxt.hook('autoImports:dirs', (dirs) => {
+    nuxt.hook('imports:dirs', (dirs) => {
       dirs.push(resolve(runtimeDir, 'composables'))
     })
 
