@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.24](https://github.com/nuxt-community/supabase-module/compare/v0.1.23...v0.1.24) (2022-09-05)
+
+
+### Bug Fixes
+
+* update nuxt compatibility ([#70](https://github.com/nuxt-community/supabase-module/issues/70)) ([3c753af](https://github.com/nuxt-community/supabase-module/commit/3c753af2150fe666d59112c4f1d42a431ce4bd83))
+
 ### [0.1.23](https://github.com/nuxt-community/supabase-module/compare/v0.1.22...v0.1.23) (2022-08-16)
 
 
