@@ -2,118 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [0.2.0-14](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-13...v0.2.0-14) (2022-08-31)
+### [0.1.25](https://github.com/nuxt-community/supabase-module/compare/v0.1.24...v0.1.25) (2022-09-05)
+
+### [0.1.24](https://github.com/nuxt-community/supabase-module/compare/v0.1.23...v0.1.24) (2022-09-05)
 
 
 ### Bug Fixes
 
-* **plugins:** imports navigateTo ([44caa0b](https://github.com/nuxt-community/supabase-module/commit/44caa0befd0a0ce178f04e43ab9f0ab4b3f0764f))
-
-## [0.2.0-13](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-12...v0.2.0-13) (2022-08-31)
-
-
-### Bug Fixes
-
-* **plugins:** imports useRoute ([8ff659c](https://github.com/nuxt-community/supabase-module/commit/8ff659cdf1322bdd42bb97038af2702fe62c7901))
-
-## [0.2.0-12](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-11...v0.2.0-12) (2022-08-31)
-
-
-### Bug Fixes
-
-* **plugins:** imports server side ([e6cac90](https://github.com/nuxt-community/supabase-module/commit/e6cac90025dcf1ff5de16eaeead2088bab3f7391))
-
-## [0.2.0-11](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-10...v0.2.0-11) (2022-08-31)
-
-
-### Features
-
-* **server:** redirect to login page ([83248f0](https://github.com/nuxt-community/supabase-module/commit/83248f008e2bf65635c5511f6707cc2f1e48a2e5))
-
-## [0.2.0-10](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-9...v0.2.0-10) (2022-08-22)
-
-
-### Bug Fixes
-
-* **plugin:** route comparison ([4fc0ad8](https://github.com/nuxt-community/supabase-module/commit/4fc0ad8293f68a9589ff2ac732f1e77808a2cdc3))
-
-## [0.2.0-9](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-8...v0.2.0-9) (2022-08-22)
-
-
-### Features
-
-* **options:** change default callback redirect ([7e092f4](https://github.com/nuxt-community/supabase-module/commit/7e092f4a29109a6e0d9c2270c3b593de2ec619ed))
-
-## [0.2.0-8](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-7...v0.2.0-8) (2022-08-22)
-
-
-### Features
-
-* **plugin:** add callback url ([82df0da](https://github.com/nuxt-community/supabase-module/commit/82df0da5ee06a28b75199012994a958287edfd24))
-
-## [0.2.0-7](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-6...v0.2.0-7) (2022-08-22)
-
-
-### Bug Fixes
-
-* **plugin:** add nuxt imports ([fe9739e](https://github.com/nuxt-community/supabase-module/commit/fe9739efe1a0504438e463af56cb0631ab1ada85))
-
-## [0.2.0-6](https://github.com/nuxt-community/supabase-module/compare/v0.1.23...v0.2.0-6) (2022-08-22)
-
-
-### ⚠ BREAKING CHANGES
-
-* **module:** upgrade to supabase 2.0
-
-### Features
-
-* **auth:** redirect to login page if user is null ([ed2a6a5](https://github.com/nuxt-community/supabase-module/commit/ed2a6a5c6c1fc0b2894a18516f6064bffff61691))
-* **module:** upgrade to supabase 2.0 ([9cb1432](https://github.com/nuxt-community/supabase-module/commit/9cb143216694f53ae16598e5ad6eff7ec94ecaeb))
-* **playground:** multi pages ([c0a7840](https://github.com/nuxt-community/supabase-module/commit/c0a784018245f75b9e22c17a997cb5b8ba1e3767))
-
-
-### Bug Fixes
-
-* **client:** recreate client when token has changed ([3dea0e2](https://github.com/nuxt-community/supabase-module/commit/3dea0e26ec78a4f922dc422a8705be28283b2096))
-* **demo:** logout ([4c22c13](https://github.com/nuxt-community/supabase-module/commit/4c22c1326bc686892984bef7296235bd35aa27f4))
-* **lint:** multi word component off ([0416e9d](https://github.com/nuxt-community/supabase-module/commit/0416e9d0411d26c67e102495d93fb2770f84fb11))
-* **ssr:** set token when initializaing client ([bce6ccd](https://github.com/nuxt-community/supabase-module/commit/bce6ccdd9e8b47ecff30f8bbcc8fcf3feada0d8a))
-* **tasks:** ts error when unauthenticated server side ([1ba04a6](https://github.com/nuxt-community/supabase-module/commit/1ba04a66c704713f152fa8559c9f76e66b333394))
-
-## [0.2.0-5](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-4...v0.2.0-5) (2022-08-17)
-
-
-### Bug Fixes
-
-* **client:** recreate client when token has changed ([15b0217](https://github.com/nuxt-community/supabase-module/commit/15b02177b13b1e93cc9b697a4ba3494719b031ec))
-
-## [0.2.0-4](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-3...v0.2.0-4) (2022-08-17)
-
-
-### Bug Fixes
-
-* **ssr:** set token when initializaing client ([acb79e2](https://github.com/nuxt-community/supabase-module/commit/acb79e2e29ce52fbb0c9b9df2bffb23988bef414))
-
-## [0.2.0-3](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-2...v0.2.0-3) (2022-08-17)
-
-## [0.2.0-2](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-1...v0.2.0-2) (2022-08-16)
-
-## [0.2.0-1](https://github.com/nuxt-community/supabase-module/compare/v0.2.0-0...v0.2.0-1) (2022-08-16)
-
-
-### Bug Fixes
-
-* **chore:** optimize websocket on dev mode ([41e8186](https://github.com/nuxt-community/supabase-module/commit/41e8186fcb39b1faf88e7c208ae67815e137cce5))
-
-## [0.2.0-0](https://github.com/nuxt-community/supabase-module/compare/v0.1.22...v0.2.0-0) (2022-08-16)
-
-### ⚠ BREAKING CHANGES
-
-* **module:** upgrade to supabase 2.0
-
-### Features
-
-* **module:** upgrade to supabase 2.0 ([5fbae24](https://github.com/nuxt-community/supabase-module/commit/5fbae24c4a309e054389c5d3b74295c2d01d0d3f))
+* update nuxt compatibility ([#70](https://github.com/nuxt-community/supabase-module/issues/70)) ([3c753af](https://github.com/nuxt-community/supabase-module/commit/3c753af2150fe666d59112c4f1d42a431ce4bd83))
 
 ### [0.1.23](https://github.com/nuxt-community/supabase-module/compare/v0.1.22...v0.1.23) (2022-08-16)
 
