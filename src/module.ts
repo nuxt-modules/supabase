@@ -34,13 +34,10 @@ export interface ModuleOptions {
 
   /**
    * Redirection options
-   * @default {
-      login: '/',
-      callback: '/confirm',
-    }
+   * @default false
    * @type object | boolean
    */
-  redirect?: RedirectOptions | false
+  redirect?: RedirectOptions | boolean
 
   /**
    * Supabase Client options
