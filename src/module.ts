@@ -77,10 +77,7 @@ export default defineNuxtModule<ModuleOptions>({
     key: process.env.SUPABASE_KEY as string,
     serviceKey: process.env.SUPABASE_SERVICE_KEY as string,
     client: {},
-    redirect: {
-      login: '/',
-      callback: '/'
-    },
+    redirect: false,
     cookies: {
       name: 'sb',
       lifetime: 60 * 60 * 8,

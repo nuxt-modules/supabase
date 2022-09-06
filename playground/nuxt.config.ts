@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   },
   supabase: {
     cookies: {
-      lifetime: 10
+      lifetime: 60 * 60 * 8 // 8 hours
     }
   }
 })

@@ -1,12 +1,12 @@
-import { useSupabaseUser } from '../composables/useSupabaseUser.mjs'
-import { redirectToLogin } from '../utils/redirect.mjs'
+import { useSupabaseUser } from '../composables/useSupabaseUser'
+import { redirectToLogin } from '../utils/redirect'
 import { defineNuxtPlugin, addRouteMiddleware } from '#imports'
 
 export default defineNuxtPlugin(() => {
-  const user = useSupabaseUser()
-  addRouteMiddleware('global-auth', async (to) => {
+  addRouteMiddleware('global-auth', (to) => {
+    const user = useSupabaseUser()
     if (!user.value) {
-      return await redirectToLogin(to.path)
+      return redirectToLogin(to.path)
     }
   }, { global: true })
 })

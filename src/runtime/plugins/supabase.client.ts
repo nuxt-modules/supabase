@@ -1,9 +1,7 @@
 import { AuthChangeEvent, Session } from '@supabase/supabase-js'
-import { watch } from 'vue'
 import { useSupabaseClient } from '../composables/useSupabaseClient'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
 import { useSupabaseToken } from '../composables/useSupabaseToken'
-import { redirectToLogin } from '../utils/redirect'
 import { defineNuxtPlugin } from '#imports'
 
 export default defineNuxtPlugin(async (nuxtApp) => {
@@ -24,15 +22,6 @@ export default defineNuxtPlugin(async (nuxtApp) => {
       }
     }
   }
-
-  // Watch user to redirect on login page if not set (works when token is expired)
-  watch(user, async (newUser) => {
-    if (!newUser) {
-      console.log('client watch redirect :')
-      const route = useRoute()
-      await redirectToLogin(route.path)
-    }
-  })
 
   // Once Nuxt app is mounted
   nuxtApp.hooks.hook('app:mounted', () => {
