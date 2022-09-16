@@ -25,16 +25,16 @@
     "release": "yarn lint && standard-version && git push --follow-tags"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0-rc.9",
+    "@nuxt/kit": "^3.0.0-rc.10",
     "@supabase/supabase-js": "^1.35.6",
-    "defu": "^6.0.0",
-    "pathe": "^0.3.4"
+    "defu": "^6.1.0",
+    "pathe": "^0.3.7"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^0.1.7",
-    "@nuxtjs/eslint-config-typescript": "^10.0.0",
-    "eslint": "^8.22.0",
-    "nuxt": "^3.0.0-rc.9",
+    "@nuxtjs/eslint-config-typescript": "^11.0.0",
+    "eslint": "^8.23.1",
+    "nuxt": "^3.0.0-rc.10",
     "standard-version": "^9.5.0"
   }
 }

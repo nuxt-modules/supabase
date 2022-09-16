@@ -1,4 +1,3 @@
-import { defineNuxtConfig } from 'nuxt'
 import SupabaseModule from '..'
 
 export default defineNuxtConfig({
