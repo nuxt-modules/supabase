@@ -100,6 +100,10 @@ All notable changes to this project will be documented in this file. See [standa
 * **ssr:** set token when initializaing client ([bce6ccd](https://github.com/nuxt-community/supabase-module/commit/bce6ccdd9e8b47ecff30f8bbcc8fcf3feada0d8a))
 * **tasks:** ts error when unauthenticated server side ([1ba04a6](https://github.com/nuxt-community/supabase-module/commit/1ba04a66c704713f152fa8559c9f76e66b333394))
 
+### [0.1.27](https://github.com/nuxt-community/supabase-module/compare/v0.1.26...v0.1.27) (2022-09-23)
+
+### [0.1.26](https://github.com/nuxt-community/supabase-module/compare/v0.1.25...v0.1.26) (2022-09-16)
+
 ### [0.1.25](https://github.com/nuxt-community/supabase-module/compare/v0.1.24...v0.1.25) (2022-09-05)
 
 ### [0.1.24](https://github.com/nuxt-community/supabase-module/compare/v0.1.23...v0.1.24) (2022-09-05)
