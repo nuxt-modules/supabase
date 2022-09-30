@@ -1,10 +1,10 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js'
 import { defu } from 'defu'
 import { useSupabaseToken } from './useSupabaseToken'
-import { useRuntimeConfig, useNuxtApp } from '#imports'
+import { useRuntimeConfig } from '#imports'
 
 export const useSupabaseClient = (): SupabaseClient => {
-  const nuxtApp = useNuxtApp()
+  // const nuxtApp = useNuxtApp()
   const token = useSupabaseToken()
   const Authorization = token.value ? `Bearer ${token.value}` : undefined
 
@@ -17,9 +17,10 @@ export const useSupabaseClient = (): SupabaseClient => {
   // const recreateClient = nuxtApp._supabaseClient?.headers.Authorization !== Authorization
 
   // No need to recreate client if exists
-  if (!nuxtApp._supabaseClient) {
-    nuxtApp._supabaseClient = createClient(url, key, options)
-  }
+  // if (!nuxtApp._supabaseClient) {
+  //   nuxtApp._supabaseClient = createClient(url, key, options)
+  // }
 
-  return nuxtApp._supabaseClient
+  // return nuxtApp._supabaseClient
+  return createClient(url, key, options)
 }
