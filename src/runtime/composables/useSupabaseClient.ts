@@ -14,10 +14,10 @@ export const useSupabaseClient = (): SupabaseClient => {
   const options = defu(clientOptions, { global: { headers: { Authorization } } })
 
   // Recreate client if token has changed
-  const recreateClient = nuxtApp._supabaseClient?.headers.Authorization !== Authorization
+  // const recreateClient = nuxtApp._supabaseClient?.headers.Authorization !== Authorization
 
   // No need to recreate client if exists
-  if (!nuxtApp._supabaseClient || recreateClient) {
+  if (!nuxtApp._supabaseClient) {
     nuxtApp._supabaseClient = createClient(url, key, options)
   }
 
