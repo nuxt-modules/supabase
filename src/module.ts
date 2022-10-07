@@ -158,12 +158,22 @@ export default defineNuxtModule<ModuleOptions>({
       options.references.push({ path: resolve(nuxt.options.buildDir, 'types/supabase.d.ts') })
     })
 
-    // Optimize cross-fetch & websocket
+    // Optimize cross-fetch
     extendViteConfig((config) => {
       config.optimizeDeps = config.optimizeDeps || {}
       config.optimizeDeps.include = config.optimizeDeps.include || []
       config.optimizeDeps.include.push('cross-fetch')
-      config.optimizeDeps.include.push('websocket')
     })
+
+    if (nuxt.options.dev) {
+      extendViteConfig((config) => {
+        config.optimizeDeps = config.optimizeDeps || {}
+        config.optimizeDeps.include = config.optimizeDeps.include || []
+        config.optimizeDeps.include.push('websocket')
+      })
+      // Transpile websocket only for non dev environments
+    } else if (!['cloudflare'].includes(process.env.NITRO_PRESET)) {
+      nuxt.options.build.transpile.push('websocket')
+    }
   }
 })
