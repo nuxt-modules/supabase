@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.28](https://github.com/nuxt-community/supabase-module/compare/v0.1.27...v0.1.28) (2022-10-07)
+
+
+### Bug Fixes
+
+* **deployment:** do not transpile websocket for cloudflare preset ([#84](https://github.com/nuxt-community/supabase-module/issues/84)) ([94275e0](https://github.com/nuxt-community/supabase-module/commit/94275e0114c798503edfae59c1a29bc68f4c994f))
+
 ### [0.1.27](https://github.com/nuxt-community/supabase-module/compare/v0.1.26...v0.1.27) (2022-09-23)
 
 ### [0.1.26](https://github.com/nuxt-community/supabase-module/compare/v0.1.25...v0.1.26) (2022-09-16)
