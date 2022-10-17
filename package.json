@@ -1,6 +1,6 @@
 {
   "name": "@nuxtjs/supabase",
-  "version": "0.2.0-19",
+  "version": "0.1.28",
   "description": "Supabase module for Nuxt",
   "repository": "nuxt-community/supabase-module",
   "license": "MIT",
@@ -26,7 +26,7 @@
     "prerelease": "yarn lint && standard-version -p && git push --follow-tags && npm publish --tag next"
   },
   "dependencies": {
-    "@supabase/supabase-js": "2.0.0-rc.10",
+    "@supabase/supabase-js": "2.0.0",
     "@nuxt/kit": "^3.0.0-rc.11",
     "defu": "^6.1.0",
     "pathe": "^0.3.8"

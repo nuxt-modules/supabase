@@ -175,7 +175,6 @@ export default defineNuxtModule<ModuleOptions>({
       config.optimizeDeps.include.push('cross-fetch')
     })
 
-    // Optimize websocket only at dev time
     if (nuxt.options.dev) {
       extendViteConfig((config) => {
         config.optimizeDeps = config.optimizeDeps || {}
@@ -183,7 +182,7 @@ export default defineNuxtModule<ModuleOptions>({
         config.optimizeDeps.include.push('websocket')
       })
       // Transpile websocket only for non dev environments
-    } else {
+    } else if (!['cloudflare'].includes(process.env.NITRO_PRESET)) {
       nuxt.options.build.transpile.push('websocket')
     }
   }
