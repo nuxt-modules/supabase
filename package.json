@@ -26,8 +26,8 @@
     "prerelease": "yarn lint && standard-version -p && git push --follow-tags && npm publish --tag next"
   },
   "dependencies": {
-    "@supabase/supabase-js": "2.0.0",
     "@nuxt/kit": "^3.0.0-rc.11",
+    "@supabase/supabase-js": "2.0.0",
     "defu": "^6.1.0",
     "pathe": "^0.3.8"
   },
