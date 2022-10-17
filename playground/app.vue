@@ -1,21 +1,29 @@
 <template>
   <div>
-    <h1>
-      Supabase module playground!
-    </h1>
-    <button @click="fetchMe">
-      Fetch me from server route !
-    </button>
-    <pre>
-      {{ user }}
-    </pre>
+    <div style="display: flex; justify-content: space-between;">
+      <h1>
+        Supabase module playground
+      </h1>
+      <button v-if="user" style="height: fit-content;" @click="logout">
+        Logout
+      </button>
+    </div>
+    <NuxtPage />
   </div>
 </template>
 
-<script setup>
-const user = ref(null)
+<script setup lang="ts">
+const user = useSupabaseUser()
+const client = useSupabaseClient()
 
-const fetchMe = async () => {
-  user.value = await useFetch('/api/me', { headers: useRequestHeaders(['cookie']) })
+const logout = async () => {
+  await client.auth.signOut()
+
+  // Trick to wait for the authChanged event to have been fired
+  watch(user, () => {
+    if (!user.value) {
+      navigateTo('/')
+    }
+  })
 }
 </script>

@@ -12,7 +12,7 @@ export default defineNuxtPlugin(async (nuxtApp) => {
   if (!user.value) {
     const token = useSupabaseToken()
     if (token.value) {
-      const { user: supabaseUser, error } = await client.auth.api.getUser(token.value)
+      const { data: { user: supabaseUser }, error } = await client.auth.getUser(token.value)
 
       if (error) {
         token.value = null
@@ -28,12 +28,13 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     // Listen to Supabase auth changes
     client.auth.onAuthStateChange(async (event: AuthChangeEvent, session: Session | null) => {
       await setServerSession(event, session)
-      user.value = client.auth.user()
+      const userResponse = session ? await client.auth.getUser() : null
+      user.value = userResponse ? userResponse.data.user : null
     })
   })
 })
 
-function setServerSession (event: AuthChangeEvent, session: Session | null): Promise<any> {
+const setServerSession = (event: AuthChangeEvent, session: Session | null) => {
   return $fetch('/api/_supabase/session', {
     method: 'POST',
     body: { event, session }

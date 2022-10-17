@@ -1,20 +1,24 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js'
+import { defu } from 'defu'
 import { useSupabaseToken } from './useSupabaseToken'
 import { useRuntimeConfig, useNuxtApp } from '#imports'
 
 export const useSupabaseClient = (): SupabaseClient => {
   const nuxtApp = useNuxtApp()
   const token = useSupabaseToken()
-  const { supabase: { url, key, client: options } } = useRuntimeConfig().public
+  const Authorization = token.value ? `Bearer ${token.value}` : undefined
+
+  const { supabase: { url, key, client: clientOptions } } = useRuntimeConfig().public
+
+  // Set auth header to make use of RLS
+  const options = defu(clientOptions, { global: { headers: { Authorization } } })
+
+  // Recreate client if token has changed
+  const recreateClient = nuxtApp._supabaseClient?.headers.Authorization !== Authorization
 
   // No need to recreate client if exists
-  if (!nuxtApp._supabaseClient) {
+  if (!nuxtApp._supabaseClient || recreateClient) {
     nuxtApp._supabaseClient = createClient(url, key, options)
-
-    //  Inject user's access_token in supabase client to make use of RLS on the server side
-    if (nuxtApp.ssrContext) {
-      nuxtApp._supabaseClient.auth.setAuth(token.value)
-    }
   }
 
   return nuxtApp._supabaseClient

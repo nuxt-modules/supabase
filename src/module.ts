@@ -1,7 +1,8 @@
 import { fileURLToPath } from 'url'
 import { defu } from 'defu'
 import { defineNuxtModule, addPlugin, addServerHandler, extendViteConfig, createResolver, resolveModule, addTemplate } from '@nuxt/kit'
-import { CookieOptions, SupabaseClientOptions } from '@supabase/supabase-js'
+import type { SupabaseClientOptions } from '@supabase/supabase-js'
+import { CookieOptions, RedirectOptions } from './runtime/types'
 
 export interface ModuleOptions {
   /**
@@ -32,12 +33,19 @@ export interface ModuleOptions {
   serviceKey: string
 
   /**
+   * Redirection options
+   * @default false
+   * @type object | boolean
+   */
+  redirect?: RedirectOptions | boolean
+
+  /**
    * Supabase Client options
    * @default {}
    * @type object
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
-  client?: SupabaseClientOptions
+  client?: SupabaseClientOptions<String>
 
   /**
    * Supabase Client options
@@ -49,7 +57,6 @@ export interface ModuleOptions {
       sameSite: 'lax'
     }
    * @type object
-   * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
   cookies?: CookieOptions
 }
@@ -67,6 +74,7 @@ export default defineNuxtModule<ModuleOptions>({
     key: process.env.SUPABASE_KEY as string,
     serviceKey: process.env.SUPABASE_SERVICE_KEY as string,
     client: {},
+    redirect: false,
     cookies: {
       name: 'sb',
       lifetime: 60 * 60 * 8,
@@ -94,6 +102,7 @@ export default defineNuxtModule<ModuleOptions>({
       url: options.url,
       key: options.key,
       client: options.client,
+      redirect: options.redirect,
       cookies: options.cookies
     })
 
@@ -121,6 +130,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Add supabase server plugin to load the user on server-side
     addPlugin(resolve(runtimeDir, 'plugins', 'supabase.server'))
     addPlugin(resolve(runtimeDir, 'plugins', 'supabase.client'))
+    addPlugin(resolve(runtimeDir, 'plugins', 'auth-redirect'))
 
     // Add supabase session endpoint to store the session on server-side
     addServerHandler({

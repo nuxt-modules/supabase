@@ -21,7 +21,7 @@ watchEffect(() => {
         block
         label="Github"
         variant="black"
-        @click="auth.signIn({ provider: 'github' })"
+        @click="auth.signInWithOAuth({ provider: 'github' })"
       />
     </LoginCard>
   </div>
