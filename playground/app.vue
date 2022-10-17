@@ -18,5 +18,12 @@ const client = useSupabaseClient()
 
 const logout = async () => {
   await client.auth.signOut()
+
+  // Trick to wait for the authChanged event to have been fired
+  watch(user, () => {
+    if (!user.value) {
+      navigateTo('/')
+    }
+  })
 }
 </script>

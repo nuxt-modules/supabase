@@ -28,8 +28,8 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     // Listen to Supabase auth changes
     client.auth.onAuthStateChange(async (event: AuthChangeEvent, session: Session | null) => {
       await setServerSession(event, session)
-      const userResponse = await client.auth.getUser()
-      user.value = userResponse.data.user
+      const userResponse = session ? await client.auth.getUser() : null
+      user.value = userResponse ? userResponse.data.user : null
     })
   })
 })
