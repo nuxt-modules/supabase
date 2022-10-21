@@ -1,9 +1,10 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js'
-import { CompatibilityEvent, getCookie } from 'h3'
+import { getCookie } from 'h3'
+import type { H3Event } from 'h3'
 import { defu } from 'defu'
 import { useRuntimeConfig } from '#imports'
 
-export const serverSupabaseClient = (event: CompatibilityEvent): SupabaseClient => {
+export const serverSupabaseClient = (event: H3Event): SupabaseClient => {
   const { supabase: { url, key, client: clientOptions, cookies: cookieOptions } } = useRuntimeConfig().public
 
   // No need to recreate client if exists in request context
