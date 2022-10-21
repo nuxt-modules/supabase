@@ -1,6 +1,6 @@
 {
   "name": "@nuxtjs/supabase",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Supabase module for Nuxt",
   "repository": "nuxt-community/supabase-module",
   "license": "MIT",
@@ -25,7 +25,7 @@
     "release": "yarn lint && standard-version && git push --follow-tags",
     "release:minor": "yarn lint && standard-version --release-as minor && git push --follow-tags",
     "release:major": "yarn lint && standard-version --release-as major && git push --follow-tags",
-    "prerelease": "yarn lint && standard-version -p && git push --follow-tags && npm publish --tag next"
+    "release:prerelease": "yarn lint && standard-version -p && git push --follow-tags && npm publish --tag next"
   },
   "dependencies": {
     "@nuxt/kit": "^3.0.0-rc.12",
