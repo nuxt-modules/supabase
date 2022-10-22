@@ -3,7 +3,7 @@ import { defu } from 'defu'
 import { useSupabaseToken } from './useSupabaseToken'
 import { useRuntimeConfig, useNuxtApp } from '#imports'
 
-export const useSupabaseClient = (): SupabaseClient => {
+export const useSupabaseClient = <T>(): SupabaseClient<T> => {
   const nuxtApp = useNuxtApp()
   const token = useSupabaseToken()
   const Authorization = token.value ? `Bearer ${token.value}` : undefined
