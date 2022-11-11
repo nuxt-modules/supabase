@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.3](https://github.com/nuxt-community/supabase-module/compare/v0.2.2...v0.2.3) (2022-11-11)
+
+
+### Features
+
+* **types:** server client ([fd751d7](https://github.com/nuxt-community/supabase-module/commit/fd751d7e50c63c48df9e03763458cc826409ff35))
+
+
+### Bug Fixes
+
+* do not apply token if not exists ([#107](https://github.com/nuxt-community/supabase-module/issues/107)) ([bacecd0](https://github.com/nuxt-community/supabase-module/commit/bacecd0744174938015e76ee29dad529291ae98d))
+
 ### [0.2.2](https://github.com/nuxt-community/supabase-module/compare/v0.2.1...v0.2.2) (2022-10-25)
 
 
