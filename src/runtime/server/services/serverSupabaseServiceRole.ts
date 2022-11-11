@@ -2,7 +2,7 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js'
 import type { H3Event } from 'h3'
 import { useRuntimeConfig } from '#imports'
 
-export const serverSupabaseServiceRole = (event: H3Event): SupabaseClient => {
+export const serverSupabaseServiceRole = <T>(event: H3Event): SupabaseClient<T> => {
   const { supabase: { serviceKey }, public: { supabase: { url, client: clientOptions } } } = useRuntimeConfig()
 
   // Make sure service key is set
@@ -17,5 +17,5 @@ export const serverSupabaseServiceRole = (event: H3Event): SupabaseClient => {
     event.context._supabaseServiceRole = supabaseClient
   }
 
-  return event.context._supabaseServiceRole as SupabaseClient
+  return event.context._supabaseServiceRole as SupabaseClient<T>
 }

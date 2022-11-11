@@ -4,7 +4,7 @@ import type { H3Event } from 'h3'
 import { defu } from 'defu'
 import { useRuntimeConfig } from '#imports'
 
-export const serverSupabaseClient = (event: H3Event): SupabaseClient => {
+export const serverSupabaseClient = <T>(event: H3Event): SupabaseClient<T> => {
   const { supabase: { url, key, client: clientOptions, cookies: cookieOptions } } = useRuntimeConfig().public
 
   // No need to recreate client if exists in request context
@@ -20,5 +20,5 @@ export const serverSupabaseClient = (event: H3Event): SupabaseClient => {
     event.context._token = token
   }
 
-  return event.context._supabaseClient as SupabaseClient
+  return event.context._supabaseClient as SupabaseClient<T>
 }

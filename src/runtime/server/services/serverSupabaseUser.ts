@@ -1,8 +1,8 @@
 import { User } from '@supabase/supabase-js'
-import type { CompatibilityEvent } from 'h3'
+import type { H3Event } from 'h3'
 import { serverSupabaseClient } from '../services/serverSupabaseClient'
 
-export const serverSupabaseUser = async (event: CompatibilityEvent): Promise<User | null> => {
+export const serverSupabaseUser = async (event: H3Event): Promise<User | null> => {
   const client = serverSupabaseClient(event)
 
   if (!event.context._token) {
