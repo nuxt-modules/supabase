@@ -182,7 +182,7 @@ export default defineNuxtModule<ModuleOptions>({
         config.optimizeDeps.include.push('websocket')
       })
       // Transpile websocket only for non dev environments
-    } else if (!['cloudflare'].includes(process.env.NITRO_PRESET)) {
+    } else if (!['cloudflare'].includes(process.env.NITRO_PRESET as string)) {
       nuxt.options.build.transpile.push('websocket')
     }
   }
