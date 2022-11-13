@@ -1,4 +1,7 @@
 {
-  "extends": "./playground/.nuxt/tsconfig.json"
+  "extends": "./playground/.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "strictNullChecks": false
+  }
 }
 
