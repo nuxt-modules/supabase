@@ -3,10 +3,12 @@ import { redirectToLogin } from '../utils/redirect'
 import { defineNuxtPlugin, addRouteMiddleware } from '#imports'
 
 export default defineNuxtPlugin(() => {
-  addRouteMiddleware('global-auth', (to) => {
+  addRouteMiddleware('global-auth', async (to) => {
     const user = useSupabaseUser()
     if (!user.value) {
-      return redirectToLogin(to.path)
+      try {
+        await redirectToLogin(to.path)
+      } catch {}
     }
   }, { global: true })
 })
