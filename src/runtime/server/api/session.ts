@@ -12,7 +12,7 @@ export default defineEventHandler(async (event) => {
 
   if (!event) { throw new Error('Auth event missing!') }
 
-  if (signEvent === 'SIGNED_IN') {
+  if (signEvent === 'SIGNED_IN' || signEvent === 'TOKEN_REFRESHED') {
     if (!session) { throw new Error('Auth session missing!') }
     setCookie(event, `${cookieOptions.name}-access-token`, session.access_token, {
       domain: cookieOptions.domain,
