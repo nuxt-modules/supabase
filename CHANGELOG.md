@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4](https://github.com/nuxt-community/supabase-module/compare/v0.2.3...v0.2.4) (2022-11-13)
+
+
+### Bug Fixes
+
+* **server:** catch navigateTo error ([d9d445d](https://github.com/nuxt-community/supabase-module/commit/d9d445da34bbbc461bfbd9a00729019cae3d8a8c))
+* **session:** handle TOKEN_REFRESHED event ([bf50302](https://github.com/nuxt-community/supabase-module/commit/bf503029b48113b4b66545d0d2065c899209a06a))
+
 ### [0.2.3](https://github.com/nuxt-community/supabase-module/compare/v0.2.2...v0.2.3) (2022-11-11)
 
 
