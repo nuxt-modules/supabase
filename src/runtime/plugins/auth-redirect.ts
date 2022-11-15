@@ -6,9 +6,7 @@ export default defineNuxtPlugin(() => {
   addRouteMiddleware('global-auth', (to) => {
     const user = useSupabaseUser()
     if (!user.value) {
-      try {
-        redirectToLogin(to.path)
-      } catch {}
+      redirectToLogin(to.path)
     }
   }, { global: true })
 })
