@@ -1,6 +1,6 @@
-import { useRuntimeConfig, navigateTo, useRouter } from '#imports'
+import { useRuntimeConfig, useRouter } from '#imports'
 
-export const redirectToLogin = (toPath) => {
+export const redirectToLogin = (toPath: string) => {
   const router = useRouter()
 
   const redirect = useRuntimeConfig().public.supabase.redirect
@@ -15,6 +15,6 @@ export const redirectToLogin = (toPath) => {
       return
     }
 
-    return navigateTo(redirect.login)
+    router.push(redirect.login)
   }
 }
