@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.5](https://github.com/nuxt-community/supabase-module/compare/v0.2.4...v0.2.5) (2022-11-15)
+
+
+### Bug Fixes
+
+* **redirect:** use router instead of navigateTo ([#109](https://github.com/nuxt-community/supabase-module/issues/109)) ([79fc0e4](https://github.com/nuxt-community/supabase-module/commit/79fc0e43655d4dee5858acf06cf1979e3ead542b))
+
 ### [0.2.4](https://github.com/nuxt-community/supabase-module/compare/v0.2.3...v0.2.4) (2022-11-13)
 
 
