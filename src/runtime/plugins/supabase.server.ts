@@ -21,7 +21,7 @@ export default defineNuxtPlugin(async () => {
     token.value = null
     user.value = null
 
-    await redirectToLogin(route.path)
+    redirectToLogin(route.path)
   } else {
     user.value = supabaseUser
   }
