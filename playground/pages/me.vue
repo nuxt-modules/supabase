@@ -22,7 +22,9 @@
 </template>
 
 <script setup lang="ts">
-const client = useSupabaseClient()
+import { Database } from '~~/types/database.types'
+
+const client = useSupabaseClient<Database>('me')
 const user = useSupabaseUser()
 const userFromServer = ref(null)
 const userFromComposable = ref(null)
