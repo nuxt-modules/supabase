@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/nuxt-community/supabase-module/compare/v0.2.6...v0.3.0) (2022-11-22)
+
+
+### Features
+
+* **composables:** add useSubabaseAuthClient ([#115](https://github.com/nuxt-community/supabase-module/issues/115)) ([380f7c1](https://github.com/nuxt-community/supabase-module/commit/380f7c1a636995ee9e584652f4d9f3fb7bf3edb6))
+
 ### [0.2.6](https://github.com/nuxt-community/supabase-module/compare/v0.2.5...v0.2.6) (2022-11-22)
 
 
