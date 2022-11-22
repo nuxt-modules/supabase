@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.6](https://github.com/nuxt-community/supabase-module/compare/v0.2.5...v0.2.6) (2022-11-22)
+
+
+### Features
+
+* **playgorund:** add generate types from cli ([6caba93](https://github.com/nuxt-community/supabase-module/commit/6caba937374e80bd7a1aa1c691b9f8eaaf00dede))
+
 ### [0.2.5](https://github.com/nuxt-community/supabase-module/compare/v0.2.4...v0.2.5) (2022-11-15)
 
 
