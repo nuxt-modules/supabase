@@ -3,23 +3,20 @@ import { defu } from 'defu'
 import { useSupabaseToken } from './useSupabaseToken'
 import { useRuntimeConfig, useNuxtApp } from '#imports'
 
-export const useSupabaseClient = <T>(): SupabaseClient<T> => {
+export const useSupabaseAuthClient = <T>(): SupabaseClient<T> => {
   const nuxtApp = useNuxtApp()
   const token = useSupabaseToken()
   const Authorization = token.value ? `Bearer ${token.value}` : undefined
 
   const { supabase: { url, key, client: clientOptions } } = useRuntimeConfig().public
 
-  // Set auth header to make use of RLS
+  // Set auth header
   const options = Authorization ? defu(clientOptions, { global: { headers: { Authorization } } }) : clientOptions
 
-  // Recreate client if token has changed
-  const recreateClient = nuxtApp._supabaseClient?.headers.Authorization !== Authorization
-
   // No need to recreate client if exists
-  if (!nuxtApp._supabaseClient || recreateClient) {
-    nuxtApp._supabaseClient = createClient(url, key, options)
+  if (!nuxtApp._supabaseAuthClient) {
+    nuxtApp._supabaseAuthClient = createClient(url, key, options)
   }
 
-  return nuxtApp._supabaseClient
+  return nuxtApp._supabaseAuthClient
 }
