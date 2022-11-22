@@ -1,5 +1,5 @@
 import { useSupabaseUser } from '../composables/useSupabaseUser'
-import { useSupabaseClient } from '../composables/useSupabaseClient'
+import { useSupabaseAuthClient } from '../composables/useSupabaseAuthClient'
 import { useSupabaseToken } from '../composables/useSupabaseToken'
 import { redirectToLogin } from '../utils/redirect'
 import { defineNuxtPlugin, useRoute } from '#imports'
@@ -7,7 +7,7 @@ import { defineNuxtPlugin, useRoute } from '#imports'
 // Set subabase user on server side
 export default defineNuxtPlugin(async () => {
   const user = useSupabaseUser()
-  const client = useSupabaseClient()
+  const authClient = useSupabaseAuthClient()
   const token = useSupabaseToken()
   const route = useRoute()
 
@@ -15,7 +15,7 @@ export default defineNuxtPlugin(async () => {
     return
   }
 
-  const { data: { user: supabaseUser }, error } = await client.auth.getUser(token.value)
+  const { data: { user: supabaseUser }, error } = await authClient.auth.getUser(token.value)
 
   if (error) {
     token.value = null

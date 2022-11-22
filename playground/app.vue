@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 const user = useSupabaseUser()
-const client = useSupabaseClient()
+const client = useSupabaseAuthClient()
 
 const logout = async () => {
   await client.auth.signOut()

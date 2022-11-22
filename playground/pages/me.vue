@@ -24,7 +24,7 @@
 <script setup lang="ts">
 import { Database } from '~~/types/database.types'
 
-const client = useSupabaseClient<Database>('me')
+const client = useSupabaseClient<Database>()
 const user = useSupabaseUser()
 const userFromServer = ref(null)
 const userFromComposable = ref(null)
