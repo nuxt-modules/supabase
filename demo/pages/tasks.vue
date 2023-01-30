@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Task } from '~/types/tasks'
-
 definePageMeta({
   middleware: 'auth'
 })

@@ -1,4 +1,4 @@
-export interface Task {
+declare interface Task {
   id: number
   title: string
   completed: boolean
