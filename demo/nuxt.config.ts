@@ -1,13 +1,10 @@
-import { defineNuxtConfig } from 'nuxt'
-
-// https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
-  buildModules: [
-    // https://github.com/nuxt-community/supabase-module
+  modules: [
+    // https://github.com/nuxt-modules/supabase
     '@nuxtjs/supabase',
     // UI lib (will be soon open sourced)
     '@nuxthq/ui',
-    // https://github.com/nuxt-community/color-mode-module
+    // https://github.com/nuxt-modules/color-mode
     '@nuxtjs/color-mode'
   ],
   ui: {

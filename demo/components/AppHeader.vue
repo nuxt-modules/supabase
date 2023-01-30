@@ -1,5 +1,4 @@
 <script setup lang="ts">
-const router = useRouter()
 const client = useSupabaseClient()
 const user = useSupabaseUser()
 const colorMode = useColorMode()
@@ -24,7 +23,7 @@ const logout = async () => {
           label="Source"
           variant="transparent"
           target="_blank"
-          to="https://github.com/nuxt-community/supabase-module/tree/main/demo"
+          to="https://github.com/nuxt-modules/supabase/tree/main/demo"
           icon="heroicons-outline:external-link"
         />
         <UButton

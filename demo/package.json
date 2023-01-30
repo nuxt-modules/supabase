@@ -7,16 +7,15 @@
     "dev": "nuxi dev",
     "build": "nuxi build",
     "start": "node .output/server/index.mjs",
-    "lint": "eslint --ext .ts,.js,.vue ."
+    "lint": "eslint ."
   },
   "devDependencies": {
-    "@iconify-json/mdi": "^1.1.30",
-    "@nuxthq/ui": "npm:@nuxthq/ui-edge@latest",
+    "@nuxt/eslint-config": "^0.1.1",
+    "@nuxthq/ui": "^0.1.34",
     "@nuxtjs/color-mode": "^3.2.0",
-    "@nuxtjs/eslint-config-typescript": "^10.0.0",
-    "@nuxtjs/supabase": "^0.2.0-7",
-    "eslint": "^8.22.0",
-    "nuxt": "^3.0.0-rc.8",
-    "typescript": "^4.7.4"
+    "@nuxtjs/supabase": "^0.3.0",
+    "eslint": "^8.33.0",
+    "nuxt": "^3.1.1",
+    "typescript": "^4.9.4"
   }
 }
