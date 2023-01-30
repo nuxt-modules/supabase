@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const client = useSupabaseClient()
+const client = useSupabaseAuthClient()
 const user = useSupabaseUser()
 const colorMode = useColorMode()
 
@@ -11,6 +11,7 @@ const colorModeIcon = computed(() => colorMode.preference === 'dark' ? 'heroicon
 
 const logout = async () => {
   await client.auth.signOut()
+  navigateTo('/')
 }
 </script>
 
