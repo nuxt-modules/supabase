@@ -34,7 +34,7 @@ async function addTask () {
 }
 
 const completeTask = async (task: Task) => {
-  await client.from('tasks').update({ completed: task.completed }).match({ id: task.id })
+  await client.from('tasks').update({ completed: !task.completed }).match({ id: task.id })
 }
 
 const removeTask = async (task: Task) => {
