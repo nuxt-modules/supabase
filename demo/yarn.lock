@@ -1024,15 +1024,15 @@
     eslint-plugin-vue "^9.7.0"
     local-pkg "^0.4.2"
 
-"@nuxtjs/supabase@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/supabase/-/supabase-0.3.0.tgz#65d3cf86e2ac8ab069a51b2311e810241629205a"
-  integrity sha512-fSZVv7WQ8QqoZ/Ap9zQoM9UOyGaHgC2FdndkZB2IZU3e0kVobdt+MxAEbe8SjzK89/eqBs/bbvbxNJHarc6PfQ==
+"@nuxtjs/supabase@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/supabase/-/supabase-0.3.1.tgz#756c55b6e09edcb70b6298a414fcb11ca4596b93"
+  integrity sha512-8pwl1Rkfo7qu1rOoKW/84PHb4d2/7lJzpOoza/jJhrTGy9s0FXROrlqOJd4Wna1A6SG08XKkJutQlfC3L5AuXA==
   dependencies:
-    "@nuxt/kit" "^3.0.0"
-    "@supabase/supabase-js" "2.1.0"
-    defu "^6.1.1"
-    pathe "^1.0.0"
+    "@nuxt/kit" "^3.1.2"
+    "@supabase/supabase-js" "2.7.1"
+    defu "^6.1.2"
+    pathe "^1.1.0"
 
 "@nuxtjs/tailwindcss@^6.3.1":
   version "6.3.1"
@@ -1170,45 +1170,45 @@
   dependencies:
     cross-fetch "^3.1.5"
 
-"@supabase/gotrue-js@^2.3.0":
-  version "2.10.1"
-  resolved "https://registry.yarnpkg.com/@supabase/gotrue-js/-/gotrue-js-2.10.1.tgz#525cc9810d8a7a94f56b87fdfaa7155228b97175"
-  integrity sha512-vn7gMCfv9GQlZjpb+fU5GB69ktZ+5WnxaaofGO1DSmJYrir2rcy6FY/tbyTs6h51waVpXQUu1FACjD9lHIfwzw==
+"@supabase/gotrue-js@^2.10.2":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@supabase/gotrue-js/-/gotrue-js-2.11.0.tgz#aa3322096588e8ceaa50b0b62c0c98db044ad831"
+  integrity sha512-yo3yExoTqpJH4YpdI5PDjZ1YLOj3wURppimfsV0ep5uxDY/lE1uOhiMCPnhy59DbFAKG7bjnhJ1L7sk+B2os3w==
   dependencies:
     cross-fetch "^3.1.5"
 
-"@supabase/postgrest-js@^1.1.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@supabase/postgrest-js/-/postgrest-js-1.3.0.tgz#7de1e2ae45dd203bdc0cae2abf3f0f53eab54997"
-  integrity sha512-XVX0XaWTyT06mtj67gKb0OasP9hUNIYpypgdKnIqBSib5fXD3aRb6U5rt9y9gG1UMi7pCCgv2qulKRIQlHbb9w==
+"@supabase/postgrest-js@^1.1.1":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@supabase/postgrest-js/-/postgrest-js-1.3.2.tgz#e0a7d38ed1a1b7ed8522675eab376f5e74ad29cf"
+  integrity sha512-/RRsBNtVnUiVp1wUFY/MGfxEGDD1+lA8cxvU3cbzRCNeo1dQfzQ3cw9ssRnp1r/DXkyjzujGQ8d1a+EJewr8dQ==
   dependencies:
     cross-fetch "^3.1.5"
 
-"@supabase/realtime-js@^2.1.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@supabase/realtime-js/-/realtime-js-2.4.0.tgz#245d2fa777cbdd7b4ecf0fbfd432c4713b435fab"
-  integrity sha512-cq+hfzOg06pF1WknQbfRLS4iMo2kuQ5ZXPRzsDoD4nnHXLgzgf52TDOIpRl443u7K3TPH3CBL5cJtbEmc1DiMw==
+"@supabase/realtime-js@^2.4.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@supabase/realtime-js/-/realtime-js-2.6.0.tgz#eff000c2fd9f5cd8d59f4adf6d76165b81ebd536"
+  integrity sha512-tOVulMobhpxyDuu8VIImpL8FXmZOKsGNOSyS5ihJdj2xYmPPvYG+D2J51Ewfl+MFF65tweiB6p9N9bNIW1cDNA==
   dependencies:
     "@types/phoenix" "^1.5.4"
     websocket "^1.0.34"
 
-"@supabase/storage-js@^2.0.0":
+"@supabase/storage-js@^2.1.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/@supabase/storage-js/-/storage-js-2.3.0.tgz#296b36eb0bde378763117217b2f99303f1d4ec71"
   integrity sha512-YGWVCEYYYF3+UiyL8O4xC78N9n9paLbT0hHl8dmYAtd3DqyWtu5Eph9JTu0PWm+/29Zhns5TbhUZW4xpWjJfPQ==
   dependencies:
     cross-fetch "^3.1.5"
 
-"@supabase/supabase-js@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-2.1.0.tgz#1ae369b8bb828e1d037f709e173fb932cf04cfae"
-  integrity sha512-hODrAUDSC6RV6EhwuSMyhaQCF32gij0EBTceuDR+8suJsg7XcyUG0fYgeYecWIvt0nz61xAMY6E+Ywb0tJaAng==
+"@supabase/supabase-js@2.7.1":
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/@supabase/supabase-js/-/supabase-js-2.7.1.tgz#3b982ca15acf77a8909a43ef325e734fd61ff6e5"
+  integrity sha512-Q/e+JAluZEvy7D4ul3aAs3aOiKkGvHlZULy6wjchWQyU9YlJKZLr6VPYcwUeitcnRKZi4al5iTS55LgdJFfqIA==
   dependencies:
     "@supabase/functions-js" "^2.0.0"
-    "@supabase/gotrue-js" "^2.3.0"
-    "@supabase/postgrest-js" "^1.1.0"
-    "@supabase/realtime-js" "^2.1.0"
-    "@supabase/storage-js" "^2.0.0"
+    "@supabase/gotrue-js" "^2.10.2"
+    "@supabase/postgrest-js" "^1.1.1"
+    "@supabase/realtime-js" "^2.4.0"
+    "@supabase/storage-js" "^2.1.0"
     cross-fetch "^3.1.5"
 
 "@tailwindcss/aspect-ratio@^0.4.2":
