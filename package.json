@@ -22,10 +22,7 @@
     "build": "nuxt-module-build",
     "prepack": "yarn build",
     "lint": "eslint --ext .js,.ts,.vue .",
-    "release": "yarn lint && standard-version && git push --follow-tags",
-    "release:minor": "yarn lint && standard-version --release-as minor && git push --follow-tags",
-    "release:major": "yarn lint && standard-version --release-as major && git push --follow-tags",
-    "release:prerelease": "yarn lint && standard-version -p && git push --follow-tags && npm publish --tag next"
+    "release": "yarn lint && release-it"
   },
   "dependencies": {
     "@nuxt/kit": "^3.1.2",
@@ -39,6 +36,18 @@
     "@types/node": "^18.13.0",
     "eslint": "^8.33.0",
     "nuxt": "^3.1.2",
-    "standard-version": "^9.5.0"
+    "release-it": "^15.6.0"
+  },
+  "release-it": {
+    "git": {
+      "commitMessage": "chore(release): release v${version}"
+    },
+    "github": {
+      "release": true,
+      "releaseName": "v${version}"
+    },
+    "npm": {
+      "publish": true
+    }
   }
 }
