@@ -27,9 +27,15 @@ export default defineNuxtPlugin(async (nuxtApp) => {
   nuxtApp.hooks.hook('app:mounted', () => {
     // Listen to Supabase auth changes
     authClient.auth.onAuthStateChange(async (event: AuthChangeEvent, session: Session | null) => {
-      await setServerSession(event, session)
-      const userResponse = session ? await authClient.auth.getUser() : null
-      user.value = userResponse ? userResponse.data.user : null
+      if (session) {
+        await setServerSession(event, session)
+        const userResponse = session ? await authClient.auth.getUser() : null
+        user.value = userResponse ? userResponse.data.user : null
+      } else {
+        // User must be unset before session
+        user.value = null
+        await setServerSession(event, session)
+      }
     })
   })
 })
