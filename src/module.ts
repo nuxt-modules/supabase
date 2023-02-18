@@ -130,7 +130,11 @@ export default defineNuxtModule<ModuleOptions>({
     // Add supabase server plugin to load the user on server-side
     addPlugin(resolve(runtimeDir, 'plugins', 'supabase.server'))
     addPlugin(resolve(runtimeDir, 'plugins', 'supabase.client'))
-    addPlugin(resolve(runtimeDir, 'plugins', 'auth-redirect'))
+
+    // Add route middleware plugin for redirect
+    if (options.redirect) {
+      addPlugin(resolve(runtimeDir, 'plugins', 'auth-redirect'))
+    }
 
     // Add supabase session endpoint to store the session on server-side
     addServerHandler({
