@@ -3,6 +3,10 @@ import { defu } from 'defu'
 import { defineNuxtModule, addPlugin, addServerHandler, extendViteConfig, createResolver, resolveModule, addTemplate } from '@nuxt/kit'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
 import { CookieOptions, RedirectOptions } from './runtime/types'
+export { useSupabaseAuthClient } from './runtime/composables/useSupabaseAuthClient'
+export { useSupabaseClient } from './runtime/composables/useSupabaseClient'
+export { useSupabaseToken } from './runtime/composables/useSupabaseToken'
+export { useSupabaseUser } from './runtime/composables/useSupabaseUser'
 
 export interface ModuleOptions {
   /**
@@ -59,6 +63,13 @@ export interface ModuleOptions {
    * @type object
    */
   cookies?: CookieOptions
+  
+  /**
+   * Auto import necessary parts.
+   * @default true
+   * @type boolean
+   */
+  autoImport?: boolean
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -81,7 +92,8 @@ export default defineNuxtModule<ModuleOptions>({
       domain: '',
       path: '/',
       sameSite: 'lax'
-    }
+    },
+    autoImport: true
   },
   setup (options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
@@ -103,7 +115,8 @@ export default defineNuxtModule<ModuleOptions>({
       key: options.key,
       client: options.client,
       redirect: options.redirect,
-      cookies: options.cookies
+      cookies: options.cookies,
+      autoImport: options.autoImport
     })
 
     // Private runtimeConfig
@@ -143,9 +156,11 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     // Add supabase composables
-    nuxt.hook('imports:dirs', (dirs) => {
-      dirs.push(resolve(runtimeDir, 'composables'))
-    })
+    if (options.autoImport) {
+      nuxt.hook('imports:dirs', (dirs) => {
+        dirs.push(resolve(runtimeDir, 'composables'))
+      })
+    }
 
     nuxt.hook('nitro:config', (nitroConfig) => {
       nitroConfig.alias = nitroConfig.alias || {}
