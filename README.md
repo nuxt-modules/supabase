@@ -14,6 +14,7 @@
 - [📖 &nbsp;Read the documentation](https://supabase.nuxtjs.org)
 - [▶ &nbsp;Video](https://www.youtube.com/watch?v=jIyiRT6zT8Q)
 - [👾 &nbsp;Demo](./demo)
+- [⚡️ &nbsp;Starter Template](https://github.com/zackha/supaAuth#readme)
 
 ## Features
 
