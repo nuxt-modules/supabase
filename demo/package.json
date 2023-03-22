@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
-    "@nuxthq/ui": "^0.1.38",
+    "@nuxthq/ui": "^1.2.3",
     "@nuxtjs/color-mode": "^3.2.0",
     "@nuxtjs/supabase": "^0.3.1",
     "eslint": "^8.33.0",
