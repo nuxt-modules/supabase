@@ -16,6 +16,6 @@
     "@nuxtjs/supabase": "^0.3.1",
     "eslint": "^8.33.0",
     "nuxt": "^3.1.2",
-    "typescript": "^4.9.5"
+    "typescript": "^5.0.3"
   }
 }
