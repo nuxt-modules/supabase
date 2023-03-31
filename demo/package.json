@@ -13,7 +13,7 @@
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxthq/ui": "^1.2.3",
     "@nuxtjs/color-mode": "^3.2.0",
-    "@nuxtjs/supabase": "^0.3.1",
+    "@nuxtjs/supabase": "^0.3.3",
     "eslint": "^8.37.0",
     "nuxt": "^3.3.2",
     "typescript": "^5.0.3"
