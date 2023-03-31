@@ -22,7 +22,8 @@
     "build": "nuxt-module-build",
     "prepack": "yarn build",
     "lint": "eslint --ext .js,.ts,.vue .",
-    "release": "yarn lint && release-it"
+    "release": "yarn lint && release-it",
+    "pre-release": "yarn lint && release-it --preRelease=beta"
   },
   "dependencies": {
     "@nuxt/kit": "^3.3.2",
