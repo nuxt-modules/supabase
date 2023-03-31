@@ -8,3 +8,4 @@ types/
 coverage
 sw.*
 dist
+docs
