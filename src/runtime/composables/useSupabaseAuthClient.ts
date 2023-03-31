@@ -5,16 +5,17 @@ import { useRuntimeConfig, useNuxtApp } from '#imports'
 
 export const useSupabaseAuthClient = <T>(): SupabaseClient<T> => {
   const nuxtApp = useNuxtApp()
-  const token = useSupabaseToken()
-  const Authorization = token.value ? `Bearer ${token.value}` : undefined
 
-  const { supabase: { url, key, client: clientOptions } } = useRuntimeConfig().public
-
-  // Set auth header
-  const options = Authorization ? defu(clientOptions, { global: { headers: { Authorization } } }) : clientOptions
-
-  // No need to recreate client if exists
+  // Create auth client if doesn't already exist
   if (!nuxtApp._supabaseAuthClient) {
+    const token = useSupabaseToken()
+    const authorizationHeader = token.value ? `Bearer ${token.value}` : undefined
+
+    const { supabase: { url, key, client: clientOptions } } = useRuntimeConfig().public
+
+    // Set auth header
+    const options = authorizationHeader ? defu(clientOptions, { global: { headers: { Authorization: authorizationHeader } } }) : clientOptions
+
     nuxtApp._supabaseAuthClient = createClient(url, key, options)
   }
 
