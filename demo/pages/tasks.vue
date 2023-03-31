@@ -7,6 +7,9 @@ definePageMeta({
 
 const client = useSupabaseClient<Database>()
 const user = useSupabaseUser()
+
+const tasksFromServer = ref()
+const isModalOpen = ref(false)
 const loading = ref(false)
 const newTask = ref('')
 
@@ -43,6 +46,14 @@ const removeTask = async (task: Task) => {
   tasks.value = tasks.value.filter(t => t.id !== task.id)
   await client.from('tasks').delete().match({ id: task.id })
 }
+
+const fetchTasksFromServerRoute = async () => {
+  const { data } = await useFetch('/api/tasks', { headers: useRequestHeaders(['cookie']), key: 'tasks-from-server' })
+
+  tasksFromServer.value = data
+  isModalOpen.value = true
+}
+
 </script>
 
 <template>
@@ -103,6 +114,22 @@ const removeTask = async (task: Task) => {
         </li>
       </ul>
     </UCard>
+    <UButton
+      class="mt-6"
+      label="Fetch tasks from Nuxt server route"
+      @click="fetchTasksFromServerRoute"
+    />
+    <UModal v-model="isModalOpen">
+      <h2 class="mb-4">
+        Tasks fetched from
+        <a href="https://nuxt.com/docs/guide/directory-structure/server" target="_blank" class="text-primary-500 underline">Nuxt Server route</a>
+        with the use of the
+        <a href="https://supabase.nuxtjs.org/usage/services/server-supabase-client" target="_blank" class="text-primary-500 underline">serverSupabaseClient</a>:
+      </h2>
+      <pre>
+        {{ tasksFromServer }}
+      </pre>
+    </UModal>
   </div>
 </template>
 
