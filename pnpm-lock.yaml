@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@nuxt/kit': ^3.1.2
   '@nuxt/module-builder': ^0.2.1
+  '@nuxt/schema': ^3.2.0
   '@nuxtjs/eslint-config-typescript': ^12.0.0
   '@supabase/supabase-js': 2.7.1
   '@types/node': ^18.13.0
@@ -20,6 +21,7 @@ dependencies:
 
 devDependencies:
   '@nuxt/module-builder': 0.2.1
+  '@nuxt/schema': 3.2.0
   '@nuxtjs/eslint-config-typescript': 12.0.0_eslint@8.33.0
   '@types/node': 18.13.0
   eslint: 8.33.0
