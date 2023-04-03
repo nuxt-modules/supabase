@@ -20,25 +20,25 @@
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
     "build": "nuxt-module-build",
-    "prepack": "yarn build",
     "lint": "eslint --ext .js,.ts,.vue .",
-    "release": "yarn lint && release-it",
-    "pre-release": "yarn lint && release-it --preRelease=beta"
+    "release": "pnpm lint && release-it",
+    "pre-release": "pnpm lint && release-it --preRelease=beta"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.3.2",
+    "@nuxt/kit": "^3.3.3",
     "@supabase/supabase-js": "2.13.1",
     "defu": "^6.1.2",
     "pathe": "^1.1.0"
   },
   "devDependencies": {
-    "@nuxt/schema": "^3.3.2",
     "@nuxt/module-builder": "^0.2.1",
+    "@nuxt/schema": "^3.3.3",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@types/node": "^18.15.11",
     "eslint": "^8.37.0",
-    "nuxt": "^3.3.2",
-    "release-it": "^15.9.3"
+    "nuxt": "^3.3.3",
+    "release-it": "^15.10.1",
+    "typescript": "^5.0.3"
   },
   "release-it": {
     "git": {
