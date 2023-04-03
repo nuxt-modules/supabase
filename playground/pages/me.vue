@@ -7,8 +7,8 @@
       Fetch me from server route !
     </button>
     <pre>
-        {{ userFromServer }}
-       </pre>
+      {{ userFromServer }}
+      </pre>
     <button @click="chooseMeAnotherName">
       Change my name !
     </button>
