@@ -160,16 +160,11 @@ export default defineNuxtModule<ModuleOptions>({
       options.references.push({ path: resolve(nuxt.options.buildDir, 'types/supabase.d.ts') })
     })
 
-    // Transpile @supabase/ packages
+    // Transpile @supabase/go-true package only on client side
     // TODO: Remove when packages fixed with valid ESM exports
     // https://github.com/nuxt-community/supabase-module/issues/54
     nuxt.options.build.transpile.push(
-      '@supabase/functions-js',
-      '@supabase/gotrue-js',
-      '@supabase/postgrest-js',
-      '@supabase/realtime-js',
-      '@supabase/storage-js',
-      '@supabase/supabase-js'
+      ({isServer}) => !isServer && '@supabase/gotrue-js',
     )
 
     // Transpile websocket only for non dev environments (except cloudflare)
