@@ -115,18 +115,6 @@ export default defineNuxtModule<ModuleOptions>({
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     nuxt.options.build.transpile.push(runtimeDir)
 
-    // Transpile @supabase/ packages
-    // TODO: Remove when packages fixed with valid ESM exports
-    // https://github.com/nuxt-community/supabase-module/issues/54
-    nuxt.options.build.transpile.push(
-      '@supabase/functions-js',
-      '@supabase/gotrue-js',
-      '@supabase/postgrest-js',
-      '@supabase/realtime-js',
-      '@supabase/storage-js',
-      '@supabase/supabase-js'
-    )
-
     // Add supabase server plugin to load the user on server-side
     addPlugin(resolve(runtimeDir, 'plugins', 'supabase.server'))
     addPlugin(resolve(runtimeDir, 'plugins', 'supabase.client'))
@@ -172,22 +160,33 @@ export default defineNuxtModule<ModuleOptions>({
       options.references.push({ path: resolve(nuxt.options.buildDir, 'types/supabase.d.ts') })
     })
 
-    // // Optimize cross-fetch
+    // Transpile @supabase/ packages
+    // TODO: Remove when packages fixed with valid ESM exports
+    // https://github.com/nuxt-community/supabase-module/issues/54
+    nuxt.options.build.transpile.push(
+      '@supabase/functions-js',
+      '@supabase/gotrue-js',
+      '@supabase/postgrest-js',
+      '@supabase/realtime-js',
+      '@supabase/storage-js',
+      '@supabase/supabase-js'
+    )
+
+    // Optimize @supabase/ packages for dev
+    // TODO: Remove when packages fixed with valid ESM exports
+    // https://github.com/supabase/gotrue/issues/1013
     extendViteConfig((config) => {
       config.optimizeDeps = config.optimizeDeps || {}
       config.optimizeDeps.include = config.optimizeDeps.include || []
-      config.optimizeDeps.include.push('cross-fetch')
+      config.optimizeDeps.exclude = config.optimizeDeps.exclude || []
+      config.optimizeDeps.include.push(
+        '@supabase/functions-js',
+        '@supabase/gotrue-js',
+        '@supabase/postgrest-js',
+        '@supabase/realtime-js',
+        '@supabase/storage-js',
+        '@supabase/supabase-js'
+      )
     })
-
-    // if (nuxt.options.dev) {
-    // extendViteConfig((config) => {
-    //   config.optimizeDeps = config.optimizeDeps || {}
-    //   config.optimizeDeps.include = config.optimizeDeps.include || []
-    //   config.optimizeDeps.include.push('websocket')
-    // })
-    // Transpile websocket only for non dev environments
-    // } else if (!['cloudflare'].includes(process.env.NITRO_PRESET as string)) {
-    //   nuxt.options.build.transpile.push('websocket')
-    // }
   }
 })
