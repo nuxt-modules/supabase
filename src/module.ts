@@ -172,6 +172,11 @@ export default defineNuxtModule<ModuleOptions>({
       '@supabase/supabase-js'
     )
 
+    // Transpile websocket only for non dev environments (except cloudflare)
+    if (!nuxt.options.dev && !['cloudflare'].includes(process.env.NITRO_PRESET as string)) {
+      nuxt.options.build.transpile.push('websocket')
+    }
+
     // Optimize @supabase/ packages for dev
     // TODO: Remove when packages fixed with valid ESM exports
     // https://github.com/supabase/gotrue/issues/1013
