@@ -1,8 +1,6 @@
-import SupabaseModule from '..'
-
 export default defineNuxtConfig({
   modules: [
-    SupabaseModule
+    '../src/module'
   ],
   myModule: {
     addPlugin: true
