@@ -164,7 +164,7 @@ export default defineNuxtModule<ModuleOptions>({
     // TODO: Remove when packages fixed with valid ESM exports
     // https://github.com/nuxt-community/supabase-module/issues/54
     nuxt.options.build.transpile.push(
-      ({isServer}) => !isServer && '@supabase/gotrue-js',
+      ({ isServer }) => !isServer && '@supabase/gotrue-js'
     )
 
     // Transpile websocket only for non dev environments (except cloudflare)
