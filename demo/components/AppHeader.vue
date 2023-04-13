@@ -7,7 +7,7 @@ const toggleDark = () => {
   colorMode.preference = colorMode.value === 'dark' ? 'light' : 'dark'
 }
 
-const colorModeIcon = computed(() => colorMode.preference === 'dark' ? 'heroicons-outline:moon' : 'heroicons-outline:sun')
+const colorModeIcon = computed(() => colorMode.preference === 'dark' ? 'i-heroicons-outline-moon' : 'i-heroicons-outline-sun')
 
 const logout = async () => {
   await client.auth.signOut()
@@ -25,19 +25,28 @@ const logout = async () => {
           variant="transparent"
           target="_blank"
           to="https://github.com/nuxt-modules/supabase/tree/main/demo"
-          icon="heroicons-outline:external-link"
+          icon="i-heroicons-outline-external-link"
         />
         <UButton
           label="Hosted on Netlify"
           variant="transparent"
           target="_blank"
           to="https://netlify.com"
-          icon="heroicons-outline:external-link"
+          icon="i-heroicons-outline-external-link"
         />
       </div>
       <div class="flex items-center">
-        <UButton variant="transparent" :icon="colorModeIcon" @click="toggleDark" />
-        <UButton v-if="user" class="u-text-white" variant="transparent" @click="logout">
+        <UButton
+          variant="transparent"
+          :icon="colorModeIcon"
+          @click="toggleDark"
+        />
+        <UButton
+          v-if="user"
+          class="u-text-white"
+          variant="transparent"
+          @click="logout"
+        >
           Logout
         </UButton>
       </div>

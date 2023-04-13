@@ -17,7 +17,7 @@ watchEffect(() => {
     <LoginCard>
       <UButton
         class="mt-3"
-        icon="mdi:github"
+        icon="i-mdi-github"
         block
         label="Github"
         variant="black"
