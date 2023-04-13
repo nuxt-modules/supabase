@@ -22,6 +22,8 @@ export interface CookieOptions {
     path?: string
     // (Optional) SameSite configuration for the session cookie. Defaults to 'lax', but can be changed to 'strict' or 'none'. Set it to false if you want to disable the SameSite setting.
     sameSite?: string
+    // (Optional) Where the cookie update happens (server or client only)
+    clientOnly?: boolean,
   }
 
   export interface RedirectOptions {

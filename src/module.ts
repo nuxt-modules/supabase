@@ -80,7 +80,8 @@ export default defineNuxtModule<ModuleOptions>({
       lifetime: 60 * 60 * 8,
       domain: '',
       path: '/',
-      sameSite: 'lax'
+      sameSite: 'lax',
+      clientOnly: false,
     }
   },
   setup (options, nuxt) {
