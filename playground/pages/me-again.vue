@@ -1,24 +1,3 @@
-
-<template>
-  <div v-if="user">
-    <h2>
-      Authenticated as {{ user.user_metadata.full_name }}!
-    </h2>
-    <button @click="fetchMeFromServerRoute">
-      Fetch me from server route !
-    </button>
-    <pre>
-        {{ userFromServer }}
-       </pre>
-    <button @click="chooseMeAnotherName">
-      Change my name !
-    </button>
-    <pre>
-        {{ userFromComposable }}
-       </pre>
-  </div>
-</template>
-
 <script setup lang="ts">
 const client = useSupabaseClient()
 const user = useSupabaseUser()
@@ -66,3 +45,23 @@ const chooseMeAnotherName = async () => {
   userFromComposable.value = data
 }
 </script>
+
+<template>
+  <div v-if="user">
+    <h2>
+      Authenticated as {{ user.user_metadata.full_name }}!
+    </h2>
+    <button @click="fetchMeFromServerRoute">
+      Fetch me from server route !
+    </button>
+    <pre>
+        {{ userFromServer }}
+       </pre>
+    <button @click="chooseMeAnotherName">
+      Change my name !
+    </button>
+    <pre>
+        {{ userFromComposable }}
+       </pre>
+  </div>
+</template>
