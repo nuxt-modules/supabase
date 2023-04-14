@@ -10,6 +10,7 @@ export default defineNuxtConfig({
   ui: {
     colors: {
       primary: 'green'
-    }
+    },
+    icons: ['mdi', 'heroicons', 'heroicons-outline']
   }
 })

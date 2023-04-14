@@ -5,18 +5,18 @@
 Live demo: https://n3-supabase.netlify.app
 
 - Frontend:
-  - [Nuxt 3](https://v3.nuxtjs.org/) - a Vuejs framework.
-  - [Tailwind](https://tailwindcss.com/) for styling and layout.
-  - [Supabase Module](https://github.com/nuxt-community/supabase-module) for user management and supabase data client.
+  - [Nuxt 3](https://nuxt.com/) - The Vue Framework for Web Architects
+  - [TailwindCSS](https://tailwindcss.com/) for styling and layout.
+  - [Supabase Module](https://github.com/nuxt-modules/supabase) for user management and supabase data client.
 - Backend:
-  - [app.supabase.io](https://app.supabase.io/): hosted Postgres database with restful API for usage with Supabase.js.
+  - [app.supabase.io](https://app.supabase.com/): hosted Postgres database with restful API for usage with Supabase.js.
 
 ## Setup
 
 Make sure to install the dependencies
 
 ```bash
-yarn install
+pnpm i
 ```
 
 Create a project on [Supabase](https://supabase.com).
@@ -47,7 +47,7 @@ SUPABASE_KEY="<your_key>"
 Start the development server on http://localhost:3000
 
 ```bash
-yarn dev
+npm run dev
 ```
 
 ## Production
@@ -55,7 +55,7 @@ yarn dev
 Build the application for production:
 
 ```bash
-yarn build
+npm run build
 ```
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).

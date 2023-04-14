@@ -61,7 +61,10 @@ const fetchTasksFromServerRoute = async () => {
     <h1 class="mb-12 text-6xl font-bold u-text-white">
       Todo List.
     </h1>
-    <form class="flex gap-2 my-2" @submit.prevent="addTask">
+    <form
+      class="flex gap-2 my-2"
+      @submit.prevent="addTask"
+    >
       <UInput
         v-model="newTask"
         :loading="loading"
@@ -74,11 +77,17 @@ const fetchTasksFromServerRoute = async () => {
         autofocus
         autocomplete="off"
       />
-      <UButton type="submit" variant="white">
+      <UButton
+        type="submit"
+        variant="white"
+      >
         Add
       </UButton>
     </form>
-    <UCard v-if="tasks?.length > 0" body-class="px-6 py-2 overflow-hidden">
+    <UCard
+      v-if="tasks?.length > 0"
+      body-class="px-6 py-2 overflow-hidden"
+    >
       <ul>
         <li
           v-for="task of tasks"
@@ -105,7 +114,7 @@ const fetchTasksFromServerRoute = async () => {
                   class="ml-3 text-red-600"
                   size="sm"
                   variant="transparent"
-                  icon="heroicons-outline:trash"
+                  icon="i-heroicons-outline-trash"
                   @click="removeTask(task)"
                 />
               </div>
@@ -122,9 +131,17 @@ const fetchTasksFromServerRoute = async () => {
     <UModal v-model="isModalOpen">
       <h2 class="mb-4">
         Tasks fetched from
-        <a href="https://nuxt.com/docs/guide/directory-structure/server" target="_blank" class="text-primary-500 underline">Nuxt Server route</a>
+        <a
+          href="https://nuxt.com/docs/guide/directory-structure/server"
+          target="_blank"
+          class="text-primary-500 underline"
+        >Nuxt Server route</a>
         with the use of the
-        <a href="https://supabase.nuxtjs.org/usage/services/server-supabase-client" target="_blank" class="text-primary-500 underline">serverSupabaseClient</a>:
+        <a
+          href="https://supabase.nuxtjs.org/usage/services/server-supabase-client"
+          target="_blank"
+          class="text-primary-500 underline"
+        >serverSupabaseClient</a>:
       </h2>
       <pre>
         {{ tasksFromServer }}
