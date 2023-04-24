@@ -8,10 +8,13 @@ related issues :
 
 ## conf
 
-
-cookies: {
-         clientOnly: true
-}
+```javascript
+supabase: {
+    cookies: {
+        clientOnly: true,
+    },
+},
+```
 
 ## refactoring
 
@@ -30,7 +33,7 @@ Start a new nuxt project :
 npx nuxi@latest init my-static-app
 cd my-static-app
 pnpm install
-pnpm add --dev @nuxtjs/supabase
+pnpm add -D @nuxtjs/supabase
 ```
 
 Update `nuxt.config.ts`
@@ -56,7 +59,7 @@ SUPABASE_KEY="<your_key>"
 
 Generate the static site and serve it :
 ```shell
-yarn generate
+pnpm generate
 cd .output/public
 python3 -m http.server 3000
 ```
@@ -104,3 +107,23 @@ async function logout() {
 Point a broswser to `http://localhost:3000`,
 you should be able to login/logout
 without any error in this fully static site.
+
+# Dev session
+
+To develop you may use the `pnpm link` feature.
+
+```shell
+# you dev folder
+cd supabase
+pnpm link .
+# your test app
+cd ..
+npx nuxi@latest init my-static-app
+cd my-static-app
+pnpm install
+pnpm add -D @nuxtjs/supabase
+# apply modification from quick test section 
+# ...
+# start dev session
+pnpm dev
+```

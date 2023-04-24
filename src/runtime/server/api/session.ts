@@ -1,5 +1,6 @@
 import { readBody, setCookie, assertMethod, defineEventHandler } from 'h3'
 import { useRuntimeConfig } from '#imports'
+import { setSupabaseCookies } from '../../utils/cookie'
 
 const config = useRuntimeConfig().public
 
@@ -8,10 +9,21 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event)
   const cookieOptions = config.supabase.cookies
 
+
+
   const { event: signEvent, session } = body
 
   if (!event) { throw new Error('Auth event missing!') }
 
+
+  await setSupabaseCookies(
+    signEvent,
+    session,
+    null,
+    event,
+  )
+
+  /*
   if (signEvent === 'SIGNED_IN' || signEvent === 'TOKEN_REFRESHED') {
     if (!session) { throw new Error('Auth session missing!') }
     setCookie(event, `${cookieOptions.name}-access-token`, session.access_token, {
@@ -39,6 +51,7 @@ export default defineEventHandler(async (event) => {
       path: cookieOptions.path
     })
   }
-
+  */
+ 
   return 'auth cookie set'
 })
