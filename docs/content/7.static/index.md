@@ -115,15 +115,16 @@ To develop you may use the `pnpm link` feature.
 ```shell
 # you dev folder
 cd supabase
-pnpm link .
+yarn link
 # your test app
 cd ..
 npx nuxi@latest init my-static-app
 cd my-static-app
-pnpm install
-pnpm add -D @nuxtjs/supabase
+yarn install
+#yarn add -D @nuxtjs/supabase
+yarn link "@nuxtjs/supabase"
 # apply modification from quick test section 
 # ...
 # start dev session
-pnpm dev
+yarn dev
 ```

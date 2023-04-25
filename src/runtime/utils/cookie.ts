@@ -1,15 +1,19 @@
 import { AuthChangeEvent, Session } from '@supabase/supabase-js'
 
+/*
+Set Supabase Cookies
+Since we can set cookie from server or client
+we also pass the proper method :
+* useCookie : to set cookie from client side
+* h3event : to set cookie from server side (with setCookie)
+*/
 export async function setSupabaseCookies(
-    event: AuthChangeEvent,
-    session: Session | null,
+  event: AuthChangeEvent,
+  session: Session | null,
 
-    //h3event: H3Event,
-    useCookie: any | null,
-    h3event: any | null,
+  useCookie: any | null,
+  h3event: any | null,
 ) {
-  // https://nuxt.com/docs/api/composables/use-cookie
-
   const config = useRuntimeConfig().public
   const cookieOptions = config.supabase.cookies
 
@@ -64,31 +68,33 @@ export async function setSupabaseCookies(
   }
 }
 
-
+/*
+This function will set a cookie from a client OR server side.
+The name/value/options are obvious (same as in useCookie or setCookie).
+The useCookie/h3event args are passed to determine the client or server side :
+* useCookie is passed from client side calls (h3event will be null in that case)
+* h3event is passed from server side calls (useCookie will be null in that case)
+This *trick* is weird and I failed to find a proper ans single way to set cookie :-/
+*/
 export async function setCookieClientServer(
   name: string,
   value: string,
-
+  //TODO: what is options type ?
   options: any,
-
+  //TODO: what is useCookie type ?
   useCookie: any | null,
-  //h3event: H3Event,
+  //TODO: what is h3event type ? (H3Event is not working)
   h3event: any | null,
-  //event: AuthChangeEvent,
-  //session: Session | null,
 ) {
-
   if (h3event == null) {
     // set cookie from client side 
+    // https://nuxt.com/docs/api/composables/use-cookie
     const cookie1 = useCookie(name, options)
     cookie1.value = value
   } else {
     // set cookie from server side
-    assertMethod(h3event, 'POST')
+    //assertMethod(h3event, 'POST')
     const body = await readBody(h3event)
-    //const { h3event: event, session } = body
-    setCookie(body.event, name, value, options)
+    setCookie(h3event, name, value, options)
   }
-
-
 }
