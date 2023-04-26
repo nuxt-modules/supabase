@@ -19,8 +19,7 @@ export default defineEventHandler(async (event) => {
       maxAge: cookieOptions.lifetime ?? 0,
       path: cookieOptions.path,
       sameSite: cookieOptions.sameSite as boolean | 'lax' | 'strict' | 'none'
-    }
-    )
+    })
     setCookie(event, `${cookieOptions.name}-refresh-token`, session.refresh_token, {
       domain: cookieOptions.domain,
       maxAge: cookieOptions.lifetime ?? 0,
