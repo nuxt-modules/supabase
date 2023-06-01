@@ -1,4 +1,7 @@
 {
   "private": true,
-  "name": "supabase-module-playground"
+  "name": "supabase-module-playground",
+  "devDependencies": {
+    "@nuxt/devtools": "^0.5.5"
+  }
 }

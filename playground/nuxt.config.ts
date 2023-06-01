@@ -2,9 +2,7 @@ export default defineNuxtConfig({
   modules: [
     '../src/module'
   ],
-  myModule: {
-    addPlugin: true
-  },
+
   supabase: {
     cookies: {
       lifetime: 60 * 60 * 8 // 8 hours
@@ -13,5 +11,9 @@ export default defineNuxtConfig({
       login: '/',
       callback: '/confirm'
     }
+  },
+
+  devtools: {
+    enabled: true
   }
 })
