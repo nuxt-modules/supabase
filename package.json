@@ -22,7 +22,7 @@
     "build": "nuxt-module-build",
     "lint": "eslint --ext .js,.ts,.vue .",
     "release": "pnpm lint && release-it",
-    "pre-release": "pnpm lint && release-it --preRelease=beta"
+    "pre:release": "pnpm lint && release-it --preRelease"
   },
   "dependencies": {
     "@nuxt/kit": "^3.5.2",
