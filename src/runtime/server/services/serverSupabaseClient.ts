@@ -11,8 +11,14 @@ export const serverSupabaseClient = <T>(event: H3Event): SupabaseClient<T> => {
   if (!event.context._supabaseClient) {
     const token = getCookie(event, `${cookieOptions.name}-access-token`)
 
+    const auth = {
+      detectSessionInUrl: false,
+      persistSession: false,
+      autoRefreshToken: false
+    }
+
     // Set auth header to make use of RLS
-    const options = token ? defu(clientOptions, { global: { headers: { Authorization: `Bearer ${token}` } } }) : clientOptions
+    const options = token ? defu(clientOptions, { auth }, { global: { headers: { Authorization: `Bearer ${token}` } } }) : defu(clientOptions, { auth })
 
     const supabaseClient = createClient(url, key, options)
 
