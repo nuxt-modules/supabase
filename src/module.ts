@@ -73,7 +73,13 @@ export default defineNuxtModule<ModuleOptions>({
     url: process.env.SUPABASE_URL as string,
     key: process.env.SUPABASE_KEY as string,
     serviceKey: process.env.SUPABASE_SERVICE_KEY as string,
-    client: {},
+    client: {
+      auth: {
+        detectSessionInUrl: true,
+        persistSession: true,
+        autoRefreshToken: true
+      }
+    },
     redirect: false,
     cookies: {
       name: 'sb',
