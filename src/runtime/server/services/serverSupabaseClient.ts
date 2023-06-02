@@ -18,7 +18,7 @@ export const serverSupabaseClient = <T>(event: H3Event): SupabaseClient<T> => {
     }
 
     // Set auth header to make use of RLS
-    const options = token ? defu(clientOptions, { auth }, { global: { headers: { Authorization: `Bearer ${token}` } } }) : defu(clientOptions, { auth })
+    const options = token ? defu({ auth, global: { headers: { Authorization: `Bearer ${token}` } } }, clientOptions) : defu({ auth }, clientOptions)
 
     const supabaseClient = createClient(url, key, options)
 
