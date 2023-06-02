@@ -11,9 +11,5 @@ export default defineNuxtConfig({
       login: '/',
       callback: '/confirm'
     }
-  },
-
-  devtools: {
-    enabled: true
   }
 })
