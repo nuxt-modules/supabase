@@ -1,6 +1,7 @@
 import { SupabaseClient } from '@supabase/supabase-js'
 import { useNuxtApp } from '#imports'
 import { createSupabaseClient } from '../utils/client'
+import { useSupabaseToken } from '../composables/useSupabaseToken'
 
 export const useSupabaseClient = <T>(): SupabaseClient<T> => {
   const nuxtApp = useNuxtApp()
