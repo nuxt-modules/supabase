@@ -6,7 +6,7 @@ const logout = async () => {
   await client.auth.signOut()
 
   // Wait for the authChanged event to have been fired
-  watch(user, () => {
+  watchEffect(() => {
     if (!user.value) {
       navigateTo('/')
     }
