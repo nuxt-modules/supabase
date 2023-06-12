@@ -1,6 +1,6 @@
 {
   "name": "@nuxtjs/supabase",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "description": "Supabase module for Nuxt",
   "repository": "nuxt-community/supabase-module",
   "license": "MIT",
