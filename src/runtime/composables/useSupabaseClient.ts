@@ -2,8 +2,16 @@ import { SupabaseClient } from '@supabase/supabase-js'
 import { useNuxtApp } from '#imports'
 import { createSupabaseClient } from '../utils/client'
 import { useSupabaseToken } from '../composables/useSupabaseToken'
+import { GenericSchema } from '@supabase/supabase-js/dist/module/lib/types'
 
-export const useSupabaseClient = <T>(): SupabaseClient<T> => {
+export const useSupabaseClient = <
+  Database,
+  SchemaName extends string & keyof Database = 'public' extends keyof Database
+  ? 'public'
+  : string & keyof Database,
+  Schema extends GenericSchema = Database[SchemaName] extends GenericSchema
+  ? Database[SchemaName]
+  : any>(): SupabaseClient<Database, SchemaName, Schema> => {
   const nuxtApp = useNuxtApp()
   const token = useSupabaseToken()
   const Authorization = token.value ? `Bearer ${token.value}` : undefined
@@ -16,5 +24,5 @@ export const useSupabaseClient = <T>(): SupabaseClient<T> => {
     nuxtApp._supabaseClient = createSupabaseClient()
   }
 
-  return nuxtApp._supabaseAuthClient as SupabaseClient<T>
+  return nuxtApp._supabaseAuthClient as SupabaseClient<Database, SchemaName, Schema>
 }
