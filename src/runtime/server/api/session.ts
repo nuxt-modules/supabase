@@ -27,6 +27,24 @@ export default defineEventHandler(async (event) => {
       path: cookieOptions.path,
       sameSite: cookieOptions.sameSite as boolean | 'lax' | 'strict' | 'none'
     })
+
+    if (session.provider_token) {
+      setCookie(event, `${cookieOptions.name}-provider-token`, session.provider_token, {
+        domain: cookieOptions.domain,
+        maxAge: cookieOptions.lifetime ?? 0,
+        path: cookieOptions.path,
+        sameSite: cookieOptions.sameSite as boolean | 'lax' | 'strict' | 'none'
+      })
+    }
+
+    if (session.provider_refresh_token) {
+      setCookie(event, `${cookieOptions.name}-provider-refresh-token`, session.provider_refresh_token, {
+        domain: cookieOptions.domain,
+        maxAge: cookieOptions.lifetime ?? 0,
+        path: cookieOptions.path,
+        sameSite: cookieOptions.sameSite as boolean | 'lax' | 'strict' | 'none'
+      })
+    }
   }
 
   if (signEvent === 'SIGNED_OUT') {
