@@ -2,6 +2,8 @@
 description: Handle Supabase authentification actions with useSupabaseAuthClient composable
 ---
 
+# useSupabaseAuthClient
+
 [Auto-import](https://nuxt.com/docs/guide/directory-structure/composables) your client inside your vue files.
 
 This composable is using [supabase-js](https://github.com/supabase/supabase-js/) under the hood, it gives access to the [Supabase client](https://supabase.com/docs/reference/javascript/initializing) in order to handle authentification actions, all methods are available on [Supabase Auth](https://supabase.com/docs/reference/javascript/auth-signup) Documentation.
