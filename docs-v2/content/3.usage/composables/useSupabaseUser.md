@@ -1,0 +1,35 @@
+---
+description: Auto import and use your Supabase user with the useSupabaseUser composable
+---
+
+Once logged in, you can [auto-import](https://nuxt.com/docs/guide/directory-structure/composables) your user everywhere inside your vue files.
+
+```vue
+<script setup>
+const user = useSupabaseUser()
+</script>
+```
+
+## Auth middleware
+
+You can protect your authenticated routes by creating a custom middleware in your project, here is an example:
+
+```ts [middleware/auth.ts]
+export default defineNuxtRouteMiddleware((to, _from) => {
+  const user = useSupabaseUser()
+
+  if (!user.value) {
+    return navigateTo('/login')
+  }
+})
+```
+
+Then you can reference your middleware in your page with:
+
+```ts [pages/dashboard.vue]
+definePageMeta({
+  middleware: 'auth'
+})
+```
+
+Learn more about [Nuxt middleware](https://nuxt.com/docs/guide/directory-structure/middleware) and [definePageMeta](https://nuxt.com/docs/guide/directory-structure/pages#page-metadata).
