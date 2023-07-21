@@ -9,7 +9,7 @@ This composable is using [supabase-js](https://github.com/supabase/supabase-js/)
 > The client is initialized with the `SUPABASE_KEY` you must have in your `.env` file.
 
 ::alert
-This client is dedicated to authentification purpose only. It won't be recreated if your token expires, it is used in the client plugin to listen to `onAuthStateChange` events. If you want to fetch data from the db, please use the [useSupabaseClient](/usage/composables/use-supabase-client) instead.
+This client is dedicated to authentification purpose only. It won't be recreated if your token expires, it is used in the client plugin to listen to `onAuthStateChange` events. If you want to fetch data from the db, please use the [useSupabaseClient](/usage/composables/usesupabaseclient) instead.
 ::
 
 ## SignIn
