@@ -6,7 +6,7 @@ description: Make requests to the Supabase API with the useSupabaseClient compos
 
 This composable is using [supabase-js](https://github.com/supabase/supabase-js/) under the hood, it gives access to the [Supabase client](https://supabase.com/docs/reference/javascript/initializing).
 
-> The client is initialized with the `SUPABASE_KEY` you must have in your `.env` file. It establishes the connection with the database and make use of user JWT to apply [RLS Policies](https://supabase.com/docs/learn/auth-deep-dive/auth-row-level-security) implemented in Supabase. If you want to bypass policies, you can use the [serverSupabaseServiceRole](/usage/services/server-supabase-service-role).
+> The client is initialized with the `SUPABASE_KEY` you must have in your `.env` file. It establishes the connection with the database and make use of user JWT to apply [RLS Policies](https://supabase.com/docs/learn/auth-deep-dive/auth-row-level-security) implemented in Supabase. If you want to bypass policies, you can use the [serverSupabaseServiceRole](/usage/services/serversupabaseservicerole).
 
 ## Database Request
 

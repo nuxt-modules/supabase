@@ -43,7 +43,7 @@ const login = async (provider: 'github' | 'google' | 'gitlab' | 'bitbucket') => 
 Thanks to the [Nuxt plugin](https://nuxt.com/docs/guide/directory-structure/plugins), we are listening to the [onAuthStateChange](https://supabase.com/docs/reference/javascript/auth-onauthstatechange) listener in order to update the user value according to the received event. We also keep the session consistency between client and server side.
 ::
 
-> Take a look at the [auth middleware](/usage/composables/use-supabase-user#auth-middleware) section to learn how to leverage Nuxt middleware to protect your routes for unauthenticated users.
+> Take a look at the [auth middleware](/usage/composables/usesupabaseuser#auth-middleware) section to learn how to leverage Nuxt middleware to protect your routes for unauthenticated users.
 
 ## SignOut
 
