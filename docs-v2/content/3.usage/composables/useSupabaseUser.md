@@ -2,6 +2,8 @@
 description: Auto import and use your Supabase user with the useSupabaseUser composable
 ---
 
+# useSupabaseUser
+
 Once logged in, you can [auto-import](https://nuxt.com/docs/guide/directory-structure/composables) your user everywhere inside your vue files.
 
 ```vue
