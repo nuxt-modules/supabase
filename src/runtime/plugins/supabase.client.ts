@@ -1,5 +1,6 @@
-import { createClient, User } from '@supabase/supabase-js'
-import { defineNuxtPlugin, useState, useRuntimeConfig } from '#imports'
+import { createClient } from '@supabase/supabase-js'
+import { defineNuxtPlugin, useRuntimeConfig } from '#imports'
+import { CookieOptions } from '../types'
 
 export default defineNuxtPlugin({
   name: 'supabase',
@@ -20,14 +21,22 @@ export default defineNuxtPlugin({
 
     supabaseClient.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
-        useState<User | null>('user', () => null).value = session?.user
-        useCookie('sb-access-token', { secure: true, sameSite: 'lax' }).value = session?.access_token
-        useCookie('sb-refresh-token', { secure: true, sameSite: 'lax' }).value = session?.access_token
+        const { name, sameSite, ...options } = runtime.public.supabase.cookieOptions
+        const cookieOptions: CookieOptions = {
+          ...options,
+          sameSite: sameSite as boolean | 'lax' | 'strict' | 'none',
+        }
+        useCookie(`${name}-access-token`, cookieOptions).value = session?.access_token
+        useCookie(`${name}-refresh-token`, cookieOptions).value = session?.access_token
       }
       if (event === 'SIGNED_OUT') {
-        useState<User | null>('user', () => null).value = null
-        useCookie('sb-access-token', { secure: true, sameSite: 'lax' }).value = null
-        useCookie('sb-refresh-token', { secure: true, sameSite: 'lax' }).value = null
+        const { name, sameSite, ...options } = runtime.public.supabase.cookieOptions
+        const cookieOptions: CookieOptions = {
+          ...options,
+          sameSite: sameSite as boolean | 'lax' | 'strict' | 'none',
+        }
+        useCookie(`${name}-access-token`, cookieOptions).value = null
+        useCookie(`${name}-refresh-token`, cookieOptions).value = null
       }
     })
 

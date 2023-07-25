@@ -1,7 +1,6 @@
 import { fileURLToPath } from 'url'
 import { defu } from 'defu'
 import { defineNuxtModule, addPlugin, extendViteConfig, createResolver } from '@nuxt/kit'
-import type { SupabaseClientOptions } from '@supabase/supabase-js'
 import { CookieOptions, RedirectOptions } from './runtime/types'
 
 export interface ModuleOptions {
@@ -33,26 +32,25 @@ export interface ModuleOptions {
   serviceKey: string
 
   /**
+   * Redirection automatically to login page if user is not authenticated
+   * @default `true`
+   * @type boolean
+   */
+  redirect?: boolean
+
+  /**
    * Redirection options
    * @default
    * {
       login: '/login',
       callback: '/confirm',
     }
-   * @type RedirectOptions | boolean
+   * @type RedirectOptions
    */
-  redirect?: RedirectOptions | boolean
+  redirectOptions?: RedirectOptions
 
   /**
-   * Supabase Client options
-   * @default {}
-   * @type object
-   * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
-   */
-  client?: SupabaseClientOptions<String>
-
-  /**
-   * Cookies options
+   * Cookie options
    * @default {
       name: 'sb',
       lifetime: 60 * 60 * 8,
@@ -60,9 +58,9 @@ export interface ModuleOptions {
       path: '/',
       sameSite: 'lax'
     }
-   * @type object
+   * @type CookieOptions
    */
-  cookies?: CookieOptions
+  cookieOptions?: CookieOptions
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -77,23 +75,16 @@ export default defineNuxtModule<ModuleOptions>({
     url: process.env.SUPABASE_URL as string,
     key: process.env.SUPABASE_KEY as string,
     serviceKey: process.env.SUPABASE_SERVICE_KEY as string,
-    client: {
-      auth: {
-        detectSessionInUrl: true,
-        persistSession: true,
-        autoRefreshToken: true,
-      },
-    },
-    redirect: {
+    redirect: true,
+    redirectOptions: {
       login: '/login',
       callback: '/confirm',
     },
-    cookies: {
+    cookieOptions: {
       name: 'sb',
-      lifetime: 60 * 60 * 8,
-      domain: '',
-      path: '/',
+      maxAge: 60 * 60 * 8,
       sameSite: 'lax',
+      secure: true,
     },
   },
   setup(options, nuxt) {
@@ -110,12 +101,13 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     // Public runtimeConfig
+    //@ts-ignore
     nuxt.options.runtimeConfig.public.supabase = defu(nuxt.options.runtimeConfig.public.supabase, {
       url: options.url,
       key: options.key,
-      client: options.client,
       redirect: options.redirect,
-      cookies: options.cookies,
+      redirectOptions: options.redirectOptions,
+      cookieOptions: options.cookieOptions,
     })
 
     // Private runtimeConfig
@@ -124,10 +116,10 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     // ensure callback and login URL are not using SSR
-    if (typeof options.redirect === 'object' && options.redirect.callback && options.redirect.login) {
+    if (options.redirect && options.redirectOptions.callback && options.redirectOptions.login) {
       const routeRules: { [key: string]: any } = {}
-      routeRules[options.redirect.callback] = { ssr: false }
-      routeRules[options.redirect.login] = { ssr: false }
+      routeRules[options.redirectOptions.callback] = { ssr: false }
+      routeRules[options.redirectOptions.login] = { ssr: false }
       nuxt.options.nitro = defu(nuxt.options.nitro, {
         routeRules,
       })
@@ -162,7 +154,7 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     nuxt.hook('prepare:types', options => {
-      options.references.push({ path: resolve(nuxt.options.buildDir, 'types/supabase.d.ts') })
+      options.references.push({ path: resolve(nuxt.options.buildDir, 'types/index.d.ts') })
     })
 
     // Transpile @supabase/go-true package only on client side
