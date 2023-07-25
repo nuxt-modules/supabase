@@ -1,15 +1,19 @@
 export default defineNuxtConfig({
-  modules: [
-    '../src/module'
-  ],
+  modules: ['../src/module'],
 
   supabase: {
     cookies: {
-      lifetime: 60 * 60 * 8 // 8 hours
+      lifetime: 60 * 60 * 8, // 8 hours
     },
     redirect: {
-      login: '/',
-      callback: '/confirm'
-    }
-  }
+      login: '/login',
+      callback: '/confirm',
+    },
+  },
+  // nitro: {
+  //   routeRules: {
+  //     '/login': { ssr: false },
+  //     '/confirm': { ssr: false },
+  //   },
+  // },
 })

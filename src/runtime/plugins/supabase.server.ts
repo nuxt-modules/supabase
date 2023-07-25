@@ -1,28 +1,29 @@
-import { useSupabaseUser } from '../composables/useSupabaseUser'
-import { useSupabaseAuthClient } from '../composables/useSupabaseAuthClient'
-import { useSupabaseToken } from '../composables/useSupabaseToken'
-import { redirectToLogin } from '../utils/redirect'
-import { defineNuxtPlugin, useRoute } from '#imports'
+import { createClient } from '@supabase/supabase-js'
 
-// Set subabase user on server side
-export default defineNuxtPlugin(async () => {
-  const user = useSupabaseUser()
-  const authClient = useSupabaseAuthClient()
-  const token = useSupabaseToken()
-  const route = useRoute()
+export default defineNuxtPlugin({
+  name: 'supabase',
+  enforce: 'pre', // or 'post'
+  async setup() {
+    // get supabase url and key from runtime config
+    const runtime = useRuntimeConfig()
+    const supabaseUrl = runtime.public.supabase.url
+    const supabaseKey = runtime.public.supabase.key
 
-  if (!token.value) {
-    return
-  }
+    const supabaseClient = createClient(supabaseUrl, supabaseKey, {
+      auth: {
+        flowType: 'pkce',
+        autoRefreshToken: false,
+        persistSession: false,
+        detectSessionInUrl: false,
+      },
+    })
 
-  const { data: { user: supabaseUser }, error } = await authClient.auth.getUser(token.value)
-
-  if (error) {
-    token.value = null
-    user.value = null
-
-    redirectToLogin(route.path)
-  } else {
-    user.value = supabaseUser
-  }
+    return {
+      provide: {
+        supabase: {
+          client: supabaseClient,
+        },
+      },
+    }
+  },
 })

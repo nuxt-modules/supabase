@@ -1,48 +1,42 @@
-import { AuthChangeEvent, Session } from '@supabase/supabase-js'
-import { useSupabaseAuthClient } from '../composables/useSupabaseAuthClient'
-import { useSupabaseUser } from '../composables/useSupabaseUser'
-import { useSupabaseToken } from '../composables/useSupabaseToken'
-import { defineNuxtPlugin } from '#imports'
+import { createClient, User } from '@supabase/supabase-js'
+import { defineNuxtPlugin, useState, useRuntimeConfig } from '#imports'
 
-export default defineNuxtPlugin(async (nuxtApp) => {
-  const user = useSupabaseUser()
-  const authClient = useSupabaseAuthClient()
+export default defineNuxtPlugin({
+  name: 'supabase',
+  enforce: 'pre',
+  async setup() {
+    // get supabase url and key from runtime config
+    const runtime = useRuntimeConfig()
+    const supabaseUrl = runtime.public.supabase.url
+    const supabaseKey = runtime.public.supabase.key
 
-  // If user has not been set on server side (for instance in SPA), set it for client
-  if (!user.value) {
-    const token = useSupabaseToken()
-    if (token.value) {
-      const { data: { user: supabaseUser }, error } = await authClient.auth.getUser(token.value)
+    const supabaseClient = createClient(supabaseUrl, supabaseKey, {
+      auth: {
+        flowType: 'pkce',
+        detectSessionInUrl: true,
+        persistSession: true,
+      },
+    })
 
-      if (error) {
-        token.value = null
-        user.value = null
-      } else {
-        user.value = supabaseUser
+    supabaseClient.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+        useState<User | null>('user', () => null).value = session?.user
+        useCookie('sb-access-token', { secure: true, sameSite: 'lax' }).value = session?.access_token
+        useCookie('sb-refresh-token', { secure: true, sameSite: 'lax' }).value = session?.access_token
       }
-    }
-  }
-
-  // Once Nuxt app is mounted
-  nuxtApp.hooks.hook('app:mounted', () => {
-    // Listen to Supabase auth changes
-    authClient.auth.onAuthStateChange(async (event: AuthChangeEvent, session: Session | null) => {
-      if (session) {
-        await setServerSession(event, session)
-        const userResponse = session ? await authClient.auth.getUser() : null
-        user.value = userResponse ? userResponse.data.user : null
-      } else {
-        // User must be unset before session
-        user.value = null
-        await setServerSession(event, session)
+      if (event === 'SIGNED_OUT') {
+        useState<User | null>('user', () => null).value = null
+        useCookie('sb-access-token', { secure: true, sameSite: 'lax' }).value = null
+        useCookie('sb-refresh-token', { secure: true, sameSite: 'lax' }).value = null
       }
     })
-  })
-})
 
-const setServerSession = (event: AuthChangeEvent, session: Session | null) => {
-  return $fetch('/api/_supabase/session', {
-    method: 'POST',
-    body: { event, session }
-  })
-}
+    return {
+      provide: {
+        supabase: {
+          client: supabaseClient,
+        },
+      },
+    }
+  },
+})

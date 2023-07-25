@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url'
 import { defu } from 'defu'
-import { defineNuxtModule, addPlugin, addServerHandler, extendViteConfig, createResolver, resolveModule, addTemplate } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, extendViteConfig, createResolver } from '@nuxt/kit'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
 import { CookieOptions, RedirectOptions } from './runtime/types'
 
@@ -66,8 +66,8 @@ export default defineNuxtModule<ModuleOptions>({
     name: '@nuxtjs/supabase',
     configKey: 'supabase',
     compatibility: {
-      nuxt: '^3.0.0-rc.8'
-    }
+      nuxt: '^3.0.0',
+    },
   },
   defaults: {
     url: process.env.SUPABASE_URL as string,
@@ -77,21 +77,23 @@ export default defineNuxtModule<ModuleOptions>({
       auth: {
         detectSessionInUrl: true,
         persistSession: true,
-        autoRefreshToken: true
-      }
+        autoRefreshToken: true,
+      },
     },
-    redirect: false,
+    redirect: {
+      login: '/login',
+      callback: '/confirm',
+    },
     cookies: {
       name: 'sb',
       lifetime: 60 * 60 * 8,
       domain: '',
       path: '/',
-      sameSite: 'lax'
-    }
+      sameSite: 'lax',
+    },
   },
-  setup (options, nuxt) {
+  setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
-    const resolveRuntimeModule = (path: string) => resolveModule(path, { paths: resolve('./runtime') })
 
     // Make sure url and key are set
     if (!options.url) {
@@ -109,69 +111,60 @@ export default defineNuxtModule<ModuleOptions>({
       key: options.key,
       client: options.client,
       redirect: options.redirect,
-      cookies: options.cookies
+      cookies: options.cookies,
     })
 
     // Private runtimeConfig
     nuxt.options.runtimeConfig.supabase = defu(nuxt.options.runtimeConfig.supabase, {
-      serviceKey: options.serviceKey
+      serviceKey: options.serviceKey,
     })
+
+    // ensure callback and login URL are not using SSR
+    if (typeof options.redirect === 'object' && options.redirect.callback && options.redirect.login) {
+      const routeRules: { [key: string]: any } = {}
+      routeRules[options.redirect.callback] = { ssr: false }
+      routeRules[options.redirect.login] = { ssr: false }
+      nuxt.options.nitro = defu(nuxt.options.nitro, {
+        routeRules,
+      })
+    }
 
     // Transpile runtime
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     nuxt.options.build.transpile.push(runtimeDir)
 
-    // Add supabase server plugin to load the user on server-side
+    // Add supabase plugins on server and client
     addPlugin(resolve(runtimeDir, 'plugins', 'supabase.server'))
     addPlugin(resolve(runtimeDir, 'plugins', 'supabase.client'))
 
-    // Add route middleware plugin for redirect
+    //Add route middleware plugin for redirect
     if (options.redirect) {
       addPlugin(resolve(runtimeDir, 'plugins', 'auth-redirect'))
     }
 
-    // Add supabase session endpoint to store the session on server-side
-    addServerHandler({
-      route: '/api/_supabase/session',
-      handler: resolve(runtimeDir, 'server/api/session')
-    })
-
     // Add supabase composables
-    nuxt.hook('imports:dirs', (dirs) => {
+    nuxt.hook('imports:dirs', dirs => {
       dirs.push(resolve(runtimeDir, 'composables'))
     })
 
-    nuxt.hook('nitro:config', (nitroConfig) => {
+    nuxt.hook('nitro:config', nitroConfig => {
       nitroConfig.alias = nitroConfig.alias || {}
 
       // Inline module runtime in Nitro bundle
       nitroConfig.externals = defu(typeof nitroConfig.externals === 'object' ? nitroConfig.externals : {}, {
-        inline: [resolve('./runtime')]
+        inline: [resolve('./runtime')],
       })
-      nitroConfig.alias['#supabase/server'] = resolveRuntimeModule('./server/services')
+      // nitroConfig.alias['#supabase/server'] = resolveRuntimeModule('./server/services')
     })
 
-    addTemplate({
-      filename: 'types/supabase.d.ts',
-      getContents: () => [
-        'declare module \'#supabase/server\' {',
-        `  const serverSupabaseClient: typeof import('${resolve('./runtime/server/services')}').serverSupabaseClient`,
-        `  const serverSupabaseServiceRole: typeof import('${resolve('./runtime/server/services')}').serverSupabaseServiceRole`,
-        `  const serverSupabaseUser: typeof import('${resolve('./runtime/server/services')}').serverSupabaseUser`,
-        '}'
-      ].join('\n')
-    })
-
-    nuxt.hook('prepare:types', (options) => {
+    nuxt.hook('prepare:types', options => {
       options.references.push({ path: resolve(nuxt.options.buildDir, 'types/supabase.d.ts') })
     })
 
     // Transpile @supabase/go-true package only on client side
     // TODO: Remove when packages fixed with valid ESM exports
     // https://github.com/nuxt-community/supabase-module/issues/54
-    nuxt.options.build.transpile.push(
-      ({ isServer }) => !isServer && '@supabase/gotrue-js'
-    )
+    nuxt.options.build.transpile.push(({ isServer }) => !isServer && '@supabase/gotrue-js')
 
     // Transpile websocket only for non dev environments (except cloudflare)
     if (!nuxt.options.dev && !['cloudflare'].includes(process.env.NITRO_PRESET as string)) {
@@ -181,7 +174,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Optimize @supabase/ packages for dev
     // TODO: Remove when packages fixed with valid ESM exports
     // https://github.com/supabase/gotrue/issues/1013
-    extendViteConfig((config) => {
+    extendViteConfig(config => {
       config.optimizeDeps = config.optimizeDeps || {}
       config.optimizeDeps.include = config.optimizeDeps.include || []
       config.optimizeDeps.exclude = config.optimizeDeps.exclude || []
@@ -191,8 +184,8 @@ export default defineNuxtModule<ModuleOptions>({
         '@supabase/postgrest-js',
         '@supabase/realtime-js',
         '@supabase/storage-js',
-        '@supabase/supabase-js'
+        '@supabase/supabase-js',
       )
     })
-  }
+  },
 })
