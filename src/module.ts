@@ -34,8 +34,12 @@ export interface ModuleOptions {
 
   /**
    * Redirection options
-   * @default false
-   * @type object | boolean
+   * @default
+   * {
+      login: '/login',
+      callback: '/confirm',
+    }
+   * @type RedirectOptions | boolean
    */
   redirect?: RedirectOptions | boolean
 
@@ -48,7 +52,7 @@ export interface ModuleOptions {
   client?: SupabaseClientOptions<String>
 
   /**
-   * Supabase Client options
+   * Cookies options
    * @default {
       name: 'sb',
       lifetime: 60 * 60 * 8,
