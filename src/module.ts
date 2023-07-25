@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url'
 import { defu } from 'defu'
-import { defineNuxtModule, addPlugin, extendViteConfig, createResolver } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, extendViteConfig, createResolver, addTemplate, resolveModule } from '@nuxt/kit'
 import { CookieOptions, RedirectOptions } from './runtime/types'
 
 export interface ModuleOptions {
@@ -87,6 +87,7 @@ export default defineNuxtModule<ModuleOptions>({
   },
   setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
+    const resolveRuntimeModule = (path: string) => resolveModule(path, { paths: resolve('./runtime') })
 
     // Make sure url and key are set
     if (!options.url) {
@@ -148,11 +149,24 @@ export default defineNuxtModule<ModuleOptions>({
       nitroConfig.externals = defu(typeof nitroConfig.externals === 'object' ? nitroConfig.externals : {}, {
         inline: [resolve('./runtime')],
       })
-      // nitroConfig.alias['#supabase/server'] = resolveRuntimeModule('./server/services')
+      nitroConfig.alias['#supabase/server'] = resolveRuntimeModule('./server/services')
+    })
+
+    addTemplate({
+      filename: 'types/supabase.d.ts',
+      getContents: () =>
+        [
+          "declare module '#supabase/server' {",
+          `  const serverSupabaseClient: typeof import('${resolve('./runtime/server/services')}').serverSupabaseClient`,
+          `  const serverSupabaseServiceRole: typeof import('${resolve(
+            './runtime/server/services',
+          )}').serverSupabaseServiceRole`,
+          '}',
+        ].join('\n'),
     })
 
     nuxt.hook('prepare:types', options => {
-      options.references.push({ path: resolve(nuxt.options.buildDir, 'types/index.d.ts') })
+      options.references.push({ path: resolve(nuxt.options.buildDir, 'types/supabase.d.ts') })
     })
 
     // Transpile @supabase/go-true package only on client side

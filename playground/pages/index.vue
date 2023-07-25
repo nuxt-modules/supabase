@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const supabase = useSupabaseClient()
 const { data } = await supabase.from('test').select('*')
+
+const { data: api } = await useFetch('/api/test')
 </script>
 <template>
   <div
@@ -14,6 +16,9 @@ const { data } = await supabase.from('test').select('*')
     "
   >
     <h1>Home</h1>
+    <div>Data fetched from setup SSR (server and client)</div>
     <pre>{{ data }}</pre>
+    <div>Data fetched from API</div>
+    <pre>{{ api }}</pre>
   </div>
 </template>
