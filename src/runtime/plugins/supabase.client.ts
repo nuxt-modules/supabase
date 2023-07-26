@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
-import { defineNuxtPlugin, useRuntimeConfig } from '#imports'
+import { defineNuxtPlugin, useRuntimeConfig, useCookie } from '#imports'
 import { CookieOptions } from '../types'
 
 export default defineNuxtPlugin({
