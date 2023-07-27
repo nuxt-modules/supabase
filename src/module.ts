@@ -114,11 +114,12 @@ export default defineNuxtModule<ModuleOptions>({
       serviceKey: options.serviceKey,
     })
 
-    // ensure callback and login URL are not using SSR
-    if (options.redirect && options.redirectOptions.callback && options.redirectOptions.login) {
+    // ensure callback URL is not using SSR
+    if (options.redirect && options.redirectOptions.callback) {
+      // && options.redirectOptions.login) {
       const routeRules: { [key: string]: any } = {}
       routeRules[options.redirectOptions.callback] = { ssr: false }
-      routeRules[options.redirectOptions.login] = { ssr: false }
+      //routeRules[options.redirectOptions.login] = { ssr: false }
       nuxt.options.nitro = defu(nuxt.options.nitro, {
         routeRules,
       })
