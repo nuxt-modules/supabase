@@ -1,5 +1,5 @@
 import { useSupabaseUser } from '../composables/useSupabaseUser'
-import { defineNuxtPlugin, addRouteMiddleware, useRuntimeConfig } from '#imports'
+import { defineNuxtPlugin, addRouteMiddleware, useRuntimeConfig, navigateTo } from '#imports'
 
 export default defineNuxtPlugin(() => {
   addRouteMiddleware(

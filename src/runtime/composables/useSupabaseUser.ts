@@ -1,6 +1,7 @@
 import { User } from '@supabase/supabase-js'
 import { CookieOptions } from '../types'
 import { useCookie, useRuntimeConfig } from '#imports'
+import { useSupabaseClient } from '../composables/useSupabaseClient'
 
 export const useSupabaseUser = async (): Promise<User> => {
   const supabase = useSupabaseClient()
