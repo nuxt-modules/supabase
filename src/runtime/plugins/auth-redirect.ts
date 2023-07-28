@@ -7,7 +7,9 @@ export default defineNuxtPlugin({
     addRouteMiddleware(
       'global-auth',
       defineNuxtRouteMiddleware(async to => {
-        if (to.path === '/login' || to.path === '/confirm') return
+        const config = useRuntimeConfig().public.supabase
+        const { login, callback } = config.redirectOptions
+        if (to.path === login || to.path === callback) return
         const user = await useSupabaseUser()
         if (!user) {
           console.log('no user, redirecting to login')
