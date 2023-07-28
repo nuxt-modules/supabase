@@ -7,11 +7,10 @@ export default defineNuxtPlugin({
   enforce: 'pre',
   async setup() {
     // get supabase url and key from runtime config
-    const runtime = useRuntimeConfig()
-    const supabaseUrl = runtime.public.supabase.url
-    const supabaseKey = runtime.public.supabase.key
+    const config = useRuntimeConfig().public.supabase
+    const { url, key } = config
 
-    const supabaseClient = createClient(supabaseUrl, supabaseKey, {
+    const supabaseClient = createClient(url, key, {
       auth: {
         flowType: 'pkce',
         detectSessionInUrl: true,
@@ -21,7 +20,7 @@ export default defineNuxtPlugin({
 
     supabaseClient.auth.onAuthStateChange((event, session) => {
       if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
-        const { name, sameSite, ...options } = runtime.public.supabase.cookieOptions
+        const { name, sameSite, ...options } = config.cookieOptions
         const cookieOptions: CookieOptions = {
           ...options,
           sameSite: sameSite as boolean | 'lax' | 'strict' | 'none',
@@ -30,7 +29,7 @@ export default defineNuxtPlugin({
         useCookie(`${name}-refresh-token`, cookieOptions).value = session?.access_token
       }
       if (event === 'SIGNED_OUT') {
-        const { name, sameSite, ...options } = runtime.public.supabase.cookieOptions
+        const { name, sameSite, ...options } = config.cookieOptions
         const cookieOptions: CookieOptions = {
           ...options,
           sameSite: sameSite as boolean | 'lax' | 'strict' | 'none',
