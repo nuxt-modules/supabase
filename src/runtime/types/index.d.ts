@@ -29,6 +29,6 @@ export type SupabaseAuthProvider =
   | 'auth0'
 
 export interface RedirectOptions {
-  login: Test
+  login: string
   callback: string
 }
