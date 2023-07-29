@@ -1,7 +1,9 @@
 import { fileURLToPath } from 'url'
 import { defu } from 'defu'
-import { defineNuxtModule, addPlugin, extendViteConfig, createResolver, addTemplate, resolveModule } from '@nuxt/kit'
-import { CookieOptions, RedirectOptions } from './runtime/types'
+import { defineNuxtModule, addPlugin, createResolver, addTemplate, resolveModule } from '@nuxt/kit'
+import { CookieOptions } from 'nuxt/app'
+import { RedirectOptions } from './runtime/types'
+import { SupabaseClientOptions } from '@supabase/supabase-js'
 
 export interface ModuleOptions {
   /**
@@ -50,15 +52,35 @@ export interface ModuleOptions {
   redirectOptions?: RedirectOptions
 
   /**
+   * Cookie name
+   * @default 'sb'
+   * @type string
+   */
+  cookieName?: string
+
+  /**
    * Cookie options
    * @default {
-      name: 'sb',
       lifetime: 60 * 60 * 8,
       sameSite: 'lax'
     }
    * @type CookieOptions
    */
   cookieOptions?: CookieOptions
+
+  /**
+   * Supabase Client options
+   * @default {
+      auth: {
+        flowType: 'pkce',
+        detectSessionInUrl: true,
+        persistSession: true,
+      },
+    }
+   * @type object
+   * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
+   */
+  clientOptions?: SupabaseClientOptions<String>
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -78,12 +100,19 @@ export default defineNuxtModule<ModuleOptions>({
       login: '/login',
       callback: '/confirm',
     },
+    cookieName: 'sb',
     cookieOptions: {
-      name: 'sb',
       maxAge: 60 * 60 * 8,
       sameSite: 'lax',
       secure: true,
-    },
+    } as CookieOptions,
+    clientOptions: {
+      auth: {
+        flowType: 'pkce',
+        detectSessionInUrl: true,
+        persistSession: true,
+      },
+    } as SupabaseClientOptions<string>,
   },
   setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
@@ -100,13 +129,14 @@ export default defineNuxtModule<ModuleOptions>({
     }
 
     // Public runtimeConfig
-    //@ts-ignore
     nuxt.options.runtimeConfig.public.supabase = defu(nuxt.options.runtimeConfig.public.supabase, {
       url: options.url,
       key: options.key,
       redirect: options.redirect,
       redirectOptions: options.redirectOptions,
+      cookieName: options.cookieName,
       cookieOptions: options.cookieOptions,
+      clientOptions: options.clientOptions,
     })
 
     // Private runtimeConfig
@@ -170,31 +200,9 @@ export default defineNuxtModule<ModuleOptions>({
       options.references.push({ path: resolve(nuxt.options.buildDir, 'types/supabase.d.ts') })
     })
 
-    // Transpile @supabase/go-true package only on client side
-    // TODO: Remove when packages fixed with valid ESM exports
-    // https://github.com/nuxt-community/supabase-module/issues/54
-    nuxt.options.build.transpile.push(({ isServer }) => !isServer && '@supabase/gotrue-js')
-
     // Transpile websocket only for non dev environments (except cloudflare)
     if (!nuxt.options.dev && !['cloudflare'].includes(process.env.NITRO_PRESET as string)) {
       nuxt.options.build.transpile.push('websocket')
     }
-
-    // Optimize @supabase/ packages for dev
-    // TODO: Remove when packages fixed with valid ESM exports
-    // https://github.com/supabase/gotrue/issues/1013
-    extendViteConfig(config => {
-      config.optimizeDeps = config.optimizeDeps || {}
-      config.optimizeDeps.include = config.optimizeDeps.include || []
-      config.optimizeDeps.exclude = config.optimizeDeps.exclude || []
-      config.optimizeDeps.include.push(
-        '@supabase/functions-js',
-        '@supabase/gotrue-js',
-        '@supabase/postgrest-js',
-        '@supabase/realtime-js',
-        '@supabase/storage-js',
-        '@supabase/supabase-js',
-      )
-    })
   },
 })

@@ -6,7 +6,7 @@ import { useRuntimeConfig } from '#imports'
 export const serverSupabaseClient = async <T>(event: H3Event): Promise<SupabaseClient<T>> => {
   // get settings from runtime config
   const {
-    supabase: { url, key, cookieOptions },
+    supabase: { url, key, cookieName },
   } = useRuntimeConfig().public
 
   let supabaseClient = event.context._supabaseClient as SupabaseClient<T>
@@ -27,8 +27,8 @@ export const serverSupabaseClient = async <T>(event: H3Event): Promise<SupabaseC
   const { data } = await supabaseClient.auth.getSession()
   if (data?.session?.user?.aud !== 'authenticated') {
     // create a session from cookies
-    const accessToken = getCookie(event, `${cookieOptions.name}-access-token`)
-    const refreshToken = getCookie(event, `${cookieOptions.name}-refresh-token`)
+    const accessToken = getCookie(event, `${cookieName}-access-token`)
+    const refreshToken = getCookie(event, `${cookieName}-refresh-token`)
 
     // No need to create client if no tokens are present
     if (!accessToken || !refreshToken) return null

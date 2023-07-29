@@ -6,12 +6,11 @@ export default defineNuxtPlugin({
   enforce: 'pre',
   async setup() {
     // get supabase url and key from runtime config
-    const config = useRuntimeConfig().public.supabase
-    const { url, key } = config
+    const { url, key, clientOptions } = useRuntimeConfig().public.supabase
 
     const supabaseClient = createClient(url, key, {
       auth: {
-        flowType: 'pkce',
+        flowType: clientOptions.auth.flowType,
         autoRefreshToken: false,
         persistSession: false,
         detectSessionInUrl: false,
