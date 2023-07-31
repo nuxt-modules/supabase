@@ -28,7 +28,7 @@ const signOut = async () => {
         gap: 20px;
       "
     >
-      {{ user.user_metadata.name }}
+      {{ user.user_metadata.name || user.user_metadata.user_name || user.email }}
       <button @click="signOut">Sign Out</button>
       <NuxtLink to="/">Go to home page, test if session persists on navigation</NuxtLink>
     </div>
