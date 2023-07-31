@@ -3,10 +3,20 @@ export default defineNuxtConfig({
 
   supabase: {
     // cookieOptions: {
-    //   name: 'stefan',
+    //   name: 'test',
     //   maxAge: 60 * 60,
     //   sameSite: 'strict',
     //   secure: false,
+    // },
+    // clientOptions: {
+    //   auth: {
+    //     flowType: 'implicit',
+    //   },
+    // },
+    // redirect: true,
+    // redirectOptions: {
+    //   login: '/login',
+    //   callback: '/confirm',
     // },
   },
 })
