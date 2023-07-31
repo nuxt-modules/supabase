@@ -5,8 +5,8 @@ dependencies:
     specifier: ^3.6.1
     version: 3.6.1(rollup@3.26.0)
   '@supabase/supabase-js':
-    specifier: 2.26.0
-    version: 2.26.0
+    specifier: 2.31.0
+    version: 2.31.0
   defu:
     specifier: ^6.1.2
     version: 6.1.2
@@ -1370,8 +1370,8 @@ packages:
       - encoding
     dev: false
 
-  /@supabase/gotrue-js@2.38.0:
-    resolution: {integrity: sha512-iitNthPLQjAD73FtnUNUalwPFpsiiE7t/0mVw14b+3rqzr52Efri8gAjzT9hi7p35uOLA76HMY3aWJj6Gy7ozw==}
+  /@supabase/gotrue-js@2.46.1:
+    resolution: {integrity: sha512-tebFX3XvPqEJKHOVgkXTN20g9iUhLx6tebIYQvTggYTrqOT2af8oTpSBdgYzbwJ291G6P6CSpR6KY0cT9ade5A==}
     dependencies:
       cross-fetch: 3.1.8
     transitivePeerDependencies:
@@ -1404,11 +1404,11 @@ packages:
       - encoding
     dev: false
 
-  /@supabase/supabase-js@2.26.0:
-    resolution: {integrity: sha512-RXmTPTobaYAwkSobadHZmEVLmzX3SGrtRZIGfLWnLv92VzBRrjuXn0a+bJqKl50GUzsyqPA+j5pod7EwMkcH5A==}
+  /@supabase/supabase-js@2.31.0:
+    resolution: {integrity: sha512-W9/4s+KnSUX67wJKBn/3yLq+ieycnMzVjK3nNTLX5Wko3ypNT/081l2iFYrf+nsLQ1CiT4mA92I3dxCy6CmxTg==}
     dependencies:
       '@supabase/functions-js': 2.1.2
-      '@supabase/gotrue-js': 2.38.0
+      '@supabase/gotrue-js': 2.46.1
       '@supabase/postgrest-js': 1.7.1
       '@supabase/realtime-js': 2.7.3
       '@supabase/storage-js': 2.5.1
