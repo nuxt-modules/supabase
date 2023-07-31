@@ -34,14 +34,14 @@ export interface ModuleOptions {
   serviceKey: string
 
   /**
-   * Redirection automatically to login page if user is not authenticated
+   * Redirect automatically to login page if user is not authenticated
    * @default `true`
    * @type boolean
    */
   redirect?: boolean
 
   /**
-   * Redirection options
+   * Redirection options, set routes for login and callback redirect
    * @default
    * {
       login: '/login',
@@ -52,7 +52,7 @@ export interface ModuleOptions {
   redirectOptions?: RedirectOptions
 
   /**
-   * Cookie name
+   * Cookie name, used for storing access and refresh tokens, added in front of `-access-token` and `-refresh-token` to form the full cookie name e.g. `sb-access-token`
    * @default 'sb'
    * @type string
    */
@@ -62,9 +62,11 @@ export interface ModuleOptions {
    * Cookie options
    * @default {
       lifetime: 60 * 60 * 8,
-      sameSite: 'lax'
+      sameSite: 'lax',
+      secure: true,
     }
    * @type CookieOptions
+   * @docs https://nuxt.com/docs/api/composables/use-cookie#options
    */
   cookieOptions?: CookieOptions
 
@@ -80,7 +82,7 @@ export interface ModuleOptions {
    * @type object
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
-  clientOptions?: SupabaseClientOptions<String>
+  clientOptions?: SupabaseClientOptions<string>
 }
 
 export default defineNuxtModule<ModuleOptions>({
