@@ -12,7 +12,7 @@ const signOut = async () => {
   const { error } = await supabase.auth.signOut()
   if (error) console.log(error)
   //refresh the page to get the user object
-  router.push('/login')
+  router.go(0)
 }
 </script>
 <template>
@@ -30,7 +30,7 @@ const signOut = async () => {
     >
       {{ user.user_metadata.name || user.user_metadata.user_name || user.email }}
       <button @click="signOut">Sign Out</button>
-      <NuxtLink to="/">Go to home page, test if session persists on navigation</NuxtLink>
+      <NuxtLink to="/">Go to home page</NuxtLink>
     </div>
     <div v-else>No User - Should not occur due to auth redirect</div>
   </div>

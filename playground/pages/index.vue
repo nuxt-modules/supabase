@@ -1,8 +1,16 @@
 <script setup lang="ts">
 const supabase = useSupabaseClient()
+const router = useRouter()
 const { data } = await supabase.from('test').select('*')
 
 const { data: api } = await useFetch('/api/test')
+
+const signOut = async () => {
+  const { error } = await supabase.auth.signOut()
+  if (error) console.log(error)
+  //refresh the page to get the user object
+  router.go(0)
+}
 </script>
 <template>
   <div
@@ -20,5 +28,7 @@ const { data: api } = await useFetch('/api/test')
     <pre>{{ data }}</pre>
     <div>Data fetched from API</div>
     <pre>{{ api }}</pre>
+    <NuxtLink to="/user">Go to user page</NuxtLink>
+    <button @click="signOut">Sign Out</button>
   </div>
 </template>
