@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useSupabaseClient, useSupabaseUser } from '#imports'
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 const router = useRouter()

@@ -13,8 +13,8 @@ export default defineNuxtPlugin({
 
     // Handle auth event client side
     supabaseClient.auth.onAuthStateChange(async (event, session) => {
-      if (session?.user) {
-        user.value = session?.user
+      if (session) {
+        user.value = session.user
       }
 
       if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
