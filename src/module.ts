@@ -46,7 +46,7 @@ export interface ModuleOptions {
    * {
       login: '/login',
       callback: '/confirm',
-      exclude: [/public/],
+      exclude: ['/public/'],
     }
    * @type RedirectOptions
    */
