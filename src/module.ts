@@ -113,6 +113,7 @@ export default defineNuxtModule<ModuleOptions>({
         flowType: 'pkce',
         detectSessionInUrl: true,
         persistSession: true,
+        autoRefreshToken: true
       },
     } as SupabaseClientOptions<string>,
   },
@@ -162,8 +163,8 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.build.transpile.push(runtimeDir)
 
     // Add supabase plugins on server and client
-    addPlugin(resolve(runtimeDir, 'plugins', 'supabase.server'))
     addPlugin(resolve(runtimeDir, 'plugins', 'supabase.client'))
+    addPlugin(resolve(runtimeDir, 'plugins', 'supabase.server'))
 
     //Add route middleware plugin for redirect
     if (options.redirect) {
@@ -191,10 +192,9 @@ export default defineNuxtModule<ModuleOptions>({
         [
           "declare module '#supabase/server' {",
           `  const serverSupabaseClient: typeof import('${resolve('./runtime/server/services')}').serverSupabaseClient`,
-          `  const serverSupabaseServiceRole: typeof import('${resolve(
-            './runtime/server/services',
-          )}').serverSupabaseServiceRole`,
-          '}',
+          `  const serverSupabaseServiceRole: typeof import('${resolve('./runtime/server/services')}').serverSupabaseServiceRole`,
+          `  const serverSupabaseUser: typeof import('${resolve('./runtime/server/services')}').serverSupabaseUser`,
+          '}'
         ].join('\n'),
     })
 

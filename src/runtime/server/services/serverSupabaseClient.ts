@@ -30,8 +30,7 @@ export const serverSupabaseClient = async <T>(event: H3Event): Promise<SupabaseC
     const accessToken = getCookie(event, `${cookieName}-access-token`)
     const refreshToken = getCookie(event, `${cookieName}-refresh-token`)
 
-    // No need to create client if no tokens are present
-    if (!accessToken || !refreshToken) return null
+    if (!accessToken || !refreshToken) return supabaseClient
 
     // Set session from cookies
     await supabaseClient.auth.setSession({

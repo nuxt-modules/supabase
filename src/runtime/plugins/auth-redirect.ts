@@ -10,9 +10,8 @@ export default defineNuxtPlugin({
         const config = useRuntimeConfig().public.supabase
         const { login, callback } = config.redirectOptions
         if (to.path === login || to.path === callback) return
-        const user = await useSupabaseUser()
-        if (!user) {
-          console.log('no user, redirecting to login')
+        const user = useSupabaseUser()
+        if (!user.value) {
           const loginUrl = useRuntimeConfig().public.supabase.redirectOptions.login
           return navigateTo(loginUrl)
         }

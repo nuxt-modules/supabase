@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { useSupabaseClient, useSupabaseUser } from '#imports'
 const supabase = useSupabaseClient()
-const user = await useSupabaseUser()
+const user = useSupabaseUser()
 const router = useRouter()
 if (process.server) {
-  console.log('User on server side: ', user)
+  console.log('User on server side: ', user.value)
 } else {
-  console.log('User on client side: ', user)
+  console.log('User on client side: ', user.value)
 }
 const signOut = async () => {
   const { error } = await supabase.auth.signOut()
