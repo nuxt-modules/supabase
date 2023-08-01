@@ -35,7 +35,7 @@
     "@nuxt/module-builder": "^0.4.0",
     "@nuxt/schema": "^3.6.5",
     "@types/node": "^20.4.5",
-    "eslint": "^8.45.0",
+    "eslint": "^8.46.0",
     "nuxt": "^3.6.5",
     "prettier": "^3.0.0",
     "release-it": "^16.1.3",
