@@ -10,6 +10,37 @@ This composable is using [supabase-js](https://github.com/supabase/supabase-js/)
 
 > The client is initialized with the `SUPABASE_KEY` you must have in your `.env` file. It establishes the connection with the database and make use of user JWT to apply [RLS Policies](https://supabase.com/docs/learn/auth-deep-dive/auth-row-level-security) implemented in Supabase. If you want to bypass policies, you can use the [serverSupabaseServiceRole](/usage/services/serversupabaseservicerole).
 
+## Authentication
+
+The useSupabaseClient composable is providing all methods to manage authorization under `useSupabaseClient().auth`. For more details please see the [supabase-js auth documentation](https://supabase.com/docs/reference/javascript/auth-api). Here is an example for signing in and out:
+
+::alert{}
+If you want a full explanation on how to handle the authentication process, please read this [section](/get-started#handle-authentication).
+::
+
+```ts
+<script setup lang="ts">
+const supabase = useSupabaseClient()
+
+const signInWithOAuth = async () => {
+  const { error } = await supabase.auth.signInWithOAuth({
+    provider: 'github',
+    options: {
+      redirectTo: 'http://localhost:3000/confirm',
+    },
+  })
+  if (error) console.log(error)
+}
+
+const signOut = async () => {
+  const { error } = await supabase.auth.signOut()
+  if (error) console.log(error)
+}
+</script>
+```
+
+Please also take a look at [Get Started](/get-started) for the authorization flow.
+
 ## Database Request
 
 Please check [Supabase](https://supabase.com/docs/reference/javascript/select) documentation to fully use the power of Supabase client.
