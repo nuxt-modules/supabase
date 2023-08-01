@@ -46,6 +46,7 @@ export interface ModuleOptions {
    * {
       login: '/login',
       callback: '/confirm',
+      exclude: [/public/],
     }
    * @type RedirectOptions
    */
@@ -101,6 +102,7 @@ export default defineNuxtModule<ModuleOptions>({
     redirectOptions: {
       login: '/login',
       callback: '/confirm',
+      exclude: ['/public/'],
     },
     cookieName: 'sb',
     cookieOptions: {
@@ -113,7 +115,7 @@ export default defineNuxtModule<ModuleOptions>({
         flowType: 'pkce',
         detectSessionInUrl: true,
         persistSession: true,
-        autoRefreshToken: true
+        autoRefreshToken: true,
       },
     } as SupabaseClientOptions<string>,
   },
@@ -192,9 +194,11 @@ export default defineNuxtModule<ModuleOptions>({
         [
           "declare module '#supabase/server' {",
           `  const serverSupabaseClient: typeof import('${resolve('./runtime/server/services')}').serverSupabaseClient`,
-          `  const serverSupabaseServiceRole: typeof import('${resolve('./runtime/server/services')}').serverSupabaseServiceRole`,
+          `  const serverSupabaseServiceRole: typeof import('${resolve(
+            './runtime/server/services',
+          )}').serverSupabaseServiceRole`,
           `  const serverSupabaseUser: typeof import('${resolve('./runtime/server/services')}').serverSupabaseUser`,
-          '}'
+          '}',
         ].join('\n'),
     })
 
