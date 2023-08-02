@@ -11,11 +11,16 @@ export default defineAppConfig({
         label: 'Nuxt',
         icon: 'simple-icons:nuxtdotjs',
         href: 'https://nuxt.com'
+      },
+      supabase: {
+        label: 'Nuxt',
+        icon: 'simple-icons:supabase',
+        href: 'https://supabase.com'
       }
     },
 
     github: {
-      dir: '.starters/default/content',
+      dir: 'docs',
       branch: 'main',
       repo: 'supabase',
       owner: 'nuxt-modules',
@@ -30,21 +35,19 @@ export default defineAppConfig({
 
     main: {
       padded: true,
-      fluid: true
     },
 
     header: {
       logo: false,
       showLinkIcon: true,
       exclude: [],
-      fluid: true,
       title: 'Nuxt Supabase'
     },
 
     footer: {
       credits: {
         text: 'Built with Nuxt Studio',
-        icon: 'none',
+        icon: false,
         href: 'https://nuxt.studio'
       }
     },
