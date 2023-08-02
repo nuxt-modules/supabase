@@ -46,8 +46,8 @@ export default defineAppConfig({
 
     footer: {
       credits: {
-        text: 'Built with Nuxt Studio',
-        icon: false,
+        text: 'Made with Nuxt Studio',
+        icon: 'simple-icons:nuxtdotjs',
         href: 'https://nuxt.studio'
       }
     },

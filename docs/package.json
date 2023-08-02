@@ -10,13 +10,13 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@nuxt-themes/docus": "^1.13.1",
-    "@nuxt/devtools": "^0.6.7",
+    "@nuxt-themes/docus": "^1.14.6",
+    "@nuxt/devtools": "^0.7.4",
     "@nuxt/eslint-config": "^0.1.1",
     "@nuxtjs/plausible": "^0.2.1",
     "@nuxtlabs/github-module": "^1.6.3",
-    "@types/node": "^20.4.0",
-    "eslint": "^8.44.0",
-    "nuxt": "^3.6.2"
+    "@types/node": "^20.4.5",
+    "eslint": "^8.46.0",
+    "nuxt": "^3.6.5"
   }
 }
