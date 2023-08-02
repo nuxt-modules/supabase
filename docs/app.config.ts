@@ -38,7 +38,7 @@ export default defineAppConfig({
     },
 
     header: {
-      logo: false,
+      logo: true,
       showLinkIcon: true,
       exclude: [],
       title: 'Nuxt Supabase'
