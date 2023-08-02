@@ -26,7 +26,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     defaults:
       run:
-        working-directory: docs-v2
+        working-directory: docs
 
     strategy:
       matrix:
@@ -40,7 +40,7 @@ jobs:
       - name: Identify package manager
         id: pkgman
         run: |
-          cache=`[ -f "docs-v2/pnpm-lock.yaml" ] && echo "pnpm" || ([ -f "docs-v2/package-lock.json" ] && echo "npm" || ([ -f "docs-v2/yarn.lock" ] && echo "yarn" || echo ""))`
+          cache=`[ -f "docs/pnpm-lock.yaml" ] && echo "pnpm" || ([ -f "docs/package-lock.json" ] && echo "npm" || ([ -f "docs/yarn.lock" ] && echo "yarn" || echo ""))`
           package_manager=`[ ! -z "$cache" ] && echo "$cache" || echo "pnpm"`
           echo "cache=$cache" >> $GITHUB_OUTPUT
           echo "package_manager=$package_manager" >> $GITHUB_OUTPUT
@@ -79,4 +79,4 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: docs-v2/.output/public
+          folder: docs/.output/public
