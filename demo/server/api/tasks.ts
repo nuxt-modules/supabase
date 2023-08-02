@@ -4,7 +4,7 @@ import { serverSupabaseUser, serverSupabaseClient } from '#supabase/server'
 
 export default defineEventHandler(async (event) => {
   const user = await serverSupabaseUser(event)
-  const client = serverSupabaseClient<Database>(event)
+  const client = await serverSupabaseClient<Database>(event)
 
   const { data, error } = await client.from('tasks').select('id, title, completed').eq('user', user.id).order('created_at')
   if (error) {
