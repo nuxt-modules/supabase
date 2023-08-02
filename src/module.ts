@@ -62,7 +62,7 @@ export interface ModuleOptions {
   /**
    * Cookie options
    * @default {
-      lifetime: 60 * 60 * 8,
+      maxAge: 60 * 60 * 8,
       sameSite: 'lax',
       secure: true,
     }
