@@ -46,7 +46,7 @@ export interface ModuleOptions {
    * {
       login: '/login',
       callback: '/confirm',
-      exclude: ['/public/'],
+      exclude: [],
     }
    * @type RedirectOptions
    */
@@ -102,7 +102,7 @@ export default defineNuxtModule<ModuleOptions>({
     redirectOptions: {
       login: '/login',
       callback: '/confirm',
-      exclude: ['/public/'],
+      exclude: [],
     },
     cookieName: 'sb',
     cookieOptions: {
