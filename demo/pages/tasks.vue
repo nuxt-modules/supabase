@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { Database } from '~~/types/database.types'
 
-definePageMeta({
-  middleware: 'auth'
-})
-
 const client = useSupabaseClient<Database>()
 const user = useSupabaseUser()
 

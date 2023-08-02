@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const user = useSupabaseUser()
-const { auth } = useSupabaseAuthClient()
+const { auth } = useSupabaseClient()
+
+const redirectTo = `${useRuntimeConfig().public.baseUrl}/confirm`
 
 watchEffect(() => {
   if (user.value) {
@@ -21,7 +23,7 @@ watchEffect(() => {
         block
         label="Github"
         variant="black"
-        @click="auth.signInWithOAuth({ provider: 'github' })"
+        @click="auth.signInWithOAuth({ provider: 'github', options: { redirectTo } })"
       />
     </LoginCard>
   </div>
