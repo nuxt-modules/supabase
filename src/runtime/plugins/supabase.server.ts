@@ -1,28 +1,42 @@
+import { defineNuxtPlugin, useRuntimeConfig, useCookie } from '#imports'
+import { defu } from 'defu'
+import { createClient } from '@supabase/supabase-js'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
-import { useSupabaseAuthClient } from '../composables/useSupabaseAuthClient'
-import { useSupabaseToken } from '../composables/useSupabaseToken'
-import { redirectToLogin } from '../utils/redirect'
-import { defineNuxtPlugin, useRoute } from '#imports'
 
-// Set subabase user on server side
-export default defineNuxtPlugin(async () => {
-  const user = useSupabaseUser()
-  const authClient = useSupabaseAuthClient()
-  const token = useSupabaseToken()
-  const route = useRoute()
+export default defineNuxtPlugin({
+  name: 'supabase',
+  enforce: 'pre',
+  async setup() {
+    const { url, key, cookieName, clientOptions} = useRuntimeConfig().public.supabase
+    const accessToken = useCookie(`${cookieName}-access-token`).value
+    const refreshToken = useCookie(`${cookieName}-refresh-token`).value
 
-  if (!token.value) {
-    return
-  }
+    const options = defu({ auth:  {
+      flowType: clientOptions.auth.flowType,
+      detectSessionInUrl: false,
+      persistSession: false,
+      autoRefreshToken: false
+    } }, clientOptions)
 
-  const { data: { user: supabaseUser }, error } = await authClient.auth.getUser(token.value)
+    const supabaseClient = createClient(url, key, options)
 
-  if (error) {
-    token.value = null
-    user.value = null
+    // Set user & session server side
+    if (accessToken && refreshToken) {
+      const { data } = await supabaseClient.auth.setSession({
+        refresh_token: refreshToken,
+        access_token: accessToken,
+      })
+      if (data?.user) {
+        useSupabaseUser().value = data.user
+      }
+    }
 
-    redirectToLogin(route.path)
-  } else {
-    user.value = supabaseUser
-  }
+    return {
+      provide: {
+        supabase: {
+          client: supabaseClient
+        },
+      },
+    }
+  },
 })

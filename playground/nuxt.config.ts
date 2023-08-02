@@ -1,15 +1,23 @@
 export default defineNuxtConfig({
-  modules: [
-    '../src/module'
-  ],
+  modules: ['../src/module'],
 
   supabase: {
-    cookies: {
-      lifetime: 60 * 60 * 8 // 8 hours
+    // cookieOptions: {
+    //   name: 'test',
+    //   maxAge: 60 * 60,
+    //   sameSite: 'strict',
+    //   secure: false,
+    // },
+    // clientOptions: {
+    //   auth: {
+    //     flowType: 'implicit',
+    //   },
+    // },
+    // redirect: true,
+    redirectOptions: {
+      login: '/login',
+      callback: '/confirm',
+      exclude: ['/unprotected', '/public/*']
     },
-    redirect: {
-      login: '/',
-      callback: '/confirm'
-    }
-  }
+  },
 })
