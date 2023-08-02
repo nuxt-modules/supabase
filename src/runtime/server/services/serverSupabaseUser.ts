@@ -3,13 +3,12 @@ import type { H3Event } from 'h3'
 import { serverSupabaseClient } from '../services/serverSupabaseClient'
 
 export const serverSupabaseUser = async (event: H3Event): Promise<User | null> => {
-  const client = serverSupabaseClient(event)
+  const client = await serverSupabaseClient(event)
 
-  if (!event.context._token) {
-    return null
+  const { data: { user: supabaseUser }, error } = await client.auth.getUser()
+  if (error) {
+    throw createError({ statusMessage: error.message })
   }
-
-  const { data: { user: supabaseUser }, error } = await client.auth.getUser(event.context._token)
 
   event.context._user = error ? null : supabaseUser
 

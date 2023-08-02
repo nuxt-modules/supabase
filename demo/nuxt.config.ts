@@ -7,10 +7,21 @@ export default defineNuxtConfig({
     // https://github.com/nuxt-modules/color-mode
     '@nuxtjs/color-mode'
   ],
+  runtimeConfig: {
+    public: {
+      baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+    },
+  },
   ui: {
     colors: {
       primary: 'green'
     },
     icons: ['mdi', 'heroicons', 'heroicons-outline']
+  },
+  supabase: {
+    redirectOptions: {
+      login: '/',
+      callback: '/confirm'
+    },
   }
 })
