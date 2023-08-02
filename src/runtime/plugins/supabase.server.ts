@@ -1,6 +1,7 @@
-import { defineNuxtPlugin } from '#imports'
+import { defineNuxtPlugin, useRuntimeConfig, useCookie } from '#imports'
 import { defu } from 'defu'
 import { createClient } from '@supabase/supabase-js'
+import { useSupabaseUser } from '../composables/useSupabaseUser'
 
 export default defineNuxtPlugin({
   name: 'supabase',

@@ -1,5 +1,6 @@
 import { defineNuxtPlugin, useRuntimeConfig, useCookie } from '#imports'
 import { createClient } from '@supabase/supabase-js'
+import { useSupabaseUser } from '../composables/useSupabaseUser'
 
 export default defineNuxtPlugin({
   name: 'supabase',
@@ -14,7 +15,9 @@ export default defineNuxtPlugin({
     // Handle auth event client side
     supabaseClient.auth.onAuthStateChange(async (event, session) => {
       if (session) {
-        user.value = session.user
+        if (JSON.stringify(user.value) !== JSON.stringify(session.user)) {
+          user.value = session.user;
+        }
       }
 
       if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
