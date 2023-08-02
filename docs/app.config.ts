@@ -20,7 +20,7 @@ export default defineAppConfig({
     },
 
     github: {
-      dir: 'docs',
+      dir: 'docs/content',
       branch: 'main',
       repo: 'supabase',
       owner: 'nuxt-modules',
