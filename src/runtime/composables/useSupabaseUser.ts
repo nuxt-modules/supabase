@@ -1,16 +1,20 @@
-import type { Ref } from 'vue'
-import { User } from '@supabase/supabase-js'
-import { useSupabaseToken } from './useSupabaseToken'
+import type { User } from '@supabase/supabase-js'
+import { useSupabaseClient } from './useSupabaseClient'
 import { useState } from '#imports'
 
-export const useSupabaseUser = (): Ref<User | null> => {
-  const user = useState<User | null>('supabase_user', () => null)
-  const token = useSupabaseToken()
+export const useSupabaseUser = () => {
+  const supabase = useSupabaseClient()
 
-  // Check token and set user to null if not set (check for token expiration)
-  if (!token.value) {
-    user.value = null
-  }
+  const user = useState<User | null>('supabase_user', () => null)
+
+  // Asyncronous refresh session and ensure user is still logged in
+  supabase?.auth.getSession().then(({ data: { session } }) => {
+    if (session) {
+      if (JSON.stringify(user.value) !== JSON.stringify(session.user)) {
+        user.value = session.user;
+      }
+    }
+  })
 
   return user
 }
