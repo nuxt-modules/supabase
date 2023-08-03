@@ -14,7 +14,11 @@ const user = useSupabaseUser()
 
 ## Auth middleware
 
-You can protect your authenticated routes by creating a custom middleware in your project, here is an example:
+::alert{}
+By default, the module is implementing a redirect middleware. All pages of your application are automatically redirected to the [login](/get-started#redirectOptions) page. However, you can allow redirection to "public" pages by setting the [exclude](/get-started#redirectOptions) redirect option.
+::
+
+If the [redirect](/get-started#redirect) option is disabled, you can protect your authenticated routes by creating a custom middleware in your project, here is an example:
 
 ```ts [middleware/auth.ts]
 export default defineNuxtRouteMiddleware((to, _from) => {
