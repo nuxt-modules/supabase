@@ -13,6 +13,8 @@ export const useSupabaseUser = () => {
       if (JSON.stringify(user.value) !== JSON.stringify(session.user)) {
         user.value = session.user;
       }
+    } else {
+      user.value = null
     }
   })
 
