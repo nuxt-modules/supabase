@@ -19,8 +19,7 @@ export default defineNuxtPlugin({
 
         const user = useSupabaseUser()
         if (!user.value) {
-          const loginUrl = useRuntimeConfig().public.supabase.redirectOptions.login
-          return navigateTo(loginUrl)
+          return navigateTo(login)
         }
       }),
       { global: true },
