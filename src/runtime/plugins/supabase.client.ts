@@ -25,7 +25,7 @@ export default defineNuxtPlugin({
       if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
         useCookie(`${cookieName}-access-token`, cookieOptions).value = session?.access_token
         useCookie(`${cookieName}-refresh-token`, cookieOptions).value = session?.refresh_token
-        if (session.provider_token) useCookie(`${cookieName}-provider-token`, cookieOptions).value = session.access_token
+        if (session.provider_token) useCookie(`${cookieName}-provider-token`, cookieOptions).value = session.provider_token
         if (session.provider_refresh_token) useCookie(`${cookieName}-provider-refresh-token`, cookieOptions).value = session.provider_refresh_token
       }
       if (event === 'SIGNED_OUT') {
