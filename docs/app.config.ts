@@ -13,7 +13,7 @@ export default defineAppConfig({
         href: 'https://nuxt.com'
       },
       supabase: {
-        label: 'Nuxt',
+        label: 'Supabase',
         icon: 'simple-icons:supabase',
         href: 'https://supabase.com'
       }
