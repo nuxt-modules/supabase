@@ -17,7 +17,12 @@ export default defineNuxtConfig({
     redirectOptions: {
       login: '/login',
       callback: '/confirm',
-      exclude: ['/unprotected', '/public/*']
+      exclude: ['/unprotected', '/public/*'],
+    },
+  },
+  nitro: {
+    routeRules: {
+      ['/clientonly']: { ssr: false },
     },
   },
 })

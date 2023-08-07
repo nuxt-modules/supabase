@@ -1,4 +1,4 @@
-import { useSupabaseUser } from '../composables/useSupabaseUser'
+import { useSupabaseClient } from '../composables/useSupabaseClient'
 import { defineNuxtPlugin, addRouteMiddleware, defineNuxtRouteMiddleware, useRuntimeConfig, navigateTo } from '#imports'
 
 export default defineNuxtPlugin({
@@ -17,8 +17,9 @@ export default defineNuxtPlugin({
         })
         if (isExcluded) return
 
-        const user = useSupabaseUser()
-        if (!user.value) {
+        const supabase = useSupabaseClient()
+        const { data } = await supabase.auth.getUser()
+        if (!data.user) {
           return navigateTo(login)
         }
       }),
