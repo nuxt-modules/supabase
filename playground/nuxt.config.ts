@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     routeRules: {
-      ['/clientonly']: { ssr: false },
+      '/clientonly': { ssr: false },
     },
   },
 })
