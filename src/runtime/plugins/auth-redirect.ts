@@ -11,15 +11,17 @@ export default defineNuxtPlugin({
         const { login, callback, exclude } = config.redirectOptions
 
         // Do not redirect on login route, callback route and excluded routes
-        const isExcluded = [...exclude, login, callback]?.some((path) => {
-          const regex = new RegExp(`^${path.replace(/\*/g, ".*")}$`)
+        const isExcluded = [...exclude, login, callback]?.some(path => {
+          const regex = new RegExp(`^${path.replace(/\*/g, '.*')}$`)
           return regex.test(to.path)
         })
         if (isExcluded) return
 
         const supabase = useSupabaseClient()
-        const { data } = await supabase.auth.getUser()
-        if (!data.user) {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession()
+        if (!session?.user) {
           return navigateTo(login)
         }
       }),
