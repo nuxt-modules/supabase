@@ -21,7 +21,7 @@ export default defineNuxtPlugin({
         const {
           data: { session },
         } = await supabase.auth.getSession()
-        if (!session?.user) {
+        if (!session) {
           return navigateTo(login)
         }
       }),
