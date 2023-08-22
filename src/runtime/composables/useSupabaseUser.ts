@@ -18,5 +18,5 @@ export const useSupabaseUser = () => {
     }
   })
 
-  return user
+  return user as Ref<User>
 }
