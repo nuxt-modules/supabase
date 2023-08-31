@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'url'
 import { defu } from 'defu'
+import { execa } from 'execa'
 import { defineNuxtModule, addPlugin, createResolver, addTemplate, resolveModule, extendViteConfig } from '@nuxt/kit'
 import { CookieOptions } from 'nuxt/app'
 import { RedirectOptions } from './runtime/types'
@@ -32,6 +33,13 @@ export interface ModuleOptions {
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
   serviceKey: string
+
+  /**
+   * Supabase Project ID
+   * @default process.env.SUPABASE_PROJECT_ID
+   * @type string
+   */
+  projectId?: string
 
   /**
    * Redirect automatically to login page if user is not authenticated
@@ -84,6 +92,13 @@ export interface ModuleOptions {
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
   clientOptions?: SupabaseClientOptions<string>
+
+  /**
+   * Generate database types for supabase services
+   * @default boolean
+   * @type boolean
+   */
+  generateTypes: boolean
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -98,6 +113,7 @@ export default defineNuxtModule<ModuleOptions>({
     url: process.env.SUPABASE_URL as string,
     key: process.env.SUPABASE_KEY as string,
     serviceKey: process.env.SUPABASE_SERVICE_KEY as string,
+    projectId: process.env.SUPABASE_PROJECT_ID as string,
     redirect: true,
     redirectOptions: {
       login: '/login',
@@ -118,6 +134,7 @@ export default defineNuxtModule<ModuleOptions>({
         autoRefreshToken: true,
       },
     } as SupabaseClientOptions<string>,
+    generateTypes: false,
   },
   setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
@@ -131,6 +148,9 @@ export default defineNuxtModule<ModuleOptions>({
     if (!options.key) {
       // eslint-disable-next-line no-console
       console.warn('Missing `SUPABASE_KEY` in `.env`')
+    }
+    if (options.generateTypes && !options.projectId) {
+      console.warn('Cannot generate types missing `SUPABASE_PROJECT_ID` in `.env`')
     }
 
     // Public runtimeConfig
@@ -202,8 +222,32 @@ export default defineNuxtModule<ModuleOptions>({
         ].join('\n'),
     })
 
+    let hasDatabaseTypes = false
+    if (options.generateTypes && options.projectId) {
+      hasDatabaseTypes = true
+      addTemplate({
+        filename: 'types/supabase.database-gen.d.ts',
+        getContents: async () => {
+          const { stdout } = await execa('npx', ['supabase', 'gen', 'types', 'typescript', '--project-id', options.projectId]).catch(() => {
+            console.error("Error generating types for supabase")
+            return { stdout: undefined }
+          })
+
+          if (!stdout) {
+            return ""
+          }
+
+          return `${stdout}\n\nexport type Tables<T extends keyof Database['public']['Tables']> = Database['public']['Tables'][T]['Row']
+          \nexport type Enums<T extends keyof Database['public']['Enums']> = Database['public']['Enums'][T]`
+        },
+      })
+    }
+
     nuxt.hook('prepare:types', options => {
       options.references.push({ path: resolve(nuxt.options.buildDir, 'types/supabase.d.ts') })
+      if (hasDatabaseTypes) {
+        options.references.push({ path: resolve(nuxt.options.buildDir, 'types/supabase.database-gen.d.ts') })
+      }
     })
 
     // Transpile websocket only for non dev environments (except cloudflare)

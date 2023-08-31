@@ -14,6 +14,7 @@ export default defineNuxtConfig({
     //   },
     // },
     // redirect: true,
+    // generateTypes: true,
     redirectOptions: {
       login: '/login',
       callback: '/confirm',
