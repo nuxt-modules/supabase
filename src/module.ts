@@ -150,11 +150,12 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     // ensure callback URL is not using SSR
-    if (options.redirect && options.redirectOptions.callback) {
-      // && options.redirectOptions.login) {
+    if (nuxt.options.runtimeConfig.public.supabase.redirect
+      && nuxt.options.runtimeConfig.public.supabase.redirectOptions.callback) {
+      // && nuxt.options.runtimeConfig.public.supabase.redirectOptions.login) {
       const routeRules: { [key: string]: any } = {}
-      routeRules[options.redirectOptions.callback] = { ssr: false }
-      //routeRules[options.redirectOptions.login] = { ssr: false }
+      routeRules[nuxt.options.runtimeConfig.public.supabase.redirectOptions.callback] = { ssr: false }
+      //routeRules[nuxt.options.runtimeConfig.public.supabase.redirectOptions.login] = { ssr: false }
       nuxt.options.nitro = defu(nuxt.options.nitro, {
         routeRules,
       })
@@ -169,7 +170,7 @@ export default defineNuxtModule<ModuleOptions>({
     addPlugin(resolve(runtimeDir, 'plugins', 'supabase.server'))
 
     //Add route middleware plugin for redirect
-    if (options.redirect) {
+    if (nuxt.options.runtimeConfig.public.supabase.redirect) {
       addPlugin(resolve(runtimeDir, 'plugins', 'auth-redirect'))
     }
 
