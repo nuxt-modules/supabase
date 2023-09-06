@@ -14,12 +14,17 @@ export default defineNuxtPlugin({
 
     // Handle auth event client side
     supabaseClient.auth.onAuthStateChange(async (event, session) => {
-      if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
-        if (session?.user) {
-          if (JSON.stringify(user.value) !== JSON.stringify(session.user)) {
-            user.value = session.user
-          }
+      // Update user based on received session
+      if (session) {
+        if (JSON.stringify(user.value) !== JSON.stringify(session.user)) {
+          user.value = session.user;
         }
+      } else {
+        user.value = null
+      }
+
+      // Use cookies to share session state between server and client
+      if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
         useCookie(`${cookieName}-access-token`, cookieOptions).value = session?.access_token
         useCookie(`${cookieName}-refresh-token`, cookieOptions).value = session?.refresh_token
       }
@@ -27,15 +32,12 @@ export default defineNuxtPlugin({
         user.value = null
         useCookie(`${cookieName}-access-token`, cookieOptions).value = null
         useCookie(`${cookieName}-refresh-token`, cookieOptions).value = null
-      }
-      if (event === 'USER_UPDATED') {
-        if (session?.user) {
-          user.value = session.user
-        }
+        if (session.provider_token) useCookie(`${cookieName}-provider-token`, cookieOptions).value = session.provider_token
+        if (session.provider_refresh_token) useCookie(`${cookieName}-provider-refresh-token`, cookieOptions).value = session.provider_refresh_token
       }
     })
 
-    // attempt to retrieve an existing session from local storage
+    // Attempt to retrieve existing session from local storage
     await supabaseClient.auth.getSession()
 
     return {
