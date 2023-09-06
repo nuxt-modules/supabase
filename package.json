@@ -34,6 +34,7 @@
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxt/module-builder": "^0.5.1",
     "@nuxt/schema": "^3.7.1",
+    "@release-it/conventional-changelog": "^7.0.1",
     "@types/node": "^20.5.9",
     "eslint": "^8.48.0",
     "nuxt": "^3.7.1",
@@ -51,6 +52,13 @@
     },
     "npm": {
       "publish": false
+    },
+    "plugins": {
+      "@release-it/conventional-changelog": {
+        "preset": "angular",
+        "infile": "CHANGELOG.md",
+        "ignoreRecommendedBump": true
+      }
     }
   }
 }
