@@ -141,23 +141,23 @@ export default defineNuxtModule<ModuleOptions>({
       redirectOptions: options.redirectOptions,
       cookieName: options.cookieName,
       cookieOptions: options.cookieOptions,
-      clientOptions: options.clientOptions,
+      clientOptions: options.clientOptions
     })
 
     // Private runtimeConfig
     nuxt.options.runtimeConfig.supabase = defu(nuxt.options.runtimeConfig.supabase, {
-      serviceKey: options.serviceKey,
+      serviceKey: options.serviceKey
     })
 
+    
     // ensure callback URL is not using SSR
-    if (nuxt.options.runtimeConfig.public.supabase.redirect
-      && nuxt.options.runtimeConfig.public.supabase.redirectOptions.callback) {
-      // && nuxt.options.runtimeConfig.public.supabase.redirectOptions.login) {
+    const mergedOptions = nuxt.options.runtimeConfig.public.supabase
+    if (mergedOptions.redirect
+      && mergedOptions.redirectOptions.callback) {
       const routeRules: { [key: string]: any } = {}
-      routeRules[nuxt.options.runtimeConfig.public.supabase.redirectOptions.callback] = { ssr: false }
-      //routeRules[nuxt.options.runtimeConfig.public.supabase.redirectOptions.login] = { ssr: false }
+      routeRules[mergedOptions.redirectOptions.callback] = { ssr: false }
       nuxt.options.nitro = defu(nuxt.options.nitro, {
-        routeRules,
+        routeRules
       })
     }
 
@@ -170,7 +170,7 @@ export default defineNuxtModule<ModuleOptions>({
     addPlugin(resolve(runtimeDir, 'plugins', 'supabase.server'))
 
     //Add route middleware plugin for redirect
-    if (nuxt.options.runtimeConfig.public.supabase.redirect) {
+    if (mergedOptions.redirect) {
       addPlugin(resolve(runtimeDir, 'plugins', 'auth-redirect'))
     }
 
