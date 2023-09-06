@@ -1,4 +1,5 @@
 import type { User } from '@supabase/supabase-js'
+import type { Ref } from 'vue'
 import { useSupabaseClient } from './useSupabaseClient'
 import { useState } from '#imports'
 
@@ -18,5 +19,5 @@ export const useSupabaseUser = () => {
     }
   })
 
-  return user
+  return user as Ref<User | null>
 }
