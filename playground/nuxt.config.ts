@@ -20,4 +20,9 @@ export default defineNuxtConfig({
       exclude: ['/unprotected', '/public/*']
     },
   },
+  nitro: {
+    routeRules: {
+      '/clientonly': { ssr: false }
+    },
+  },
 })
