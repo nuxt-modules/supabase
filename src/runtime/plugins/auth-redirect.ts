@@ -6,13 +6,13 @@ export default defineNuxtPlugin({
   setup() {
     addRouteMiddleware(
       'global-auth',
-      defineNuxtRouteMiddleware(async to => {
+      defineNuxtRouteMiddleware(to => {
         const config = useRuntimeConfig().public.supabase
         const { login, callback, exclude } = config.redirectOptions
 
         // Do not redirect on login route, callback route and excluded routes
-        const isExcluded = [...exclude, login, callback]?.some((path) => {
-          const regex = new RegExp(`^${path.replace(/\*/g, ".*")}$`)
+        const isExcluded = [...exclude, login, callback]?.some(path => {
+          const regex = new RegExp(`^${path.replace(/\*/g, '.*')}$`)
           return regex.test(to.path)
         })
         if (isExcluded) return

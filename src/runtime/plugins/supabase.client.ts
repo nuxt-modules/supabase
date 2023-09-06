@@ -14,6 +14,7 @@ export default defineNuxtPlugin({
 
     // Handle auth event client side
     supabaseClient.auth.onAuthStateChange(async (event, session) => {
+      // Update user based on received session
       if (session) {
         if (JSON.stringify(user.value) !== JSON.stringify(session.user)) {
           user.value = session.user;
@@ -22,6 +23,7 @@ export default defineNuxtPlugin({
         user.value = null
       }
 
+      // Use cookies to share session state between server and client
       if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
         useCookie(`${cookieName}-access-token`, cookieOptions).value = session?.access_token
         useCookie(`${cookieName}-refresh-token`, cookieOptions).value = session?.refresh_token
@@ -36,10 +38,13 @@ export default defineNuxtPlugin({
       }
     })
 
+    // Attempt to retrieve existing session from local storage
+    await supabaseClient.auth.getSession()
+
     return {
       provide: {
         supabase: {
-          client: supabaseClient
+          client: supabaseClient,
         },
       },
     }
