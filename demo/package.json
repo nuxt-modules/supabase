@@ -1,7 +1,7 @@
 {
   "private": true,
   "engines": {
-    "node": ">=v16.15.1"
+    "node": ">=v18.17.1"
   },
   "scripts": {
     "dev": "nuxi dev",
