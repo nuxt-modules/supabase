@@ -6,7 +6,7 @@ export default defineNuxtPlugin({
   setup() {
     addRouteMiddleware(
       'global-auth',
-      defineNuxtRouteMiddleware(to => {
+      defineNuxtRouteMiddleware(async to => {
         const config = useRuntimeConfig().public.supabase
         const { login, callback, exclude } = config.redirectOptions
 
@@ -17,7 +17,7 @@ export default defineNuxtPlugin({
         })
         if (isExcluded) return
 
-        const user = useSupabaseUser()
+        const user = await useSupabaseUser()
         if (!user.value) {
           return navigateTo(login)
         }
