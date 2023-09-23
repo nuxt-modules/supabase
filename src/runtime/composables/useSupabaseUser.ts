@@ -1,5 +1,7 @@
 import type { User } from '@supabase/supabase-js'
 import { useState } from '#imports'
+import { useSupabaseClient } from './useSupabaseClient'
+import type { Ref } from 'vue'
 
 export const useSupabaseUser = async () => {
   const supabase = useSupabaseClient()
