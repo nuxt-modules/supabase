@@ -1,5 +1,14 @@
 
 
+## [1.1.2](https://github.com/nuxt-community/supabase-module/compare/v1.1.1...v1.1.2) (2023-09-22)
+
+
+### Bug Fixes
+
+* **composables:** add back missing imports ([8ca7198](https://github.com/nuxt-community/supabase-module/commit/8ca71980160e39456ddef11adc7e3ea5253b5d2e))
+
+## [1.1.1](https://github.com/nuxt-community/supabase-module/compare/v1.1.0...v1.1.1) (2023-09-22)
+
 # [1.1.0](https://github.com/nuxt-community/supabase-module/compare/v1.0.2...v1.1.0) (2023-09-06)
 
 
