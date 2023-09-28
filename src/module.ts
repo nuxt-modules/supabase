@@ -123,16 +123,6 @@ export default defineNuxtModule<ModuleOptions>({
     const { resolve } = createResolver(import.meta.url)
     const resolveRuntimeModule = (path: string) => resolveModule(path, { paths: resolve('./runtime') })
 
-    // Make sure url and key are set
-    if (!options.url) {
-      // eslint-disable-next-line no-console
-      console.warn('Missing `SUPABASE_URL` in `.env`')
-    }
-    if (!options.key) {
-      // eslint-disable-next-line no-console
-      console.warn('Missing `SUPABASE_KEY` in `.env`')
-    }
-
     // Public runtimeConfig
     nuxt.options.runtimeConfig.public.supabase = defu(nuxt.options.runtimeConfig.public.supabase, {
       url: options.url,
@@ -149,6 +139,15 @@ export default defineNuxtModule<ModuleOptions>({
       serviceKey: options.serviceKey
     })
 
+    // Make sure url and key are set
+    if (!nuxt.options.runtimeConfig.public.supabase.url) {
+      // eslint-disable-next-line no-console
+      console.warn('Missing supabase url, set it either in `nuxt.config.js` or via env variable')
+    }
+    if (!nuxt.options.runtimeConfig.public.supabase.key) {
+      // eslint-disable-next-line no-console
+      console.warn('Missing supabase anon key, set it either in `nuxt.config.js` or via env variable')
+    }
     
     // ensure callback URL is not using SSR
     const mergedOptions = nuxt.options.runtimeConfig.public.supabase
