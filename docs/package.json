@@ -10,15 +10,15 @@
     "lint": "eslint ."
   },
   "devDependencies": {
-    "@nuxt-themes/docus": "^1.14.6",
+    "@nuxt-themes/docus": "^1.14.9",
     "@nuxt/devtools": "^0.8.2",
-    "@nuxt/content": "^2.8.2",
+    "@nuxt/content": "^2.8.5",
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxtjs/plausible": "^0.2.1",
-    "@nuxthq/studio": "^0.14.0",
+    "@nuxthq/studio": "^1.0.0",
     "@nuxtlabs/github-module": "^1.6.3",
     "@types/node": "^20.5.9",
     "eslint": "^8.48.0",
-    "nuxt": "^3.7.1"
+    "nuxt": "^3.7.4"
   }
 }
