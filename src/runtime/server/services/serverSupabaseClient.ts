@@ -2,24 +2,25 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js'
 import { getCookie } from 'h3'
 import type { H3Event } from 'h3'
 import { useRuntimeConfig } from '#imports'
+import { defu } from 'defu'
 
 export const serverSupabaseClient = async <T>(event: H3Event): Promise<SupabaseClient<T>> => {
   // get settings from runtime config
   const {
-    supabase: { url, key, cookieName },
+    supabase: { url, key, cookieName, clientOptions },
   } = useRuntimeConfig().public
 
   let supabaseClient = event.context._supabaseClient as SupabaseClient<T>
 
   // No need to recreate client if exists in request context
   if (!supabaseClient) {
-    supabaseClient = createClient(url, key, {
-      auth: {
-        detectSessionInUrl: false,
-        persistSession: false,
-        autoRefreshToken: false,
-      },
-    })
+    // Merge defaults with user config
+    const options = defu({ auth:  {
+      detectSessionInUrl: false,
+      persistSession: false,
+      autoRefreshToken: false
+    } }, clientOptions)
+    supabaseClient = createClient(url, key, options)
     event.context._supabaseClient = supabaseClient
   }
 
