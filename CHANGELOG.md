@@ -1,5 +1,13 @@
 
 
+## [1.1.3](https://github.com/nuxt-community/supabase-module/compare/v1.1.2...v1.1.3) (2023-10-06)
+
+
+### Bug Fixes
+
+* **client:** clientOptions merge[#275](https://github.com/nuxt-community/supabase-module/issues/275) ([#277](https://github.com/nuxt-community/supabase-module/issues/277)) ([c0097a3](https://github.com/nuxt-community/supabase-module/commit/c0097a355b859cb6a2d97884a7648284128acca2))
+* **module:** do not warn when using runtimeConfig to set url and key ([#281](https://github.com/nuxt-community/supabase-module/issues/281)) ([8c15173](https://github.com/nuxt-community/supabase-module/commit/8c151737b55738c68fc24b5e4db2517c4e866693))
+
 ## [1.1.2](https://github.com/nuxt-community/supabase-module/compare/v1.1.1...v1.1.2) (2023-09-22)
 
 
