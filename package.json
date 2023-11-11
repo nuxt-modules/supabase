@@ -39,7 +39,7 @@
     "eslint": "^8.50.0",
     "nuxt": "^3.7.4",
     "prettier": "^3.0.3",
-    "release-it": "^16.2.1",
+    "release-it": "^17.0.0",
     "typescript": "^5.2.2"
   },
   "release-it": {
