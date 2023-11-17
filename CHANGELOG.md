@@ -1,5 +1,12 @@
 
 
+## [1.1.4](https://github.com/nuxt-community/supabase-module/compare/v1.1.3...v1.1.4) (2023-11-17)
+
+
+### Bug Fixes
+
+* **client:** prevent useCookie usage outside of effect scope ([#309](https://github.com/nuxt-community/supabase-module/issues/309)) ([bb55bed](https://github.com/nuxt-community/supabase-module/commit/bb55bed870efb68c39f255ddbcbe0b5446965399))
+
 ## [1.1.3](https://github.com/nuxt-community/supabase-module/compare/v1.1.2...v1.1.3) (2023-10-06)
 
 
