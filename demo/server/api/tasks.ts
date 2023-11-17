@@ -1,5 +1,5 @@
 import { createError } from 'h3'
-import { Database } from '~~/types/database.types'
+import type { Database } from '~~/types/database.types'
 import { serverSupabaseUser, serverSupabaseClient } from '#supabase/server'
 
 export default defineEventHandler(async (event) => {
