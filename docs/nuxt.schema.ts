@@ -68,47 +68,26 @@ export default defineNuxtSchema({
           description: 'Footer logo configuration.',
           icon: 'i-mdi-image-filter-center-focus-strong-outline',
           fields: {
-            dark: group({
-              title: 'Dark',
-              description: 'Dark Mode Logo.',
-              icon: 'i-heroicons-moon-20-solid',
-              fields: {
-                src: field({
-                  type: 'media',
-                  title: 'Logo',
-                  description: 'Pick an image from your gallery.',
-                  icon: 'i-mdi-image',
-                  default: ''
-                }),
-                alt: field({
-                  type: 'string',
-                  title: 'Alt',
-                  description: 'Alt to display for accessibility.',
-                  icon: 'i-mdi-alphabet-latin',
-                  default: ''
-                })
-              }
-            }),
-            light: group({
-              title: 'Light',
-              description: 'Light Mode Logo.',
+            light: field({
+              type: 'media',
+              title: 'Light Mode Logo',
+              description: 'Pick an image from your gallery.',
               icon: 'i-heroicons-sun-20-solid',
-              fields: {
-                src: field({
-                  type: 'media',
-                  title: 'Logo',
-                  description: 'Pick an image from your gallery.',
-                  icon: 'i-mdi-image',
-                  default: ''
-                }),
-                alt: field({
-                  type: 'string',
-                  title: 'Alt',
-                  description: 'Alt to display for accessibility.',
-                  icon: 'i-mdi-alphabet-latin',
-                  default: ''
-                })
-              }
+              default: ''
+            }),
+            dark: field({
+              type: 'media',
+              title: 'Dark Mode Logo',
+              description: 'Pick an image from your gallery.',
+              icon: 'i-heroicons-moon-20-solid',
+              default: ''
+            }),
+            alt: field({
+              type: 'string',
+              title: 'Alt',
+              description: 'Alt to display for accessibility.',
+              icon: 'i-mdi-alphabet-latin',
+              default: ''
             })
           }
         }),
