@@ -4,16 +4,13 @@ import type { NavItem } from '@nuxt/content/dist/runtime/types'
 const navigation = inject<NavItem[]>('navigation', [])
 
 const { header } = useAppConfig()
-const colorMode = useColorMode()
-
-const logo = computed(() => colorMode.value === 'dark' ? header?.logo?.dark : header?.logo?.light)
 </script>
 
 <template>
   <UHeader>
     <template #logo>
-      <template v-if="logo?.src">
-        <img v-bind="{ class: 'h-6 w-auto', ...logo }">
+      <template v-if="header?.logo?.dark || header?.logo?.light">
+        <UColorModeImage v-bind="{ class: 'h-6 w-auto', ...header?.logo }" />
       </template>
       <template v-else>
         Nuxt UI Pro <UBadge label="Docs" variant="subtle" class="mb-0.5" />
