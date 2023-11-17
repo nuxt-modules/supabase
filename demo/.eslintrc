@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "@nuxtjs/eslint-config-typescript"
+  ],
+  "root": true,
+  "rules": {
+    "no-console": [2, { "allow": ["trace"] }],
+    "vue/multi-word-component-names": 0
+  }
+}

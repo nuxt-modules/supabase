@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       baseUrl: process.env.BASE_URL || 'http://localhost:3000'
-    },
+    }
   },
   ui: {
     colors: {
@@ -22,6 +22,6 @@ export default defineNuxtConfig({
     redirectOptions: {
       login: '/',
       callback: '/confirm'
-    },
+    }
   }
 })
