@@ -1,0 +1,54 @@
+title: 'Nuxt Supabase - Home'
+description: 'A supa simple wrapper around supabase-js to enable usage and integration within Nuxt.'
+navigation: false
+hero:
+  title: 'Nuxt [Supabase]{.text-primary}'
+  description: 'A supa simple wrapper around supabase-js to enable usage and integration within Nuxt.'
+  orientation: horizontal
+  links:
+    - label: 'Get started'
+      icon: 'i-heroicons-rocket-launch'
+      to: '/get-started'
+      size: lg
+    - label: 'Star on github'
+      icon: 'i-heroicons-star'
+      color: 'white'
+      to: 'https://github.com/nuxt-modules/supabase'
+      target: '_blank'
+      size: lg
+  code: |
+    ```ts
+      const supabase = useSupabaseClient()
+      const email = ref('')
+
+      const signInWithOtp = async () => {
+        await supabase.auth.signInWithOtp({
+          email: email.value,
+        })
+      }
+    ```
+features:
+  title: 'Shipped with many features'
+  items:
+    - title: 'Nuxt 3 ready'
+      icon: 'i-simple-icons-nuxtdotjs'
+      to: 'https://nuxt.com'
+      target: '_blank'
+    - title: 'Vue 3 composables'
+      icon: 'i-simple-icons-vuedotjs'
+      to: 'https://vuejs.com'
+      target: '_blank'
+    - title: 'Supabase-js V2'
+      icon: 'i-simple-icons-supabase'
+      to: 'https://supabase.com'
+      target: '_blank'
+    - title: 'Usage in API server routes'
+      icon: 'i-heroicons-server'
+      to: 'usage/services/serversupabaseclient'
+    - title: 'Authentication support'
+      icon: 'i-heroicons-key'
+      to: '/authentication'
+    - title: 'TypeScript support'
+      icon: 'i-simple-icons-typescript'
+      to: 'https://www.typescriptlang.org'
+      target: '_blank'
