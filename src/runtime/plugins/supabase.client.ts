@@ -12,6 +12,11 @@ export default defineNuxtPlugin({
 
     const supabaseClient = createClient(url, key, clientOptions)
 
+    const accessToken = useCookie(`${cookieName}-access-token`, cookieOptions);
+    const refreshToken = useCookie(`${cookieName}-refresh-token`, cookieOptions);
+    const providerToken = useCookie(`${cookieName}-provider-token`, cookieOptions);
+    const providerRefreshToken = useCookie(`${cookieName}-provider-refresh-token`, cookieOptions);
+
     // Handle auth event client side
     supabaseClient.auth.onAuthStateChange(async (event, session) => {
       // Update user based on received session
@@ -25,16 +30,16 @@ export default defineNuxtPlugin({
 
       // Use cookies to share session state between server and client
       if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
-        useCookie(`${cookieName}-access-token`, cookieOptions).value = session?.access_token
-        useCookie(`${cookieName}-refresh-token`, cookieOptions).value = session?.refresh_token
-        if (session.provider_token) useCookie(`${cookieName}-provider-token`, cookieOptions).value = session.provider_token
-        if (session.provider_refresh_token) useCookie(`${cookieName}-provider-refresh-token`, cookieOptions).value = session.provider_refresh_token
+        accessToken.value = session?.access_token
+        refreshToken.value = session?.refresh_token
+        if (session.provider_token) providerToken.value = session.provider_token
+        if (session.provider_refresh_token) providerRefreshToken.value = session.provider_refresh_token
       }
       if (event === 'SIGNED_OUT') {
-        useCookie(`${cookieName}-access-token`, cookieOptions).value = null
-        useCookie(`${cookieName}-refresh-token`, cookieOptions).value = null
-        useCookie(`${cookieName}-provider-token`, cookieOptions).value = null
-        useCookie(`${cookieName}-provider-refresh-token`, cookieOptions).value = null
+        accessToken.value = null
+        refreshToken.value = null
+        providerToken.value = null
+        providerRefreshToken.value = null
       }
     })
 
