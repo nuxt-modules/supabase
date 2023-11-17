@@ -1,9 +1,9 @@
 import { fileURLToPath } from 'url'
 import { defu } from 'defu'
 import { defineNuxtModule, addPlugin, createResolver, addTemplate, resolveModule, extendViteConfig } from '@nuxt/kit'
-import { CookieOptions } from 'nuxt/app'
-import { RedirectOptions } from './runtime/types'
-import { SupabaseClientOptions } from '@supabase/supabase-js'
+import type { CookieOptions } from 'nuxt/app'
+import type { RedirectOptions } from './runtime/types'
+import type { SupabaseClientOptions } from '@supabase/supabase-js'
 
 export interface ModuleOptions {
   /**
@@ -148,7 +148,7 @@ export default defineNuxtModule<ModuleOptions>({
       // eslint-disable-next-line no-console
       console.warn('Missing supabase anon key, set it either in `nuxt.config.js` or via env variable')
     }
-    
+
     // ensure callback URL is not using SSR
     const mergedOptions = nuxt.options.runtimeConfig.public.supabase
     if (mergedOptions.redirect
