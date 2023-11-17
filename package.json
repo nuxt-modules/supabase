@@ -31,9 +31,9 @@
     "pathe": "^1.1.1"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^0.2.0",
     "@nuxt/module-builder": "^0.5.4",
     "@nuxt/schema": "^3.8.1",
+    "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@release-it/conventional-changelog": "^8.0.1",
     "@types/node": "^20.9.1",
     "eslint": "^8.53.0",

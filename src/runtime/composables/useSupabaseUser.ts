@@ -1,7 +1,7 @@
 import type { User } from '@supabase/supabase-js'
-import { useState } from '#imports'
-import { useSupabaseClient } from './useSupabaseClient'
 import type { Ref } from 'vue'
+import { useSupabaseClient } from './useSupabaseClient'
+import { useState } from '#imports'
 
 export const useSupabaseUser = () => {
   const supabase = useSupabaseClient()
@@ -12,7 +12,7 @@ export const useSupabaseUser = () => {
   supabase?.auth.getSession().then(({ data: { session } }) => {
     if (session) {
       if (JSON.stringify(user.value) !== JSON.stringify(session.user)) {
-        user.value = session.user;
+        user.value = session.user
       }
     } else {
       user.value = null

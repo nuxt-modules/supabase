@@ -1,7 +1,7 @@
 import { createError } from 'h3'
 import { serverSupabaseClient, serverSupabaseUser } from '#supabase/server'
 
-export default defineEventHandler(async event => {
+export default defineEventHandler(async (event) => {
   const supabase = await serverSupabaseClient(event)
   const user = await serverSupabaseUser(event)
   if (!supabase) {

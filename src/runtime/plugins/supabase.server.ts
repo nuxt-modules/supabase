@@ -1,22 +1,24 @@
-import { defineNuxtPlugin, useRuntimeConfig, useCookie } from '#imports'
 import { defu } from 'defu'
 import { createClient } from '@supabase/supabase-js'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
+import { defineNuxtPlugin, useRuntimeConfig, useCookie } from '#imports'
 
 export default defineNuxtPlugin({
   name: 'supabase',
   enforce: 'pre',
-  async setup() {
-    const { url, key, cookieName, clientOptions} = useRuntimeConfig().public.supabase
+  async setup () {
+    const { url, key, cookieName, clientOptions } = useRuntimeConfig().public.supabase
     const accessToken = useCookie(`${cookieName}-access-token`).value
     const refreshToken = useCookie(`${cookieName}-refresh-token`).value
 
-    const options = defu({ auth:  {
-      flowType: clientOptions.auth.flowType,
-      detectSessionInUrl: false,
-      persistSession: false,
-      autoRefreshToken: false
-    } }, clientOptions)
+    const options = defu({
+      auth: {
+        flowType: clientOptions.auth.flowType,
+        detectSessionInUrl: false,
+        persistSession: false,
+        autoRefreshToken: false
+      }
+    }, clientOptions)
 
     const supabaseClient = createClient(url, key, options)
 
@@ -24,7 +26,7 @@ export default defineNuxtPlugin({
     if (accessToken && refreshToken) {
       const { data } = await supabaseClient.auth.setSession({
         refresh_token: refreshToken,
-        access_token: accessToken,
+        access_token: accessToken
       })
       if (data?.user) {
         useSupabaseUser().value = data.user
@@ -35,8 +37,8 @@ export default defineNuxtPlugin({
       provide: {
         supabase: {
           client: supabaseClient
-        },
-      },
+        }
+      }
     }
-  },
+  }
 })
