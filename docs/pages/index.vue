@@ -13,7 +13,7 @@ useSeoMeta({
 
 <template>
   <div>
-    <ULandingHero v-if="page.hero" v-bind="page.hero" :ui="{ container: 'gap-6 sm:gap-y-6' }">
+    <ULandingHero v-if="page.hero" v-bind="page.hero">
       <template #title>
         <MDC :value="page.hero.title" />
       </template>
@@ -21,7 +21,7 @@ useSeoMeta({
       <MDC :value="page.hero.code" tag="pre" class="prose prose-primary dark:prose-invert max-w-none" />
     </ULandingHero>
 
-    <ULandingSection :title="page.features.title" :ui="{ wrapper: 'py-0 sm:py-0' }">
+    <ULandingSection :title="page.features.title">
       <UPageGrid>
         <ULandingCard v-for="(item, index) of page.features.items" :key="index" v-bind="item" />
       </UPageGrid>
