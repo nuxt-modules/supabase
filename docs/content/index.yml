@@ -36,7 +36,7 @@ features:
       target: '_blank'
     - title: 'Vue 3 composables'
       icon: 'i-simple-icons-vuedotjs'
-      to: 'https://vuejs.com'
+      to: 'https://vuejs.org/guide/reusability/composables.html'
       target: '_blank'
     - title: 'Supabase-js V2'
       icon: 'i-simple-icons-supabase'
