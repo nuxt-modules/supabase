@@ -1,7 +1,7 @@
-import { User } from '@supabase/supabase-js'
+import type { User } from '@supabase/supabase-js'
 import type { H3Event } from 'h3'
-import { serverSupabaseClient } from '../services/serverSupabaseClient'
 import { createError } from 'h3'
+import { serverSupabaseClient } from '../services/serverSupabaseClient'
 
 export const serverSupabaseUser = async (event: H3Event): Promise<User | null> => {
   const client = await serverSupabaseClient(event)

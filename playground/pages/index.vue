@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Database } from '~~/types/database.types'
+import type { Database } from '~~/types/database.types'
 
 const supabase = useSupabaseClient<Database>()
 const user = useSupabaseUser()
@@ -18,7 +18,8 @@ const { data: api } = await useFetch('/api/test')
 
 const signOut = async () => {
   const { error } = await supabase.auth.signOut()
-  if (error) console.log(error)
+  // eslint-disable-next-line no-console
+  if (error) { console.log(error) }
   return navigateTo('/login')
 }
 </script>
@@ -38,7 +39,11 @@ const signOut = async () => {
     <pre>{{ data }}</pre>
     <div>Data fetched from server route API</div>
     <pre>{{ api }}</pre>
-    <NuxtLink to="/user">Go to user page</NuxtLink>
-    <button @click="signOut">Sign Out</button>
+    <NuxtLink to="/user">
+      Go to user page
+    </NuxtLink>
+    <button @click="signOut">
+      Sign Out
+    </button>
   </div>
 </template>

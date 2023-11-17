@@ -1,3 +1,4 @@
+<!-- eslint-disable no-console -->
 <script setup lang="ts">
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
@@ -9,8 +10,8 @@ if (process.server) {
 }
 const signOut = async () => {
   const { error } = await supabase.auth.signOut()
-  if (error) console.log(error)
-  //refresh the page to get the user object
+  if (error) { console.log(error) }
+  // refresh the page to get the user object
   router.go(0)
 }
 </script>
@@ -28,9 +29,15 @@ const signOut = async () => {
       "
     >
       {{ user.user_metadata.name || user.user_metadata.user_name || user.email }}
-      <button @click="signOut">Sign Out</button>
-      <NuxtLink to="/">Go to home page</NuxtLink>
+      <button @click="signOut">
+        Sign Out
+      </button>
+      <NuxtLink to="/">
+        Go to home page
+      </NuxtLink>
     </div>
-    <div v-else>No User - Should not occur due to auth redirect</div>
+    <div v-else>
+      No User - Should not occur due to auth redirect
+    </div>
   </div>
 </template>

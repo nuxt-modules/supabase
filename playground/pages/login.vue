@@ -1,3 +1,4 @@
+<!-- eslint-disable no-console -->
 <script setup lang="ts">
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
@@ -5,7 +6,7 @@ const user = useSupabaseUser()
 watchEffect(() => {
   // Can be uncommented in next nuxt version when https://github.com/nuxt/nuxt/issues/21841 is fixed
   if (user.value) {
-    console.log('navigate to / !');
+    console.log('navigate to / !')
     // return navigateTo('/')
   }
 })
@@ -14,25 +15,25 @@ const signInWithOAuth = async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'github',
     options: {
-      redirectTo: 'http://localhost:3000/confirm',
-    },
+      redirectTo: 'http://localhost:3000/confirm'
+    }
   })
-  if (error) console.log(error)
+  if (error) { console.log(error) }
 }
 
 const signIn = async () => {
   const { error } = await supabase.auth.signInWithOtp({
     email: email.value,
     options: {
-      emailRedirectTo: 'http://localhost:3000/confirm',
-    },
+      emailRedirectTo: 'http://localhost:3000/confirm'
+    }
   })
-  if (error) console.log(error)
+  if (error) { console.log(error) }
 }
 
 const signOut = async () => {
   const { error } = await supabase.auth.signOut()
-  if (error) console.log(error)
+  if (error) { console.log(error) }
 }
 
 const email = ref('')
@@ -58,7 +59,7 @@ const email = ref('')
     <input
       v-model="email"
       type="email"
-    />
+    >
     <template v-if="user">
       <NuxtLink to="/">
         Go to home page

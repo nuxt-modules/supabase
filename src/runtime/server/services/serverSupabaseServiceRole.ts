@@ -6,8 +6,8 @@ export const serverSupabaseServiceRole = <T>(event: H3Event): SupabaseClient<T> 
   const {
     supabase: { serviceKey },
     public: {
-      supabase: { url },
-    },
+      supabase: { url }
+    }
   } = useRuntimeConfig()
 
   // Make sure service key is set
@@ -20,7 +20,7 @@ export const serverSupabaseServiceRole = <T>(event: H3Event): SupabaseClient<T> 
     const auth = {
       detectSessionInUrl: false,
       persistSession: false,
-      autoRefreshToken: false,
+      autoRefreshToken: false
     }
 
     const supabaseClient = createClient(url, serviceKey, { auth })
