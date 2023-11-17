@@ -1,4 +1,5 @@
 ---
+title: useSupabaseClient
 description: Make requests to the Supabase API with the useSupabaseClient composable
 ---
 

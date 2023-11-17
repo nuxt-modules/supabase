@@ -1,4 +1,5 @@
 ---
+title: useSupabaseUser
 description: Auto import and use your Supabase user with the useSupabaseUser composable
 ---
 
