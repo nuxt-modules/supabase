@@ -26,6 +26,7 @@
     "@nuxt/devtools": "1.0.0",
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxthq/studio": "^1.0.4",
+    "@nuxtjs/plausible": "^0.2.3",
     "@nuxtlabs/github-module": "^1.6.3",
     "eslint": "^8.53.0",
     "typescript": "^5.2.2",
