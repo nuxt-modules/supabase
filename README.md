@@ -1,4 +1,4 @@
-[![@nuxtjs/supabase](./docs/public/cover.jpg)](https://supabase.nuxtjs.org)
+[![@nuxtjs/supabase](./docs/public/social-card.jpg)](https://supabase.nuxtjs.org)
 
 # Nuxt Supabase
 
