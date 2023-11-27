@@ -20,7 +20,7 @@ useHead({
 })
 
 useSeoMeta({
-  ogSiteName: 'Nuxt UI Pro - Docs template',
+  ogSiteName: 'Nuxt x Supabase - Docs',
   twitterCard: 'summary_large_image'
 })
 
