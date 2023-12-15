@@ -4,6 +4,7 @@ declare module '@nuxt/schema' {
   interface PublicRuntimeConfig {
     supabase: {
       url: string
+      serverUrl: string
       key: string
       redirect: boolean
       redirectOptions: RedirectOptions

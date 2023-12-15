@@ -7,7 +7,7 @@ import { useRuntimeConfig } from '#imports'
 export const serverSupabaseClient = async <T>(event: H3Event): Promise<SupabaseClient<T>> => {
   // get settings from runtime config
   const {
-    supabase: { url, key, cookieName, clientOptions }
+    supabase: { serverUrl, url, key, cookieName, clientOptions }
   } = useRuntimeConfig().public
 
   let supabaseClient = event.context._supabaseClient as SupabaseClient<T>
@@ -22,7 +22,7 @@ export const serverSupabaseClient = async <T>(event: H3Event): Promise<SupabaseC
         autoRefreshToken: false
       }
     }, clientOptions)
-    supabaseClient = createClient(url, key, options)
+    supabaseClient = createClient(serverUrl ? serverUrl : url, key, options)
     event.context._supabaseClient = supabaseClient
   }
 
