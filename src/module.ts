@@ -84,6 +84,13 @@ export interface ModuleOptions {
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
   clientOptions?: SupabaseClientOptions<string>
+
+  /**
+   * Disable warnings for missing redirect destination pages (if you are using server endpoints)
+   * @default `false`
+   * @type boolean
+   */
+  disableWarnings?: boolean
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -117,7 +124,8 @@ export default defineNuxtModule<ModuleOptions>({
         persistSession: true,
         autoRefreshToken: true
       }
-    } as SupabaseClientOptions<string>
+    } as SupabaseClientOptions<string>,
+    disableWarnings: false
   },
   setup (options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
@@ -188,6 +196,23 @@ export default defineNuxtModule<ModuleOptions>({
       nitroConfig.alias['#supabase/server'] = resolveRuntimeModule('./server/services')
     })
 
+    if (!mergedOptions.disableWarnings) {
+      // check if the redirect destinations exist, warn if not
+      nuxt.hook('pages:extend', (pages) => {
+        const {login: loginPath, callback: callbackPath} = mergedOptions.redirectOptions
+        const pagePaths = pages.map((page) => page.path)
+        
+        if (!pagePaths.includes(loginPath)) {
+          // eslint-disable-next-line no-console
+          console.warn(`[@nuxtjs/supabase] Supabase redirect destination \`${loginPath}\` does not exist`)
+        }
+        if (!pagePaths.includes(callbackPath)) {
+          // eslint-disable-next-line no-console
+          console.warn(`[@nuxtjs/supabase] Supabase callback redirect destination \`${callbackPath}\` does not exist`)
+        }
+      })
+    }
+    
     addTemplate({
       filename: 'types/supabase.d.ts',
       getContents: () =>
