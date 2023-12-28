@@ -3,9 +3,13 @@ import { serverSupabaseClient, serverSupabaseUser } from '#supabase/server'
 
 export default defineEventHandler(async (event) => {
   const supabase = await serverSupabaseClient(event)
-  const user = await serverSupabaseUser(event)
   if (!supabase) {
     throw createError({ statusMessage: 'Supabase client not found' })
+  }
+
+  const user = await serverSupabaseUser(event)
+  if (!user) {
+    throw createError({ statusCode: 404, statusMessage: 'User not found' })
   }
 
   // const { data, error } = await supabase.from('test').select('*')
