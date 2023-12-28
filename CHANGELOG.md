@@ -1,5 +1,14 @@
 
 
+## [1.1.5](https://github.com/nuxt-community/supabase-module/compare/v1.1.4...v1.1.5) (2023-12-28)
+
+
+### Bug Fixes
+
+* **readme:** typo in #dev section ([#311](https://github.com/nuxt-community/supabase-module/issues/311)) ([c77b04b](https://github.com/nuxt-community/supabase-module/commit/c77b04b9513425bd20b20d1296ccb942445c8f7e))
+* **server:** fetch user from session ([7a3b73c](https://github.com/nuxt-community/supabase-module/commit/7a3b73c36cc9aea10100a0ff37b0e0e7ecefe2a8))
+* **socials:** update cover ([730d5f6](https://github.com/nuxt-community/supabase-module/commit/730d5f671386aeffc15cf80dd2fd965440b156e1))
+
 ## [1.1.4](https://github.com/nuxt-community/supabase-module/compare/v1.1.3...v1.1.4) (2023-11-17)
 
 
