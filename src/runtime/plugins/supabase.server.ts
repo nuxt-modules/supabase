@@ -20,7 +20,7 @@ export default defineNuxtPlugin({
       }
     }, clientOptions)
 
-    const supabaseClient = createClient(serverUrl ? serverUrl : url, key, options)
+    const supabaseClient = createClient(serverUrl || url, key, options)
 
     // Set user & session server side
     if (accessToken && refreshToken) {

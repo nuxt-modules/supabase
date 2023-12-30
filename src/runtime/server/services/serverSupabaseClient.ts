@@ -22,7 +22,7 @@ export const serverSupabaseClient = async <T>(event: H3Event): Promise<SupabaseC
         autoRefreshToken: false
       }
     }, clientOptions)
-    supabaseClient = createClient(serverUrl ? serverUrl : url, key, options)
+    supabaseClient = createClient(serverUrl || url, key, options)
     event.context._supabaseClient = supabaseClient
   }
 
