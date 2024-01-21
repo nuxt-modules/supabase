@@ -102,7 +102,8 @@ export default defineNuxtModule<ModuleOptions>({
     redirectOptions: {
       login: '/login',
       callback: '/confirm',
-      exclude: []
+      exclude: [],
+      cookieRedirect: false
     },
     cookieName: 'sb',
     cookieOptions: {
@@ -151,8 +152,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // ensure callback URL is not using SSR
     const mergedOptions = nuxt.options.runtimeConfig.public.supabase
-    if (mergedOptions.redirect &&
-      mergedOptions.redirectOptions.callback) {
+    if (mergedOptions.redirect && mergedOptions.redirectOptions.callback) {
       const routeRules: { [key: string]: any } = {}
       routeRules[mergedOptions.redirectOptions.callback] = { ssr: false }
       nuxt.options.nitro = defu(nuxt.options.nitro, {
