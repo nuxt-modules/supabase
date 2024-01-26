@@ -60,7 +60,7 @@ const { data: restaurant } = await useAsyncData('restaurant', async () => {
 
 ## Realtime
 
-Based on [Supabase Realtime](https://github.com/supabase/realtime), listen to changes in your PostgreSQL Database and broadcasts them over WebSockets. 
+Based on [Supabase Realtime](https://github.com/supabase/realtime), listen to changes in your PostgreSQL Database and broadcasts them over WebSockets.
 
 To enable it, make sure you have turned on the [Realtime API](https://supabase.com/docs/guides/api#realtime-api) for your table.
 
@@ -109,4 +109,3 @@ import type { Database } from '~/types'
 const client = useSupabaseClient<Database>()
 </script>
 ```
-
