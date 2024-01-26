@@ -1,5 +1,5 @@
 import { useSupabaseUser } from '../composables/useSupabaseUser'
-import { defineNuxtPlugin, addRouteMiddleware, defineNuxtRouteMiddleware, useRuntimeConfig, navigateTo } from '#imports'
+import { defineNuxtPlugin, addRouteMiddleware, defineNuxtRouteMiddleware, useCookie, useRuntimeConfig, navigateTo } from '#imports'
 
 export default defineNuxtPlugin({
   name: 'auth-redirect',
@@ -8,7 +8,8 @@ export default defineNuxtPlugin({
       'global-auth',
       defineNuxtRouteMiddleware((to) => {
         const config = useRuntimeConfig().public.supabase
-        const { login, callback, exclude } = config.redirectOptions
+        const { login, callback, exclude, cookieRedirect } = config.redirectOptions
+        const { cookieName, cookieOptions } = config
 
         // Do not redirect on login route, callback route and excluded routes
         const isExcluded = [...exclude, login, callback]?.some((path) => {
@@ -19,6 +20,7 @@ export default defineNuxtPlugin({
 
         const user = useSupabaseUser()
         if (!user.value) {
+          if (cookieRedirect) { useCookie(`${cookieName}-redirect-path`, cookieOptions).value = to.fullPath }
           return navigateTo(login)
         }
       }),
