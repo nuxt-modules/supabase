@@ -1,5 +1,18 @@
 
 
+## [1.1.6](https://github.com/nuxt-community/supabase-module/compare/v1.1.5...v1.1.6) (2024-01-26)
+
+
+### Bug Fixes
+
+* **deps:** set resolution ([db8c102](https://github.com/nuxt-community/supabase-module/commit/db8c102fb9d69395528eece3e1e0552a16e673da))
+* **playgorund:** watch on confirm page ([0caf5c1](https://github.com/nuxt-community/supabase-module/commit/0caf5c11d632df6b7e74e5e8973ee56a38b1c968))
+
+
+### Features
+
+* **app:** added redirect path cookie for use after signin ([#327](https://github.com/nuxt-community/supabase-module/issues/327)) ([1b78a05](https://github.com/nuxt-community/supabase-module/commit/1b78a050fdc6da155434e261823b029f9dce2d40))
+
 ## [1.1.5](https://github.com/nuxt-community/supabase-module/compare/v1.1.4...v1.1.5) (2023-12-28)
 
 
