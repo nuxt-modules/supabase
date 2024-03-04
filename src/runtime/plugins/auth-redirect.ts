@@ -8,8 +8,19 @@ export default defineNuxtPlugin({
       'global-auth',
       defineNuxtRouteMiddleware((to) => {
         const config = useRuntimeConfig().public.supabase
-        const { login, callback, exclude, cookieRedirect } = config.redirectOptions
+        const { login, callback, include, exclude, cookieRedirect } = config.redirectOptions
         const { cookieName, cookieOptions } = config
+
+        // Redirect only on included routes (if defined)
+        if (include && include.length > 0) {
+          const isIncluded = include.some((path) => {
+            const regex = new RegExp(`^${path.replace(/\*/g, '.*')}$`)
+            return regex.test(to.path)
+          })
+          if (!isIncluded) {
+            return
+          }
+        }
 
         // Do not redirect on login route, callback route and excluded routes
         const isExcluded = [...exclude, login, callback]?.some((path) => {

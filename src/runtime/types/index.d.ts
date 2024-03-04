@@ -17,6 +17,7 @@ declare module '@nuxt/schema' {
 export interface RedirectOptions {
   login: string
   callback: string
+  include?: string[]
   exclude?: string[]
   cookieRedirect?: boolean
 }
