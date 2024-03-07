@@ -1,5 +1,12 @@
 
 
+## [1.1.7](https://github.com/nuxt-community/supabase-module/compare/v1.1.6...v1.1.7) (2024-03-07)
+
+
+### Features
+
+* **auth-middleware:** add `include` to `RedirectOptions` ([#336](https://github.com/nuxt-community/supabase-module/issues/336)) ([f9aad55](https://github.com/nuxt-community/supabase-module/commit/f9aad558da8171af1c442a60915c979eb10b8fab)), closes [#268](https://github.com/nuxt-community/supabase-module/issues/268)
+
 ## [1.1.6](https://github.com/nuxt-community/supabase-module/compare/v1.1.5...v1.1.6) (2024-01-26)
 
 
