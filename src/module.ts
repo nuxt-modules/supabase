@@ -16,6 +16,15 @@ export interface ModuleOptions {
   url: string
 
   /**
+   * Supabase server side API URL
+   * @default process.env.SERVER_URL
+   * @example 'https://*.supabase.co'
+   * @type string
+   * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
+   */
+  serverUrl: string
+
+  /**
    * Supabase Client API Key
    * @default process.env.SUPABASE_KEY
    * @example '123456789'
@@ -96,6 +105,7 @@ export default defineNuxtModule<ModuleOptions>({
   },
   defaults: {
     url: process.env.SUPABASE_URL as string,
+    serverUrl: process.env.SERVER_URL as string,
     key: process.env.SUPABASE_KEY as string,
     serviceKey: process.env.SUPABASE_SERVICE_KEY as string,
     redirect: true,
