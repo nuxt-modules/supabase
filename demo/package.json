@@ -13,7 +13,7 @@
     "@iconify-json/heroicons": "^1.1.13",
     "@iconify-json/heroicons-outline": "^1.1.7",
     "@iconify-json/mdi": "^1.1.55",
-    "@nuxthq/ui": "^1.2.10",
+    "@nuxthq/ui": "^2.7.0",
     "@nuxtjs/color-mode": "^3.3.2",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/supabase": "^1.1.3",
