@@ -3,7 +3,7 @@
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 const router = useRouter()
-if (process.server) {
+if (import.meta.server) {
   console.log('User on server side: ', user.value)
 } else {
   console.log('User on client side: ', user.value)
