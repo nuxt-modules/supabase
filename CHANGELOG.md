@@ -1,5 +1,17 @@
 
 
+# [1.2.0](https://github.com/nuxt-community/supabase-module/compare/v1.1.7...v1.2.0) (2024-03-29)
+
+
+### Bug Fixes
+
+* **session:** server sync ([9dee37e](https://github.com/nuxt-community/supabase-module/commit/9dee37ee030506fc7888dfbb6cc1f29b9126a728))
+
+
+### Features
+
+* **session:** add support for retrieving user session ([#338](https://github.com/nuxt-community/supabase-module/issues/338)) ([07eb081](https://github.com/nuxt-community/supabase-module/commit/07eb081d532510da4152554c7010c79ed6008559))
+
 ## [1.1.7](https://github.com/nuxt-community/supabase-module/compare/v1.1.6...v1.1.7) (2024-03-07)
 
 
