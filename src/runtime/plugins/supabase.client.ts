@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
+import { useSupabaseSession } from '../composables/useSupabaseSession'
 import { defineNuxtPlugin, useRuntimeConfig, useCookie } from '#imports'
 
 export default defineNuxtPlugin({
@@ -7,6 +8,7 @@ export default defineNuxtPlugin({
   enforce: 'pre',
   async setup () {
     const user = useSupabaseUser()
+    const currentSession = useSupabaseSession()
     const config = useRuntimeConfig().public.supabase
     const { url, key, cookieName, cookieOptions, clientOptions } = config
 
@@ -19,10 +21,13 @@ export default defineNuxtPlugin({
 
     // Handle auth event client side
     supabaseClient.auth.onAuthStateChange((event, session) => {
-      // Update user based on received session
+      // Update states based on received session
       if (session) {
-        if (JSON.stringify(user.value) !== JSON.stringify(session.user)) {
-          user.value = session.user
+        if (JSON.stringify(currentSession) !== JSON.stringify(session)) {
+          currentSession.value = session
+          if (JSON.stringify(user.value) !== JSON.stringify(session.user)) {
+            user.value = session.user
+          }
         }
       } else {
         user.value = null
