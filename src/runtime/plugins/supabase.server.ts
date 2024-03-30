@@ -8,7 +8,7 @@ export default defineNuxtPlugin({
   name: 'supabase',
   enforce: 'pre',
   async setup () {
-    const { url, key, cookieName, clientOptions } = useRuntimeConfig().public.supabase
+    const { url, serverUrl, key, cookieName, clientOptions } = useRuntimeConfig().public.supabase
     const accessToken = useCookie(`${cookieName}-access-token`).value
     const refreshToken = useCookie(`${cookieName}-refresh-token`).value
 
@@ -21,7 +21,7 @@ export default defineNuxtPlugin({
       }
     }, clientOptions)
 
-    const supabaseClient = createClient(url, key, options)
+    const supabaseClient = createClient(serverUrl || url, key, options)
 
     // Set user & session server side
     if (accessToken && refreshToken) {
