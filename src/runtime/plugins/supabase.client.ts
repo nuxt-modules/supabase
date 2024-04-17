@@ -7,7 +7,6 @@ export default defineNuxtPlugin({
   name: 'supabase',
   enforce: 'pre',
   async setup () {
-    const user = useSupabaseUser()
     const currentSession = useSupabaseSession()
     const config = useRuntimeConfig().public.supabase
     const { url, key, cookieName, cookieOptions, clientOptions } = config
@@ -25,12 +24,9 @@ export default defineNuxtPlugin({
       if (session) {
         if (JSON.stringify(currentSession) !== JSON.stringify(session)) {
           currentSession.value = session
-          if (JSON.stringify(user.value) !== JSON.stringify(session.user)) {
-            user.value = session.user
-          }
         }
       } else {
-        user.value = null
+        currentSession.value = null
       }
 
       // Use cookies to share session state between server and client

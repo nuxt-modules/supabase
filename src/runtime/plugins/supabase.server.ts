@@ -1,13 +1,12 @@
 import { defu } from 'defu'
 import { createClient } from '@supabase/supabase-js'
-import { useSupabaseUser } from '../composables/useSupabaseUser'
 import { useSupabaseSession } from '../composables/useSupabaseSession'
 import { defineNuxtPlugin, useRuntimeConfig, useCookie } from '#imports'
 
 export default defineNuxtPlugin({
   name: 'supabase',
   enforce: 'pre',
-  async setup () {
+  async setup() {
     const { url, key, cookieName, clientOptions } = useRuntimeConfig().public.supabase
     const accessToken = useCookie(`${cookieName}-access-token`).value
     const refreshToken = useCookie(`${cookieName}-refresh-token`).value
@@ -31,9 +30,6 @@ export default defineNuxtPlugin({
       })
       if (data) {
         useSupabaseSession().value = data.session
-        if (data?.user) {
-          useSupabaseUser().value = data.user
-        }
       }
     }
 
