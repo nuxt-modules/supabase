@@ -1,5 +1,6 @@
-import { SupabaseClientOptions } from '@supabase/supabase-js'
-import { CookieOptions } from 'nuxt/app'
+import type { SupabaseClientOptions } from '@supabase/supabase-js'
+import type { CookieOptions } from 'nuxt/app'
+
 declare module '@nuxt/schema' {
   interface PublicRuntimeConfig {
     supabase: {

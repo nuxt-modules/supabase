@@ -16,8 +16,8 @@ export default defineNuxtPlugin({
         flowType: clientOptions.auth.flowType,
         detectSessionInUrl: false,
         persistSession: false,
-        autoRefreshToken: false
-      }
+        autoRefreshToken: false,
+      },
     }, clientOptions)
 
     const supabaseClient = createClient(url, key, options)
@@ -26,7 +26,7 @@ export default defineNuxtPlugin({
     if (accessToken && refreshToken) {
       const { data } = await supabaseClient.auth.setSession({
         refresh_token: refreshToken,
-        access_token: accessToken
+        access_token: accessToken,
       })
       if (data) {
         useSupabaseSession().value = data.session
@@ -36,9 +36,9 @@ export default defineNuxtPlugin({
     return {
       provide: {
         supabase: {
-          client: supabaseClient
-        }
-      }
+          client: supabaseClient,
+        },
+      },
     }
-  }
+  },
 })

@@ -5,20 +5,22 @@ const user = useSupabaseUser()
 const router = useRouter()
 const session = useSupabaseSession()
 
-if (process.server) {
+if (import.meta.server) {
   console.log('User on server side: ', user.value?.email)
   console.log('Session on server side: ', session.value?.user?.email)
-} else {
+}
+else {
   console.log('User on client side: ', user.value?.email)
   console.log('Session on client side: ', session.value?.user?.email)
 }
 const signOut = async () => {
   const { error } = await supabase.auth.signOut()
-  if (error) { console.log(error) }
+  if (error) console.log(error)
   // refresh the page to get the user object
   router.go(0)
 }
 </script>
+
 <template>
   <div>
     <div

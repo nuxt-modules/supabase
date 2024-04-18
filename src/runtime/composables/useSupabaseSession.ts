@@ -14,7 +14,8 @@ export const useSupabaseSession: () => Ref<Session | null> = () => {
       if (JSON.stringify(sessionState.value) !== JSON.stringify(session)) {
         sessionState.value = session
       }
-    } else {
+    }
+    else {
       sessionState.value = null
     }
   })

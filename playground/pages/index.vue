@@ -18,11 +18,12 @@ const { data: api } = await useFetch('/api/test')
 
 const signOut = async () => {
   const { error } = await supabase.auth.signOut()
-  // eslint-disable-next-line no-console
-  if (error) { console.log(error) }
+
+  if (error) console.log(error)
   return navigateTo('/login')
 }
 </script>
+
 <template>
   <div
     style="

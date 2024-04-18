@@ -13,19 +13,34 @@ const { header } = useAppConfig()
         <div class="hidden sm:block">
           <UColorModeImage v-bind="{ class: 'h-6 w-auto', ...header?.logo }" />
         </div>
-        <img class="block sm:hidden h-6 w-auto" src="/favicon.ico" alt="mobile favicon" />
+        <img
+          class="block sm:hidden h-6 w-auto"
+          src="/favicon.ico"
+          alt="mobile favicon"
+        >
       </template>
       <template v-else>
-        Nuxt UI Pro <UBadge label="Docs" variant="subtle" class="mb-0.5" />
+        Nuxt UI Pro <UBadge
+          label="Docs"
+          variant="subtle"
+          class="mb-0.5"
+        />
       </template>
     </template>
 
-    <template v-if="header?.search" #center>
+    <template
+      v-if="header?.search"
+      #center
+    >
       <UDocsSearchButton class="hidden lg:flex" />
     </template>
 
     <template #right>
-      <UDocsSearchButton v-if="header?.search" :label="null" class="lg:hidden" />
+      <UDocsSearchButton
+        v-if="header?.search"
+        :label="null"
+        class="lg:hidden"
+      />
 
       <UColorModeButton v-if="header?.colorMode" />
 

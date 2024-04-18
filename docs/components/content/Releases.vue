@@ -1,6 +1,10 @@
 <template>
   <div style="margin-top: 50px">
-    <div v-for="release of releases" :key="release.name" style="margin-bottom: 50px">
+    <div
+      v-for="release of releases"
+      :key="release.name"
+      style="margin-bottom: 50px"
+    >
       <ProseH2 :id="release.name">
         {{ release.name }}
         <Badge style="margin-left: 10px;">

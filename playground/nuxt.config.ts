@@ -18,12 +18,12 @@ export default defineNuxtConfig({
       login: '/login',
       callback: '/confirm',
       // include: ['/protected'],
-      exclude: ['/unprotected', '/public/*']
-    }
+      exclude: ['/unprotected', '/public/*'],
+    },
   },
   nitro: {
     routeRules: {
-      '/clientonly': { ssr: false }
-    }
-  }
+      '/clientonly': { ssr: false },
+    },
+  },
 })

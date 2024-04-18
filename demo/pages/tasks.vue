@@ -15,8 +15,8 @@ const { data: tasks } = await useAsyncData('tasks', async () => {
   return data
 })
 
-async function addTask () {
-  if (newTask.value.trim().length === 0) { return }
+async function addTask() {
+  if (newTask.value.trim().length === 0) return
 
   loading.value = true
 
@@ -24,7 +24,7 @@ async function addTask () {
     .upsert({
       user: user.value.id,
       title: newTask.value,
-      completed: false
+      completed: false,
     })
     .select('id, title, completed')
     .single()
@@ -49,7 +49,6 @@ const fetchTasksFromServerRoute = async () => {
   tasksFromServer.value = data
   isModalOpen.value = true
 }
-
 </script>
 
 <template>

@@ -20,27 +20,28 @@
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxt-module-build prepare && nuxi prepare playground",
     "build": "nuxt-module-build build",
-    "lint": "eslint --ext .js,.ts,.vue .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "release": "pnpm lint && release-it",
     "pre:release": "pnpm lint && release-it --preRelease"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.11.1",
-    "@supabase/supabase-js": "2.41.1",
+    "@nuxt/kit": "^3.11.2",
+    "@supabase/supabase-js": "2.42.4",
     "defu": "^6.1.4",
     "pathe": "^1.1.2"
   },
   "devDependencies": {
+    "@nuxt/eslint": "^0.3.8",
     "@nuxt/module-builder": "^0.5.5",
-    "@nuxt/schema": "^3.11.1",
-    "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@nuxt/schema": "^3.11.2",
     "@release-it/conventional-changelog": "^8.0.1",
-    "@types/node": "^20.11.30",
-    "eslint": "^8.57.0",
-    "nuxt": "^3.11.1",
+    "@types/node": "^20.12.7",
+    "eslint": "^9.0.0",
+    "nuxt": "^3.11.2",
     "prettier": "^3.2.5",
-    "release-it": "^17.1.1",
-    "typescript": "^5.4.3"
+    "release-it": "^17.2.0",
+    "typescript": "^5.4.5"
   },
   "release-it": {
     "git": {
