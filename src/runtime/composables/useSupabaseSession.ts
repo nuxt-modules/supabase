@@ -3,7 +3,7 @@ import type { Ref } from 'vue'
 import { useSupabaseClient } from './useSupabaseClient'
 import { useState } from '#imports'
 
-export const useSupabaseSession = () => {
+export const useSupabaseSession: () => Ref<Session | null> = () => {
   const supabase = useSupabaseClient()
 
   const sessionState = useState<Session | null>('supabase_session', () => null)
@@ -19,5 +19,5 @@ export const useSupabaseSession = () => {
     }
   })
 
-  return sessionState as Ref<Session | null>
+  return sessionState
 }

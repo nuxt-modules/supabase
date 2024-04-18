@@ -3,10 +3,14 @@
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 const router = useRouter()
+const session = useSupabaseSession()
+
 if (process.server) {
-  console.log('User on server side: ', user.value)
+  console.log('User on server side: ', user.value?.email)
+  console.log('Session on server side: ', session.value?.user?.email)
 } else {
-  console.log('User on client side: ', user.value)
+  console.log('User on client side: ', user.value?.email)
+  console.log('Session on client side: ', session.value?.user?.email)
 }
 const signOut = async () => {
   const { error } = await supabase.auth.signOut()
