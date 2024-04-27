@@ -5,14 +5,14 @@ import { getCookie } from 'h3'
 export default defineNuxtPlugin({
   name: 'supabase',
   enforce: 'pre',
-  async setup(nuxtApp) {
+  async setup() {
     const { url, key, cookieOptions, clientOptions } = useRuntimeConfig().public.supabase
 
-    const event = useRequestEvent(nuxtApp)
+    const event = useRequestEvent()
 
     const supabaseClient = createServerClient(url, key, {
       ...clientOptions,
-      cookies: { get: (key: string) => getCookie(event, key) },
+      cookies: { get: (key: string) => getCookie(event!, key) },
       cookieOptions,
     })
 
