@@ -8,9 +8,10 @@ export default defineNuxtPlugin({
   async setup() {
     const currentSession = useSupabaseSession()
     const config = useRuntimeConfig().public.supabase
-    const { url, key, cookieOptions } = config
+    const { url, key, cookieOptions, clientOptions } = config
 
     const supabaseClient = createBrowserClient(url, key, {
+      ...clientOptions,
       cookies: { get: (key: string) => useCookie(key, cookieOptions).value },
       cookieOptions,
       isSingleton: true,

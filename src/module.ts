@@ -73,14 +73,8 @@ export interface ModuleOptions {
   cookieOptions?: CookieOptions
 
   /**
-   * Supabase Client options
-   * @default {
-      auth: {
-        flowType: 'pkce',
-        detectSessionInUrl: true,
-        persistSession: true,
-      },
-    }
+   * Supabase client options (overrides default options from `@supabase/ssr`)
+   * @default { }
    * @type object
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
@@ -112,14 +106,7 @@ export default defineNuxtModule<ModuleOptions>({
       sameSite: 'lax',
       secure: true,
     } as CookieOptions,
-    clientOptions: {
-      auth: {
-        flowType: 'pkce',
-        detectSessionInUrl: true,
-        persistSession: true,
-        autoRefreshToken: true,
-      },
-    } as SupabaseClientOptions<string>,
+    clientOptions: {} as SupabaseClientOptions<string>,
   },
   setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
