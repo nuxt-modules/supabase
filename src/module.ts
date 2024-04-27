@@ -54,7 +54,7 @@ export interface ModuleOptions {
   redirectOptions?: RedirectOptions
 
   /**
-   * Cookie name, used for storing access and refresh tokens, added in front of `-access-token` and `-refresh-token` to form the full cookie name e.g. `sb-access-token`
+   * Cookie name used for storing the redirect path when using the `redirect` option, added in front of `-redirect-path` to form the full cookie name e.g. `sb-redirect-path`
    * @default 'sb'
    * @type string
    */
