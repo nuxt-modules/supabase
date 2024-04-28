@@ -1,6 +1,7 @@
 import { createBrowserClient } from '@supabase/ssr'
 import { useSupabaseSession } from '../composables/useSupabaseSession'
 import { defineNuxtPlugin, useRuntimeConfig, useCookie } from '#imports'
+import { toRaw } from 'vue'
 
 export default defineNuxtPlugin({
   name: 'supabase',
@@ -12,7 +13,7 @@ export default defineNuxtPlugin({
 
     const supabaseClient = createBrowserClient(url, key, {
       ...clientOptions,
-      cookies: { get: (key: string) => useCookie(key, {...cookieOptions, readonly: true}).value },
+      cookies: { get: (key: string) => toRaw(useCookie(key, { ...cookieOptions, readonly: true }).value) },
       cookieOptions,
       isSingleton: true,
     })
