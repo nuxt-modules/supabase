@@ -1,7 +1,7 @@
 import type { User } from '@supabase/supabase-js'
 import { useSupabaseSession } from './useSupabaseSession'
 import { useSupabaseClient } from './useSupabaseClient'
-import { useState, createError } from '#imports'
+import { useState } from '#imports'
 
 export const useSupabaseUser = async () => {
   const userState = useState<User | undefined>('supabase_user', () => null)
