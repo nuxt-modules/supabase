@@ -15,13 +15,11 @@ export const useSupabaseUser = async () => {
   // We do not rely on `getSession` on the server. It could be tampered with by the sender.
   if (import.meta.server) {
     const { data: { user } } = await supabase.auth.getUser()
-    console.log('user on server:', !!user)
     userState.value = user
   }
   // We rely on `getSession` on the client.
   else {
     const session = await useSupabaseSession()
-    console.log('user on client:', !!session.value?.user)
 
     userState.value = session.value?.user
   }
