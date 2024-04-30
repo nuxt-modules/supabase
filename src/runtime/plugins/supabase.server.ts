@@ -9,7 +9,7 @@ export default defineNuxtPlugin({
   async setup() {
     const { url, key, cookieOptions, clientOptions } = useRuntimeConfig().public.supabase
 
-    const event = useRequestEvent()
+    const event = useRequestEvent()!
 
     const supabaseClient = createServerClient(url, key, {
       ...clientOptions,

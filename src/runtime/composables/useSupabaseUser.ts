@@ -4,7 +4,7 @@ import { useSupabaseClient } from './useSupabaseClient'
 import { useState } from '#imports'
 
 export const useSupabaseUser = async () => {
-  const userState = useState<User | undefined>('supabase_user', () => null)
+  const userState = useState<User | null>('supabase_user', () => null)
   const supabase = useSupabaseClient()
 
   // Need to manipulate user in `supabase.client` plugin when client is not yet initialized
@@ -21,7 +21,7 @@ export const useSupabaseUser = async () => {
   else {
     const session = await useSupabaseSession()
 
-    userState.value = session.value?.user
+    userState.value = session.value?.user ?? null
   }
 
   return userState
