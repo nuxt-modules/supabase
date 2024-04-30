@@ -33,15 +33,15 @@
     "pathe": "^1.1.2"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^0.3.8",
-    "@nuxt/module-builder": "^0.5.5",
+    "@nuxt/eslint": "^0.3.10",
+    "@nuxt/module-builder": "^0.6.0",
     "@nuxt/schema": "^3.11.2",
     "@release-it/conventional-changelog": "^8.0.1",
     "@types/node": "^20.12.7",
-    "eslint": "^9.0.0",
+    "eslint": "^9.1.1",
     "nuxt": "^3.11.2",
     "prettier": "^3.2.5",
-    "release-it": "^17.2.0",
+    "release-it": "^17.2.1",
     "typescript": "^5.4.5"
   },
   "release-it": {

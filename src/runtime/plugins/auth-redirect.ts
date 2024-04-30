@@ -1,4 +1,5 @@
-import { useSupabaseUser } from '../composables/useSupabaseUser'
+import { useSupabaseSession } from '../composables/useSupabaseSession'
+import type { Ref } from '#imports'
 import { defineNuxtPlugin, addRouteMiddleware, defineNuxtRouteMiddleware, useCookie, useRuntimeConfig, navigateTo } from '#imports'
 import type { RouteLocationNormalized } from '#vue-router'
 
@@ -7,7 +8,7 @@ export default defineNuxtPlugin({
   setup() {
     addRouteMiddleware(
       'global-auth',
-      defineNuxtRouteMiddleware((to: RouteLocationNormalized) => {
+      defineNuxtRouteMiddleware(async (to: RouteLocationNormalized) => {
         const config = useRuntimeConfig().public.supabase
         const { login, callback, include, exclude, cookieRedirect } = config.redirectOptions
         const { cookieName, cookieOptions } = config
@@ -30,10 +31,10 @@ export default defineNuxtPlugin({
         })
         if (isExcluded) return
 
-        const user = useSupabaseUser()
-        if (!user.value) {
+        const session = await useSupabaseSession()
+        if (!session.value) {
           if (cookieRedirect) {
-            useCookie(`${cookieName}-redirect-path`, cookieOptions).value = to.fullPath
+            (useCookie(`${cookieName}-redirect-path`, { ...cookieOptions, readonly: false }) as Ref).value = to.fullPath
           }
 
           return navigateTo(login)

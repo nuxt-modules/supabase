@@ -6,7 +6,7 @@ import { useRuntimeConfig } from '#imports'
 export const serverSupabaseClient = async <T>(event: H3Event): Promise<SupabaseClient<T>> => {
   // get settings from runtime config
   const {
-    supabase: { url, key, cookieOptions, clientOptions: {auth = {}} },
+    supabase: { url, key, cookieOptions, clientOptions: { auth = {} } },
   } = useRuntimeConfig().public
 
   let supabaseClient = event.context._supabaseClient as SupabaseClient<T>

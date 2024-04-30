@@ -196,22 +196,5 @@ export default defineNuxtModule<ModuleOptions>({
     if (!nuxt.options.dev && !['cloudflare'].includes(process.env.NITRO_PRESET as string)) {
       nuxt.options.build.transpile.push('websocket')
     }
-
-    // Optimize @supabase/ packages for dev
-    // TODO: Remove when packages fixed with valid ESM exports
-    // https://github.com/supabase/gotrue/issues/1013
-    extendViteConfig((config) => {
-      config.optimizeDeps = config.optimizeDeps || {}
-      config.optimizeDeps.include = config.optimizeDeps.include || []
-      config.optimizeDeps.exclude = config.optimizeDeps.exclude || []
-      config.optimizeDeps.include.push(
-        '@supabase/functions-js',
-        '@supabase/gotrue-js',
-        '@supabase/postgrest-js',
-        '@supabase/realtime-js',
-        '@supabase/storage-js',
-        '@supabase/supabase-js',
-      )
-    })
   },
 })

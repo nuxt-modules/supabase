@@ -1,9 +1,9 @@
 <!-- eslint-disable no-console -->
 <script setup lang="ts">
 const supabase = useSupabaseClient()
-const user = useSupabaseUser()
+const user = await useSupabaseUser()
 const router = useRouter()
-const session = useSupabaseSession()
+const session = await useSupabaseSession()
 
 if (import.meta.server) {
   console.log('User on server side: ', user.value?.email)

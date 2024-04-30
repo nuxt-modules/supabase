@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const user = useSupabaseUser()
+const user = await useSupabaseUser()
 
 watch(user, () => {
   if (user.value) {

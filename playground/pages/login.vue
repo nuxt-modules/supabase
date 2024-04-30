@@ -1,7 +1,7 @@
 <!-- eslint-disable no-console -->
 <script setup lang="ts">
 const supabase = useSupabaseClient()
-const user = useSupabaseUser()
+const user = await useSupabaseUser()
 
 watchEffect(() => {
   // Can be uncommented in next nuxt version when https://github.com/nuxt/nuxt/issues/21841 is fixed

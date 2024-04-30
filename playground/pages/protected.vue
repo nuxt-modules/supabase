@@ -8,5 +8,5 @@
 </template>
 
 <script setup lang="ts">
-const session = useSupabaseSession()
+const session = await useSupabaseSession()
 </script>
