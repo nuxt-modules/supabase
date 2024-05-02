@@ -197,6 +197,7 @@ export default defineNuxtModule<ModuleOptions>({
             './runtime/server/services',
           )}').serverSupabaseServiceRole`,
           `  const serverSupabaseUser: typeof import('${resolve('./runtime/server/services')}').serverSupabaseUser`,
+          `  const serverSupabaseSession: typeof import('${resolve('./runtime/server/services')}').serverSupabaseSession`,
           '}',
         ].join('\n'),
     })
