@@ -1,5 +1,12 @@
 
 
+## [1.2.2](https://github.com/nuxt-community/supabase-module/compare/v1.2.1...v1.2.2) (2024-05-02)
+
+
+### Bug Fixes
+
+* **serverSupabaseSession:** export service ([9cfeb87](https://github.com/nuxt-community/supabase-module/commit/9cfeb8726d562c5aac6fe1efa7dd1664bc39ed66))
+
 ## [1.2.1](https://github.com/nuxt-community/supabase-module/compare/v1.2.0...v1.2.1) (2024-04-18)
 
 # [1.2.0](https://github.com/nuxt-community/supabase-module/compare/v1.1.7...v1.2.0) (2024-03-29)
