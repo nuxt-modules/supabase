@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url'
 import { defu } from 'defu'
-import { defineNuxtModule, addPlugin, createResolver, addTemplate, resolveModule } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver, addTemplate, resolveModule, extendViteConfig } from '@nuxt/kit'
 import type { CookieOptions } from 'nuxt/app'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
 import type { NitroConfig } from 'nitropack'
@@ -196,5 +196,12 @@ export default defineNuxtModule<ModuleOptions>({
     if (!nuxt.options.dev && !['cloudflare'].includes(process.env.NITRO_PRESET as string)) {
       nuxt.options.build.transpile.push('websocket')
     }
+
+    // Needed to fix https://github.com/supabase/auth-helpers/issues/725
+    extendViteConfig((config) => {
+      config.optimizeDeps = config.optimizeDeps || {}
+      config.optimizeDeps.include = config.optimizeDeps.include || []
+      config.optimizeDeps.include.push('cookie')
+    })
   },
 })
