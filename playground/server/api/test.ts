@@ -1,5 +1,5 @@
 import { createError } from 'h3'
-import { serverSupabaseClient, serverSupabaseUser } from '#supabase/server'
+import { serverSupabaseClient, serverSupabaseUser, serverSupabaseSession } from '#supabase/server'
 
 export default defineEventHandler(async (event) => {
   const supabase = await serverSupabaseClient(event)
@@ -10,6 +10,11 @@ export default defineEventHandler(async (event) => {
   const user = await serverSupabaseUser(event)
   if (!user) {
     throw createError({ statusCode: 404, statusMessage: 'User not found' })
+  }
+
+  const session = await serverSupabaseSession(event)
+  if (!session) {
+    throw createError({ statusCode: 401, statusMessage: 'Session not found' })
   }
 
   // const { data, error } = await supabase.from('test').select('*')
