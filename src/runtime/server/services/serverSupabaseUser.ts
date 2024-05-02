@@ -6,12 +6,12 @@ import { serverSupabaseClient } from '../services/serverSupabaseClient'
 export const serverSupabaseUser = async (event: H3Event): Promise<User | null> => {
   const client = await serverSupabaseClient(event)
 
-  const { data: { session }, error } = await client.auth.getSession()
+  const { data: { user }, error } = await client.auth.getUser()
   if (error) {
     throw createError({ statusMessage: error?.message })
   }
 
-  event.context._user = session?.user ?? null
+  event.context._user = user
 
   return event.context._user
 }
