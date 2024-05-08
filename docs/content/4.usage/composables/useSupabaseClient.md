@@ -101,7 +101,17 @@ onUnmounted(() => {
 
 ## Typescript
 
-You can pass Database typings to the client. Check Supabase [documentation](https://supabase.com/docs/reference/javascript/release-notes#typescript-support) for further information.
+Database typings are passed to the client out of the box if the database generated types are found at `./types/database.types.ts` or [your configured types path](/get-started#types). Check Supabase [documentation](https://supabase.com/docs/reference/javascript/release-notes#typescript-support) for further information.
+
+```shell
+## Generate types from live database
+supabase gen types typescript --project-id YourProjectId > types/database.types.ts
+
+## Generate types when using local environment
+supabase gen types typescript --local > types/database.types.ts
+```
+
+You can also pass Database typings to the client manually:
 
 ```vue
 <script setup lang="ts">

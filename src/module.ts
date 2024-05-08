@@ -1,4 +1,5 @@
 import { fileURLToPath } from 'node:url'
+import fs from 'node:fs'
 import { defu } from 'defu'
 import { defineNuxtModule, addPlugin, createResolver, addTemplate, resolveModule, extendViteConfig } from '@nuxt/kit'
 import type { CookieOptions } from 'nuxt/app'
@@ -73,6 +74,13 @@ export interface ModuleOptions {
   cookieOptions?: CookieOptions
 
   /**
+   * Path to Supabase database type definitions file
+   * @default '~/types/database.types.ts'
+   * @type string
+   */
+  types?: string | false
+
+  /**
    * Supabase Client options
    * @default {
       auth: {
@@ -112,6 +120,7 @@ export default defineNuxtModule<ModuleOptions>({
       sameSite: 'lax',
       secure: true,
     } as CookieOptions,
+    types: '~/types/database.types.ts',
     clientOptions: {
       auth: {
         flowType: 'pkce',
@@ -122,7 +131,7 @@ export default defineNuxtModule<ModuleOptions>({
     } as SupabaseClientOptions<string>,
   },
   setup(options, nuxt) {
-    const { resolve } = createResolver(import.meta.url)
+    const { resolve, resolvePath } = createResolver(import.meta.url)
     const resolveRuntimeModule = (path: string) => resolveModule(path, { paths: resolve('./runtime') })
 
     // Public runtimeConfig
@@ -202,7 +211,18 @@ export default defineNuxtModule<ModuleOptions>({
         ].join('\n'),
     })
 
-    nuxt.hook('prepare:types', (options) => {
+    addTemplate({
+      filename: 'types/supabase-database.d.ts',
+      getContents: async () => {
+        if (!!options.types && fs.existsSync(await resolvePath(options.types))) {
+          return `export * from '${await resolvePath(options.types)}'`
+        }
+
+        return `export type Database = unknown`
+      },
+    })
+
+    nuxt.hook('prepare:types', async (options) => {
       options.references.push({ path: resolve(nuxt.options.buildDir, 'types/supabase.d.ts') })
     })
 

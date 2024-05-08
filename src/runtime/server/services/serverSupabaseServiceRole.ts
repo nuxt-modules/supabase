@@ -2,8 +2,9 @@ import type { SupabaseClient } from '@supabase/supabase-js'
 import { createClient } from '@supabase/supabase-js'
 import type { H3Event } from 'h3'
 import { useRuntimeConfig } from '#imports'
+import type { Database } from '#build/types/supabase-database'
 
-export const serverSupabaseServiceRole = <T>(event: H3Event): SupabaseClient<T> => {
+export const serverSupabaseServiceRole = <T = Database>(event: H3Event): SupabaseClient<T> => {
   const {
     supabase: { serviceKey },
     public: {
