@@ -1,4 +1,5 @@
 import { fileURLToPath } from 'node:url'
+import fs from 'node:fs'
 import { defu } from 'defu'
 import { defineNuxtModule, addPlugin, createResolver, addTemplate, resolveModule, extendViteConfig } from '@nuxt/kit'
 import type { CookieOptions } from 'nuxt/app'
@@ -213,11 +214,11 @@ export default defineNuxtModule<ModuleOptions>({
     addTemplate({
       filename: 'types/supabase-database.d.ts',
       getContents: async () => {
-        if (!options.types) return `export type Database = unknown`
+        if (!!options.types && fs.existsSync(await resolvePath(options.types))) {
+          return `export * from '${await resolvePath(options.types)}'`
+        }
 
-        const path = await resolvePath(options.types)
-
-        return `export * from '${path}'`
+        return `export type Database = unknown`
       },
     })
 
