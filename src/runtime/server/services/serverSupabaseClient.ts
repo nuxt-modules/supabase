@@ -4,8 +4,9 @@ import { getCookie } from 'h3'
 import type { H3Event } from 'h3'
 import { defu } from 'defu'
 import { useRuntimeConfig } from '#imports'
+import type { Database } from '#build/types/supabase-database'
 
-export const serverSupabaseClient = async <T>(event: H3Event): Promise<SupabaseClient<T>> => {
+export const serverSupabaseClient = async <T = Database>(event: H3Event): Promise<SupabaseClient<T>> => {
   // get settings from runtime config
   const {
     supabase: { url, key, cookieName, clientOptions },
