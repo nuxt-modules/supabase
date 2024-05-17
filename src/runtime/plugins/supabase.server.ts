@@ -1,6 +1,6 @@
 import { createServerClient } from '@supabase/ssr'
 import { getCookie, setCookie, deleteCookie } from 'h3'
-import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig } from '#imports'
+import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig, useSupabaseUser } from '#imports'
 import type { CookieOptions } from '#app'
 
 export default defineNuxtPlugin({
@@ -8,6 +8,7 @@ export default defineNuxtPlugin({
   enforce: 'pre',
   async setup() {
     const { url, key, cookieOptions, clientOptions } = useRuntimeConfig().public.supabase
+    const currentUser = await useSupabaseUser()
 
     const event = useRequestEvent()!
 
@@ -20,6 +21,10 @@ export default defineNuxtPlugin({
       },
       cookieOptions,
     })
+
+    // Fetch user from `getUser` on server side to populate it in useSupaseUser
+    const { data: { user } } = await supabaseClient.auth.getUser()
+    currentUser.value = user
 
     return {
       provide: {

@@ -13,9 +13,9 @@ export const useSupabaseUser = async () => {
   }
 
   // We do not rely on `getSession` on the server. It could be tampered with by the sender.
+  // User has been populated by `getUser` in server plugin.
   if (import.meta.server) {
-    const { data: { user } } = await supabase.auth.getUser()
-    userState.value = user
+    return userState
   }
   // We rely on `getSession` on the client.
   else {
