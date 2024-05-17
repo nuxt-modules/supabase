@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const client = useSupabaseClient()
-const user = await useSupabaseUser()
+const user = useSupabaseUser()
 const colorMode = useColorMode()
 
 const toggleDark = () => {

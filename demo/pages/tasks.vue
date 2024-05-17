@@ -2,7 +2,7 @@
 import type { Database } from '~~/types/database.types'
 
 const client = useSupabaseClient<Database>()
-const user = await useSupabaseUser()
+const user = useSupabaseUser()
 
 const tasksFromServer = ref()
 const isModalOpen = ref(false)

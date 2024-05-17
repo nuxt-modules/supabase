@@ -1,7 +1,7 @@
 <!-- eslint-disable no-console -->
 <script setup lang="ts">
 const supabase = useSupabaseClient()
-const user = await useSupabaseUser()
+const user = useSupabaseUser()
 const router = useRouter()
 const session = await useSupabaseSession()
 

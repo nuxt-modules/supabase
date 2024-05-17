@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const user = await useSupabaseUser()
+const user = useSupabaseUser()
 const { auth } = useSupabaseClient()
 
 const redirectTo = `${useRuntimeConfig().public.baseUrl}/confirm`

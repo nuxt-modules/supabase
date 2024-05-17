@@ -7,7 +7,7 @@ Once logged in, you can [auto-import](https://nuxt.com/docs/guide/directory-stru
 
 ```vue
 <script setup>
-const user = await useSupabaseUser()
+const user = useSupabaseUser()
 </script>
 ```
 
@@ -21,7 +21,7 @@ If the [redirect](/get-started#redirect) option is disabled, you can protect you
 
 ```ts [middleware/auth.ts]
 export default defineNuxtRouteMiddleware((to, _from) => {
-  const user = await useSupabaseUser()
+  const user = useSupabaseUser()
 
   if (!user.value) {
     return navigateTo('/login')

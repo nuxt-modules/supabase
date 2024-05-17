@@ -8,11 +8,10 @@ export default defineNuxtPlugin({
   enforce: 'pre',
   async setup() {
     const { url, key, cookieOptions, clientOptions } = useRuntimeConfig().public.supabase
-    const currentUser = await useSupabaseUser()
 
     const event = useRequestEvent()!
 
-    const supabaseClient = createServerClient(url, key, {
+    const client = createServerClient(url, key, {
       ...clientOptions,
       cookies: {
         get: (key: string) => getCookie(event, key),
@@ -23,14 +22,14 @@ export default defineNuxtPlugin({
     })
 
     // Fetch user from `getUser` on server side to populate it in useSupaseUser
-    const { data: { user } } = await supabaseClient.auth.getUser()
-    currentUser.value = user
+    const {
+      data: { user },
+    } = await client.auth.getUser()
+    useSupabaseUser().value = user
 
     return {
       provide: {
-        supabase: {
-          client: supabaseClient,
-        },
+        supabase: { client },
       },
     }
   },

@@ -5,7 +5,7 @@ if (import.meta.server) {
   )
 }
 
-const user = await useSupabaseUser()
+const user = useSupabaseUser()
 watch(user, () => {
   if (user.value) {
     return navigateTo('/user')

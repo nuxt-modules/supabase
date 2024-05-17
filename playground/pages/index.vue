@@ -2,7 +2,7 @@
 import type { Database } from '~~/types/database.types'
 
 const supabase = useSupabaseClient<Database>()
-const user = await useSupabaseUser()
+const user = useSupabaseUser()
 
 const { data } = useAsyncData(async () => {
   // const { data } = await supabase.from('test').select('*')
