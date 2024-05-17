@@ -2,6 +2,7 @@ import { createBrowserClient } from '@supabase/ssr'
 import { useSupabaseSession } from '../composables/useSupabaseSession'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
 import { defineNuxtPlugin, useRuntimeConfig } from '#imports'
+import type { Session } from '@supabase/supabase-js'
 
 export default defineNuxtPlugin({
   name: 'supabase',
@@ -20,17 +21,11 @@ export default defineNuxtPlugin({
     const currentUser = await useSupabaseUser()
 
     // Handle auth event client side
-    supabaseClient.auth.onAuthStateChange((_, session) => {
+    supabaseClient.auth.onAuthStateChange((_, session: Session | null) => {
       // Update states based on received session
-      if (session) {
-        if (JSON.stringify(currentSession) !== JSON.stringify(session)) {
-          currentSession.value = session
-          currentUser.value = session.user
-        }
-      }
-      else {
-        currentSession.value = null
-        currentUser.value = null
+      if (JSON.stringify(currentSession.value) !== JSON.stringify(session)) {
+        currentSession.value = session
+        currentUser.value = session?.user ?? null
       }
     })
 
