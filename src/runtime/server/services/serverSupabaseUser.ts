@@ -11,7 +11,5 @@ export const serverSupabaseUser = async (event: H3Event): Promise<User | null> =
     throw createError({ statusMessage: error?.message })
   }
 
-  event.context._user = user
-
-  return event.context._user
+  return user
 }
