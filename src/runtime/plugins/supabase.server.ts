@@ -1,21 +1,30 @@
 import { createServerClient } from '@supabase/ssr'
 import { getCookie, setCookie, deleteCookie } from 'h3'
 import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig, useSupabaseSession, useSupabaseUser } from '#imports'
-import type { CookieOptions } from '#app'
+import type { CookieOptions, NuxtApp } from '#app'
 
 export default defineNuxtPlugin({
   name: 'supabase',
   enforce: 'pre',
-  async setup() {
-    const event = useRequestEvent()!
+  async setup(nuxtApp) {
     const { url, key, cookieOptions, clientOptions } = useRuntimeConfig().public.supabase
 
     const client = createServerClient(url, key, {
       ...clientOptions,
       cookies: {
-        get: (key: string) => getCookie(event, key),
-        set: (key: string, value: string, options: CookieOptions) => setCookie(event, key, value, options),
-        remove: (key: string, options: CookieOptions) => deleteCookie(event, key, options),
+        get: (key: string) => getCookie(useRequestEvent(nuxtApp as NuxtApp)!, key),
+        set: (key: string, value: string, options: CookieOptions) => {
+          const event = useRequestEvent(nuxtApp as NuxtApp)!
+          if (!event.node.res.headersSent) {
+            setCookie(event, key, value, options)
+          }
+        },
+        remove: (key: string, options: CookieOptions) => {
+          const event = useRequestEvent(nuxtApp as NuxtApp)!
+          if (!event.node.res.headersSent) {
+            deleteCookie(event, key, options)
+          }
+        },
       },
       cookieOptions,
     })
