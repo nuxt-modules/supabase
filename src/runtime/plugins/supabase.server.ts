@@ -1,30 +1,40 @@
 import { createServerClient } from '@supabase/ssr'
 import { getCookie, setCookie, deleteCookie } from 'h3'
-import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig, useSupabaseUser } from '#imports'
-import type { CookieOptions } from '#app'
+import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig, useSupabaseSession, useSupabaseUser } from '#imports'
+import type { CookieOptions, NuxtApp } from '#app'
 
 export default defineNuxtPlugin({
   name: 'supabase',
   enforce: 'pre',
-  async setup() {
+  async setup(nuxtApp) {
     const { url, key, cookieOptions, clientOptions } = useRuntimeConfig().public.supabase
-
-    const event = useRequestEvent()!
 
     const client = createServerClient(url, key, {
       ...clientOptions,
       cookies: {
-        get: (key: string) => getCookie(event, key),
-        set: (key: string, value: string, options: CookieOptions) => setCookie(event, key, value, options),
-        remove: (key: string, options: CookieOptions) => deleteCookie(event, key, options),
+        get: (key: string) => getCookie(useRequestEvent(nuxtApp as NuxtApp)!, key),
+        set: (key: string, value: string, options: CookieOptions) => {
+          const event = useRequestEvent(nuxtApp as NuxtApp)!
+          if (!event.node.res.headersSent) {
+            setCookie(event, key, value, options)
+          }
+        },
+        remove: (key: string, options: CookieOptions) => {
+          const event = useRequestEvent(nuxtApp as NuxtApp)!
+          if (!event.node.res.headersSent) {
+            deleteCookie(event, key, options)
+          }
+        },
       },
       cookieOptions,
     })
 
-    // Fetch user from `getUser` on server side to populate it in useSupaseUser
-    const {
-      data: { user },
-    } = await client.auth.getUser()
+    // Initialize user and session states
+    const [{ data: { session } }, { data: { user } }] = await Promise.all([
+      client.auth.getSession(),
+      client.auth.getUser(),
+    ])
+    useSupabaseSession().value = session
     useSupabaseUser().value = user
 
     return {

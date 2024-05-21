@@ -3,7 +3,7 @@
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 const router = useRouter()
-const session = await useSupabaseSession()
+const session = useSupabaseSession()
 
 if (import.meta.server) {
   console.log('User on server side: ', user.value?.email)

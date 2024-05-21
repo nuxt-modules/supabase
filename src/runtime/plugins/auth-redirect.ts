@@ -8,7 +8,7 @@ export default defineNuxtPlugin({
   setup() {
     addRouteMiddleware(
       'global-auth',
-      defineNuxtRouteMiddleware(async (to: RouteLocationNormalized) => {
+      defineNuxtRouteMiddleware((to: RouteLocationNormalized) => {
         const config = useRuntimeConfig().public.supabase
         const { login, callback, include, exclude, cookieRedirect } = config.redirectOptions
         const { cookieName, cookieOptions } = config
@@ -31,7 +31,7 @@ export default defineNuxtPlugin({
         })
         if (isExcluded) return
 
-        const session = await useSupabaseSession()
+        const session = useSupabaseSession()
         if (!session.value) {
           if (cookieRedirect) {
             (useCookie(`${cookieName}-redirect-path`, { ...cookieOptions, readonly: false }) as Ref).value = to.fullPath
