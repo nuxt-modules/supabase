@@ -27,8 +27,8 @@
   },
   "dependencies": {
     "@nuxt/kit": "^3.11.2",
-    "@supabase/ssr": "^0.3.0",
-    "@supabase/supabase-js": "2.43.2",
+    "@supabase/ssr": "^0.4.0-rc.3",
+    "@supabase/supabase-js": "2.43.4",
     "defu": "^6.1.4",
     "pathe": "^1.1.2"
   },
@@ -38,7 +38,7 @@
     "@nuxt/schema": "^3.11.2",
     "@release-it/conventional-changelog": "^8.0.1",
     "@types/node": "^20.12.12",
-    "eslint": "^9.2.0",
+    "eslint": "^9.4.0",
     "nuxt": "^3.11.2",
     "prettier": "^3.2.5",
     "release-it": "^17.2.1",
