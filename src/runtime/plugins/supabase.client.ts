@@ -1,8 +1,8 @@
 import { createBrowserClient } from '@supabase/ssr'
+import type { Session } from '@supabase/supabase-js'
 import { useSupabaseSession } from '../composables/useSupabaseSession'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
 import { defineNuxtPlugin, useRuntimeConfig } from '#imports'
-import type { Session } from '@supabase/supabase-js'
 
 export default defineNuxtPlugin({
   name: 'supabase',
@@ -18,9 +18,11 @@ export default defineNuxtPlugin({
 
     const currentSession = useSupabaseSession()
     const currentUser = useSupabaseUser()
-    
+
     // Initialize user and session states
-    const { data: { session } } = await client.auth.getSession()
+    const {
+      data: { session },
+    } = await client.auth.getSession()
     currentSession.value = session
     currentUser.value = session?.user ?? null
 
