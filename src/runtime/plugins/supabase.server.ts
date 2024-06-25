@@ -14,7 +14,7 @@ export default defineNuxtPlugin({
     const client = createServerClient(url, key, {
       ...clientOptions,
       cookies: {
-        getAll: () => parseCookieHeader(getHeader(event, 'Cookie')),
+        getAll: () => parseCookieHeader(getHeader(event, 'Cookie') ?? ''),
         setAll: (
           cookies: {
             name: string

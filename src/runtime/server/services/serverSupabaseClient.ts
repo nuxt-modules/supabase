@@ -19,7 +19,7 @@ export const serverSupabaseClient = async <T>(event: H3Event): Promise<SupabaseC
     event.context._supabaseClient = createServerClient(url, key, {
       auth,
       cookies: {
-        getAll: () => parseCookieHeader(getHeader(event, 'Cookie')),
+        getAll: () => parseCookieHeader(getHeader(event, 'Cookie') ?? ''),
         setAll: (
           cookies: {
             name: string
