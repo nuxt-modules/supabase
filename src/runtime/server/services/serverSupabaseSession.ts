@@ -11,7 +11,5 @@ export const serverSupabaseSession = async (event: H3Event): Promise<Session | n
     throw createError({ statusMessage: error?.message })
   }
 
-  event.context._session = session ?? null
-
-  return event.context._session
+  return session
 }

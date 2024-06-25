@@ -18,15 +18,13 @@ export const serverSupabaseServiceRole = <T>(event: H3Event): SupabaseClient<T> 
 
   // No need to recreate client if exists in request context
   if (!event.context._supabaseServiceRole) {
-    const auth = {
-      detectSessionInUrl: false,
-      persistSession: false,
-      autoRefreshToken: false,
-    }
-
-    const supabaseClient = createClient(url, serviceKey, { auth })
-
-    event.context._supabaseServiceRole = supabaseClient
+    event.context._supabaseServiceRole = createClient(url, serviceKey, {
+      auth: {
+        detectSessionInUrl: false,
+        persistSession: false,
+        autoRefreshToken: false,
+      },
+    })
   }
 
   return event.context._supabaseServiceRole as SupabaseClient<T>

@@ -1,43 +1,46 @@
-import { defu } from 'defu'
-import { createClient } from '@supabase/supabase-js'
-import { useSupabaseSession } from '../composables/useSupabaseSession'
-import { defineNuxtPlugin, useRuntimeConfig, useCookie } from '#imports'
+import { createServerClient, parseCookieHeader } from '@supabase/ssr'
+import { getHeader, setCookie } from 'h3'
+import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig, useSupabaseSession, useSupabaseUser } from '#imports'
+import type { CookieOptions } from '#app'
 
 export default defineNuxtPlugin({
   name: 'supabase',
   enforce: 'pre',
   async setup() {
-    const { url, key, cookieName, clientOptions } = useRuntimeConfig().public.supabase
-    const accessToken = useCookie(`${cookieName}-access-token`).value
-    const refreshToken = useCookie(`${cookieName}-refresh-token`).value
+    const { url, key, cookieOptions, clientOptions } = useRuntimeConfig().public.supabase
 
-    const options = defu({
-      auth: {
-        flowType: clientOptions.auth.flowType,
-        detectSessionInUrl: false,
-        persistSession: false,
-        autoRefreshToken: false,
+    const event = useRequestEvent()!
+
+    const client = createServerClient(url, key, {
+      ...clientOptions,
+      cookies: {
+        getAll: () => parseCookieHeader(getHeader(event, 'Cookie') ?? ''),
+        setAll: (
+          cookies: {
+            name: string
+            value: string
+            options: CookieOptions
+          }[],
+        ) => cookies.forEach(({ name, value, options }) => setCookie(event, name, value, options)),
       },
-    }, clientOptions)
+      cookieOptions,
+    })
 
-    const supabaseClient = createClient(url, key, options)
-
-    // Set user & session server side
-    if (accessToken && refreshToken) {
-      const { data } = await supabaseClient.auth.setSession({
-        refresh_token: refreshToken,
-        access_token: accessToken,
-      })
-      if (data) {
-        useSupabaseSession().value = data.session
-      }
-    }
+    // Initialize user and session states
+    const [
+      {
+        data: { session },
+      },
+      {
+        data: { user },
+      },
+    ] = await Promise.all([client.auth.getSession(), client.auth.getUser()])
+    useSupabaseSession().value = session
+    useSupabaseUser().value = user
 
     return {
       provide: {
-        supabase: {
-          client: supabaseClient,
-        },
+        supabase: { client },
       },
     }
   },

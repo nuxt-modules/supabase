@@ -1,7 +1,8 @@
 {
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
-    "strictNullChecks": false
+    "strictNullChecks": false,
+    "declaration": false
   }
 }
 
