@@ -58,4 +58,4 @@ Build the application for production:
 npm run build
 ```
 
-Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
+Checkout the [deployment documentation](https://nuxt.com/deploy).
