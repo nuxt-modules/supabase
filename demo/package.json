@@ -17,7 +17,7 @@
     "@nuxthq/ui": "^1.2.10",
     "@nuxtjs/color-mode": "^3.4.0",
     "@nuxtjs/supabase": "^1.2.0",
-    "nuxt": "^3.11.2",
+    "nuxt": "^3.12.3",
     "typescript": "^5.4.5"
   },
   "resolutions": {
