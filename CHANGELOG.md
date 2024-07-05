@@ -1,5 +1,17 @@
 
 
+## [1.3.2](https://github.com/nuxt-community/supabase-module/compare/v1.3.1...v1.3.2) (2024-07-05)
+
+
+### Bug Fixes
+
+* **vite:** optimize postgrest ([2a6d91a](https://github.com/nuxt-community/supabase-module/commit/2a6d91a3ee83aa65cc5741afea907ca474e61d64))
+
+
+### Features
+
+* **ci:** nightly ([298e608](https://github.com/nuxt-community/supabase-module/commit/298e608442ac5e8c15aa61c01411585e57732f4a))
+
 ## [1.3.1](https://github.com/nuxt-community/supabase-module/compare/v1.3.0...v1.3.1) (2024-07-05)
 
 
