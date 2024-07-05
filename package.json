@@ -39,6 +39,7 @@
     "@nuxt/schema": "^3.12.3",
     "@release-it/conventional-changelog": "^8.0.1",
     "@types/node": "^20.14.9",
+    "changelogen": "^0.5.5",
     "eslint": "^9.6.0",
     "nuxt": "^3.12.3",
     "prettier": "^3.3.2",
