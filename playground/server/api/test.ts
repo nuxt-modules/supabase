@@ -1,9 +1,8 @@
 import { createError } from 'h3'
 import { serverSupabaseClient, serverSupabaseUser, serverSupabaseSession } from '#supabase/server'
-import type { Database } from '#build/types/supabase-database'
 
 export default defineEventHandler(async (event) => {
-  const supabase = await serverSupabaseClient<Database>(event)
+  const supabase = await serverSupabaseClient(event)
 
   if (!supabase) {
     throw createError({ statusMessage: 'Supabase client not found' })
