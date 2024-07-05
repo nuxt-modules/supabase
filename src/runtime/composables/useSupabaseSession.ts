@@ -1,24 +1,8 @@
 import type { Session } from '@supabase/supabase-js'
-import type { Ref } from 'vue'
-import { useSupabaseClient } from './useSupabaseClient'
 import { useState } from '#imports'
 
-export const useSupabaseSession: () => Ref<Session | null> = () => {
-  const supabase = useSupabaseClient()
-
-  const sessionState = useState<Session | null>('supabase_session', () => null)
-
-  // Asyncronous refresh session and ensure user is still logged in
-  supabase?.auth.getSession().then(({ data: { session } }) => {
-    if (session) {
-      if (JSON.stringify(sessionState.value) !== JSON.stringify(session)) {
-        sessionState.value = session
-      }
-    }
-    else {
-      sessionState.value = null
-    }
-  })
-
-  return sessionState
-}
+/**
+ * Reactive `Session` state from Supabase. This is initialized in both client and server plugin
+ * and, on the client, also updated through `onAuthStateChange` events.
+ */
+export const useSupabaseSession = () => useState<Session | null>('supabase_session', () => null)

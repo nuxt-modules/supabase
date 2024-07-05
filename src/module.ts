@@ -54,7 +54,7 @@ export interface ModuleOptions {
   redirectOptions?: RedirectOptions
 
   /**
-   * Cookie name, used for storing access and refresh tokens, added in front of `-access-token` and `-refresh-token` to form the full cookie name e.g. `sb-access-token`
+   * Cookie name used for storing the redirect path when using the `redirect` option, added in front of `-redirect-path` to form the full cookie name e.g. `sb-redirect-path`
    * @default 'sb'
    * @type string
    */
@@ -73,14 +73,8 @@ export interface ModuleOptions {
   cookieOptions?: CookieOptions
 
   /**
-   * Supabase Client options
-   * @default {
-      auth: {
-        flowType: 'pkce',
-        detectSessionInUrl: true,
-        persistSession: true,
-      },
-    }
+   * Supabase client options (overrides default options from `@supabase/ssr`)
+   * @default { }
    * @type object
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
@@ -112,14 +106,7 @@ export default defineNuxtModule<ModuleOptions>({
       sameSite: 'lax',
       secure: true,
     } as CookieOptions,
-    clientOptions: {
-      auth: {
-        flowType: 'pkce',
-        detectSessionInUrl: true,
-        persistSession: true,
-        autoRefreshToken: true,
-      },
-    } as SupabaseClientOptions<string>,
+    clientOptions: {} as SupabaseClientOptions<string>,
   },
   setup(options, nuxt) {
     const { resolve } = createResolver(import.meta.url)
@@ -211,21 +198,11 @@ export default defineNuxtModule<ModuleOptions>({
       nuxt.options.build.transpile.push('websocket')
     }
 
-    // Optimize @supabase/ packages for dev
-    // TODO: Remove when packages fixed with valid ESM exports
-    // https://github.com/supabase/gotrue/issues/1013
+    // Needed to fix https://github.com/supabase/auth-helpers/issues/725
     extendViteConfig((config) => {
       config.optimizeDeps = config.optimizeDeps || {}
       config.optimizeDeps.include = config.optimizeDeps.include || []
-      config.optimizeDeps.exclude = config.optimizeDeps.exclude || []
-      config.optimizeDeps.include.push(
-        '@supabase/functions-js',
-        '@supabase/gotrue-js',
-        '@supabase/postgrest-js',
-        '@supabase/realtime-js',
-        '@supabase/storage-js',
-        '@supabase/supabase-js',
-      )
+      config.optimizeDeps.include.push('cookie')
     })
   },
 })

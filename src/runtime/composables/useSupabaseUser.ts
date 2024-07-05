@@ -1,9 +1,8 @@
 import type { User } from '@supabase/supabase-js'
-import { useSupabaseSession } from './useSupabaseSession'
-import { computed, type ComputedRef } from '#imports'
+import { useState } from '#imports'
 
-export const useSupabaseUser: () => ComputedRef<User | null> = () => {
-  const session = useSupabaseSession()
-  const userState = computed(() => session.value?.user)
-  return userState
-}
+/**
+ * Reactive `User` state from Supabase. This is initialized in both client and server plugin
+ * and, on the client, also updated through `onAuthStateChange` events.
+ */
+export const useSupabaseUser = () => useState<User | null>('supabase_user', () => null)
