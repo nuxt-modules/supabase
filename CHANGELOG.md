@@ -1,5 +1,12 @@
 
 
+## [1.3.1](https://github.com/nuxt-community/supabase-module/compare/v1.3.0...v1.3.1) (2024-07-05)
+
+
+### Features
+
+* **types:** automatically pass database typings to clients ([#366](https://github.com/nuxt-community/supabase-module/issues/366)) ([132307a](https://github.com/nuxt-community/supabase-module/commit/132307a5267d477300a05f733d645eececae1549))
+
 # [1.3.0](https://github.com/nuxt-community/supabase-module/compare/v1.2.2...v1.3.0) (2024-07-05)
 
 
