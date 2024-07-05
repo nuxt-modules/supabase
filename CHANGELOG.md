@@ -1,5 +1,18 @@
 
 
+# [1.3.0](https://github.com/nuxt-community/supabase-module/compare/v1.2.2...v1.3.0) (2024-07-05)
+
+
+### Bug Fixes
+
+* **ci:** docs build ([a11654d](https://github.com/nuxt-community/supabase-module/commit/a11654df11e785de7bd701452b5dfec7ed44734a))
+* **lint:** end of file ([00560f8](https://github.com/nuxt-community/supabase-module/commit/00560f87cb6bfdb2005e3d5562487e1f83e9fd18))
+
+
+### Features
+
+* **app:** migrate to `@supabase/ssr` ([#357](https://github.com/nuxt-community/supabase-module/issues/357)) ([56dc39e](https://github.com/nuxt-community/supabase-module/commit/56dc39e7ae2acdcfab065d52a8040aa122e7626b))
+
 ## [1.2.2](https://github.com/nuxt-community/supabase-module/compare/v1.2.1...v1.2.2) (2024-05-02)
 
 

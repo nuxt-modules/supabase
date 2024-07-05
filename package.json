@@ -1,6 +1,6 @@
 {
   "name": "@nuxtjs/supabase",
-  "version": "1.2.2",
+  "version": "1.3.0",
   "description": "Supabase module for Nuxt",
   "repository": "nuxt-community/supabase-module",
   "license": "MIT",
@@ -26,22 +26,23 @@
     "pre:release": "pnpm lint && release-it --preRelease"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.11.2",
-    "@supabase/supabase-js": "2.43.0",
+    "@nuxt/kit": "^3.12.3",
+    "@supabase/ssr": "^0.4.0",
+    "@supabase/supabase-js": "^2.44.2",
     "defu": "^6.1.4",
     "pathe": "^1.1.2"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^0.3.10",
-    "@nuxt/module-builder": "^0.6.0",
-    "@nuxt/schema": "^3.11.2",
+    "@nuxt/eslint": "^0.3.13",
+    "@nuxt/module-builder": "^0.8.1",
+    "@nuxt/schema": "^3.12.3",
     "@release-it/conventional-changelog": "^8.0.1",
-    "@types/node": "^20.12.8",
-    "eslint": "^9.1.1",
-    "nuxt": "^3.11.2",
-    "prettier": "^3.2.5",
-    "release-it": "^17.2.1",
-    "typescript": "^5.4.5"
+    "@types/node": "^20.14.9",
+    "eslint": "^9.6.0",
+    "nuxt": "^3.12.3",
+    "prettier": "^3.3.2",
+    "release-it": "^17.4.1",
+    "typescript": "^5.5.3"
   },
   "release-it": {
     "git": {

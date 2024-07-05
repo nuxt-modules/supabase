@@ -5,7 +5,9 @@ import { defineNuxtModule, addPlugin, createResolver, addTemplate, resolveModule
 import type { CookieOptions } from 'nuxt/app'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
 import type { NitroConfig } from 'nitropack'
-import type { RedirectOptions } from './runtime/types'
+import type { RedirectOptions } from './types'
+
+export * from './types'
 
 export interface ModuleOptions {
   /**
@@ -55,7 +57,7 @@ export interface ModuleOptions {
   redirectOptions?: RedirectOptions
 
   /**
-   * Cookie name, used for storing access and refresh tokens, added in front of `-access-token` and `-refresh-token` to form the full cookie name e.g. `sb-access-token`
+   * Cookie name used for storing the redirect path when using the `redirect` option, added in front of `-redirect-path` to form the full cookie name e.g. `sb-redirect-path`
    * @default 'sb'
    * @type string
    */
@@ -81,14 +83,8 @@ export interface ModuleOptions {
   types?: string | false
 
   /**
-   * Supabase Client options
-   * @default {
-      auth: {
-        flowType: 'pkce',
-        detectSessionInUrl: true,
-        persistSession: true,
-      },
-    }
+   * Supabase client options (overrides default options from `@supabase/ssr`)
+   * @default { }
    * @type object
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
@@ -100,7 +96,7 @@ export default defineNuxtModule<ModuleOptions>({
     name: '@nuxtjs/supabase',
     configKey: 'supabase',
     compatibility: {
-      nuxt: '^3.0.0',
+      nuxt: '>=3.0.0',
     },
   },
   defaults: {
@@ -121,14 +117,7 @@ export default defineNuxtModule<ModuleOptions>({
       secure: true,
     } as CookieOptions,
     types: '~/types/database.types.ts',
-    clientOptions: {
-      auth: {
-        flowType: 'pkce',
-        detectSessionInUrl: true,
-        persistSession: true,
-        autoRefreshToken: true,
-      },
-    } as SupabaseClientOptions<string>,
+    clientOptions: {} as SupabaseClientOptions<string>,
   },
   setup(options, nuxt) {
     const { resolve, resolvePath } = createResolver(import.meta.url)
@@ -231,21 +220,11 @@ export default defineNuxtModule<ModuleOptions>({
       nuxt.options.build.transpile.push('websocket')
     }
 
-    // Optimize @supabase/ packages for dev
-    // TODO: Remove when packages fixed with valid ESM exports
-    // https://github.com/supabase/gotrue/issues/1013
+    // Needed to fix https://github.com/supabase/auth-helpers/issues/725
     extendViteConfig((config) => {
       config.optimizeDeps = config.optimizeDeps || {}
       config.optimizeDeps.include = config.optimizeDeps.include || []
-      config.optimizeDeps.exclude = config.optimizeDeps.exclude || []
-      config.optimizeDeps.include.push(
-        '@supabase/functions-js',
-        '@supabase/gotrue-js',
-        '@supabase/postgrest-js',
-        '@supabase/realtime-js',
-        '@supabase/storage-js',
-        '@supabase/supabase-js',
-      )
+      config.optimizeDeps.include.push('cookie')
     })
   },
 })
