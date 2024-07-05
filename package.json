@@ -2,7 +2,10 @@
   "name": "@nuxtjs/supabase",
   "version": "1.3.1",
   "description": "Supabase module for Nuxt",
-  "repository": "nuxt-community/supabase-module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuxt-community/supabase-module.git"
+  },
   "license": "MIT",
   "packageManager": "pnpm@9.1.3",
   "exports": {
