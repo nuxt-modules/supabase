@@ -4,7 +4,9 @@ import { defineNuxtModule, addPlugin, createResolver, addTemplate, resolveModule
 import type { CookieOptions } from 'nuxt/app'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
 import type { NitroConfig } from 'nitropack'
-import type { RedirectOptions } from './runtime/types'
+import type { RedirectOptions } from './types'
+
+export * from './types'
 
 export interface ModuleOptions {
   /**
