@@ -3,7 +3,8 @@ export async function fetchWithRetry(req: RequestInfo | URL, init?: RequestInit)
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       return await fetch(req, init)
-    } catch (error) {
+    }
+    catch (error) {
       if (attempt === retries) {
         console.error(`Error fetching request ${req}`, error, init)
         throw error
