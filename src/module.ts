@@ -224,7 +224,7 @@ export default defineNuxtModule<ModuleOptions>({
     extendViteConfig((config) => {
       config.optimizeDeps = config.optimizeDeps || {}
       config.optimizeDeps.include = config.optimizeDeps.include || []
-      config.optimizeDeps.include.push('cookie', '@supabase/postgrest-js')
+      config.optimizeDeps.include.push('@nuxtjs/supabase > cookie', '@nuxtjs/supabase > @supabase/postgrest-js')
     })
   },
 })
