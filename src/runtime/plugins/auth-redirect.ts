@@ -1,6 +1,5 @@
-import { useSupabaseSession } from '../composables/useSupabaseSession'
 import type { Ref } from '#imports'
-import { defineNuxtPlugin, addRouteMiddleware, defineNuxtRouteMiddleware, useCookie, useRuntimeConfig, navigateTo } from '#imports'
+import { defineNuxtPlugin, addRouteMiddleware, defineNuxtRouteMiddleware, useCookie, useRuntimeConfig, navigateTo, useSupabaseSession } from '#imports'
 import type { RouteLocationNormalized } from '#vue-router'
 
 export default defineNuxtPlugin({

@@ -30,23 +30,23 @@
     "pre:release": "pnpm lint && release-it --preRelease"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.12.3",
     "@supabase/ssr": "^0.4.0",
-    "@supabase/supabase-js": "^2.44.2",
+    "@supabase/supabase-js": "^2.44.4",
     "defu": "^6.1.4",
     "pathe": "^1.1.2"
   },
   "devDependencies": {
     "@nuxt/eslint": "^0.3.13",
-    "@nuxt/module-builder": "^0.8.1",
+    "@nuxt/kit": "^3.12.3",
     "@nuxt/schema": "^3.12.3",
+    "@nuxt/module-builder": "^0.8.1",
     "@release-it/conventional-changelog": "^8.0.1",
-    "@types/node": "^20.14.9",
+    "@types/node": "^20.14.10",
     "changelogen": "^0.5.5",
-    "eslint": "^9.6.0",
+    "eslint": "^9.7.0",
     "nuxt": "^3.12.3",
-    "prettier": "^3.3.2",
-    "release-it": "^17.4.1",
+    "prettier": "^3.3.3",
+    "release-it": "^17.6.0",
     "typescript": "^5.5.3"
   },
   "release-it": {

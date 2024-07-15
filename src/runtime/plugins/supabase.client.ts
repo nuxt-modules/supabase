@@ -1,8 +1,6 @@
 import { createBrowserClient } from '@supabase/ssr'
 import type { Session } from '@supabase/supabase-js'
-import { useSupabaseSession } from '../composables/useSupabaseSession'
-import { useSupabaseUser } from '../composables/useSupabaseUser'
-import { defineNuxtPlugin, useRuntimeConfig } from '#imports'
+import { defineNuxtPlugin, useRuntimeConfig, useSupabaseSession, useSupabaseUser } from '#imports'
 
 export default defineNuxtPlugin({
   name: 'supabase',
