@@ -1,5 +1,6 @@
 import { createBrowserClient } from '@supabase/ssr'
 import type { Session } from '@supabase/supabase-js'
+import { fetchWithRetry } from '../utils/fetch-retry'
 import { defineNuxtPlugin, useRuntimeConfig, useSupabaseSession, useSupabaseUser } from '#imports'
 
 export default defineNuxtPlugin({
@@ -12,6 +13,10 @@ export default defineNuxtPlugin({
       ...clientOptions,
       cookieOptions,
       isSingleton: true,
+      global: {
+        fetch: fetchWithRetry,
+        ...clientOptions.global,
+      },
     })
 
     const currentSession = useSupabaseSession()
