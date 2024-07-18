@@ -204,10 +204,10 @@ export default defineNuxtModule<ModuleOptions>({
       filename: 'types/supabase-database.d.ts',
       getContents: async () => {
         if (!!options.types && fs.existsSync(await resolvePath(options.types))) {
-          return `export * from '${await resolvePath(options.types)}'`
+          return `export * from '${await resolvePath(options.types)}'; export type Schema = ${JSON.stringify(options?.clientOptions?.db?.schema || 'public')};`
         }
 
-        return `export type Database = unknown`
+        return `export type Database = unknown; export type Schema = ${JSON.stringify(options?.clientOptions?.db?.schema || 'public')};`
       },
     })
 
