@@ -5,6 +5,10 @@ export async function fetchWithRetry(req: RequestInfo | URL, init?: RequestInit)
       return await fetch(req, init)
     }
     catch (error) {
+      // Don't retry if it's an abort
+      if (init?.signal?.aborted) {
+        throw error
+      }
       if (attempt === retries) {
         console.error(`Error fetching request ${req}`, error, init)
         throw error
