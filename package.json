@@ -39,7 +39,7 @@
     "@nuxt/eslint": "^0.3.13",
     "@nuxt/kit": "^3.12.3",
     "@nuxt/schema": "^3.12.3",
-    "@nuxt/module-builder": "^0.8.1",
+    "@nuxt/module-builder": "^0.8.3",
     "@release-it/conventional-changelog": "^8.0.1",
     "@types/node": "^20.14.10",
     "changelogen": "^0.5.5",
