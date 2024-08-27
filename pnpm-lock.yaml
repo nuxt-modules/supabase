@@ -48,9 +48,6 @@ importers:
       nuxt:
         specifier: ^3.12.3
         version: 3.12.3(@opentelemetry/api@1.9.0)(@parcel/watcher@2.4.1)(@types/node@20.14.10)(eslint@9.7.0)(ioredis@5.4.1)(magicast@0.3.4)(optionator@0.9.4)(rollup@4.18.0)(terser@5.31.1)(typescript@5.5.3)(vite@5.3.3(@types/node@20.14.10)(terser@5.31.1))
-      prettier:
-        specifier: ^3.3.3
-        version: 3.3.3
       release-it:
         specifier: ^17.6.0
         version: 17.6.0(typescript@5.5.3)
@@ -827,10 +824,6 @@ packages:
 
   '@eslint/eslintrc@3.1.0':
     resolution: {integrity: sha512-4Bfj15dVJdoy3RfZmmo86RK1Fwzn6SstsvK9JS+BaVKqC6QQQQyXekNaC+g+LKNgkQ+2VhGAzm6hO40AhMR3zQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@eslint/js@9.6.0':
-    resolution: {integrity: sha512-D9B0/3vNg44ZeWbYMpBoXqNP4j6eQD5vNwIlGAuFRRzK/WtT/jvDQW3Bi9kkf3PMDMlM7Yi+73VLUsn5bJcl8A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/js@9.7.0':
@@ -4182,11 +4175,6 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.3.3:
-    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
-    engines: {node: '>=14'}
-    hasBin: true
-
   pretty-bytes@6.1.1:
     resolution: {integrity: sha512-mQUvGU6aUFQ+rNvTIAcZuWGRT9a6f6Yrg9bHs4ImKF+HZCEK+plBvnAZYSIQztknZF2qnzNtr6F8s0+IuptdlQ==}
     engines: {node: ^14.13.1 || >=16.0.0}
@@ -5837,8 +5825,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@eslint/js@9.6.0': {}
-
   '@eslint/js@9.7.0': {}
 
   '@eslint/object-schema@2.1.4': {}
@@ -6035,7 +6021,7 @@ snapshots:
 
   '@nuxt/eslint-config@0.3.13(eslint@9.7.0)(typescript@5.5.3)':
     dependencies:
-      '@eslint/js': 9.6.0
+      '@eslint/js': 9.7.0
       '@nuxt/eslint-plugin': 0.3.13(eslint@9.7.0)(typescript@5.5.3)
       '@rushstack/eslint-patch': 1.10.3
       '@stylistic/eslint-plugin': 2.3.0(eslint@9.7.0)(typescript@5.5.3)
@@ -6987,8 +6973,8 @@ snapshots:
     dependencies:
       '@mapbox/node-pre-gyp': 1.0.11
       '@rollup/pluginutils': 4.2.1
-      acorn: 8.12.0
-      acorn-import-attributes: 1.9.5(acorn@8.12.0)
+      acorn: 8.12.1
+      acorn-import-attributes: 1.9.5(acorn@8.12.1)
       async-sema: 3.1.1
       bindings: 1.5.0
       estree-walker: 2.0.2
@@ -7162,9 +7148,9 @@ snapshots:
     dependencies:
       event-target-shim: 5.0.1
 
-  acorn-import-attributes@1.9.5(acorn@8.12.0):
+  acorn-import-attributes@1.9.5(acorn@8.12.1):
     dependencies:
-      acorn: 8.12.0
+      acorn: 8.12.1
 
   acorn-jsx@5.3.2(acorn@8.12.1):
     dependencies:
@@ -8710,8 +8696,8 @@ snapshots:
 
   import-in-the-middle@1.8.1:
     dependencies:
-      acorn: 8.12.0
-      acorn-import-attributes: 1.9.5(acorn@8.12.0)
+      acorn: 8.12.1
+      acorn-import-attributes: 1.9.5(acorn@8.12.1)
       cjs-module-lexer: 1.3.1
       module-details-from-path: 1.0.3
 
@@ -9882,8 +9868,6 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.3.3: {}
-
   pretty-bytes@6.1.1: {}
 
   process-nextick-args@2.0.1: {}
@@ -10480,7 +10464,7 @@ snapshots:
   terser@5.31.1:
     dependencies:
       '@jridgewell/source-map': 0.3.6
-      acorn: 8.12.0
+      acorn: 8.12.1
       commander: 2.20.3
       source-map-support: 0.5.21
 
@@ -10598,7 +10582,7 @@ snapshots:
 
   unctx@2.3.1:
     dependencies:
-      acorn: 8.12.0
+      acorn: 8.12.1
       estree-walker: 3.0.3
       magic-string: 0.30.10
       unplugin: 1.11.0
@@ -10675,7 +10659,7 @@ snapshots:
 
   unplugin@1.11.0:
     dependencies:
-      acorn: 8.12.0
+      acorn: 8.12.1
       chokidar: 3.6.0
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.6.2
