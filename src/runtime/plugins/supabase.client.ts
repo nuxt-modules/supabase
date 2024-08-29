@@ -31,7 +31,6 @@ export default defineNuxtPlugin({
 
     // Updates the session and user states through auth events
     client.auth.onAuthStateChange((_, session: Session | null) => {
-      client.realtime.setAuth(session?.access_token ?? null)
       if (JSON.stringify(currentSession.value) !== JSON.stringify(session)) {
         currentSession.value = session
         currentUser.value = session?.user ?? null
