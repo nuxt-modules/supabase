@@ -2,7 +2,5 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "strictNullChecks": false,
-    "baseUrl": "src"
   }
 }
-
