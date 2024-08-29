@@ -6,7 +6,13 @@ export default createConfigForNuxt({
     tooling: true,
     stylistic: true,
   },
-}, {
+  dirs: {
+    src: [
+      './playground',
+      './demo',
+    ],
+  },
+}).append({
   rules: {
     'vue/multi-word-component-names': 'off',
   },
