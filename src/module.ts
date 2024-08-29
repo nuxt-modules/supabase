@@ -203,8 +203,15 @@ export default defineNuxtModule<ModuleOptions>({
     addTemplate({
       filename: 'types/supabase-database.d.ts',
       getContents: async () => {
-        if (!!options.types && fs.existsSync(await resolvePath(options.types))) {
-          return `export * from '${await resolvePath(options.types)}'`
+        if (options.types) {
+          // resolvePath is used to minify user input error.
+          const path = await resolvePath(options.types)
+          const basePath = await resolvePath('~~') // ~~ should be the base path in a nuxt project.
+
+          if (fs.existsSync(path)) {
+            // we are replacing the basePath with ../.. to move back to the root (~~) directory.
+            return `export * from '${path.replace(basePath, '../..')}'`
+          }
         }
 
         return `export type Database = unknown`
