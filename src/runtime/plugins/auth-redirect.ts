@@ -1,4 +1,4 @@
-import type { Plugin } from 'nuxt/app'
+import type { Plugin } from '#app'
 import type { Ref } from '#imports'
 import { defineNuxtPlugin, addRouteMiddleware, defineNuxtRouteMiddleware, useCookie, useRuntimeConfig, navigateTo, useSupabaseSession } from '#imports'
 import type { RouteLocationNormalized } from '#vue-router'
