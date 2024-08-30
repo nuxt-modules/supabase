@@ -1,5 +1,19 @@
 
 
+# [1.4.0](https://github.com/nuxt-community/supabase-module/compare/v1.3.5...v1.4.0) (2024-08-30)
+
+
+### Bug Fixes
+
+* **types:** add explicit type annotations for plugins ([#408](https://github.com/nuxt-community/supabase-module/issues/408)) ([09bff84](https://github.com/nuxt-community/supabase-module/commit/09bff844d29cfb788cb334860202e2e14a5da2a9))
+* **types:** add explicit types for composables & remove `baseUrl` from tsconfig ([#404](https://github.com/nuxt-community/supabase-module/issues/404)) ([596ece2](https://github.com/nuxt-community/supabase-module/commit/596ece2460e7b4d08bcb2ac2322c10912e0a5977))
+* **types:** nullable composable types ([#407](https://github.com/nuxt-community/supabase-module/issues/407)) ([cbbfd86](https://github.com/nuxt-community/supabase-module/commit/cbbfd86150bba779743dd7c02341b97484d4cc49))
+
+
+### Features
+
+* **client:** add retries to fetch ([#382](https://github.com/nuxt-community/supabase-module/issues/382)) ([98ca959](https://github.com/nuxt-community/supabase-module/commit/98ca959c8d3f502dab78439709422e83d539b70d))
+
 ## [1.3.5](https://github.com/nuxt-community/supabase-module/compare/v1.3.4...v1.3.5) (2024-07-15)
 
 
