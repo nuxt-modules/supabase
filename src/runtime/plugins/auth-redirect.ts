@@ -1,3 +1,4 @@
+import type { Plugin } from '#app'
 import type { Ref } from '#imports'
 import { defineNuxtPlugin, addRouteMiddleware, defineNuxtRouteMiddleware, useCookie, useRuntimeConfig, navigateTo, useSupabaseSession } from '#imports'
 import type { RouteLocationNormalized } from '#vue-router'
@@ -24,7 +25,7 @@ export default defineNuxtPlugin({
         }
 
         // Do not redirect on login route, callback route and excluded routes
-        const isExcluded = [...exclude, login, callback]?.some((path) => {
+        const isExcluded = [...exclude ?? [], login, callback]?.some((path) => {
           const regex = new RegExp(`^${path.replace(/\*/g, '.*')}$`)
           return regex.test(to.path)
         })
@@ -42,4 +43,4 @@ export default defineNuxtPlugin({
       { global: true },
     )
   },
-})
+}) as Plugin
