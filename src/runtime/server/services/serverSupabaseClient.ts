@@ -1,6 +1,7 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { createServerClient, parseCookieHeader, type CookieOptions } from '@supabase/ssr'
 import { getHeader, setCookie, type H3Event } from 'h3'
+import { fetchWithRetry } from '../../utils/fetch-retry'
 import { useRuntimeConfig } from '#imports'
 import type { Database } from '#build/types/supabase-database'
 
@@ -13,7 +14,7 @@ export const serverSupabaseClient = async <T = Database>(event: H3Event): Promis
         url,
         key,
         cookieOptions,
-        clientOptions: { auth = {} },
+        clientOptions: { auth = {}, global = {} },
       },
     } = useRuntimeConfig().public
 
@@ -30,6 +31,10 @@ export const serverSupabaseClient = async <T = Database>(event: H3Event): Promis
         ) => cookies.forEach(({ name, value, options }) => setCookie(event, name, value, options)),
       },
       cookieOptions,
+      global: {
+        fetch: fetchWithRetry,
+        ...global,
+      },
     })
   }
 

@@ -1,5 +1,6 @@
 import { createServerClient, parseCookieHeader } from '@supabase/ssr'
 import { getHeader, setCookie } from 'h3'
+import { fetchWithRetry } from '../utils/fetch-retry'
 import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig, useSupabaseSession, useSupabaseUser } from '#imports'
 import type { CookieOptions } from '#app'
 
@@ -24,6 +25,10 @@ export default defineNuxtPlugin({
         ) => cookies.forEach(({ name, value, options }) => setCookie(event, name, value, options)),
       },
       cookieOptions,
+      global: {
+        fetch: fetchWithRetry,
+        ...clientOptions.global,
+      },
     })
 
     // Initialize user and session states
