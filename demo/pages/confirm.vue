@@ -10,7 +10,7 @@ watch(user, () => {
 
 <template>
   <div>
-    <p class="u-text-black">
+    <p>
       Redirecting...
     </p>
   </div>

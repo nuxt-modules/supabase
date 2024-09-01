@@ -43,7 +43,6 @@ const logout = async () => {
         />
         <UButton
           v-if="user"
-          class="u-text-white"
           variant="transparent"
           @click="logout"
         >
