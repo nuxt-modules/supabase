@@ -142,7 +142,7 @@ const fetchTasksFromServerRoute = async () => {
         <pre>
           {{ tasksFromServer }}
         </pre>
-    </UCard>
+      </UCard>
     </UModal>
   </div>
 </template>
