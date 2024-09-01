@@ -47,7 +47,7 @@ SUPABASE_KEY="<your_key>"
 Start the development server on http://localhost:3000
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
 ## Production
@@ -55,7 +55,7 @@ npm run dev
 Build the application for production:
 
 ```bash
-npm run build
+pnpm build
 ```
 
 Checkout the [deployment documentation](https://nuxt.com/deploy).
