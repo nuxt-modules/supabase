@@ -12,19 +12,19 @@ importers:
   .:
     devDependencies:
       '@iconify-json/heroicons':
-        specifier: ^1.1.20
-        version: 1.1.24
+        specifier: ^1.2.0
+        version: 1.2.0
       '@iconify-json/heroicons-outline':
-        specifier: ^1.1.10
-        version: 1.1.11
+        specifier: ^1.2.0
+        version: 1.2.0
       '@iconify-json/mdi':
-        specifier: ^1.1.66
-        version: 1.1.68
+        specifier: ^1.2.0
+        version: 1.2.0
       '@nuxt/ui':
         specifier: 2.18.4
         version: 2.18.4(magicast@0.3.5)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.1)(terser@5.31.6))(vue@3.4.38(typescript@5.5.4))
       '@nuxtjs/supabase':
-        specifier: ^1.3.5
+        specifier: ^1.4.0
         version: 1.4.0
       nuxt:
         specifier: ^3.13.0
@@ -653,14 +653,14 @@ packages:
     peerDependencies:
       vue: ^3.2.0
 
-  '@iconify-json/heroicons-outline@1.1.11':
-    resolution: {integrity: sha512-x6+oXVwhuuhB3RlaovCzo0qw7VLeD+/BcdpEjm7mgY/NlFywkC9lpRHZkeadthUdo60W+KYt8de+Lkk6lC79Hg==}
+  '@iconify-json/heroicons-outline@1.2.0':
+    resolution: {integrity: sha512-Qy1sRmQYqih6xRxwCtnX0hXJ4252t83C0CnNWAP3gF0fH0Qmp9RY66LMB0moYGxQxUhsTFIl2nNceSVSBUo8Tg==}
 
-  '@iconify-json/heroicons@1.1.24':
-    resolution: {integrity: sha512-Axd6nxsEeQMpuK8ugkAkJ1kS6cbmgXX1s1+Z6NbANvtgtNTBIx9bLQcEL6loKjxpfktDXERElrR5G6xzWOqysg==}
+  '@iconify-json/heroicons@1.2.0':
+    resolution: {integrity: sha512-EmvGN0L9EUJCmQ82rkLGZ4tkz0YGQfZV7ugKT6UvHni/bxNitQrD0gLj6NJj2W9zsSoXyNHyCX236+EJmO4pmA==}
 
-  '@iconify-json/mdi@1.1.68':
-    resolution: {integrity: sha512-7//TKCiXLU6kNWeOJRTBbisofVO7rF1sD1TZTL4/V9nqlmVNczQ5IOY0GgKOTsitkcTnX9GXgrgbjw3OI5B69w==}
+  '@iconify-json/mdi@1.2.0':
+    resolution: {integrity: sha512-E9/3l5Syg3wfuarorFodhn4s8YorxhH3U3U20LaNBNiqw1kFNIDWhF6HymuzAD35k7RH0OBasJ+ZUyFtVVV6eg==}
 
   '@iconify/collections@1.0.454':
     resolution: {integrity: sha512-bE/6YBUNhNhTLjytCGrCD+rS0hrlkSC0J4e5svggLVnPoOgvA0yKIAxyUtyWl0666o//3CHlnAizwvA1JYm64w==}
@@ -4178,15 +4178,15 @@ snapshots:
       '@tanstack/vue-virtual': 3.10.6(vue@3.4.38(typescript@5.5.4))
       vue: 3.4.38(typescript@5.5.4)
 
-  '@iconify-json/heroicons-outline@1.1.11':
+  '@iconify-json/heroicons-outline@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/heroicons@1.1.24':
+  '@iconify-json/heroicons@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 
-  '@iconify-json/mdi@1.1.68':
+  '@iconify-json/mdi@1.2.0':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -4468,7 +4468,7 @@ snapshots:
     dependencies:
       '@headlessui/tailwindcss': 0.2.1(tailwindcss@3.4.10)
       '@headlessui/vue': 1.7.22(vue@3.4.38(typescript@5.5.4))
-      '@iconify-json/heroicons': 1.1.24
+      '@iconify-json/heroicons': 1.2.0
       '@nuxt/icon': 1.5.0(magicast@0.3.5)(rollup@4.21.2)(vite@5.4.2(@types/node@22.5.1)(terser@5.31.6))(vue@3.4.38(typescript@5.5.4))
       '@nuxt/kit': 3.13.0(magicast@0.3.5)(rollup@4.21.2)
       '@nuxtjs/color-mode': 3.4.4(magicast@0.3.5)(rollup@4.21.2)
