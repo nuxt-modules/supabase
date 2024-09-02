@@ -3,7 +3,8 @@ import { createServerClient, parseCookieHeader, type CookieOptions } from '@supa
 import { getHeader, setCookie, type H3Event } from 'h3'
 import { fetchWithRetry } from '../../utils/fetch-retry'
 import { useRuntimeConfig } from '#imports'
-import type { Database } from '#build/types/supabase-database'
+// @ts-expect-error - `#supabase/database` is a runtime alias
+import type { Database } from '#supabase/database'
 
 export const serverSupabaseClient: <T = Database>(event: H3Event) => Promise<SupabaseClient<T>> = async <T = Database>(event: H3Event) => {
   // No need to recreate client if exists in request context

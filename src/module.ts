@@ -183,6 +183,7 @@ export default defineNuxtModule<ModuleOptions>({
         inline: [resolve('./runtime')],
       })
       nitroConfig.alias['#supabase/server'] = resolveRuntimeModule('./server/services')
+      nitroConfig.alias['#supabase/database'] = resolve(nitroConfig.buildDir!, 'types/supabase-database')
     })
 
     addTemplate({
