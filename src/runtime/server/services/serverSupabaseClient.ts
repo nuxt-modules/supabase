@@ -5,7 +5,7 @@ import { fetchWithRetry } from '../../utils/fetch-retry'
 import { useRuntimeConfig } from '#imports'
 import type { Database } from '#build/types/supabase-database'
 
-export const serverSupabaseClient = async <T = Database>(event: H3Event): Promise<SupabaseClient<T>> => {
+export const serverSupabaseClient: <T = Database>(event: H3Event) => Promise<SupabaseClient<T>> = async <T = Database>(event: H3Event) => {
   // No need to recreate client if exists in request context
   if (!event.context._supabaseClient) {
     // get settings from runtime config
@@ -38,5 +38,5 @@ export const serverSupabaseClient = async <T = Database>(event: H3Event): Promis
     })
   }
 
-  return event.context._supabaseClient
+  return event.context._supabaseClient as SupabaseClient<T>
 }
