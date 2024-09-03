@@ -1,7 +1,7 @@
 {
   "private": true,
   "engines": {
-    "node": ">=20.10.0"
+    "node": ">=20.9.0"
   },
   "scripts": {
     "dev": "nuxi dev",
@@ -18,8 +18,5 @@
     "@nuxtjs/supabase": "^1.4.0",
     "nuxt": "^3.13.0",
     "typescript": "^5.5.4"
-  },
-  "resolutions": {
-    "consola": "^3.0.0"
   }
 }
