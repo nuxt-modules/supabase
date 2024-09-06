@@ -22,14 +22,16 @@ const logout = async () => {
       <div class="hidden md:block">
         <UButton
           label="Source"
-          variant="transparent"
+          variant="link"
+          color="gray"
           target="_blank"
           to="https://github.com/nuxt-modules/supabase/tree/main/demo"
           icon="i-heroicons-outline-external-link"
         />
         <UButton
           label="Hosted on Netlify"
-          variant="transparent"
+          variant="link"
+          color="gray"
           target="_blank"
           to="https://netlify.com"
           icon="i-heroicons-outline-external-link"
@@ -37,13 +39,15 @@ const logout = async () => {
       </div>
       <div class="flex items-center">
         <UButton
-          variant="transparent"
+          variant="link"
+          color="gray"
           :icon="colorModeIcon"
           @click="toggleDark"
         />
         <UButton
           v-if="user"
-          variant="transparent"
+          variant="link"
+          color="gray"
           @click="logout"
         >
           Logout
