@@ -108,7 +108,8 @@ const fetchTasksFromServerRoute = async () => {
                 <UButton
                   class="ml-3 text-red-600"
                   size="sm"
-                  variant="transparent"
+                  color="red"
+                  variant="ghost"
                   icon="i-heroicons-outline-trash"
                   @click="removeTask(task)"
                 />
@@ -134,7 +135,7 @@ const fetchTasksFromServerRoute = async () => {
           >Nuxt Server route</a>
           with the use of the
           <a
-            href="https://supabase.nuxtjs.org/usage/services/server-supabase-client"
+            href="https://supabase.nuxtjs.org/usage/services/serversupabaseclient"
             target="_blank"
             class="text-primary-500 underline"
           >serverSupabaseClient</a>:
