@@ -18,5 +18,8 @@
     "@nuxtjs/supabase": "^1.4.0",
     "nuxt": "^3.13.1",
     "typescript": "^5.5.4"
+  },
+  "resolutions": {
+    "@nuxt/icon": "^1.5.1"
   }
 }
