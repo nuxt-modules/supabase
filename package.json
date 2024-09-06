@@ -31,20 +31,20 @@
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.1",
-    "@supabase/supabase-js": "^2.45.2",
+    "@supabase/supabase-js": "^2.45.3",
     "defu": "^6.1.4",
     "pathe": "^1.1.2"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^0.5.3",
-    "@nuxt/kit": "^3.13.0",
-    "@nuxt/schema": "^3.13.0",
+    "@nuxt/eslint": "^0.5.6",
+    "@nuxt/kit": "^3.13.1",
+    "@nuxt/schema": "^3.13.1",
     "@nuxt/module-builder": "^0.8.3",
     "@release-it/conventional-changelog": "^8.0.1",
-    "@types/node": "^22.5.1",
+    "@types/node": "^22.5.4",
     "changelogen": "^0.5.5",
     "eslint": "^9.9.1",
-    "nuxt": "^3.13.0",
+    "nuxt": "^3.13.1",
     "release-it": "^17.6.0",
     "typescript": "^5.5.4"
   },
