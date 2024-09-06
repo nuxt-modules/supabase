@@ -53,7 +53,7 @@ const fetchTasksFromServerRoute = async () => {
 
 <template>
   <div class="w-full my-[50px]">
-    <h1 class="mb-12 text-6xl font-bold u-text-white">
+    <h1 class="mb-12 text-6xl font-bold">
       Todo List.
     </h1>
     <form
@@ -65,7 +65,7 @@ const fetchTasksFromServerRoute = async () => {
         :loading="loading"
         class="w-full"
         size="xl"
-        variant="white"
+        variant="outline"
         type="text"
         name="newTask"
         placeholder="Make a coffee"
@@ -74,14 +74,14 @@ const fetchTasksFromServerRoute = async () => {
       />
       <UButton
         type="submit"
-        variant="white"
+        variant="outline"
       >
         Add
       </UButton>
     </form>
     <UCard
       v-if="tasks?.length > 0"
-      body-class="px-6 py-2 overflow-hidden"
+      class="px-6 py-2 overflow-hidden"
     >
       <ul>
         <li
@@ -94,7 +94,7 @@ const fetchTasksFromServerRoute = async () => {
               :label-class="`block font-medium ${task.completed ? 'line-through u-text-gray-500' : 'u-text-gray-700'}`"
               :label="task.title"
               :name="String(task.id)"
-              wrapper-class="flex items-center justify-between w-full"
+              class="flex items-center justify-between w-full"
             >
               <div class="flex items-center justify-between">
                 <div @click="completeTask(task)">
@@ -108,7 +108,8 @@ const fetchTasksFromServerRoute = async () => {
                 <UButton
                   class="ml-3 text-red-600"
                   size="sm"
-                  variant="transparent"
+                  color="red"
+                  variant="ghost"
                   icon="i-heroicons-outline-trash"
                   @click="removeTask(task)"
                 />
@@ -124,23 +125,25 @@ const fetchTasksFromServerRoute = async () => {
       @click="fetchTasksFromServerRoute"
     />
     <UModal v-model="isModalOpen">
-      <h2 class="mb-4">
-        Tasks fetched from
-        <a
-          href="https://nuxt.com/docs/guide/directory-structure/server"
-          target="_blank"
-          class="text-primary-500 underline"
-        >Nuxt Server route</a>
-        with the use of the
-        <a
-          href="https://supabase.nuxtjs.org/usage/services/server-supabase-client"
-          target="_blank"
-          class="text-primary-500 underline"
-        >serverSupabaseClient</a>:
-      </h2>
-      <pre>
-        {{ tasksFromServer }}
-      </pre>
+      <UCard>
+        <h2 class="mb-4">
+          Tasks fetched from
+          <a
+            href="https://nuxt.com/docs/guide/directory-structure/server"
+            target="_blank"
+            class="text-primary-500 underline"
+          >Nuxt Server route</a>
+          with the use of the
+          <a
+            href="https://supabase.nuxtjs.org/usage/services/serversupabaseclient"
+            target="_blank"
+            class="text-primary-500 underline"
+          >serverSupabaseClient</a>:
+        </h2>
+        <pre>
+          {{ tasksFromServer }}
+        </pre>
+      </UCard>
     </UModal>
   </div>
 </template>
