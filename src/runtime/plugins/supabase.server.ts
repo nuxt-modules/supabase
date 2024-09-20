@@ -40,6 +40,8 @@ export default defineNuxtPlugin({
         data: { user },
       },
     ] = await Promise.all([client.auth.getSession(), client.auth.getUser()])
+    // @ts-expect-error we need to delete user from the session object here to suppress the warning coming from GoTrueClient
+    delete session?.user
     useSupabaseSession().value = session
     useSupabaseUser().value = user
 
