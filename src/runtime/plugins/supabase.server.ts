@@ -1,6 +1,7 @@
 import { createServerClient, parseCookieHeader } from '@supabase/ssr'
 import { getHeader, setCookie } from 'h3'
 import { fetchWithRetry } from '../utils/fetch-retry'
+import { serverSupabaseUser, serverSupabaseSession } from '../server/services'
 import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig, useSupabaseSession, useSupabaseUser } from '#imports'
 import type { CookieOptions } from '#app'
 
@@ -33,13 +34,13 @@ export default defineNuxtPlugin({
 
     // Initialize user and session states
     const [
-      {
-        data: { session },
-      },
-      {
-        data: { user },
-      },
-    ] = await Promise.all([client.auth.getSession(), client.auth.getUser()])
+      session,
+      user,
+    ] = await Promise.all([
+      serverSupabaseSession(event).catch(() => null),
+      serverSupabaseUser(event).catch(() => null),
+    ])
+
     useSupabaseSession().value = session
     useSupabaseUser().value = user
 
