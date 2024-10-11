@@ -1,5 +1,13 @@
 
 
+## [1.4.1](https://github.com/nuxt-community/supabase-module/compare/v1.4.0...v1.4.1) (2024-10-11)
+
+
+### Bug Fixes
+
+* **session:** ssr getSession warning ([#418](https://github.com/nuxt-community/supabase-module/issues/418)) ([95d905b](https://github.com/nuxt-community/supabase-module/commit/95d905b9b1f54a3aa15b3e4e583151cfcf00878f))
+* **types:** added explicit types annotations for `serverSupabaseClient` and `serverSupabaseServiceRole` ([#411](https://github.com/nuxt-community/supabase-module/issues/411)) ([3f98640](https://github.com/nuxt-community/supabase-module/commit/3f9864069b758bd945b30c1eebaba618b4bfd95e))
+
 # [1.4.0](https://github.com/nuxt-community/supabase-module/compare/v1.3.5...v1.4.0) (2024-08-30)
 
 
