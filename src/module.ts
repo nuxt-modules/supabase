@@ -121,7 +121,6 @@ export default defineNuxtModule<ModuleOptions>({
   },
   setup(options, nuxt) {
     const { resolve, resolvePath } = createResolver(import.meta.url)
-    const resolveRuntimeModule = (path: string) => resolveModule(path, { paths: resolve('./runtime') })
 
     // Public runtimeConfig
     nuxt.options.runtimeConfig.public.supabase = defu(nuxt.options.runtimeConfig.public.supabase, {
@@ -182,7 +181,7 @@ export default defineNuxtModule<ModuleOptions>({
       nitroConfig.externals = defu(typeof nitroConfig.externals === 'object' ? nitroConfig.externals : {}, {
         inline: [resolve('./runtime')],
       })
-      nitroConfig.alias['#supabase/server'] = resolveRuntimeModule('./server/services')
+      nitroConfig.alias['#supabase/server'] = resolve('./runtime/server/services')
       nitroConfig.alias['#supabase/database'] = resolve(nitroConfig.buildDir!, 'types/supabase-database')
     })
 
