@@ -12,12 +12,12 @@ export default defineNuxtConfig({
     },
   },
 
+  compatibilityDate: '2024-09-01',
+
   supabase: {
     redirectOptions: {
       login: '/',
       callback: '/confirm',
     },
   },
-
-  compatibilityDate: '2024-09-01',
 })

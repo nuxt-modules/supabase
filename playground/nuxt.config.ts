@@ -1,6 +1,14 @@
 export default defineNuxtConfig({
   modules: ['../src/module'],
 
+  compatibilityDate: '2024-07-05',
+
+  nitro: {
+    routeRules: {
+      '/clientonly': { ssr: false },
+    },
+  },
+
   supabase: {
     // cookieOptions: {
     //   name: 'test',
@@ -21,12 +29,4 @@ export default defineNuxtConfig({
       exclude: ['/unprotected', '/public/*'],
     },
   },
-
-  nitro: {
-    routeRules: {
-      '/clientonly': { ssr: false },
-    },
-  },
-
-  compatibilityDate: '2024-07-05',
 })
