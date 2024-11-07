@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'node:url'
 import fs from 'node:fs'
 import { defu } from 'defu'
-import { defineNuxtModule, addPlugin, createResolver, addTemplate, resolveModule, extendViteConfig } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver, addTemplate, extendViteConfig } from '@nuxt/kit'
 import type { CookieOptions } from 'nuxt/app'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
 import type { NitroConfig } from 'nitropack'
