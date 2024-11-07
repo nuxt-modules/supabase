@@ -1,5 +1,12 @@
 
 
+## [1.4.2](https://github.com/nuxt-community/supabase-module/compare/v1.4.1...v1.4.2) (2024-11-07)
+
+
+### Bug Fixes
+
+* **lint:** nuxt config key order ([cc2f45e](https://github.com/nuxt-community/supabase-module/commit/cc2f45eb868b7056565b9c74dbaffef98cd1a1ba))
+
 ## [1.4.1](https://github.com/nuxt-community/supabase-module/compare/v1.4.0...v1.4.1) (2024-10-11)
 
 
