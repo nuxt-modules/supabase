@@ -1,14 +1,15 @@
 import { createServerClient, parseCookieHeader } from '@supabase/ssr'
 import { getHeader, setCookie } from 'h3'
 import { fetchWithRetry } from '../utils/fetch-retry'
+import type { SupabaseClient } from '@supabase/supabase-js'
 import { serverSupabaseUser, serverSupabaseSession } from '../server/services'
 import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig, useSupabaseSession, useSupabaseUser } from '#imports'
-import type { CookieOptions } from '#app'
+import type { CookieOptions, Plugin } from '#app'
 
 export default defineNuxtPlugin({
   name: 'supabase',
   enforce: 'pre',
-  async setup() {
+  async setup({ provide }) {
     const { url, key, cookieOptions, clientOptions } = useRuntimeConfig().public.supabase
 
     const event = useRequestEvent()!
@@ -32,6 +33,8 @@ export default defineNuxtPlugin({
       },
     })
 
+    provide('supabase', { client })
+
     // Initialize user and session states
     const [
       session,
@@ -43,11 +46,5 @@ export default defineNuxtPlugin({
 
     useSupabaseSession().value = session
     useSupabaseUser().value = user
-
-    return {
-      provide: {
-        supabase: { client },
-      },
-    }
   },
-})
+}) as Plugin<{ client: SupabaseClient }>
