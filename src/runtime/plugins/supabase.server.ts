@@ -1,7 +1,7 @@
 import { createServerClient, parseCookieHeader } from '@supabase/ssr'
 import { getHeader, setCookie } from 'h3'
-import { fetchWithRetry } from '../utils/fetch-retry'
 import type { SupabaseClient } from '@supabase/supabase-js'
+import { fetchWithRetry } from '../utils/fetch-retry'
 import { serverSupabaseUser, serverSupabaseSession } from '../server/services'
 import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig, useSupabaseSession, useSupabaseUser } from '#imports'
 import type { CookieOptions, Plugin } from '#app'
