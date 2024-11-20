@@ -7,7 +7,7 @@ import { defineNuxtPlugin, useRuntimeConfig, useSupabaseSession, useSupabaseUser
 export default defineNuxtPlugin({
   name: 'supabase',
   enforce: 'pre',
-  async setup() {
+  async setup({ provide }) {
     const { url, key, cookieOptions, clientOptions } = useRuntimeConfig().public.supabase
 
     const client = createBrowserClient(url, key, {
@@ -19,6 +19,8 @@ export default defineNuxtPlugin({
         ...clientOptions.global,
       },
     })
+
+    provide('supabase', { client })
 
     const currentSession = useSupabaseSession()
     const currentUser = useSupabaseUser()
@@ -37,11 +39,5 @@ export default defineNuxtPlugin({
         currentUser.value = session?.user ?? null
       }
     })
-
-    return {
-      provide: {
-        supabase: { client },
-      },
-    }
   },
 }) as Plugin<{ client: SupabaseClient }>
