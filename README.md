@@ -49,7 +49,7 @@ If you are looking for a solution with Nuxt 2, checkout https://github.com/supab
 [npm-version-href]: https://npmjs.com/package/@nuxtjs/supabase
 
 [npm-downloads-src]: https://img.shields.io/npm/dt/@nuxtjs/supabase.svg?style=flat&colorA=18181B&colorB=28CF8D
-[npm-downloads-href]: https://npmjs.com/package/@nuxtjs/supabase
+[npm-downloads-href]: https://npm.chart.dev/@nuxtjs/supabase
 
 [github-actions-ci-src]: https://github.com/nuxt-community/supabase-module/workflows/ci-main/badge.svg
 [github-actions-ci-href]: https://github.com/nuxt-community/supabase-module/actions?query=workflow%3Aci
