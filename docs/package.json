@@ -29,7 +29,7 @@
     "@nuxtjs/plausible": "^1.0.0",
     "@nuxtlabs/github-module": "^1.6.3",
     "eslint": "^9.6.0",
-    "typescript": "^5.5.3",
+    "typescript": "^5.7.2",
     "vue-tsc": "^2.0.26"
   },
   "resolutions": {
