@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.2",
-    "@supabase/supabase-js": "^2.47.1",
+    "@supabase/supabase-js": "^2.47.3",
     "defu": "^6.1.4",
     "pathe": "^1.1.2"
   },
