@@ -27,6 +27,8 @@ In your Supabase project, make sure to create the `tasks` table with the followi
 
 Create a GitHub Oauth Application on https://github.com/settings/applications/new
 
+Grant read access to Email addresses under User Permissions
+
 With homepage url being http://localhost:3000
 
 For the callback url, please refer to https://supabase.com/docs/guides/auth/auth-github#find-your-callback-url
