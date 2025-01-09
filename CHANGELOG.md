@@ -1,5 +1,12 @@
 
 
+## [1.4.6-0](https://github.com/nuxt-community/supabase-module/compare/v1.4.5...v1.4.6-0) (2025-01-10)
+
+
+### Features
+
+* Added useSupabaseQuery to simplify fetching ([4448ad3](https://github.com/nuxt-community/supabase-module/commit/4448ad306e2c5857e76c981e631e39f75e566043))
+
 ## [1.4.5](https://github.com/nuxt-community/supabase-module/compare/v1.4.4...v1.4.5) (2024-12-18)
 
 ## [1.4.4](https://github.com/nuxt-community/supabase-module/compare/v1.4.3...v1.4.4) (2024-12-10)
