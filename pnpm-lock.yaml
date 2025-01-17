@@ -18,8 +18,8 @@ importers:
         specifier: ^6.1.4
         version: 6.1.4
       pathe:
-        specifier: ^1.1.2
-        version: 1.1.2
+        specifier: ^2.0.2
+        version: 2.0.2
     devDependencies:
       '@nuxt/eslint':
         specifier: ^0.7.3
@@ -3666,6 +3666,9 @@ packages:
 
   pathe@1.1.2:
     resolution: {integrity: sha512-whLdWMYL2TwI08hn8/ZqAbrVemu0LNaNNJZX73O6qaIdCTfXutsLhMkjdENX0qhsQ9uIimo4/aQOmXkoon2nDQ==}
+
+  pathe@2.0.2:
+    resolution: {integrity: sha512-15Ztpk+nov8DR524R4BF7uEuzESgzUEAV4Ah7CUMNGXdE5ELuvxElxGXndBl32vMSsWa1jpNf22Z+Er3sKwq+w==}
 
   perfect-debounce@1.0.0:
     resolution: {integrity: sha512-xCy9V055GLEqoFaHoC1SoLIaLmWctgCUaBaWxDZ7/Zx4CTyX7cJQLJOok/orfjZAh9kEYpjJa4d0KcJmCbctZA==}
@@ -9152,6 +9155,8 @@ snapshots:
   path-type@5.0.0: {}
 
   pathe@1.1.2: {}
+
+  pathe@2.0.2: {}
 
   perfect-debounce@1.0.0: {}
 
