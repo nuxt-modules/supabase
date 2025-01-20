@@ -1,4 +1,11 @@
+# Changelog
 
+## [1.4.6](https://github.com/nuxt-community/supabase-module/compare/v1.4.5...v1.4.6) (2025-01-20)
+
+
+### Bug Fixes
+
+* **serverSupabaseServiceRole:** Pass H3Event into useRuntimeConfig ([#450](https://github.com/nuxt-community/supabase-module/issues/450)) ([2de1c08](https://github.com/nuxt-community/supabase-module/commit/2de1c081e414c8b1b47fe5075ae3be6fbb585080))
 
 ## [1.4.5](https://github.com/nuxt-community/supabase-module/compare/v1.4.4...v1.4.5) (2024-12-18)
 
