@@ -11,7 +11,7 @@ export const serverSupabaseServiceRole: <T = Database>(event: H3Event) => Supaba
     public: {
       supabase: { url },
     },
-  } = useRuntimeConfig()
+  } = useRuntimeConfig(event)
 
   // Make sure service key is set
   if (!serviceKey) {
