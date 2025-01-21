@@ -7,10 +7,7 @@ import type { Database } from '#supabase/database'
 
 export const serverSupabaseServiceRole: <T = Database>(event: H3Event) => SupabaseClient<T> = <T = Database>(event: H3Event) => {
   const {
-    supabase: { serviceKey },
-    public: {
-      supabase: { url },
-    },
+    supabase: { serviceKey, url },
   } = useRuntimeConfig(event)
 
   // Make sure service key is set
