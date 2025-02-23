@@ -10,14 +10,7 @@ export const serverSupabaseClient: <T = Database>(event: H3Event) => Promise<Sup
   // No need to recreate client if exists in request context
   if (!event.context._supabaseClient) {
     // get settings from runtime config
-    const {
-      supabase: {
-        url,
-        key,
-        cookieOptions,
-        clientOptions: { auth = {}, global = {} },
-      },
-    } = useRuntimeConfig().public
+    const { url, key, cookiePrefix, cookieOptions, clientOptions: { auth = {}, global = {} } } = useRuntimeConfig().public.supabase
 
     event.context._supabaseClient = createServerClient(url, key, {
       auth,
@@ -31,7 +24,10 @@ export const serverSupabaseClient: <T = Database>(event: H3Event) => Promise<Sup
           }[],
         ) => cookies.forEach(({ name, value, options }) => setCookie(event, name, value, options)),
       },
-      cookieOptions,
+      cookieOptions: {
+        ...cookieOptions,
+        name: cookiePrefix,
+      },
       global: {
         fetch: fetchWithRetry,
         ...global,

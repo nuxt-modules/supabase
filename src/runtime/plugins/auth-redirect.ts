@@ -1,6 +1,6 @@
+import { useSupabaseCookieRedirect } from '../composables/useSupabaseCookieRedirect'
 import type { Plugin } from '#app'
-import type { Ref } from '#imports'
-import { defineNuxtPlugin, addRouteMiddleware, defineNuxtRouteMiddleware, useCookie, useRuntimeConfig, navigateTo, useSupabaseSession } from '#imports'
+import { defineNuxtPlugin, addRouteMiddleware, defineNuxtRouteMiddleware, useRuntimeConfig, navigateTo, useSupabaseSession } from '#imports'
 import type { RouteLocationNormalized } from '#vue-router'
 
 export default defineNuxtPlugin({
@@ -10,8 +10,7 @@ export default defineNuxtPlugin({
       'global-auth',
       defineNuxtRouteMiddleware((to: RouteLocationNormalized) => {
         const config = useRuntimeConfig().public.supabase
-        const { login, callback, include, exclude, cookieRedirect } = config.redirectOptions
-        const { cookieName, cookieOptions } = config
+        const { login, callback, include, exclude, cookieRedirect, saveRedirectToCookie } = config.redirectOptions
 
         // Redirect only on included routes (if defined)
         if (include && include.length > 0) {
@@ -33,8 +32,10 @@ export default defineNuxtPlugin({
 
         const session = useSupabaseSession()
         if (!session.value) {
-          if (cookieRedirect) {
-            (useCookie(`${cookieName}-redirect-path`, { ...cookieOptions, readonly: false }) as Ref).value = to.fullPath
+          // Save current path to the redirect cookie if enabled
+          if (cookieRedirect || saveRedirectToCookie) {
+            const redirectInfo = useSupabaseCookieRedirect()
+            redirectInfo.path.value = to.fullPath
           }
 
           return navigateTo(login)
