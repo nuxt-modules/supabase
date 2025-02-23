@@ -60,6 +60,7 @@ export interface ModuleOptions {
    * Cookie name used for storing the redirect path when using the `redirect` option, added in front of `-redirect-path` to form the full cookie name e.g. `sb-redirect-path`
    * @default 'sb'
    * @type string
+   * @deprecated Use `cookiePrefix` instead.
    */
   cookieName?: string
 
@@ -126,6 +127,7 @@ export default defineNuxtModule<ModuleOptions>({
       callback: '/confirm',
       exclude: [],
       cookieRedirect: false,
+      saveRedirectToCookie: false,
     },
     cookieName: 'sb',
     cookiePrefix: undefined,
@@ -177,6 +179,14 @@ export default defineNuxtModule<ModuleOptions>({
     // Warn if the key isn't set.
     if (!nuxt.options.runtimeConfig.public.supabase.key) {
       logger.warn('Missing supabase anon key, set it either in `nuxt.config.js` or via env variable')
+    }
+
+    // Warn for deprecated features.
+    if (nuxt.options.runtimeConfig.public.supabase.redirectOptions.cookieRedirect) {
+      logger.warn('The `cookieRedirect` option is deprecated, use `saveRedirectToCookie` instead.')
+    }
+    if (nuxt.options.runtimeConfig.public.supabase.cookieName != 'sb') {
+      logger.warn('The `cookieName` option is deprecated, use `cookiePrefix` instead.')
     }
 
     // ensure callback URL is not using SSR

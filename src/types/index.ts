@@ -23,5 +23,14 @@ export interface RedirectOptions {
   callback: string
   include?: string[]
   exclude?: string[]
+  /**
+   * @deprecated Use `saveRedirectToCookie` instead.
+   */
   cookieRedirect?: boolean
+
+  /**
+   * If true, the when automatically redirected the redirect path will be saved to a cookie, allowing retrieval later with the `useSupabaseRedirect` composable.
+   * @default false
+   */
+  saveRedirectToCookie?: boolean
 }
