@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'node:url'
 import fs from 'node:fs'
 import { defu } from 'defu'
-import { defineNuxtModule, addPlugin, createResolver, addTemplate, extendViteConfig } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver, addTemplate, extendViteConfig, useLogger } from '@nuxt/kit'
 import type { CookieOptions } from 'nuxt/app'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
 import type { NitroConfig } from 'nitropack'
@@ -64,6 +64,13 @@ export interface ModuleOptions {
   cookieName?: string
 
   /**
+   * The prefix used for all supabase cookies, and the redirect cookie.
+   * @default The default storage key from the supabase-js client.
+   * @type string
+   */
+  cookiePrefix?: string
+
+  /**
    * If true, the supabase client will use cookies to store the session, allowing the session to be used from the server in ssr mode.
    * Some `clientOptions` are not configurable when this is enabled. See the docs for more details.
    *
@@ -121,6 +128,7 @@ export default defineNuxtModule<ModuleOptions>({
       cookieRedirect: false,
     },
     cookieName: 'sb',
+    cookiePrefix: undefined,
     useSsrCookies: true,
     cookieOptions: {
       maxAge: 60 * 60 * 8,
@@ -131,6 +139,7 @@ export default defineNuxtModule<ModuleOptions>({
     clientOptions: {} as SupabaseClientOptions<string>,
   },
   setup(options, nuxt) {
+    const logger = useLogger('@nuxt/supabase')
     const { resolve, resolvePath } = createResolver(import.meta.url)
 
     // Public runtimeConfig
@@ -140,6 +149,8 @@ export default defineNuxtModule<ModuleOptions>({
       redirect: options.redirect,
       redirectOptions: options.redirectOptions,
       cookieName: options.cookieName,
+      cookiePrefix: options.cookiePrefix,
+      useSsrCookies: options.useSsrCookies,
       cookieOptions: options.cookieOptions,
       clientOptions: options.clientOptions,
     })
@@ -149,12 +160,23 @@ export default defineNuxtModule<ModuleOptions>({
       serviceKey: options.serviceKey,
     })
 
-    // Make sure url and key are set
-    if (!nuxt.options.runtimeConfig.public.supabase.url) {
-      console.warn('Missing supabase url, set it either in `nuxt.config.js` or via env variable')
+    const finalUrl = nuxt.options.runtimeConfig.public.supabase.url
+
+    // Warn if the url isn't set.
+    if (!finalUrl) {
+      logger.warn('Missing supabase url, set it either in `nuxt.config.js` or via env variable')
     }
+    else {
+      // Use the default storage key as defined by the supabase-js client if no cookiePrefix is set.
+      // Source: https://github.com/supabase/supabase-js/blob/3316f2426d7c2e5babaab7ddc17c30bfa189f500/src/SupabaseClient.ts#L86
+      const defaultStorageKey = `sb-${new URL(finalUrl).hostname.split('.')[0]}-auth-token`
+      const currentPrefix = nuxt.options.runtimeConfig.public.supabase.cookiePrefix
+      nuxt.options.runtimeConfig.public.supabase.cookiePrefix = currentPrefix || defaultStorageKey
+    }
+
+    // Warn if the key isn't set.
     if (!nuxt.options.runtimeConfig.public.supabase.key) {
-      console.warn('Missing supabase anon key, set it either in `nuxt.config.js` or via env variable')
+      logger.warn('Missing supabase anon key, set it either in `nuxt.config.js` or via env variable')
     }
 
     // ensure callback URL is not using SSR

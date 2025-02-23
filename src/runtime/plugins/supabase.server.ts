@@ -10,7 +10,7 @@ export default defineNuxtPlugin({
   name: 'supabase',
   enforce: 'pre',
   async setup({ provide }) {
-    const { url, key, cookieOptions, clientOptions } = useRuntimeConfig().public.supabase
+    const { url, key, cookiePrefix, useSsrCookies, cookieOptions, clientOptions } = useRuntimeConfig().public.supabase
 
     const event = useRequestEvent()!
 
@@ -26,7 +26,10 @@ export default defineNuxtPlugin({
           }[],
         ) => cookies.forEach(({ name, value, options }) => setCookie(event, name, value, options)),
       },
-      cookieOptions,
+      cookieOptions: {
+        ...cookieOptions,
+        name: cookiePrefix,
+      },
       global: {
         fetch: fetchWithRetry,
         ...clientOptions.global,

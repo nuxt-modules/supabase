@@ -17,6 +17,7 @@ export default defineNuxtPlugin({
         ...clientOptions,
         cookieOptions: {
           ...cookieOptions,
+          name: cookiePrefix,
         },
         isSingleton: true,
         global: {
