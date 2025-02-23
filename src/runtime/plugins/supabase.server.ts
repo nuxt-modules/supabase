@@ -35,16 +35,18 @@ export default defineNuxtPlugin({
 
     provide('supabase', { client })
 
-    // Initialize user and session states
-    const [
-      session,
-      user,
-    ] = await Promise.all([
-      serverSupabaseSession(event).catch(() => null),
-      serverSupabaseUser(event).catch(() => null),
-    ])
+    // Initialize user and session states if available.
+    if (useSsrCookies) {
+      const [
+        session,
+        user,
+      ] = await Promise.all([
+        serverSupabaseSession(event).catch(() => null),
+        serverSupabaseUser(event).catch(() => null),
+      ])
 
-    useSupabaseSession().value = session
-    useSupabaseUser().value = user
+      useSupabaseSession().value = session
+      useSupabaseUser().value = user
+    }
   },
 }) as Plugin<{ client: SupabaseClient }>

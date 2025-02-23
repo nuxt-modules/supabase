@@ -9,6 +9,7 @@ declare module '@nuxt/schema' {
       redirect: boolean
       redirectOptions: RedirectOptions
       cookieName: string
+      useSsrCookies: boolean
       cookieOptions: CookieOptions
       types: string | false
       clientOptions: SupabaseClientOptions<string>

@@ -64,6 +64,16 @@ export interface ModuleOptions {
   cookieName?: string
 
   /**
+   * If true, the supabase client will use cookies to store the session, allowing the session to be used from the server in ssr mode.
+   * Some `clientOptions` are not configurable when this is enabled. See the docs for more details.
+   *
+   * If false, the server will not be able to access the session.
+   * @default true
+   * @type boolean
+   */
+  useSsrCookies?: boolean
+
+  /**
    * Cookie options
    * @default {
       maxAge: 60 * 60 * 8,
@@ -111,6 +121,7 @@ export default defineNuxtModule<ModuleOptions>({
       cookieRedirect: false,
     },
     cookieName: 'sb',
+    useSsrCookies: true,
     cookieOptions: {
       maxAge: 60 * 60 * 8,
       sameSite: 'lax',
