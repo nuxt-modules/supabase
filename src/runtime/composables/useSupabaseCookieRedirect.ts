@@ -1,5 +1,5 @@
 import type { CookieRef } from 'nuxt/app'
-import { useRuntimeConfig, useCookie, useRoute } from '#imports'
+import { useRuntimeConfig, useCookie } from '#imports'
 
 export interface UseSupabaseCookieRedirectReturn {
   /**
