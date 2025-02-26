@@ -11,15 +11,15 @@
     "lint:fix": "eslint . --fix"
   },
   "devDependencies": {
-    "@iconify-json/heroicons": "^1.2.0",
-    "@iconify-json/heroicons-outline": "^1.2.0",
-    "@iconify-json/mdi": "^1.2.0",
-    "@nuxt/ui": "2.18.4",
-    "@nuxtjs/supabase": "^1.4.0",
+    "@iconify-json/heroicons": "^1.2.2",
+    "@iconify-json/heroicons-outline": "^1.2.1",
+    "@iconify-json/mdi": "^1.2.3",
+    "@nuxt/ui": "2.21.0",
+    "@nuxtjs/supabase": "^1.4.6",
     "nuxt": "^3.13.1",
-    "typescript": "^5.5.4"
+    "typescript": "^5.7.3"
   },
   "resolutions": {
-    "@nuxt/icon": "^1.5.1"
+    "@nuxt/icon": "^1.10.3"
   }
 }
