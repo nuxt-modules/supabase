@@ -1,5 +1,5 @@
 import { createBrowserClient } from '@supabase/ssr'
-import type { Session, SupabaseClient } from '@supabase/supabase-js'
+import { type Session, type SupabaseClient, createClient } from '@supabase/supabase-js'
 import { fetchWithRetry } from '../utils/fetch-retry'
 import type { Plugin } from '#app'
 import { defineNuxtPlugin, useRuntimeConfig, useSupabaseSession, useSupabaseUser } from '#imports'
@@ -8,17 +8,33 @@ export default defineNuxtPlugin({
   name: 'supabase',
   enforce: 'pre',
   async setup({ provide }) {
-    const { url, key, cookieOptions, clientOptions } = useRuntimeConfig().public.supabase
+    const { url, key, cookieOptions, cookiePrefix, useSsrCookies, clientOptions } = useRuntimeConfig().public.supabase
 
-    const client = createBrowserClient(url, key, {
-      ...clientOptions,
-      cookieOptions,
-      isSingleton: true,
-      global: {
-        fetch: fetchWithRetry,
-        ...clientOptions.global,
-      },
-    })
+    let client
+
+    if (useSsrCookies) {
+      client = createBrowserClient(url, key, {
+        ...clientOptions,
+        cookieOptions: {
+          ...cookieOptions,
+          name: cookiePrefix,
+        },
+        isSingleton: true,
+        global: {
+          fetch: fetchWithRetry,
+          ...clientOptions.global,
+        },
+      })
+    }
+    else {
+      client = createClient(url, key, {
+        ...clientOptions,
+        global: {
+          fetch: fetchWithRetry,
+          ...clientOptions.global,
+        },
+      })
+    }
 
     provide('supabase', { client })
 
