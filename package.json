@@ -46,7 +46,10 @@
     "eslint": "^9.21.0",
     "nuxt": "^3.15.4",
     "release-it": "^18.1.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.6.3"
+  },
+  "resolutions": {
+    "typescript": "5.6.3"
   },
   "release-it": {
     "git": {
