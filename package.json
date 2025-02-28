@@ -4,7 +4,7 @@
   "description": "Supabase module for Nuxt",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nuxt-community/supabase-module.git"
+    "url": "git+https://github.com/nuxt-modules/supabase.git"
   },
   "license": "MIT",
   "packageManager": "pnpm@10.5.2",
