@@ -1,5 +1,17 @@
 # Changelog
 
+# [1.5.0](https://github.com/nuxt-modules/supabase/compare/v1.4.6...v1.5.0) (2025-03-04)
+
+
+### Bug Fixes
+
+* **docs:** prerendering ([2fb91f3](https://github.com/nuxt-modules/supabase/commit/2fb91f37a549148b2cecefe625a12ed57e1bf66a))
+
+
+### Features
+
+* **auth:** improve client flexibility & allow overriding cookie options ([#463](https://github.com/nuxt-modules/supabase/issues/463)) ([254cbdb](https://github.com/nuxt-modules/supabase/commit/254cbdb1a44f9cb40f9057d03ef93bd73020009d))
+
 ## [1.4.6](https://github.com/nuxt-community/supabase-module/compare/v1.4.5...v1.4.6) (2025-01-20)
 
 
