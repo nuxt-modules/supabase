@@ -37,14 +37,14 @@
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.1.0",
-    "@nuxt/kit": "^3.15.4",
+    "@nuxt/kit": "^3.16.0",
     "@nuxt/module-builder": "^0.8.4",
-    "@nuxt/schema": "^3.15.4",
+    "@nuxt/schema": "^3.16.0",
     "@release-it/conventional-changelog": "^10.0.0",
     "@types/node": "^22.13.5",
     "changelogen": "^0.6.0",
     "eslint": "^9.21.0",
-    "nuxt": "^3.15.4",
+    "nuxt": "^3.16.0",
     "release-it": "^18.1.2",
     "typescript": "^5.6.3"
   },
