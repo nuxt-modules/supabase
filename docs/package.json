@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "1.3.9",
-    "@nuxt/eslint-config": "^0.3.13",
+    "@nuxt/eslint-config": "^1.2.0",
     "@nuxthq/studio": "^2.0.3",
     "@nuxtjs/plausible": "^1.0.0",
     "@nuxtlabs/github-module": "^1.6.3",
