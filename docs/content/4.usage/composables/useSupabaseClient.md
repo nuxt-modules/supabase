@@ -14,7 +14,7 @@ This composable is using [supabase-js](https://github.com/supabase/supabase-js/)
 The useSupabaseClient composable is providing all methods to manage authorization under `useSupabaseClient().auth`. For more details please see the [supabase-js auth documentation](https://supabase.com/docs/reference/javascript/auth-api). Here is an example for signing in and out:
 
 ::callout{icon="i-heroicons-light-bulb"}
-If you want a full explanation on how to handle the authentication process, please read this [section](/get-started#handle-authentication).
+If you want a full explanation on how to handle the authentication process, please read this [section](/authentication).
 ::
 
 ```ts
@@ -38,7 +38,7 @@ const signOut = async () => {
 </script>
 ```
 
-Please also take a look at [Get Started](/get-started) for the authorization flow.
+Please also take a look at [Get Started](/authentication) for the authorization flow.
 
 ## Database Request
 
