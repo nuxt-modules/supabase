@@ -14,7 +14,7 @@
     "@iconify-json/heroicons": "^1.2.0",
     "@iconify-json/heroicons-outline": "^1.2.0",
     "@iconify-json/mdi": "^1.2.0",
-    "@nuxt/ui": "2.18.4",
+    "@nuxt/ui": "3.0.2",
     "@nuxtjs/supabase": "^1.4.0",
     "nuxt": "^3.13.1",
     "typescript": "^5.5.4"
