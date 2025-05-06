@@ -112,7 +112,7 @@ Shipped with many features
 
   :::u-page-feature
   ---
-  icon: i-heroicons-server
+  icon: i-lucide-server
   to: usage/services/serversupabaseclient
   ---
   #title
@@ -124,7 +124,7 @@ Shipped with many features
 
   :::u-page-feature
   ---
-  icon: i-heroicons-key
+  icon: i-lucide-key
   to: /authentication
   ---
   #title

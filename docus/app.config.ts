@@ -1,6 +1,11 @@
 export default defineAppConfig({
   header: {
-    title: 'Supabase',
+    title: 'Nuxt Supabase',
+    logo: {
+      light: 'logo-nuxt-supabase-light.png',
+      dark: 'logo-nuxt-supabase-dark.png',
+      alt: 'Nuxt Supabase',
+    },
   },
   socials: {
     x: 'https://x.com/nuxt_js',

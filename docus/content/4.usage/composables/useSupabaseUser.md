@@ -13,7 +13,7 @@ const user = useSupabaseUser()
 
 ## Auth middleware
 
-::callout{icon="i-heroicons-light-bulb"}
+::tip
 By default, the module is implementing a redirect middleware. All pages of your application are automatically redirected to the [login](/get-started#redirectoptions) page. However, you can allow redirection to "public" pages by setting the [exclude](/get-started#redirectoptions) redirect option. Alternatively, you can enable the redirect only for certain routes using the [include](/get-started#redirectoptions) redirect option.
 ::
 
