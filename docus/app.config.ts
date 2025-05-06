@@ -1,6 +1,9 @@
 export default defineAppConfig({
-  header: {
+  seo: {
     title: 'Nuxt Supabase',
+    description: 'A supa simple wrapper around supabase-js to enable usage and integration within Nuxt.',
+  },
+  header: {
     logo: {
       light: 'logo-nuxt-supabase-light.png',
       dark: 'logo-nuxt-supabase-dark.png',
