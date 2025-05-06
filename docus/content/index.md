@@ -25,7 +25,7 @@ orientation: horizontal
   :::
 
 #title
-Supabase
+Nuxt Supabase
 
 #description
 A supa simple wrapper around supabase-js to enable usage and integration within Nuxt.
@@ -56,19 +56,6 @@ A supa simple wrapper around supabase-js to enable usage and integration within 
 ::u-page-section
 #title
 Shipped with many features
-
-#links
-  :::u-button
-  ---
-  color: neutral
-  size: lg
-  target: _blank
-  to: https://ui.nuxt.com/getting-started/installation/pro/nuxt
-  trailingIcon: i-lucide-arrow-right
-  variant: subtle
-  ---
-  Discover Nuxt UI Pro v3
-  :::
 
 #features
   :::u-page-feature
