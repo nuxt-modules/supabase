@@ -9,5 +9,8 @@
   "devDependencies": {
     "@larbish/docus": "latest"
   },
-  "packageManager": "pnpm@10.10.0"
+  "packageManager": "pnpm@10.10.0",
+  "dependencies": {
+    "@nuxtjs/plausible": "1.2.0"
+  }
 }

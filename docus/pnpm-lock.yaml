@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@nuxtjs/plausible':
+        specifier: 1.2.0
+        version: 1.2.0(magicast@0.3.5)
     devDependencies:
       '@larbish/docus':
         specifier: latest
@@ -169,6 +173,9 @@ packages:
   '@babel/types@7.27.1':
     resolution: {integrity: sha512-+EzkxvLNfiUeKMgy/3luqfsCWFRXLb7U6wNQTk60tovuckwB15B191tJWvpp4HjiQWdJkCxO3Wbvc6jlk3Xb2Q==}
     engines: {node: '>=6.9.0'}
+
+  '@barbapapazes/plausible-tracker@0.5.6':
+    resolution: {integrity: sha512-GRZxn3ZngYQ1+QbdP8d66D/lQg+T2oEevG8kBGfNwVbt9VZB67sgMx/gkRo/Ww2lH7QelgjUNzvOeG+DsJX2HQ==}
 
   '@capsizecss/metrics@3.5.0':
     resolution: {integrity: sha512-Ju2I/Qn3c1OaU8FgeW4Tc22D4C9NwyVfKzNmzst59bvxBjPoLYNZMqFYn+HvCtn4MpXwiaDtCE8fNuQLpdi9yA==}
@@ -751,6 +758,9 @@ packages:
 
   '@nuxtjs/mdc@0.17.0':
     resolution: {integrity: sha512-5HFJ2Xatl4oSfEZuYRJhzYhVHNvb31xc9Tu/qfXpRIWeQsQphqjaV3wWB5VStZYEHpTw1i6Hzyz/ojQZVl4qPg==}
+
+  '@nuxtjs/plausible@1.2.0':
+    resolution: {integrity: sha512-pjfps32fFN77BhjqHmq2Jx4XCNso9TcYnB+S4IR2qH/c26WDfYB5mQxN5pOEiWRlMkiKq+Y45mBBFtSOVKClCA==}
 
   '@oxc-parser/binding-darwin-arm64@0.68.1':
     resolution: {integrity: sha512-Y5FBQyPCLsldAZYEd+oZcUboXwpcLf42Lakx3EYtiYDbuK9M3IqBXMGxdM07P4PfGQrKYn6/cC8xAqkVHnbWPw==}
@@ -5545,6 +5555,8 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.27.1
 
+  '@barbapapazes/plausible-tracker@0.5.6': {}
+
   '@capsizecss/metrics@3.5.0': {}
 
   '@capsizecss/unpack@2.4.0':
@@ -6641,6 +6653,15 @@ snapshots:
     transitivePeerDependencies:
       - magicast
       - supports-color
+
+  '@nuxtjs/plausible@1.2.0(magicast@0.3.5)':
+    dependencies:
+      '@barbapapazes/plausible-tracker': 0.5.6
+      '@nuxt/kit': 3.17.2(magicast@0.3.5)
+      defu: 6.1.4
+      ufo: 1.6.1
+    transitivePeerDependencies:
+      - magicast
 
   '@oxc-parser/binding-darwin-arm64@0.68.1':
     optional: true
