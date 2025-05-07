@@ -7,10 +7,8 @@
     "dev": "docus dev"
   },
   "devDependencies": {
-    "@larbish/docus": "latest"
-  },
-  "packageManager": "pnpm@10.10.0",
-  "dependencies": {
+    "@larbish/docus": "latest",
     "@nuxtjs/plausible": "1.2.0"
-  }
+  },
+  "packageManager": "pnpm@10.10.0"
 }

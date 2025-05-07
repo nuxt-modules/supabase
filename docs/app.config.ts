@@ -19,8 +19,8 @@ export default defineAppConfig({
   toc: {
     edit: 'https://github.com/nuxt-modules/supabase/edit/main/docs/content',
     links: [{
-      icon: 'i-lucide-book-open',
-      label: 'Nuxt  docs',
+      icon: 'i-simple-icons-nuxt',
+      label: 'Nuxt docs',
       to: 'https://nuxt.com/docs',
       target: '_blank',
     }, {
