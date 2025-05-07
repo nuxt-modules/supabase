@@ -14,6 +14,7 @@ export default defineAppConfig({
     x: 'https://x.com/nuxt_js',
     discord: 'https://discord.com/invite/ps2h6QT',
     nuxt: 'https://nuxt.com',
+    supabase: 'https://supabase.com/docs',
   },
   toc: {
     edit: 'https://github.com/nuxt-modules/supabase/edit/main/docs/content',
@@ -23,7 +24,7 @@ export default defineAppConfig({
       to: 'https://nuxt.com/docs',
       target: '_blank',
     }, {
-      icon: 'i-simple-icons-nuxtdotjs',
+      icon: 'i-simple-icons-supabase',
       label: 'Supabase docs',
       to: 'https://supabase.com/docs',
       target: '_blank',

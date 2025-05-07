@@ -10,22 +10,33 @@ orientation: horizontal
 ---
   :::prose-pre
   ---
-  filename: Terminal
+  filename: pages/login.vue
   ---
-  ```ts
+  ```vue
+  <script setup lang="ts">
   const supabase = useSupabaseClient()
   const email = ref('')
 
-  const signInWithOtp = async () => {
+  async function signInWithOtp() {
     await supabase.auth.signInWithOtp({
-      email: email.value,
+      email: email.value
     })
   }
+  </script>
+
+  <template>
+    <input
+      type="email"
+      v-model="email"
+      @keyup.enter="signInWithOtp()"
+      placeholder="Login with email" 
+    />
+  </template>
   ```
   :::
 
 #title
-Nuxt Supabase
+[Nuxt]{.text-primary} Supabase
 
 #description
 A supa simple wrapper around supabase-js to enable usage and integration within Nuxt.
@@ -34,7 +45,7 @@ A supa simple wrapper around supabase-js to enable usage and integration within 
   :::u-button
   ---
   size: xl
-  to: /get-started
+  to: /getting-started/introduction
   trailing-icon: i-lucide-arrow-right
   ---
   Get started
@@ -46,10 +57,10 @@ A supa simple wrapper around supabase-js to enable usage and integration within 
   icon: i-lucide-star
   size: xl
   target: _blank
-  to: https://github.com/nuxt-ui-pro/docs
+  to: https://github.com/nuxt-modules/supabase
   variant: subtle
   ---
-  Star on github
+  Star on GitHub
   :::
 ::
 
