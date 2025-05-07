@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@larbish/docus':
         specifier: latest
-        version: 1.1.0(@babel/parser@7.27.2)(@parcel/watcher@2.5.1)(@types/node@22.15.14)(@unhead/vue@2.0.8(vue@3.5.13(typescript@5.8.3)))(better-sqlite3@11.9.1)(db0@0.3.2(better-sqlite3@11.9.1))(embla-carousel@8.6.0)(ioredis@5.6.1)(jwt-decode@4.0.0)(lightningcss@1.29.2)(magicast@0.3.5)(rollup@4.40.2)(terser@5.39.0)(typescript@5.8.3)(unstorage@1.16.0(db0@0.3.2(better-sqlite3@11.9.1))(ioredis@5.6.1))(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1))(vue-router@4.5.1(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))(yaml@2.7.1)(zod@3.24.4)
+        version: 1.1.1(@babel/parser@7.27.2)(@parcel/watcher@2.5.1)(@types/node@22.15.14)(@unhead/vue@2.0.8(vue@3.5.13(typescript@5.8.3)))(better-sqlite3@11.9.1)(db0@0.3.2(better-sqlite3@11.9.1))(embla-carousel@8.6.0)(ioredis@5.6.1)(jwt-decode@4.0.0)(lightningcss@1.29.2)(magicast@0.3.5)(rollup@4.40.2)(terser@5.39.0)(typescript@5.8.3)(unstorage@1.16.0(db0@0.3.2(better-sqlite3@11.9.1))(ioredis@5.6.1))(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1))(vue-router@4.5.1(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))(yaml@2.7.1)(zod@3.24.4)
       '@nuxtjs/plausible':
         specifier: 1.2.0
         version: 1.2.0(magicast@0.3.5)
@@ -577,8 +577,8 @@ packages:
   '@kwsites/promise-deferred@1.1.1':
     resolution: {integrity: sha512-GaHYm+c0O9MjZRu0ongGBRbinu8gVAMd2UZjji6jVmqKtZluZnptXGWhz1E8j8D2HJ3f/yMxKAUC0b+57wncIw==}
 
-  '@larbish/docus@1.1.0':
-    resolution: {integrity: sha512-RaYd6vRw9t0agBztT9fOFR4RKMTq1waWlLHsk/otVvPHMvImi23wttOj7+t7UJWJ2UubmG8gxoyGKmXJx6fOGA==}
+  '@larbish/docus@1.1.1':
+    resolution: {integrity: sha512-Z617QK8CyRfjnQdi2k0mze9oHP+Y6Zr7fGdGccSCWuOBxhoCYhZZ9KGQ+nAmJGwFt1niRxhlsMebo0Z4Qhd6WA==}
     hasBin: true
 
   '@mapbox/node-pre-gyp@1.0.11':
@@ -596,8 +596,8 @@ packages:
   '@netlify/binary-info@1.0.0':
     resolution: {integrity: sha512-4wMPu9iN3/HL97QblBsBay3E1etIciR84izI3U+4iALY+JHCrI+a2jO0qbAZ/nxKoegypYEaiiqWXylm+/zfrw==}
 
-  '@netlify/blobs@9.0.1':
-    resolution: {integrity: sha512-l2d7KCAvekDpIBMQjUuOpOgolhMWt9Bll7G/KH/zmW/3gFlTB2mD5/2ghSjCTxLGJzdjbch7/5EBt8UPSDlD3A==}
+  '@netlify/blobs@9.1.0':
+    resolution: {integrity: sha512-2N9+V9LJ+aL7oZOCgCcASXBFvvN6WZs/QhrI6qyuXWVml2wpLwxr0x+efX9YLjwgJqRQQ46h3GmMeixnGv76kw==}
     engines: {node: ^14.16.0 || >=16.0.0}
 
   '@netlify/dev-utils@2.1.0':
@@ -612,8 +612,8 @@ packages:
     resolution: {integrity: sha512-zXnRFkxgNsalSgU8/vwTWnav3R+8KG8SsqHxqaoJdjjJtnZR7wo3f+qqu4z+WtZ/4V7fly91HFUwZ6Uz2OdW7w==}
     engines: {node: '>=14.8.0'}
 
-  '@netlify/runtime-utils@1.2.0':
-    resolution: {integrity: sha512-iTWkuINC7O8AqthMzbF9/OAnz3ubVPn8ycSD5ZO7vtnlaQiYu/L8mZ7Nez1eZu4WxWgpNBwS79YgAK6x0RBWUQ==}
+  '@netlify/runtime-utils@1.3.0':
+    resolution: {integrity: sha512-q0O29ylPTs67ux3tfkTDaiMI8qwshhVLdWWIG8ohYqaG5/RejhbhUetugzyDg5W4BX17ZpCbgLHdmK3BVRebPg==}
     engines: {node: '>=16.0.0'}
 
   '@netlify/serverless-functions-api@1.38.0':
@@ -5853,7 +5853,7 @@ snapshots:
 
   '@kwsites/promise-deferred@1.1.1': {}
 
-  '@larbish/docus@1.1.0(@babel/parser@7.27.2)(@parcel/watcher@2.5.1)(@types/node@22.15.14)(@unhead/vue@2.0.8(vue@3.5.13(typescript@5.8.3)))(better-sqlite3@11.9.1)(db0@0.3.2(better-sqlite3@11.9.1))(embla-carousel@8.6.0)(ioredis@5.6.1)(jwt-decode@4.0.0)(lightningcss@1.29.2)(magicast@0.3.5)(rollup@4.40.2)(terser@5.39.0)(typescript@5.8.3)(unstorage@1.16.0(db0@0.3.2(better-sqlite3@11.9.1))(ioredis@5.6.1))(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1))(vue-router@4.5.1(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))(yaml@2.7.1)(zod@3.24.4)':
+  '@larbish/docus@1.1.1(@babel/parser@7.27.2)(@parcel/watcher@2.5.1)(@types/node@22.15.14)(@unhead/vue@2.0.8(vue@3.5.13(typescript@5.8.3)))(better-sqlite3@11.9.1)(db0@0.3.2(better-sqlite3@11.9.1))(embla-carousel@8.6.0)(ioredis@5.6.1)(jwt-decode@4.0.0)(lightningcss@1.29.2)(magicast@0.3.5)(rollup@4.40.2)(terser@5.39.0)(typescript@5.8.3)(unstorage@1.16.0(db0@0.3.2(better-sqlite3@11.9.1))(ioredis@5.6.1))(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1))(vue-router@4.5.1(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))(yaml@2.7.1)(zod@3.24.4)':
     dependencies:
       '@iconify-json/lucide': 1.2.41
       '@iconify-json/simple-icons': 1.2.33
@@ -5986,10 +5986,10 @@ snapshots:
 
   '@netlify/binary-info@1.0.0': {}
 
-  '@netlify/blobs@9.0.1':
+  '@netlify/blobs@9.1.0':
     dependencies:
       '@netlify/dev-utils': 2.1.0
-      '@netlify/runtime-utils': 1.2.0
+      '@netlify/runtime-utils': 1.3.0
 
   '@netlify/dev-utils@2.1.0':
     dependencies:
@@ -6007,7 +6007,7 @@ snapshots:
 
   '@netlify/functions@3.1.5(rollup@4.40.2)':
     dependencies:
-      '@netlify/blobs': 9.0.1
+      '@netlify/blobs': 9.1.0
       '@netlify/dev-utils': 2.1.0
       '@netlify/serverless-functions-api': 1.38.0
       '@netlify/zip-it-and-ship-it': 10.0.7(rollup@4.40.2)
@@ -6026,7 +6026,7 @@ snapshots:
 
   '@netlify/open-api@2.37.0': {}
 
-  '@netlify/runtime-utils@1.2.0': {}
+  '@netlify/runtime-utils@1.3.0': {}
 
   '@netlify/serverless-functions-api@1.38.0': {}
 
