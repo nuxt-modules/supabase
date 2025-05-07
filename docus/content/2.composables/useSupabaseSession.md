@@ -12,16 +12,16 @@ const session = useSupabaseSession()
 ```
 
 ::tip
-If you just need the User's information you can use [useSupabaseUser](/usage/composables/usesupabaseuser) which returns just the User information of the session. 
+If you just need the User's information you can use [useSupabaseUser](/composables/usesupabaseuser) which returns just the User information of the session. 
 ::
 
 ## Auth middleware
 
 ::tip
-By default, the module is implementing a redirect middleware. All pages of your application are automatically redirected to the [login](/get-started#redirectoptions) page. However, you can allow redirection to "public" pages by setting the [exclude](/get-started#redirectoptions) redirect option. Alternatively, you can enable the redirect only for certain routes using the [include](/get-started#redirectoptions) redirect option.
+By default, the module is implementing a redirect middleware. All pages of your application are automatically redirected to the [login](/getting-started/introduction#redirectoptions) page. However, you can allow redirection to "public" pages by setting the [exclude](/getting-started/introduction#redirectoptions) redirect option. Alternatively, you can enable the redirect only for certain routes using the [include](/getting-started/introduction#redirectoptions) redirect option.
 ::
 
-If the [redirect](/get-started#redirect) option is disabled, you can protect your authenticated routes by creating a custom middleware in your project, here is an example:
+If the [redirect](/getting-started/introduction#redirect) option is disabled, you can protect your authenticated routes by creating a custom middleware in your project, here is an example:
 
 ```ts [middleware/auth.ts]
 export default defineNuxtRouteMiddleware((to, _from) => {

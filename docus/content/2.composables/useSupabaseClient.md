@@ -7,14 +7,14 @@ description: Make requests to the Supabase API with the useSupabaseClient compos
 
 This composable is using [supabase-js](https://github.com/supabase/supabase-js/) under the hood, it gives access to the [Supabase client](https://supabase.com/docs/reference/javascript/initializing).
 
-> The client is initialized with the `SUPABASE_KEY` you must have in your `.env` file. It establishes the connection with the database and make use of user JWT to apply [RLS Policies](https://supabase.com/docs/learn/auth-deep-dive/auth-row-level-security) implemented in Supabase. If you want to bypass policies, you can use the [serverSupabaseServiceRole](/usage/services/serversupabaseservicerole).
+> The client is initialized with the `SUPABASE_KEY` you must have in your `.env` file. It establishes the connection with the database and make use of user JWT to apply [RLS Policies](https://supabase.com/docs/learn/auth-deep-dive/auth-row-level-security) implemented in Supabase. If you want to bypass policies, you can use the [serverSupabaseServiceRole](/services/serversupabaseservicerole).
 
 ## Authentication
 
 The useSupabaseClient composable is providing all methods to manage authorization under `useSupabaseClient().auth`. For more details please see the [supabase-js auth documentation](https://supabase.com/docs/reference/javascript/auth-api). Here is an example for signing in and out:
 
 ::tip
-If you want a full explanation on how to handle the authentication process, please read this [section](/authentication).
+If you want a full explanation on how to handle the authentication process, please read this [section](/getting-started/authentication).
 ::
 
 ```ts
@@ -38,7 +38,7 @@ const signOut = async () => {
 </script>
 ```
 
-Please also take a look at [Get Started](/authentication) for the authorization flow.
+Please also take a look at [Get Started](/getting-started/authentication) for the authorization flow.
 
 ## Database Request
 
@@ -101,7 +101,7 @@ onUnmounted(() => {
 
 ## Typescript
 
-Database typings are passed to the client out of the box if the database generated types are found at `./types/database.types.ts` or [your configured types path](/get-started#types). Check Supabase [documentation](https://supabase.com/docs/reference/javascript/release-notes#typescript-support) for further information.
+Database typings are passed to the client out of the box if the database generated types are found at `./types/database.types.ts` or [your configured types path](/getting-started/introduction#types). Check Supabase [documentation](https://supabase.com/docs/reference/javascript/release-notes#typescript-support) for further information.
 
 ```shell
 ## Generate types from live database

@@ -111,7 +111,7 @@ Shipped with many features
   :::u-page-feature
   ---
   icon: i-lucide-server
-  to: usage/services/serversupabaseclient
+  to: services/serversupabaseclient
   ---
   #title
   Usage in API server routes
@@ -123,7 +123,7 @@ Shipped with many features
   :::u-page-feature
   ---
   icon: i-lucide-key
-  to: /authentication
+  to: /getting-started/authentication
   ---
   #title
   Authentication support

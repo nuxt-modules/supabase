@@ -7,9 +7,9 @@ The `useSupabaseCookieRedirect` composable provides a simple way to handle stori
 
 ## Usage
 
-This composable can be [manually used](#manual-usage) to save and retrieve a redirect path. However, the redirect path can automatically be set via the `saveRedirectToCookie` option in the [redirectOptions](/get-started#redirectoptions).
+This composable can be [manually used](#manual-usage) to save and retrieve a redirect path. However, the redirect path can automatically be set via the `saveRedirectToCookie` option in the [redirectOptions](/getting-started/introduction#redirectoptions).
 
-The redirect path is not automatically used. Instead you must implement the logic to redirect the user to the saved path, for example on the [`/confirm`](/authentication#confirm-page-confirm) page.
+The redirect path is not automatically used. Instead you must implement the logic to redirect the user to the saved path, for example on the [`/confirm`](/getting-started/authentication#confirm-page-confirm) page.
 
 ```vue
 <script setup>
@@ -51,4 +51,4 @@ const currentPath = redirectInfo.path.value
 const path = redirectInfo.pluck()
 ``` 
 
-The cookie is saved with the name `{cookiePrefix}-redirect-path` where `cookiePrefix` is defined in the [runtime config](/get-started#runtime-config).
+The cookie is saved with the name `{cookiePrefix}-redirect-path` where `cookiePrefix` is defined in the [runtime config](/getting-started/introduction#runtime-config).
