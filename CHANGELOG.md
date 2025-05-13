@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.1](https://github.com/nuxt-modules/supabase/compare/v1.5.0...v1.5.1) (2025-05-13)
+
+
+### Bug Fixes
+
+* **plugins:** do not set states on client ([#490](https://github.com/nuxt-modules/supabase/issues/490)) ([6152a64](https://github.com/nuxt-modules/supabase/commit/6152a6435421d5e111a57e46ddf71279a45286ba))
+* **serverSupabaseClient:** pass H3Event into useRuntimeConfig ([#491](https://github.com/nuxt-modules/supabase/issues/491)) ([548e21e](https://github.com/nuxt-modules/supabase/commit/548e21e3756b01e31f1c531bc66008f0a072b799))
+
 # [1.5.0](https://github.com/nuxt-modules/supabase/compare/v1.4.6...v1.5.0) (2025-03-04)
 
 
