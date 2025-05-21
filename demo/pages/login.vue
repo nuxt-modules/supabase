@@ -29,7 +29,12 @@ const providers = [{
   label: 'GitHub',
   icon: 'i-simple-icons-github',
   onClick: async () => {
-    const { error } = await supabase.auth.signInWithOAuth({ provider: 'github' })
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'github',
+      options: {
+        redirectTo: 'https://supabase-demo-gamma.vercel.app/confirm',
+      },
+    })
     if (error) displayError(error)
   },
 }]
