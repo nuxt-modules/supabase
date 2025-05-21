@@ -30,12 +30,12 @@ In your Supabase project, make sure to create the `tasks` table with the followi
 You can run the following query to create the `tasks` table in your SQL Editor:
 
 ```sql
-CREATE TABLE IF NOT EXISTS todos (
-  id bigint PRIMARY KEY,
-  created_at timestamptz DEFAULT now(),
-  title text,
-  completed boolean DEFAULT false,
-  "user" uuid
+CREATE TABLE tasks (
+  id SERIAL PRIMARY KEY,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  user UUID NOT NULL,
+  title TEXT,
+  completed BOOLEAN DEFAULT FALSE
 );
 ```
 
