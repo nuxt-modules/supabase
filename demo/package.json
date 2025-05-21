@@ -1,25 +1,24 @@
 {
+  "name": "nuxt-app",
   "private": true,
-  "engines": {
-    "node": ">=20.9.0"
-  },
+  "type": "module",
   "scripts": {
-    "dev": "nuxi dev",
-    "build": "nuxi build",
-    "start": "node .output/server/index.mjs",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "postinstall": "nuxt prepare"
   },
-  "devDependencies": {
-    "@iconify-json/heroicons": "^1.2.2",
-    "@iconify-json/heroicons-outline": "^1.2.1",
-    "@iconify-json/mdi": "^1.2.3",
-    "@nuxt/ui": "2.18.4",
-    "@nuxtjs/supabase": "^1.5.1",
+  "dependencies": {
+    "@iconify-json/lucide": "^1.2.44",
+    "@nuxt/eslint": "1.4.1",
+    "@nuxt/ui-pro": "3.1.2",
+    "@nuxtjs/supabase": "1.5.1",
+    "eslint": "^9.0.0",
     "nuxt": "^3.17.3",
-    "typescript": "^5.8.3"
+    "tailwindcss": "^4.1.7",
+    "typescript": "^5.6.3",
+    "vue": "^3.5.14",
+    "vue-router": "^4.5.1"
   },
-  "resolutions": {
-    "@nuxt/icon": "^1.5.1"
-  }
+  "packageManager": "pnpm@10.11.0"
 }

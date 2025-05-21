@@ -6,6 +6,7 @@ Live demo: https://n3-supabase.netlify.app
 
 - Frontend:
   - [Nuxt 3](https://nuxt.com/) - The Vue Framework for Web Architects
+  - [Nuxt UI Pro](https://ui.nuxt.com/) for components
   - [TailwindCSS](https://tailwindcss.com/) for styling and layout.
   - [Supabase Module](https://github.com/nuxt-modules/supabase) for user management and supabase data client.
 - Backend:
@@ -53,6 +54,9 @@ pnpm dev
 ```
 
 ## Production
+
+> [!WARNING]
+> This project uses [Nuxt UI Pro](https://ui.nuxt.com/pro), you need a license to deploy it in production. However, you can use it for free in development.
 
 Build the application for production:
 
