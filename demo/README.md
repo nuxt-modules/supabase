@@ -1,8 +1,8 @@
 # Todo list example using Supabase and Nuxt 3
 
-[![n3-supabase-demo](https://user-images.githubusercontent.com/904724/160422461-8f87500a-8dec-4413-86b2-ba04e1b2d17b.png)](https://n3-supabase.netlify.app)
+[![n3-supabase-demo](/demo.png)](https://supabase-demo-gamma.vercel.app)
 
-Live demo: https://n3-supabase.netlify.app
+Live demo: https://supabase-demo-gamma.vercel.app
 
 - Frontend:
   - [Nuxt 3](https://nuxt.com/) - The Vue Framework for Web Architects

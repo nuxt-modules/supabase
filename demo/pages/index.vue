@@ -79,6 +79,7 @@ const fetchTasksFromServerRoute = async () => {
               class="w-full"
               size="xl"
               variant="subtle"
+              placeholder="Make a coffee"
               autofocus
               @keyup.enter="addTask"
             />
