@@ -82,7 +82,7 @@ const displayError = (error) => {
 </script>
 
 <template>
-  <div class="h-screen flex items-center justify-center px-4">
+  <UContainer class="h-[calc(100vh-var(--ui-header-height))] flex items-center justify-center px-4">
     <UPageCard class="max-w-sm w-full">
       <UAuthForm
         :title="sign === 'in' ? 'Login' : 'Sign up'"
@@ -105,5 +105,5 @@ const displayError = (error) => {
         </template>
       </UAuthForm>
     </UPageCard>
-  </div>
+  </UContainer>
 </template>
