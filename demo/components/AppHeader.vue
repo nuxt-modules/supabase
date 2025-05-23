@@ -9,7 +9,7 @@ const logout = async () => {
 </script>
 
 <template>
-  <UHeader>
+  <UHeader :toggle="false">
     <template #left>
       <UButton
         label="Source"
