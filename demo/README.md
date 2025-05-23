@@ -1,6 +1,6 @@
 # Todo list example using Supabase and Nuxt 3
 
-[![n3-supabase-demo](/demo.png)](https://supabase-demo-gamma.vercel.app)
+[![n3-supabase-demo](https://supabase-demo-gamma.vercel.app/demo.png)](https://supabase-demo-gamma.vercel.app)
 
 Live demo: https://supabase-demo-gamma.vercel.app
 
