@@ -1,29 +1,27 @@
 ---
 seo:
   title: Nuxt Supabase - Home
-  description: A supa simple wrapper around supabase-js to enable usage and integration within Nuxt.
+  description: A supa simple wrapper around supabase-js to enable usage and
+    integration within Nuxt.
 ---
 
 ::u-page-hero
 ---
 orientation: horizontal
 ---
-  :::prose-pre
-  ---
-  filename: pages/login.vue
-  ---
+  :::prose-pre{filename="pages/login.vue"}
   ```vue
   <script setup lang="ts">
   const supabase = useSupabaseClient()
   const email = ref('')
-
+  
   async function signInWithOtp() {
     await supabase.auth.signInWithOtp({
       email: email.value
     })
   }
   </script>
-
+  
   <template>
     <input
       type="email"

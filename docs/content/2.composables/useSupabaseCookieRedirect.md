@@ -49,6 +49,6 @@ const currentPath = redirectInfo.path.value
 
 // Get the path and clear it
 const path = redirectInfo.pluck()
-``` 
+```
 
 The cookie is saved with the name `{cookiePrefix}-redirect-path` where `cookiePrefix` is defined in the [runtime config](/getting-started/introduction#runtime-config).

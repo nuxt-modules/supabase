@@ -1,6 +1,7 @@
 ---
 title: useSupabaseSession
-description: Auto import and use your Supabase user's session with the useSupabaseSession composable
+description: Auto import and use your Supabase user's session with the
+  useSupabaseSession composable
 ---
 
 Once logged in, you can [auto-import](https://nuxt.com/docs/guide/directory-structure/composables) your user's session everywhere inside your vue files.
@@ -12,7 +13,7 @@ const session = useSupabaseSession()
 ```
 
 ::tip
-If you just need the User's information you can use [useSupabaseUser](/composables/usesupabaseuser) which returns just the User information of the session. 
+If you just need the User's information you can use [useSupabaseUser](/composables/usesupabaseuser) which returns just the User information of the session.
 ::
 
 ## Auth middleware
