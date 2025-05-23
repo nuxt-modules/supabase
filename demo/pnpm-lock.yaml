@@ -21,7 +21,7 @@ importers:
         specifier: 1.5.1
         version: 1.5.1
       eslint:
-        specifier: ^9.0.0
+        specifier: ^9.27.0
         version: 9.27.0(jiti@2.4.2)
       nuxt:
         specifier: ^3.17.3
@@ -30,7 +30,7 @@ importers:
         specifier: ^4.1.7
         version: 4.1.7
       typescript:
-        specifier: ^5.6.3
+        specifier: ^5.8.3
         version: 5.8.3
       vue:
         specifier: ^3.5.14
