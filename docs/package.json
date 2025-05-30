@@ -10,5 +10,5 @@
     "@larbish/docus": "latest",
     "@nuxtjs/plausible": "1.2.0"
   },
-  "packageManager": "pnpm@10.10.0"
+  "packageManager": "pnpm@10.11.0"
 }
