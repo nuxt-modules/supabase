@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.5.2](https://github.com/nuxt-modules/supabase/compare/v1.5.1...v1.5.2) (2025-06-12)
+
+
+### Bug Fixes
+
+* **demo:** login screen height ([09f697b](https://github.com/nuxt-modules/supabase/commit/09f697b31abcc57a3bd00cf2fa70716694eeab67))
+* **demo:** redirect github provider ([be12884](https://github.com/nuxt-modules/supabase/commit/be12884fd2756d58b6321e8253141f64035b8da4))
+* **demo:** redirect url for github provider ([1fd67f8](https://github.com/nuxt-modules/supabase/commit/1fd67f8cd90cb38b180714ad37f5bea875edc73a))
+* **demo:** remove toggle ([e741537](https://github.com/nuxt-modules/supabase/commit/e74153749e71522cb7f10510d4308fc536282efa))
+* **demo:** use head ([65832ba](https://github.com/nuxt-modules/supabase/commit/65832ba113af0d5ea8035b42fc6b7748b39fec4d))
+
 ## [1.5.1](https://github.com/nuxt-modules/supabase/compare/v1.5.0...v1.5.1) (2025-05-13)
 
 
