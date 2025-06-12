@@ -14,7 +14,7 @@
     "@nuxt/ui-pro": "3.1.2",
     "@nuxtjs/supabase": "1.5.1",
     "eslint": "^9.0.0",
-    "nuxt": "^3.17.3",
+    "nuxt": "^3.17.5",
     "tailwindcss": "^4.1.7",
     "typescript": "^5.6.3",
     "vue": "^3.5.14",
