@@ -1,6 +1,6 @@
 ---
 seo:
-  title: Nuxt Supabase - Home
+  title: Home
   description: A supa simple wrapper around supabase-js to enable usage and
     integration within Nuxt.
 ---
