@@ -1,8 +1,8 @@
 export default defineAppConfig({
   header: {
     logo: {
-      light: 'logo-nuxt-supabase-light.png',
-      dark: 'logo-nuxt-supabase-dark.png',
+      light: '/logo-nuxt-supabase-light.png',
+      dark: '/logo-nuxt-supabase-dark.png',
       alt: 'Nuxt Supabase',
     },
   },
