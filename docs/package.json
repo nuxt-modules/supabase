@@ -7,7 +7,7 @@
     "dev": "docus dev"
   },
   "devDependencies": {
-    "docus": "^3.0.0",
+    "docus": "^3.0.1",
     "@nuxtjs/plausible": "1.2.0"
   },
   "packageManager": "pnpm@10.12.1"

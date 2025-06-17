@@ -12,8 +12,8 @@ importers:
         specifier: 1.2.0
         version: 1.2.0(magicast@0.3.5)
       docus:
-        specifier: ^3.0.0
-        version: 3.0.0(@babel/parser@7.27.2)(@unhead/vue@2.0.10(vue@3.5.13(typescript@5.8.3)))(better-sqlite3@11.9.1)(db0@0.3.2(better-sqlite3@11.9.1))(embla-carousel@8.6.0)(ioredis@5.6.1)(jwt-decode@4.0.0)(magicast@0.3.5)(nuxt@3.17.2(@parcel/watcher@2.5.1)(@types/node@22.15.14)(better-sqlite3@11.9.1)(db0@0.3.2(better-sqlite3@11.9.1))(ioredis@5.6.1)(lightningcss@1.30.1)(magicast@0.3.5)(rollup@4.40.2)(terser@5.39.0)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.0)(yaml@2.7.1))(yaml@2.7.1))(typescript@5.8.3)(unstorage@1.16.0(db0@0.3.2(better-sqlite3@11.9.1))(ioredis@5.6.1))(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.0)(yaml@2.7.1))(vue-router@4.5.1(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))(zod@3.25.63)
+        specifier: ^3.0.1
+        version: 3.0.1(@babel/parser@7.27.2)(@unhead/vue@2.0.10(vue@3.5.13(typescript@5.8.3)))(better-sqlite3@11.9.1)(db0@0.3.2(better-sqlite3@11.9.1))(embla-carousel@8.6.0)(ioredis@5.6.1)(jwt-decode@4.0.0)(magicast@0.3.5)(nuxt@3.17.2(@parcel/watcher@2.5.1)(@types/node@22.15.14)(better-sqlite3@11.9.1)(db0@0.3.2(better-sqlite3@11.9.1))(ioredis@5.6.1)(lightningcss@1.30.1)(magicast@0.3.5)(rollup@4.40.2)(terser@5.39.0)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.0)(yaml@2.7.1))(yaml@2.7.1))(typescript@5.8.3)(unstorage@1.16.0(db0@0.3.2(better-sqlite3@11.9.1))(ioredis@5.6.1))(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.0)(yaml@2.7.1))(vue-router@4.5.1(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))(zod@3.25.63)
 
 packages:
 
@@ -2425,8 +2425,8 @@ packages:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
 
-  docus@3.0.0:
-    resolution: {integrity: sha512-ke3FX0JsVuSQ284WIZ7UjJUELjjFkJZqj5nCfh+rnYfxvcGprgyk/ePDaJGNMQ5sdgMa/ofKnZcuGtoQYQVvyA==}
+  docus@3.0.1:
+    resolution: {integrity: sha512-2EpJFI42NmG3aUU6dQj1kCU9uMVg2p/ICFHe/ipxfIoKQnq35QSCvSlAfbUfFVPTlOX0kMkR2+L220VbRh2x3A==}
     hasBin: true
     peerDependencies:
       better-sqlite3: 11.x
@@ -8349,7 +8349,7 @@ snapshots:
     dependencies:
       path-type: 4.0.0
 
-  docus@3.0.0(@babel/parser@7.27.2)(@unhead/vue@2.0.10(vue@3.5.13(typescript@5.8.3)))(better-sqlite3@11.9.1)(db0@0.3.2(better-sqlite3@11.9.1))(embla-carousel@8.6.0)(ioredis@5.6.1)(jwt-decode@4.0.0)(magicast@0.3.5)(nuxt@3.17.2(@parcel/watcher@2.5.1)(@types/node@22.15.14)(better-sqlite3@11.9.1)(db0@0.3.2(better-sqlite3@11.9.1))(ioredis@5.6.1)(lightningcss@1.30.1)(magicast@0.3.5)(rollup@4.40.2)(terser@5.39.0)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.0)(yaml@2.7.1))(yaml@2.7.1))(typescript@5.8.3)(unstorage@1.16.0(db0@0.3.2(better-sqlite3@11.9.1))(ioredis@5.6.1))(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.0)(yaml@2.7.1))(vue-router@4.5.1(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))(zod@3.25.63):
+  docus@3.0.1(@babel/parser@7.27.2)(@unhead/vue@2.0.10(vue@3.5.13(typescript@5.8.3)))(better-sqlite3@11.9.1)(db0@0.3.2(better-sqlite3@11.9.1))(embla-carousel@8.6.0)(ioredis@5.6.1)(jwt-decode@4.0.0)(magicast@0.3.5)(nuxt@3.17.2(@parcel/watcher@2.5.1)(@types/node@22.15.14)(better-sqlite3@11.9.1)(db0@0.3.2(better-sqlite3@11.9.1))(ioredis@5.6.1)(lightningcss@1.30.1)(magicast@0.3.5)(rollup@4.40.2)(terser@5.39.0)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.0)(yaml@2.7.1))(yaml@2.7.1))(typescript@5.8.3)(unstorage@1.16.0(db0@0.3.2(better-sqlite3@11.9.1))(ioredis@5.6.1))(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.0)(yaml@2.7.1))(vue-router@4.5.1(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))(zod@3.25.63):
     dependencies:
       '@iconify-json/lucide': 1.2.48
       '@iconify-json/simple-icons': 1.2.38
@@ -8358,6 +8358,7 @@ snapshots:
       '@nuxt/image': 1.10.0(db0@0.3.2(better-sqlite3@11.9.1))(ioredis@5.6.1)(magicast@0.3.5)
       '@nuxt/kit': 3.17.5(magicast@0.3.5)
       '@nuxt/ui-pro': 3.1.3(@babel/parser@7.27.2)(db0@0.3.2(better-sqlite3@11.9.1))(embla-carousel@8.6.0)(ioredis@5.6.1)(jwt-decode@4.0.0)(magicast@0.3.5)(typescript@5.8.3)(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.0)(yaml@2.7.1))(vue-router@4.5.1(vue@3.5.13(typescript@5.8.3)))(vue@3.5.13(typescript@5.8.3))(zod@3.25.63)
+      '@nuxtjs/mdc': 0.17.0(magicast@0.3.5)
       '@nuxtjs/robots': 5.2.10(magicast@0.3.5)(vue@3.5.13(typescript@5.8.3))
       better-sqlite3: 11.9.1
       c12: 3.0.4(magicast@0.3.5)
@@ -8371,9 +8372,11 @@ snapshots:
       nuxt-llms: 0.1.3(magicast@0.3.5)
       nuxt-og-image: 5.1.6(@unhead/vue@2.0.10(vue@3.5.13(typescript@5.8.3)))(magicast@0.3.5)(unstorage@1.16.0(db0@0.3.2(better-sqlite3@11.9.1))(ioredis@5.6.1))(vite@6.3.5(@types/node@22.15.14)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.0)(yaml@2.7.1))(vue@3.5.13(typescript@5.8.3))
       pkg-types: 2.1.0
+      scule: 1.3.0
       tailwindcss: 4.1.10
       ufo: 1.6.1
       unctx: 2.4.1
+      unist-util-visit: 5.0.0
     transitivePeerDependencies:
       - '@azure/app-configuration'
       - '@azure/cosmos'
