@@ -3,6 +3,7 @@ seo:
   title: Supabase Integration for Nuxt
   description: A supa simple wrapper around supabase-js to enable usage and
     integration within Nuxt.
+  ogImage: https://supabase.nuxtjs.org/social-card.png
 ---
 
 ::u-page-hero
