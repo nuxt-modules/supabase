@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.5.3](https://github.com/nuxt-modules/supabase/compare/v1.5.2...v1.5.3) (2025-06-27)
+
+
+### Bug Fixes
+
+* **ci:** pnpm version ([1acc409](https://github.com/nuxt-modules/supabase/commit/1acc409f225bf11fbcffb9c2f286c0b3a9f954cb))
+* **config:** logo paths ([891d3c8](https://github.com/nuxt-modules/supabase/commit/891d3c899d2481b7058356f004105aaad73cbed0))
+
 ## [1.5.2](https://github.com/nuxt-modules/supabase/compare/v1.5.1...v1.5.2) (2025-06-12)
 
 
