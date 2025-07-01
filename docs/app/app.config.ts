@@ -12,6 +12,9 @@ export default defineAppConfig({
     nuxt: 'https://nuxt.com',
     supabase: 'https://supabase.com/docs',
   },
+  github: {
+    rootDir: 'docs',
+  },
   toc: {
     bottom: {
       title: 'Community',
