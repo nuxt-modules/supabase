@@ -39,7 +39,7 @@ async function addTask() {
   }
 
   if (data) {
-    tasks.value.push(data)
+    tasks.value = [...tasks.value, data]
   }
 
   newTask.value = ''
@@ -48,6 +48,7 @@ async function addTask() {
 
 const completeTask = async (task: Task) => {
   await client.from('tasks').update({ completed: task.completed }).match({ id: task.id })
+  tasks.value = tasks.value.map(t => t.id === task.id ? task : t)
 }
 
 const removeTask = async (task: Task) => {
