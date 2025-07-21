@@ -7,8 +7,9 @@
     "dev": "docus dev"
   },
   "devDependencies": {
-    "docus": "^3.0.5",
-    "@nuxtjs/plausible": "1.2.0"
+    "@nuxtjs/plausible": "1.2.0",
+    "better-sqlite3": "^12.2.0",
+    "docus": "^3.0.5"
   },
   "packageManager": "pnpm@10.12.4"
 }
