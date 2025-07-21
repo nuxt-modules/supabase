@@ -4,7 +4,7 @@ import { defu } from 'defu'
 import { defineNuxtModule, addPlugin, createResolver, addTemplate, extendViteConfig, useLogger } from '@nuxt/kit'
 import type { CookieOptions } from 'nuxt/app'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
-import type { NitroConfig } from 'nitropack'
+import type { NitroConfig, NitroRouteConfig } from 'nitropack'
 import type { RedirectOptions } from './types'
 
 export * from './types'
@@ -158,7 +158,7 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     // Private runtimeConfig
-    nuxt.options.runtimeConfig.supabase = defu(nuxt.options.runtimeConfig.supabase, {
+    nuxt.options.runtimeConfig.supabase = defu(nuxt.options.runtimeConfig.supabase || {}, {
       serviceKey: options.serviceKey,
     })
 
@@ -193,7 +193,7 @@ export default defineNuxtModule<ModuleOptions>({
     const mergedOptions = nuxt.options.runtimeConfig.public.supabase
     if (mergedOptions.redirect && mergedOptions.redirectOptions.callback) {
       const routeRules: NitroConfig['routeRules'] = {}
-      routeRules[mergedOptions.redirectOptions.callback] = { ssr: false }
+      routeRules[mergedOptions.redirectOptions.callback] = { ssr: false } as NitroRouteConfig
       nuxt.options.nitro = defu(nuxt.options.nitro, {
         routeRules,
       })

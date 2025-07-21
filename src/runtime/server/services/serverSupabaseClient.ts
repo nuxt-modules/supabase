@@ -12,6 +12,7 @@ export const serverSupabaseClient: <T = Database>(event: H3Event) => Promise<Sup
     // get settings from runtime config
     const { url, key, cookiePrefix, cookieOptions, clientOptions: { auth = {}, global = {} } } = useRuntimeConfig(event).public.supabase
 
+    // @ts-expect-error - https://supabase.com/docs/guides/auth/server-side/creating-a-client?queryGroups=environment&environment=middleware
     event.context._supabaseClient = createServerClient(url, key, {
       auth,
       cookies: {

@@ -3,7 +3,9 @@ import { getHeader, setCookie } from 'h3'
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { fetchWithRetry } from '../utils/fetch-retry'
 import { serverSupabaseUser, serverSupabaseSession } from '../server/services'
-import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig, useSupabaseSession, useSupabaseUser } from '#imports'
+import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig } from '#imports'
+import { useSupabaseSession } from '../composables/useSupabaseSession'
+import { useSupabaseUser } from '../composables/useSupabaseUser'
 import type { CookieOptions, Plugin } from '#app'
 
 export default defineNuxtPlugin({
@@ -14,6 +16,7 @@ export default defineNuxtPlugin({
 
     const event = useRequestEvent()!
 
+    // @ts-expect-error - https://supabase.com/docs/guides/auth/server-side/creating-a-client?queryGroups=environment&environment=middleware
     const client = createServerClient(url, key, {
       ...clientOptions,
       cookies: {

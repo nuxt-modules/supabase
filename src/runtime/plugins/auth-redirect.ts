@@ -1,6 +1,7 @@
 import { useSupabaseCookieRedirect } from '../composables/useSupabaseCookieRedirect'
 import type { Plugin } from '#app'
-import { defineNuxtPlugin, addRouteMiddleware, defineNuxtRouteMiddleware, useRuntimeConfig, navigateTo, useSupabaseSession } from '#imports'
+import { defineNuxtPlugin, addRouteMiddleware, defineNuxtRouteMiddleware, useRuntimeConfig, navigateTo } from '#imports'
+import { useSupabaseSession } from '../composables/useSupabaseSession'
 import type { RouteLocationNormalized } from '#vue-router'
 
 export default defineNuxtPlugin({
