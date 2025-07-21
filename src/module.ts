@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'node:url'
 import fs from 'node:fs'
 import { defu } from 'defu'
-import { defineNuxtModule, addPlugin, createResolver, addTemplate, extendViteConfig, useLogger } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver, addTemplate, extendViteConfig, useLogger, addImportsDir } from '@nuxt/kit'
 import type { CookieOptions } from 'nuxt/app'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
 import type { NitroConfig, NitroRouteConfig } from 'nitropack'
@@ -212,10 +212,8 @@ export default defineNuxtModule<ModuleOptions>({
       addPlugin(resolve(runtimeDir, 'plugins', 'auth-redirect'))
     }
 
-    // Add supabase composables
-    nuxt.hook('imports:dirs', (dirs) => {
-      dirs.push(resolve(runtimeDir, 'composables'))
-    })
+    // Add composables imports
+    addImportsDir(resolve('./runtime/composables'))
 
     nuxt.hook('nitro:config', (nitroConfig) => {
       nitroConfig.alias = nitroConfig.alias || {}
