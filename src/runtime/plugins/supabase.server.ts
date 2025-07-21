@@ -3,9 +3,9 @@ import { getHeader, setCookie } from 'h3'
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { fetchWithRetry } from '../utils/fetch-retry'
 import { serverSupabaseUser, serverSupabaseSession } from '../server/services'
-import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig } from '#imports'
 import { useSupabaseSession } from '../composables/useSupabaseSession'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
+import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig } from '#imports'
 import type { CookieOptions, Plugin } from '#app'
 
 export default defineNuxtPlugin({

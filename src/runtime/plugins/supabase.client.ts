@@ -1,10 +1,10 @@
 import { createBrowserClient } from '@supabase/ssr'
 import { type Session, type SupabaseClient, createClient } from '@supabase/supabase-js'
 import { fetchWithRetry } from '../utils/fetch-retry'
-import type { Plugin } from '#app'
-import { defineNuxtPlugin, useRuntimeConfig } from '#imports'
 import { useSupabaseSession } from '../composables/useSupabaseSession'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
+import type { Plugin } from '#app'
+import { defineNuxtPlugin, useRuntimeConfig } from '#imports'
 
 export default defineNuxtPlugin({
   name: 'supabase',
