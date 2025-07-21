@@ -4,9 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
-    "lint": "eslint .",
-    "postinstall": "nuxt prepare"
+    "dev": "nuxt dev"
   },
   "dependencies": {
     "@nuxtjs/supabase": "workspace:*"
