@@ -1,5 +1,4 @@
-export type Json =
-  | string
+export type Json = string
   | number
   | boolean
   | null
