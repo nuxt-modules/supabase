@@ -1,5 +1,7 @@
 # Changelog
 
+# [1.6.0](https://github.com/nuxt-modules/supabase/compare/v1.5.3...v1.6.0) (2025-07-22)
+
 ## [1.5.3](https://github.com/nuxt-modules/supabase/compare/v1.5.2...v1.5.3) (2025-06-27)
 
 
