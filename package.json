@@ -36,14 +36,14 @@
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.6.0",
-    "@nuxt/kit": "^4.0.0",
+    "@nuxt/kit": "^4.0.1",
     "@nuxt/module-builder": "^1.0.1",
-    "@nuxt/schema": "^4.0.0",
+    "@nuxt/schema": "^4.0.1",
     "@release-it/conventional-changelog": "^10.0.1",
     "@types/node": "^24.0.15",
     "changelogen": "^0.6.2",
     "eslint": "^9.31.0",
-    "nuxt": "^4.0.0",
+    "nuxt": "^4.0.1",
     "release-it": "^19.0.4",
     "typescript": "^5.8.3",
     "vue-tsc": "^3.0.3"
