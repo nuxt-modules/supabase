@@ -3,13 +3,13 @@
   "description": "Nuxt x Supabase Module Docs",
   "type": "module",
   "scripts": {
-    "build": "docus build",
-    "dev": "docus dev"
+    "build": "nuxt build --extends docus",
+    "dev": "nuxt dev --extends docus"
   },
   "devDependencies": {
     "@nuxtjs/plausible": "1.2.0",
     "better-sqlite3": "^12.2.0",
-    "docus": "^3.0.5"
+    "docus": "4.0.0-beta.13"
   },
   "packageManager": "pnpm@10.12.4"
 }
