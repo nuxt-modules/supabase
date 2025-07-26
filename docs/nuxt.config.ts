@@ -1,4 +1,5 @@
 export default defineNuxtConfig({
+  extends: ['docus'],
   modules: ['@nuxtjs/plausible'],
   site: {
     name: 'Nuxt Supabase',
