@@ -1,6 +1,7 @@
 import { fileURLToPath } from 'node:url'
 import fs from 'node:fs'
 import { defu } from 'defu'
+import { relative } from 'pathe'
 import { defineNuxtModule, addPlugin, createResolver, addTemplate, extendViteConfig, useLogger, addImportsDir } from '@nuxt/kit'
 import type { CookieOptions } from 'nuxt/app'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
@@ -247,11 +248,11 @@ export default defineNuxtModule<ModuleOptions>({
         if (options.types) {
           // resolvePath is used to minify user input error.
           const path = await resolvePath(options.types)
-          const basePath = await resolvePath('~~') // ~~ should be the base path in a nuxt project.
+          const typesPath = await resolvePath('~~/.nuxt/types/') // this is the default path for nuxt types
 
           if (fs.existsSync(path)) {
-            // we are replacing the basePath with ../.. to move back to the root (~~) directory.
-            return `export * from '${path.replace(basePath, '../..')}'`
+            // Make the path relative to the "types" directory.
+            return `export * from '${relative(typesPath, path)}'`
           }
         }
 
