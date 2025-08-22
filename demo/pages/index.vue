@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Database } from '~~/types/database.types'
 
-const client = useSupabaseClient<Database>()
+const client = useSupabaseClient()
 const user = useSupabaseUser()
 const toast = useToast()
 
@@ -10,8 +10,8 @@ const isModalOpen = ref(false)
 const loading = ref(false)
 const newTask = ref('')
 
-const { data: tasks } = await useAsyncData<Task[]>('tasks', async () => {
-  const { data } = await client.from('tasks').select('id, title, completed').eq('user', user.value!.id).order('created_at')
+const { data: tasks } = await useAsyncData('tasks', async () => {
+  const { data } = await client.from('tasks').select('*').eq('user', user.value!.id).order('created_at')
 
   return data ?? []
 }, { default: () => [] })
@@ -21,13 +21,12 @@ async function addTask() {
 
   loading.value = true
 
-  const { data, error } = await client.from('tasks')
-    .upsert({
-      user: user.value!.id,
-      title: newTask.value,
-      completed: false,
-    })
-    .select('id, title, completed')
+  const { data, error } = await client.from('tasks').upsert({
+    user: user.value!.id,
+    title: newTask.value,
+    completed: false,
+  })
+    .select('*')
     .single()
 
   if (error) {
@@ -46,12 +45,12 @@ async function addTask() {
   loading.value = false
 }
 
-const completeTask = async (task: Task) => {
+const completeTask = async (task: Database['public']['Tables']['tasks']['Row']) => {
   await client.from('tasks').update({ completed: task.completed }).match({ id: task.id })
   tasks.value = tasks.value.map(t => t.id === task.id ? task : t)
 }
 
-const removeTask = async (task: Task) => {
+const removeTask = async (task: Database['public']['Tables']['tasks']['Row']) => {
   tasks.value = tasks.value.filter(t => t.id !== task.id)
   await client.from('tasks').delete().match({ id: task.id })
 }
