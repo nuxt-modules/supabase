@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import type { Database } from '~~/types/database.types'
-
-const supabase = useSupabaseClient<Database>()
+const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 
 const { data } = useAsyncData(async () => {
-  // const { data } = await supabase.from('test').select('*')
+  if (!user.value?.email) return null
+
   const { data } = await supabase.from('pushupers')
     .select('*')
-    .eq('email', user.value?.email)
+    .eq('email', user.value.email)
     .single()
 
   return data
