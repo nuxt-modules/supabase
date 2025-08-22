@@ -7,7 +7,7 @@
     "url": "git+https://github.com/nuxt-modules/supabase.git"
   },
   "license": "MIT",
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.15.0",
   "exports": {
     ".": {
       "import": "./dist/module.mjs"
@@ -29,24 +29,24 @@
     "pre:release": "pnpm lint && release-it --preRelease"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.6.1",
-    "@supabase/supabase-js": "^2.53.0",
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.56.0",
     "defu": "^6.1.4",
     "pathe": "^2.0.3"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^1.8.0",
+    "@nuxt/eslint": "^1.9.0",
     "@nuxt/kit": "^4.0.3",
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.0.3",
     "@release-it/conventional-changelog": "^10.0.1",
-    "@types/node": "^24.2.0",
+    "@types/node": "^24.3.0",
     "changelogen": "^0.6.2",
-    "eslint": "^9.32.0",
+    "eslint": "^9.33.0",
     "nuxt": "^4.0.3",
     "release-it": "^19.0.4",
-    "typescript": "^5.8.3",
-    "vue-tsc": "^3.0.5"
+    "typescript": "^5.9.2",
+    "vue-tsc": "^3.0.6"
   },
   "resolutions": {
     "typescript": "5.6.3"
