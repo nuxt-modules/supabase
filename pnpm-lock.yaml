@@ -64,7 +64,7 @@ importers:
   demo:
     dependencies:
       '@nuxtjs/supabase':
-        specifier: workspace:*
+        specifier: link:..
         version: link:..
 
   docs:

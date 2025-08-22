@@ -7,6 +7,6 @@
     "dev": "nuxt dev"
   },
   "dependencies": {
-    "@nuxtjs/supabase": "workspace:*"
+    "@nuxtjs/supabase": "link:.."
   }
 }
