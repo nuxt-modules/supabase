@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.6.1](https://github.com/nuxt-modules/supabase/compare/v1.6.0...v1.6.1) (2025-08-22)
+
+
+### Bug Fixes
+
+* **demo:** database types ([8da11e6](https://github.com/nuxt-modules/supabase/commit/8da11e65b97ba56ff4efd378c40f62c6c0c18f4a))
+* **demo:** link module ([25cae97](https://github.com/nuxt-modules/supabase/commit/25cae97ad3dfce26a2b9cb7f60bb91a770567742))
+* **playground:** database types ([58549ab](https://github.com/nuxt-modules/supabase/commit/58549ab1f4571ac82ba4d9e70d60d5ab1e06f8d8))
+* **types:** use "unjs/pathe" to make the exported type use relative path ([#516](https://github.com/nuxt-modules/supabase/issues/516)) ([28d04b0](https://github.com/nuxt-modules/supabase/commit/28d04b0e6e3c6084b2e855bd99e605438e979e4d))
+
 # [1.6.0](https://github.com/nuxt-modules/supabase/compare/v1.5.3...v1.6.0) (2025-07-22)
 
 ## [1.5.3](https://github.com/nuxt-modules/supabase/compare/v1.5.2...v1.5.3) (2025-06-27)
