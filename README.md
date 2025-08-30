@@ -17,7 +17,7 @@
 
 ## Features
 
-- Nuxt 3 ready
+- Nuxt 3 and 4 ready
 - Vue 3 composables
 - Usage in API server routes
 - Authentication support
@@ -26,19 +26,19 @@
 
 ## Usage
 
-Checkout https://supabase.nuxtjs.org
+Check out https://supabase.nuxtjs.org
 
 ## Nuxt 2
 
-If you are looking for a solution with Nuxt 2, checkout https://github.com/supabase-community/nuxt-supabase
+If you are looking for a solution with Nuxt 2, check out https://github.com/supabase-community/nuxt-supabase
 
 ## Development
 
 1. Clone this repository
-2. Install dependencies using `yarn install` or `npm install`
-3. Prepare development server using `yarn dev:prepare` or `npm run dev:prepare`
-4. Build module using `yarn build` or `npm run build`
-5. Launch playground using `yarn dev` or `npm run dev`
+2. Install dependencies using `pnpm install`
+3. Prepare development server using `pnpm dev:prepare`
+4. Build module using `pnpm build`
+5. Launch playground using `pnpm dev`
 
 ## License
 
