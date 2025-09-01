@@ -70,8 +70,8 @@ importers:
   docs:
     devDependencies:
       '@nuxtjs/plausible':
-        specifier: 1.2.0
-        version: 1.2.0(magicast@0.3.5)
+        specifier: 2.0.1
+        version: 2.0.1(magicast@0.3.5)
       better-sqlite3:
         specifier: ^12.2.0
         version: 12.2.0
@@ -1281,8 +1281,8 @@ packages:
   '@nuxtjs/mdc@0.17.2':
     resolution: {integrity: sha512-O0mhPrB3uAuoxIfJaSwvxIMKCQoLGLE9x7oOSa09FEQjDbFVMkaeSBxx8n0EaLQi+JMi9xoYxfQhwBFyAB5Mzw==}
 
-  '@nuxtjs/plausible@1.2.0':
-    resolution: {integrity: sha512-pjfps32fFN77BhjqHmq2Jx4XCNso9TcYnB+S4IR2qH/c26WDfYB5mQxN5pOEiWRlMkiKq+Y45mBBFtSOVKClCA==}
+  '@nuxtjs/plausible@2.0.1':
+    resolution: {integrity: sha512-Edr7oFIeZ9Og2lS21NhC3MRgcR7X9H1Hyjve8EsM2CycJGBlCcGKHs0+vi4KpbCVi33VlTXUUYNRPtGyeUX6Fw==}
 
   '@nuxtjs/robots@5.4.0':
     resolution: {integrity: sha512-E+bzaVsRQRgyN1RjhUexaqVZDV3MLKHff2e3WYHPiXrUNnOQ/RverO3D0yrP7fH5HqOBG0nBV6X3gD/q3+kUEA==}
@@ -9351,10 +9351,10 @@ snapshots:
       - magicast
       - supports-color
 
-  '@nuxtjs/plausible@1.2.0(magicast@0.3.5)':
+  '@nuxtjs/plausible@2.0.1(magicast@0.3.5)':
     dependencies:
       '@barbapapazes/plausible-tracker': 0.5.6
-      '@nuxt/kit': 3.18.1(magicast@0.3.5)
+      '@nuxt/kit': 4.0.3(magicast@0.3.5)
       defu: 6.1.4
       ufo: 1.6.1
     transitivePeerDependencies:
