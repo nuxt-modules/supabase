@@ -34,7 +34,7 @@ You can run the following query to create the `tasks` table in your SQL Editor:
 CREATE TABLE tasks (
   id SERIAL PRIMARY KEY,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
-  user UUID NOT NULL,
+  "user" UUID NOT NULL,
   title TEXT,
   completed BOOLEAN DEFAULT FALSE
 );
@@ -43,7 +43,7 @@ CREATE TABLE tasks (
 Go to your supabase project settings, API section and get the project API key and url and fill the `.env` with them:
 
 ```
-SUPABASE_URL="https://example.supabase.com"
+SUPABASE_URL="https://example.supabase.co"
 SUPABASE_KEY="<your_key>"
 ```
 
