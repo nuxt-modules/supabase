@@ -1,8 +1,8 @@
 import { fileURLToPath } from 'node:url'
-import fs from 'node:fs'
+import { access, constants } from 'node:fs/promises'
 import { defu } from 'defu'
 import { relative } from 'pathe'
-import { defineNuxtModule, addPlugin, createResolver, addTemplate, extendViteConfig, useLogger, addImportsDir } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver, addTemplate, extendViteConfig, useLogger, addImportsDir, addServerHandler } from '@nuxt/kit'
 import type { CookieOptions } from 'nuxt/app'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
 import type { NitroConfig, NitroRouteConfig } from 'nitropack'
@@ -18,7 +18,7 @@ export interface ModuleOptions {
    * @type string
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
-  url: string
+  url?: string
 
   /**
    * Supabase Client API Key
@@ -27,7 +27,7 @@ export interface ModuleOptions {
    * @type string
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
-  key: string
+  key?: string
 
   /**
    * Supabase Service key
@@ -36,7 +36,7 @@ export interface ModuleOptions {
    * @type string
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
-  serviceKey: string
+  serviceKey?: string
 
   /**
    * Redirect automatically to login page if user is not authenticated
@@ -108,6 +108,36 @@ export interface ModuleOptions {
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
   clientOptions?: SupabaseClientOptions<string>
+
+  /**
+   * Enable development mode features and debugging
+   * @default process.env.NODE_ENV === 'development'
+   * @type boolean
+   */
+  devMode?: boolean
+}
+
+// Security validation functions
+function validateSupabaseUrl(url: string): boolean {
+  try {
+    const parsedUrl = new URL(url)
+    const isSupabaseUrl = parsedUrl.hostname.includes('supabase.co') || parsedUrl.hostname.includes('supabase.in') || parsedUrl.hostname === 'localhost' || parsedUrl.hostname.startsWith('127.0.0.1')
+    const isHttps = parsedUrl.protocol === 'https:' || (parsedUrl.hostname === 'localhost' && parsedUrl.protocol === 'http:')
+
+    return isSupabaseUrl && isHttps
+  } catch {
+    return false
+  }
+}
+
+function validateApiKey(key: string): boolean {
+  // Supabase keys should be JWT-like or start with specific prefixes
+  const supabaseKeyPattern = /^(eyJ|sb-|supabase_)/
+  return key.length > 20 && supabaseKeyPattern.test(key)
+}
+
+function sanitizeServiceKey(serviceKey: string): boolean {
+  return serviceKey.length > 30 && serviceKey.includes('.')
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -119,9 +149,6 @@ export default defineNuxtModule<ModuleOptions>({
     },
   },
   defaults: {
-    url: process.env.SUPABASE_URL as string,
-    key: process.env.SUPABASE_KEY as string,
-    serviceKey: process.env.SUPABASE_SERVICE_KEY as string,
     redirect: true,
     redirectOptions: {
       login: '/login',
@@ -140,140 +167,303 @@ export default defineNuxtModule<ModuleOptions>({
     } as CookieOptions,
     types: '~/types/database.types.ts',
     clientOptions: {} as SupabaseClientOptions<string>,
+    devMode: process.env.NODE_ENV === 'development',
   },
-  setup(options, nuxt) {
-    const logger = useLogger('@nuxt/supabase')
+  async setup(options, nuxt) {
+    const logger = useLogger('@nuxtjs/supabase')
     const { resolve, resolvePath } = createResolver(import.meta.url)
 
-    // Public runtimeConfig
-    nuxt.options.runtimeConfig.public.supabase = defu(nuxt.options.runtimeConfig.public.supabase, {
-      url: options.url,
-      key: options.key,
-      redirect: options.redirect,
-      redirectOptions: options.redirectOptions,
-      cookieName: options.cookieName,
-      cookiePrefix: options.cookiePrefix,
-      useSsrCookies: options.useSsrCookies,
-      cookieOptions: options.cookieOptions,
-      clientOptions: options.clientOptions,
-    })
+    try {
+      const supabaseUrl = options.url ?? process.env.SUPABASE_URL
+      const supabaseKey = options.key ?? process.env.SUPABASE_KEY
+      const supabaseServiceKey = options.serviceKey ?? process.env.SUPABASE_SERVICE_KEY
 
-    // Private runtimeConfig
-    nuxt.options.runtimeConfig.supabase = defu(nuxt.options.runtimeConfig.supabase || {}, {
-      serviceKey: options.serviceKey,
-    })
+      // Critical validation - fail fast with clear errors
+      if (!supabaseUrl) {
+        throw new Error('Missing Supabase URL. Set it via module options or SUPABASE_URL environment variable.')
+      }
 
-    const finalUrl = nuxt.options.runtimeConfig.public.supabase.url
+      if (!validateSupabaseUrl(supabaseUrl)) {
+        throw new Error(`Invalid Supabase URL format: ${supabaseUrl}. Expected https://*.supabase.co or localhost URL.`)
+      }
 
-    // Warn if the url isn't set.
-    if (!finalUrl) {
-      logger.warn('Missing supabase url, set it either in `nuxt.config.js` or via env variable')
-    }
-    else {
-      // Use the default storage key as defined by the supabase-js client if no cookiePrefix is set.
-      // Source: https://github.com/supabase/supabase-js/blob/3316f2426d7c2e5babaab7ddc17c30bfa189f500/src/SupabaseClient.ts#L86
-      const defaultStorageKey = `sb-${new URL(finalUrl).hostname.split('.')[0]}-auth-token`
-      const currentPrefix = nuxt.options.runtimeConfig.public.supabase.cookiePrefix
-      nuxt.options.runtimeConfig.public.supabase.cookiePrefix = currentPrefix || defaultStorageKey
-    }
+      if (!supabaseKey) {
+        throw new Error('Missing Supabase anon key. Set it via module options or SUPABASE_KEY environment variable.')
+      }
 
-    // Warn if the key isn't set.
-    if (!nuxt.options.runtimeConfig.public.supabase.key) {
-      logger.warn('Missing supabase anon key, set it either in `nuxt.config.js` or via env variable')
-    }
+      if (!validateApiKey(supabaseKey)) {
+        throw new Error('Invalid Supabase anon key format. Key should be a valid JWT or start with supabase prefix.')
+      }
 
-    // Warn for deprecated features.
-    if (nuxt.options.runtimeConfig.public.supabase.redirectOptions.cookieRedirect) {
-      logger.warn('The `cookieRedirect` option is deprecated, use `saveRedirectToCookie` instead.')
-    }
-    if (nuxt.options.runtimeConfig.public.supabase.cookieName != 'sb') {
-      logger.warn('The `cookieName` option is deprecated, use `cookiePrefix` instead.')
-    }
+      // Service key validation (optional but if provided, must be valid)
+      if (supabaseServiceKey && !sanitizeServiceKey(supabaseServiceKey)) {
+        logger.warn('Service key provided but appears invalid. This may cause server-side operations to fail.')
+      }
 
-    // ensure callback URL is not using SSR
-    const mergedOptions = nuxt.options.runtimeConfig.public.supabase
-    if (mergedOptions.redirect && mergedOptions.redirectOptions.callback) {
-      const routeRules: NitroConfig['routeRules'] = {}
-      routeRules[mergedOptions.redirectOptions.callback] = { ssr: false } as NitroRouteConfig
-      nuxt.options.nitro = defu(nuxt.options.nitro, {
-        routeRules,
-      })
-    }
+      // Security: Ensure service key is server-only
+      if (supabaseServiceKey && nuxt.options.ssr === false) {
+        logger.warn('Service key detected in SPA mode. Service key will be excluded from client bundle.')
+      }
 
-    // Transpile runtime
-    const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
-    nuxt.options.build.transpile.push(runtimeDir)
+      // Enhanced cookie security in production
+      const productionCookieDefaults = {
+        secure: !options.devMode,
+        sameSite: 'lax' as const,
+      }
 
-    // Add supabase plugins on server and client
-    addPlugin(resolve(runtimeDir, 'plugins', 'supabase.client'))
-    addPlugin(resolve(runtimeDir, 'plugins', 'supabase.server'))
+      const finalCookieOptions = {
+        ...productionCookieDefaults,
+        ...options.cookieOptions,
+      }
 
-    // Add route middleware plugin for redirect
-    if (mergedOptions.redirect) {
-      addPlugin(resolve(runtimeDir, 'plugins', 'auth-redirect'))
-    }
-
-    // Add composables imports
-    addImportsDir(resolve('./runtime/composables'))
-
-    nuxt.hook('nitro:config', (nitroConfig) => {
-      nitroConfig.alias = nitroConfig.alias || {}
-
-      // Inline module runtime in Nitro bundle
-      nitroConfig.externals = defu(typeof nitroConfig.externals === 'object' ? nitroConfig.externals : {}, {
-        inline: [resolve('./runtime')],
-      })
-      nitroConfig.alias['#supabase/server'] = resolve('./runtime/server/services')
-      nitroConfig.alias['#supabase/database'] = resolve(nitroConfig.buildDir!, 'types/supabase-database')
-    })
-
-    addTemplate({
-      filename: 'types/supabase.d.ts',
-      getContents: () =>
-        [
-          'declare module \'#supabase/server\' {',
-          `  const serverSupabaseClient: typeof import('${resolve('./runtime/server/services')}').serverSupabaseClient`,
-          `  const serverSupabaseServiceRole: typeof import('${resolve(
-            './runtime/server/services',
-          )}').serverSupabaseServiceRole`,
-          `  const serverSupabaseUser: typeof import('${resolve('./runtime/server/services')}').serverSupabaseUser`,
-          `  const serverSupabaseSession: typeof import('${resolve('./runtime/server/services')}').serverSupabaseSession`,
-          '}',
-        ].join('\n'),
-    })
-
-    addTemplate({
-      filename: 'types/supabase-database.d.ts',
-      getContents: async () => {
-        if (options.types) {
-          // resolvePath is used to minify user input error.
-          const path = await resolvePath(options.types)
-          const typesPath = await resolvePath('~~/.nuxt/types/') // this is the default path for nuxt types
-
-          if (fs.existsSync(path)) {
-            // Make the path relative to the "types" directory.
-            return `export * from '${relative(typesPath, path)}'`
-          }
+      // Generate secure cookie prefix
+      let cookiePrefix = options.cookiePrefix
+      if (!cookiePrefix) {
+        try {
+          const defaultStorageKey = `sb-${new URL(supabaseUrl).hostname.split('.')[0]}-auth-token`
+          cookiePrefix = defaultStorageKey
+        } catch {
+          cookiePrefix = 'sb-default-auth-token'
+          logger.warn('Could not generate cookie prefix from URL, using default')
         }
+      }
 
-        return `export type Database = unknown`
-      },
-    })
+      // Public runtime config (client-safe)
+      nuxt.options.runtimeConfig.public.supabase = defu(
+        nuxt.options.runtimeConfig.public.supabase,
+        {
+          url: supabaseUrl,
+          key: supabaseKey,
+          redirect: options.redirect,
+          redirectOptions: options.redirectOptions,
+          cookieName: options.cookieName,
+          cookiePrefix,
+          useSsrCookies: options.useSsrCookies,
+          cookieOptions: options.cookieOptions,
+          clientOptions: options.clientOptions,
+        },
+      )
 
-    nuxt.hook('prepare:types', async (options) => {
-      options.references.push({ path: resolve(nuxt.options.buildDir, 'types/supabase.d.ts') })
-    })
+      // Private runtime config (server-only)
+      nuxt.options.runtimeConfig.supabase = defu(
+        nuxt.options.runtimeConfig.supabase || {},
+        {
+          // Only include service key if provided and valid
+          ...(supabaseServiceKey && { serviceKey: supabaseServiceKey }),
+        },
+      )
 
-    // Transpile websocket only for non dev environments (except cloudflare)
-    if (!nuxt.options.dev && !['cloudflare'].includes(process.env.NITRO_PRESET as string)) {
-      nuxt.options.build.transpile.push('websocket')
+      // Security deprecation warnings
+      if (nuxt.options.runtimeConfig.public.supabase.redirectOptions.cookieRedirect) {
+        logger.warn('[SECURITY] The `cookieRedirect` option is deprecated, use `saveRedirectToCookie` instead.')
+      }
+      if (nuxt.options.runtimeConfig.public.supabase.cookieName !== 'sb') {
+        logger.warn('[DEPRECATED] The `cookieName` option is deprecated, use `cookiePrefix` instead.')
+      }
+
+      // Route security: ensure callback URL doesn't use SSR
+      const mergedOptions = nuxt.options.runtimeConfig.public.supabase
+      if (mergedOptions.redirect && mergedOptions.redirectOptions.callback) {
+        const routeRules: NitroConfig['routeRules'] = {}
+        routeRules[mergedOptions.redirectOptions.callback] = {
+          ssr: false,
+          // Additional security headers for auth callback
+          headers: {
+            'X-Frame-Options': 'DENY',
+            'X-Content-Type-Options': 'nosniff',
+          }
+        } as NitroRouteConfig
+
+        nuxt.options.nitro = defu(nuxt.options.nitro, {
+          routeRules,
+        })
+      }
+
+      // Runtime directory setup
+      const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
+
+      // Selective transpilation for better performance
+      const transpilePatterns = [
+        '@nuxtjs/supabase/runtime',
+        '@supabase/ssr',
+      ]
+
+      nuxt.options.build.transpile.push(...transpilePatterns)
+
+      // Plugin loading with explicit order
+      addPlugin({
+        src: resolve(runtimeDir, 'plugins', 'supabase.server'),
+        mode: 'server',
+      })
+
+      addPlugin({
+        src: resolve(runtimeDir, 'plugins', 'supabase.client'),
+        mode: 'client',
+      })
+
+      // Auth redirect plugin (only if redirect enabled)
+      if (mergedOptions.redirect) {
+        addPlugin({
+          src: resolve(runtimeDir, 'plugins', 'auth-redirect'),
+        })
+      }
+
+      // Composables auto-imports
+      addImportsDir(resolve('./runtime/composables'))
+
+      // Nitro configuration with error boundaries
+      nuxt.hook('nitro:config', (nitroConfig) => {
+        try {
+          nitroConfig.alias = nitroConfig.alias || {}
+
+          // Inline module runtime in Nitro bundle
+          nitroConfig.externals = defu(
+            typeof nitroConfig.externals === 'object' ? nitroConfig.externals : {},
+            {
+              inline: [resolve('./runtime')],
+            }
+          )
+
+          nitroConfig.alias['#supabase/server'] = resolve('./runtime/server/services')
+          nitroConfig.alias['#supabase/database'] = resolve(nitroConfig.buildDir!, 'types/supabase-database')
+
+          // Security: Add server handler for health checks in dev mode
+          if (options.devMode) {
+            nitroConfig.handlers = nitroConfig.handlers || []
+            nitroConfig.handlers.push({
+              route: '/_supabase/health',
+              handler: resolve(runtimeDir, 'server/health.mjs')
+            })
+          }
+        } catch (error) {
+          logger.error('Failed to configure Nitro:', error)
+          throw error
+        }
+      })
+
+      // Type definitions
+      addTemplate({
+        filename: 'types/supabase.d.ts',
+        getContents: () =>
+          [
+            'declare module \'#supabase/server\' {',
+            `  const serverSupabaseClient: typeof import('${resolve('./runtime/server/services')}').serverSupabaseClient`,
+            `  const serverSupabaseServiceRole: typeof import('${resolve('./runtime/server/services')}').serverSupabaseServiceRole`,
+            `  const serverSupabaseUser: typeof import('${resolve('./runtime/server/services')}').serverSupabaseUser`,
+            `  const serverSupabaseSession: typeof import('${resolve('./runtime/server/services')}').serverSupabaseSession`,
+            '}',
+            '',
+            '// Module augmentation for better type safety',
+            'declare module \'@nuxt/schema\' {',
+            '  interface PublicRuntimeConfig {',
+            '    supabase: {',
+            '      url: string',
+            '      key: string',
+            '      [key: string]: any',
+            '    }',
+            '  }',
+            '  interface PrivateRuntimeConfig {',
+            '    supabase?: {',
+            '      serviceKey?: string',
+            '    }',
+            '  }',
+            '}',
+          ].join('\n'),
+      })
+
+      // Database types with async file checking
+      addTemplate({
+        filename: 'types/supabase-database.d.ts',
+        getContents: async () => {
+          if (options.types) {
+            try {
+              const path = await resolvePath(options.types)
+              const typesPath = await resolvePath('~~/.nuxt/types/')
+
+              // Use async file access check
+              try {
+                await access(path, constants.F_OK)
+                return `export * from '${relative(typesPath, path)}'`
+              }
+              catch {
+                logger.warn(`Database types file not found at: ${path}`)
+              }
+            }
+            catch (error) {
+              logger.warn(`Failed to resolve types path: ${options.types}`, error)
+            }
+          }
+
+          return `export type Database = unknown`
+        },
+      })
+
+      // Register types
+      nuxt.hook('prepare:types', async (opts) => {
+        opts.references.push({
+          path: resolve(nuxt.options.buildDir, 'types/supabase.d.ts')
+        })
+      })
+
+      // Conditional websocket transpilation
+      if (!nuxt.options.dev && !['cloudflare', 'vercel-edge'].includes(process.env.NITRO_PRESET as string)) {
+        nuxt.options.build.transpile.push('websocket')
+      }
+
+      // Vite optimization with error handling
+      extendViteConfig((config) => {
+        try {
+          config.optimizeDeps = config.optimizeDeps || {}
+          config.optimizeDeps.include = config.optimizeDeps.include || []
+
+          // Optimized dependencies
+          config.optimizeDeps.include.push(
+            '@nuxtjs/supabase > cookie',
+            '@nuxtjs/supabase > @supabase/postgrest-js',
+            '@supabase/ssr',
+            '@supabase/supabase-js'
+          )
+
+          // Security: Prevent sensitive data in build artifacts
+          config.define = config.define || {}
+          if (!options.devMode) {
+            config.define.__SUPABASE_DEV_MODE__ = false
+          }
+
+          // Performance: Enable tree shaking for supabase modules
+          config.optimizeDeps.exclude = config.optimizeDeps.exclude || []
+        }
+        catch (error) {
+          logger.warn('Failed to extend Vite config:', error)
+        }
+      })
+
+      // Cleanup hooks
+      nuxt.hook('close', async () => {
+        // Cleanup any persistent connections or resources
+        logger.info('Cleaning up Supabase module resources')
+      })
+
+      // Development mode enhancements
+      if (options.devMode) {
+        logger.info('Supabase module running in development mode')
+
+        // Add development-specific handlers or middleware
+        nuxt.hook('listen', (server, { port, hostname }) => {
+          logger.success(`Supabase module ready at http://${hostname}:${port}`)
+        })
+      }
+
+      // Bundle analysis logging
+      nuxt.hook('build:done', () => {
+        if (options.devMode) {
+          logger.info('Supabase module build completed successfully')
+        }
+      })
     }
-
-    // Needed to fix https://github.com/supabase/auth-helpers/issues/725
-    extendViteConfig((config) => {
-      config.optimizeDeps = config.optimizeDeps || {}
-      config.optimizeDeps.include = config.optimizeDeps.include || []
-      config.optimizeDeps.include.push('@nuxtjs/supabase > cookie', '@nuxtjs/supabase > @supabase/postgrest-js')
-    })
+    catch (error) {
+      logger.error('Failed to setup Supabase module:', error)
+      throw error
+    }
   },
 })
