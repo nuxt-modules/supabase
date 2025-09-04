@@ -44,7 +44,7 @@ Please also take a look at [Get Started](/getting-started/authentication) for th
 
 Please check [Supabase](https://supabase.com/docs/reference/javascript/select) documentation to fully use the power of Supabase client.
 
-Here is an example of a fetch using the `select` method with Nuxt 3 [useAsyncData](https://nuxt.com/docs/getting-started/data-fetching#useasyncdata) composable.
+Here is an example of a fetch using the `select` method with Nuxt [useAsyncData](https://nuxt.com/docs/getting-started/data-fetching#useasyncdata) composable.
 
 ```vue
 <script setup lang="ts">
