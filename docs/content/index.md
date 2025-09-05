@@ -75,10 +75,10 @@ Shipped with many features
   to: https://nuxt.com
   ---
   #title
-  Nuxt 3 ready
-  
+  Nuxt 3 and 4 ready
+
   #description
-  Experience the power and flexibility of Nuxt 3, optimized for modern web development.
+  Experience the power and flexibility of Nuxt 3 and Nuxt 4, optimized for modern web development.
   :::
 
   :::u-page-feature
