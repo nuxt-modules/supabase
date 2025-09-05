@@ -167,7 +167,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Warn if the url isn't set.
     if (!finalUrl) {
-      logger.warn('Missing supabase url, set it either in `nuxt.config.js` or via env variable')
+      logger.warn('Missing supabase url, set it either in `nuxt.config.ts` or via env variable')
     }
     else {
       // Use the default storage key as defined by the supabase-js client if no cookiePrefix is set.
@@ -179,7 +179,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Warn if the key isn't set.
     if (!nuxt.options.runtimeConfig.public.supabase.key) {
-      logger.warn('Missing supabase anon key, set it either in `nuxt.config.js` or via env variable')
+      logger.warn('Missing supabase anon key, set it either in `nuxt.config.ts` or via env variable')
     }
 
     // Warn for deprecated features.
