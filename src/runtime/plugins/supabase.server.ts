@@ -1,7 +1,8 @@
 import { createServerClient, parseCookieHeader } from '@supabase/ssr'
-import { getHeader, setCookie } from 'h3'
+import { getHeader } from 'h3'
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { fetchWithRetry } from '../utils/fetch-retry'
+import { setCookies } from '../utils/cookies'
 import { serverSupabaseUser, serverSupabaseSession } from '../server/services'
 import { useSupabaseSession } from '../composables/useSupabaseSession'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
@@ -21,13 +22,7 @@ export default defineNuxtPlugin({
       ...clientOptions,
       cookies: {
         getAll: () => parseCookieHeader(getHeader(event, 'Cookie') ?? ''),
-        setAll: (
-          cookies: {
-            name: string
-            value: string
-            options: CookieOptions
-          }[],
-        ) => cookies.forEach(({ name, value, options }) => setCookie(event, name, value, options)),
+        setAll: (cookies: { name: string, value: string, options: CookieOptions }[]) => setCookies(event, cookies),
       },
       cookieOptions: {
         ...cookieOptions,
