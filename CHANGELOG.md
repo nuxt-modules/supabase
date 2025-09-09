@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.2](https://github.com/nuxt-modules/supabase/compare/v1.6.1...v1.6.2) (2025-09-09)
+
+
+### Bug Fixes
+
+* **cookies:** guard writes when response headers already sent ([#525](https://github.com/nuxt-modules/supabase/issues/525)) ([2338991](https://github.com/nuxt-modules/supabase/commit/2338991fc17a7956b789da7bd90b88a51ca92cb6))
+
 ## [1.6.1](https://github.com/nuxt-modules/supabase/compare/v1.6.0...v1.6.1) (2025-08-22)
 
 
