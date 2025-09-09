@@ -30,20 +30,20 @@
   },
   "dependencies": {
     "@supabase/ssr": "^0.7.0",
-    "@supabase/supabase-js": "^2.57.0",
+    "@supabase/supabase-js": "^2.57.2",
     "defu": "^6.1.4",
     "pathe": "^2.0.3"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.9.0",
-    "@nuxt/kit": "^4.1.0",
+    "@nuxt/kit": "^4.1.1",
     "@nuxt/module-builder": "^1.0.2",
-    "@nuxt/schema": "^4.1.0",
+    "@nuxt/schema": "^4.1.1",
     "@release-it/conventional-changelog": "^10.0.1",
     "@types/node": "^24.3.1",
     "changelogen": "^0.6.2",
-    "eslint": "^9.34.0",
-    "nuxt": "^4.1.0",
+    "eslint": "^9.35.0",
+    "nuxt": "^4.1.1",
     "release-it": "^19.0.4",
     "typescript": "^5.9.2",
     "vue-tsc": "^3.0.6"
