@@ -61,6 +61,11 @@ A supa simple wrapper around supabase-js to enable usage and integration within 
   ---
   Star on GitHub
   :::
+
+#headline
+  :::u-button{size="sm" to="/getting-started/migration" variant="outline"}
+   Version 2 →
+  :::
 ::
 
 ::u-page-section
@@ -125,10 +130,10 @@ Shipped with many features
   to: /getting-started/authentication
   ---
   #title
-  Authentication support
+  Authentication support with JWT signing keys
   
   #description
-  Secure your applications with authentication support provided by Supabase.
+  Secure your applications with authentication support provided by Supabase with JWT signing keys support.
   :::
 
   :::u-page-feature
