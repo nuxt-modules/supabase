@@ -64,7 +64,7 @@ A supa simple wrapper around supabase-js to enable usage and integration within 
 
 #headline
   :::u-button{size="sm" to="/getting-started/migration" variant="outline"}
-   Version 2 →
+   Nuxt Supabase v2 →
   :::
 ::
 
