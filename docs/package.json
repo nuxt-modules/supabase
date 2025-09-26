@@ -8,8 +8,8 @@
   },
   "devDependencies": {
     "@nuxtjs/plausible": "2.0.1",
-    "better-sqlite3": "^12.2.0",
-    "docus": "^4.1.2"
+    "better-sqlite3": "^12.4.1",
+    "docus": "^5.0.0"
   },
-  "packageManager": "pnpm@10.15.1"
+  "packageManager": "pnpm@10.17.1"
 }
