@@ -21,7 +21,7 @@ export interface ModuleOptions {
   url: string
 
   /**
-   * Supabase Client API Key
+   * Supabase Client publishable API Key (previously known as 'anon key')
    * @default process.env.SUPABASE_KEY
    * @example '123456789'
    * @type string
@@ -30,14 +30,23 @@ export interface ModuleOptions {
   key: string
 
   /**
-   * Supabase Service key
+   * Supabase Legacy 'service_role' key (deprecated)
    * @default process.env.SUPABASE_SERVICE_KEY
    * @example '123456789'
    * @type string
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
+   * @deprecated Use `secretKey` instead. Will be removed in a future version.
    */
   serviceKey: string
 
+  /**
+   * Supabase Secret key
+   * @default process.env.SUPABASE_SECRET_KEY
+   * @example '123456789'
+   * @type string
+   * @docs https://supabase.com/blog/jwt-signing-keys
+   */
+  secretKey: string
   /**
    * Redirect automatically to login page if user is not authenticated
    * @default `true`
@@ -122,6 +131,7 @@ export default defineNuxtModule<ModuleOptions>({
     url: process.env.SUPABASE_URL as string,
     key: process.env.SUPABASE_KEY as string,
     serviceKey: process.env.SUPABASE_SERVICE_KEY as string,
+    secretKey: process.env.SUPABASE_SECRET_KEY as string,
     redirect: true,
     redirectOptions: {
       login: '/login',
@@ -161,6 +171,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Private runtimeConfig
     nuxt.options.runtimeConfig.supabase = defu(nuxt.options.runtimeConfig.supabase || {}, {
       serviceKey: options.serviceKey,
+      secretKey: options.secretKey,
     })
 
     const finalUrl = nuxt.options.runtimeConfig.public.supabase.url
@@ -179,7 +190,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Warn if the key isn't set.
     if (!nuxt.options.runtimeConfig.public.supabase.key) {
-      logger.warn('Missing supabase anon key, set it either in `nuxt.config.ts` or via env variable')
+      logger.warn('Missing supabase publishable key, set it either in `nuxt.config.ts` or via env variable')
     }
 
     // Warn for deprecated features.
@@ -188,6 +199,15 @@ export default defineNuxtModule<ModuleOptions>({
     }
     if (nuxt.options.runtimeConfig.public.supabase.cookieName != 'sb') {
       logger.warn('The `cookieName` option is deprecated, use `cookiePrefix` instead.')
+    }
+
+    // Warn about service key deprecation and check for secret key
+    const supabaseConfig = nuxt.options.runtimeConfig.supabase as { serviceKey?: string, secretKey?: string }
+    const hasServiceKey = !!supabaseConfig?.serviceKey
+    const hasSecretKey = !!supabaseConfig?.secretKey
+
+    if (hasServiceKey && !hasSecretKey) {
+      logger.warn('`SUPABASE_SERVICE_KEY` is deprecated and will be removed in a future version. Please migrate to `SUPABASE_SECRET_KEY` (JWT signing key). See: https://supabase.com/blog/jwt-signing-keys')
     }
 
     // ensure callback URL is not using SSR

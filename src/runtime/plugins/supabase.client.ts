@@ -4,12 +4,13 @@ import { fetchWithRetry } from '../utils/fetch-retry'
 import { useSupabaseSession } from '../composables/useSupabaseSession'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
 import type { Plugin } from '#app'
-import { defineNuxtPlugin, useRuntimeConfig } from '#imports'
+import { defineNuxtPlugin, useRuntimeConfig, useNuxtApp } from '#imports'
 
 export default defineNuxtPlugin({
   name: 'supabase',
   enforce: 'pre',
   async setup({ provide }) {
+    const nuxtApp = useNuxtApp()
     const { url, key, cookieOptions, cookiePrefix, useSsrCookies, clientOptions } = useRuntimeConfig().public.supabase
 
     let client
@@ -43,11 +44,24 @@ export default defineNuxtPlugin({
     const currentSession = useSupabaseSession()
     const currentUser = useSupabaseUser()
 
+    // Populate user before each page load to ensure the user state is correctly set before the page is rendered
+    nuxtApp.hook('page:start', async () => {
+      const { data } = await client.auth.getClaims()
+      currentUser.value = data?.claims ?? null
+    })
+
     // Updates the session and user states through auth events
     client.auth.onAuthStateChange((_, session: Session | null) => {
       if (JSON.stringify(currentSession.value) !== JSON.stringify(session)) {
         currentSession.value = session
-        currentUser.value = session?.user ?? null
+        if (session?.user) {
+          client.auth.getClaims().then(({ data }) => {
+            currentUser.value = data?.claims ?? null
+          })
+        }
+        else {
+          currentUser.value = null
+        }
       }
     })
   },

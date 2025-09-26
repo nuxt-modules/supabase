@@ -11,8 +11,6 @@ export default defineAppConfig({
         },
       },
     },
-  },
-  uiPro: {
     header: {
       slots: {
         root: 'border-none',

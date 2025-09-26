@@ -10,8 +10,7 @@ seo:
 ---
 orientation: horizontal
 ---
-  :::prose-pre{filename="pages/login.vue"}
-  ```vue
+  ```vue [pages/login.vue]
   <script setup lang="ts">
   const supabase = useSupabaseClient()
   const email = ref('')
@@ -32,7 +31,6 @@ orientation: horizontal
     />
   </template>
   ```
-  :::
 
 #title
 [Nuxt]{.text-primary} Supabase
@@ -60,6 +58,11 @@ A supa simple wrapper around supabase-js to enable usage and integration within 
   variant: subtle
   ---
   Star on GitHub
+  :::
+
+#headline
+  :::u-button{size="sm" to="/getting-started/migration" variant="outline"}
+   Nuxt Supabase v2 →
   :::
 ::
 
@@ -125,10 +128,10 @@ Shipped with many features
   to: /getting-started/authentication
   ---
   #title
-  Authentication support
+  Authentication support with JWT signing keys
   
   #description
-  Secure your applications with authentication support provided by Supabase.
+  Secure your applications with authentication support provided by Supabase with JWT signing keys support.
   :::
 
   :::u-page-feature
