@@ -10,8 +10,7 @@ seo:
 ---
 orientation: horizontal
 ---
-  :::prose-pre{filename="pages/login.vue"}
-  ```vue
+  ```vue [pages/login.vue]
   <script setup lang="ts">
   const supabase = useSupabaseClient()
   const email = ref('')
@@ -32,7 +31,6 @@ orientation: horizontal
     />
   </template>
   ```
-  :::
 
 #title
 [Nuxt]{.text-primary} Supabase
