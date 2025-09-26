@@ -11,7 +11,5 @@ export const serverSupabaseUser = async (event: H3Event): Promise<JwtPayload | n
     throw createError({ statusMessage: error?.message })
   }
 
-  console.log('ssr user from claims', data?.claims)
-
   return data?.claims ?? null
 }
