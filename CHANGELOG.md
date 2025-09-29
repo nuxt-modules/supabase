@@ -1,5 +1,12 @@
 # Changelog
 
+# [2.0.0](https://github.com/nuxt-modules/supabase/compare/v1.6.2...v2.0.0) (2025-09-29)
+
+
+### Features
+
+* **auth:** jwt signing keys ([#531](https://github.com/nuxt-modules/supabase/issues/531)) ([82cf862](https://github.com/nuxt-modules/supabase/commit/82cf86220c88a68a0c0ca4e2baf2582767b1fac6))
+
 ## [1.6.2](https://github.com/nuxt-modules/supabase/compare/v1.6.1...v1.6.2) (2025-09-09)
 
 
