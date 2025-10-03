@@ -47,6 +47,7 @@ export interface ModuleOptions {
    * @docs https://supabase.com/blog/jwt-signing-keys
    */
   secretKey: string
+
   /**
    * Redirect automatically to login page if user is not authenticated
    * @default `true`
@@ -181,11 +182,27 @@ export default defineNuxtModule<ModuleOptions>({
       logger.warn('Missing supabase url, set it either in `nuxt.config.ts` or via env variable')
     }
     else {
-      // Use the default storage key as defined by the supabase-js client if no cookiePrefix is set.
-      // Source: https://github.com/supabase/supabase-js/blob/3316f2426d7c2e5babaab7ddc17c30bfa189f500/src/SupabaseClient.ts#L86
-      const defaultStorageKey = `sb-${new URL(finalUrl).hostname.split('.')[0]}-auth-token`
-      const currentPrefix = nuxt.options.runtimeConfig.public.supabase.cookiePrefix
-      nuxt.options.runtimeConfig.public.supabase.cookiePrefix = currentPrefix || defaultStorageKey
+      try {
+        // Use the default storage key as defined by the supabase-js client if no cookiePrefix is set.
+        // Source: https://github.com/supabase/supabase-js/blob/3316f2426d7c2e5babaab7ddc17c30bfa189f500/src/SupabaseClient.ts#L86
+        const defaultStorageKey = `sb-${new URL(finalUrl).hostname.split('.')[0]}-auth-token`
+        const currentPrefix = nuxt.options.runtimeConfig.public.supabase.cookiePrefix
+        nuxt.options.runtimeConfig.public.supabase.cookiePrefix = currentPrefix || defaultStorageKey
+      }
+      catch (error) {
+        logger.error(
+          `Invalid Supabase URL: "${finalUrl}". `
+          + `Please provide a valid URL (e.g., https://example.supabase.co or http://localhost:5432)`, error)
+
+        // Use fallback prefix
+        const currentPrefix = nuxt.options.runtimeConfig.public.supabase.cookiePrefix
+        nuxt.options.runtimeConfig.public.supabase.cookiePrefix = currentPrefix || 'sb-auth-token'
+
+        // Fail build in production
+        if (!nuxt.options.dev) {
+          throw new Error('Invalid Supabase URL configuration')
+        }
+      }
     }
 
     // Warn if the key isn't set.
@@ -266,13 +283,23 @@ export default defineNuxtModule<ModuleOptions>({
       filename: 'types/supabase-database.d.ts',
       getContents: async () => {
         if (options.types) {
-          // resolvePath is used to minify user input error.
-          const path = await resolvePath(options.types)
-          const typesPath = await resolvePath('~~/.nuxt/types/') // this is the default path for nuxt types
+          try {
+            const path = await resolvePath(options.types)
+            const typesPath = await resolvePath('~~/.nuxt/types/')
 
-          if (fs.existsSync(path)) {
-            // Make the path relative to the "types" directory.
-            return `export * from '${relative(typesPath, path)}'`
+            if (fs.existsSync(path)) {
+              return `export * from '${relative(typesPath, path)}'`
+            }
+            else {
+              // Add warning if configured but not found
+              logger.warn(
+                `Database types configured at "${options.types}" but file not found. `
+                + `Using "Database = unknown".`,
+              )
+            }
+          }
+          catch (error) {
+            logger.error(`Failed to load Supabase database types from "${options.types}":`, error)
           }
         }
 
