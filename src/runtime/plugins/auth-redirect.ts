@@ -4,6 +4,14 @@ import type { Plugin } from '#app'
 import { defineNuxtPlugin, addRouteMiddleware, defineNuxtRouteMiddleware, useRuntimeConfig, navigateTo } from '#imports'
 import type { RouteLocationNormalized } from '#vue-router'
 
+function matchesAnyPattern(path: string, patterns: (string | undefined)[]): boolean {
+  return patterns.some((pattern) => {
+    if (!pattern) return false
+    const regex = new RegExp(`^${pattern.replace(/\*/g, '.*')}$`)
+    return regex.test(path)
+  })
+}
+
 export default defineNuxtPlugin({
   name: 'auth-redirect',
   setup() {
@@ -15,21 +23,16 @@ export default defineNuxtPlugin({
 
         // Redirect only on included routes (if defined)
         if (include && include.length > 0) {
-          const isIncluded = include.some((path: string) => {
-            const regex = new RegExp(`^${path.replace(/\*/g, '.*')}$`)
-            return regex.test(to.path)
-          })
-          if (!isIncluded) {
+          if (!matchesAnyPattern(to.path, include)) {
             return
           }
         }
 
         // Do not redirect on login route, callback route and excluded routes
-        const isExcluded = [...exclude ?? [], login, callback]?.some((path) => {
-          const regex = new RegExp(`^${path.replace(/\*/g, '.*')}$`)
-          return regex.test(to.path)
-        })
-        if (isExcluded) return
+        const excludePatterns = [login, callback, ...(exclude ?? [])]
+        if (matchesAnyPattern(to.path, excludePatterns)) {
+          return
+        }
 
         const session = useSupabaseSession()
         if (!session.value) {
