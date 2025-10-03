@@ -284,14 +284,15 @@ export default defineNuxtModule<ModuleOptions>({
       getContents: async () => {
         if (options.types) {
           try {
+            // resolvePath is used to minify user input error.
             const path = await resolvePath(options.types)
-            const typesPath = await resolvePath('~~/.nuxt/types/')
+            const typesPath = await resolvePath('~~/.nuxt/types/') // this is the default path for nuxt types
 
             if (fs.existsSync(path)) {
+              // Make the path relative to the "types" directory.
               return `export * from '${relative(typesPath, path)}'`
             }
             else {
-              // Add warning if configured but not found
               logger.warn(
                 `Database types configured at "${options.types}" but file not found. `
                 + `Using "Database = unknown".`,
