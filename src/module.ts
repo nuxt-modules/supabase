@@ -294,7 +294,7 @@ export default defineNuxtModule<ModuleOptions>({
             }
             else {
               logger.warn(
-                `Database types configured at "${options.types}" but file not found. `
+                `Database types configured at "${options.types}" but file not found at "${path}". `
                 + `Using "Database = unknown".`,
               )
             }
