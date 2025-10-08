@@ -1,5 +1,6 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { createClient } from '@supabase/supabase-js'
+import { fetchWithRetry } from '../../utils/fetch-retry'
 import type { H3Event } from 'h3'
 import { useRuntimeConfig } from '#imports'
 // @ts-expect-error - `#supabase/database` is a runtime alias
@@ -26,6 +27,9 @@ export const serverSupabaseServiceRole: <T = Database>(event: H3Event) => Supaba
         detectSessionInUrl: false,
         persistSession: false,
         autoRefreshToken: false,
+      },
+      global: {
+        fetch: fetchWithRetry,
       },
     })
   }
