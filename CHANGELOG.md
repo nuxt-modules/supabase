@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/nuxt-modules/supabase/compare/v2.0.0...v2.0.1) (2025-10-08)
+
+
+### Features
+
+* **dx:** improve error handling and add fetch retry backoff ([#534](https://github.com/nuxt-modules/supabase/issues/534)) ([87b6c84](https://github.com/nuxt-modules/supabase/commit/87b6c8455ed6eba6157aba6ea119d0b17acfcbaf))
+
 # [2.0.0](https://github.com/nuxt-modules/supabase/compare/v1.6.2...v2.0.0) (2025-09-29)
 
 
