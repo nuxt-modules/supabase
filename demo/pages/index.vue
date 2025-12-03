@@ -11,7 +11,7 @@ const loading = ref(false)
 const newTask = ref('')
 
 const { data: tasks } = await useAsyncData('tasks', async () => {
-  const { data } = await client.from('tasks').select('*').eq('user', user.value!.id).order('created_at')
+  const { data } = await client.from('tasks').select('*').eq('user', user.value!.sub).order('created_at')
 
   return data ?? []
 }, { default: () => [] })
@@ -22,7 +22,7 @@ async function addTask() {
   loading.value = true
 
   const { data, error } = await client.from('tasks').upsert({
-    user: user.value!.id,
+    user: user.value!.sub,
     title: newTask.value,
     completed: false,
   })
