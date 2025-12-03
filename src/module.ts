@@ -258,7 +258,7 @@ export default defineNuxtModule<ModuleOptions>({
 
       // Inline module runtime in Nitro bundle
       nitroConfig.externals = defu(typeof nitroConfig.externals === 'object' ? nitroConfig.externals : {}, {
-        inline: [resolve('./runtime')],
+        inline: ['@supabase/supabase-js'],
       })
       nitroConfig.alias['#supabase/server'] = resolve('./runtime/server/services')
       nitroConfig.alias['#supabase/database'] = resolve(nitroConfig.buildDir!, 'types/supabase-database')
