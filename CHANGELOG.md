@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.3](/compare/v2.0.2...v2.0.3) (2025-12-05)
+
+
+### Bug Fixes
+
+* **module:** optimize supabase-js in dev 0830cfc
+
 ## [2.0.2](/compare/v2.0.1...v2.0.2) (2025-12-03)
 
 
