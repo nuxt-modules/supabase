@@ -1,0 +1,12 @@
+{
+  "name": "@nuxtjs/supabase",
+  "configKey": "supabase",
+  "compatibility": {
+    "nuxt": ">=3.0.0"
+  },
+  "version": "2.0.3",
+  "builder": {
+    "@nuxt/module-builder": "1.0.2",
+    "unbuild": "3.6.0"
+  }
+}
