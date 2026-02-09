@@ -43,7 +43,7 @@
     "@release-it/conventional-changelog": "^10.0.2",
     "@types/node": "^24.10.1",
     "changelogen": "^0.6.2",
-    "eslint": "^9.39.1",
+    "eslint": "^10.0.0",
     "nuxt": "^4.2.1",
     "release-it": "^19.0.6",
     "typescript": "^5.9.3",
