@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.0.3](/compare/v2.0.2...v2.0.3) (2025-12-05)
+
+
+### Bug Fixes
+
+* **module:** optimize supabase-js in dev 0830cfc
+
+## [2.0.2](/compare/v2.0.1...v2.0.2) (2025-12-03)
+
+
+### Bug Fixes
+
+* **demo:** use sub instead of id c55a8f1
+* **module:** bundle supabase-js into nitro build 13c6e48
+
 ## [2.0.1](https://github.com/nuxt-modules/supabase/compare/v2.0.0...v2.0.1) (2025-10-08)
 
 
