@@ -1,13 +1,13 @@
 import { fileURLToPath } from "node:url";
 import { existsSync } from "node:fs";
+import { createRequire } from "node:module";
 import { defu } from "defu";
-import { relative } from "pathe";
+import { join, relative } from "pathe";
 import {
   defineNuxtModule,
   addPlugin,
   createResolver,
   addTemplate,
-  extendViteConfig,
   useLogger,
   addImportsDir,
 } from "@nuxt/kit";
@@ -168,6 +168,10 @@ export default defineNuxtModule<ModuleOptions>({
     clientOptions: {} as SupabaseClientOptions<string>,
   },
   setup(options, nuxt) {
+    const appRequire = createRequire(
+      join(nuxt.options.rootDir, "package.json"),
+    );
+
     const shouldSuppressSupabaseUnusedExternalImportWarning = (
       warning: RollupLog,
     ) =>
@@ -202,6 +206,29 @@ export default defineNuxtModule<ModuleOptions>({
     };
 
     nuxt.hook("vite:extendConfig", (config) => {
+      const optimizeDepsIncludes = (((
+        config as {
+          optimizeDeps?: {
+            include?: string[];
+          };
+        }
+      ).optimizeDeps ||= {}).include ||= []);
+      const addOptimizeDep = (dependency: string) => {
+        if (!optimizeDepsIncludes.includes(dependency)) {
+          optimizeDepsIncludes.push(dependency);
+        }
+      };
+
+      addOptimizeDep("@nuxtjs/supabase > cookie");
+      addOptimizeDep("@nuxtjs/supabase > @supabase/postgrest-js");
+
+      try {
+        appRequire.resolve("@supabase/supabase-js");
+        addOptimizeDep("@nuxtjs/supabase > @supabase/supabase-js");
+      } catch {
+        // no-op: avoid adding unresolved dependency to optimizeDeps.include
+      }
+
       const rollupOptions = config.build?.rollupOptions;
 
       if (!rollupOptions) {
@@ -422,16 +449,5 @@ export default defineNuxtModule<ModuleOptions>({
     ) {
       nuxt.options.build.transpile.push("websocket");
     }
-
-    // Needed to fix https://github.com/supabase/auth-helpers/issues/725
-    extendViteConfig((config) => {
-      config.optimizeDeps = config.optimizeDeps || {};
-      config.optimizeDeps.include = config.optimizeDeps.include || [];
-      config.optimizeDeps.include.push(
-        "@nuxtjs/supabase > cookie",
-        "@nuxtjs/supabase > @supabase/postgrest-js",
-        "@supabase/supabase-js",
-      );
-    });
   },
 });
