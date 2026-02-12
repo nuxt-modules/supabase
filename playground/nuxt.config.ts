@@ -1,11 +1,48 @@
 export default defineNuxtConfig({
-  modules: ['../src/module'],
+  modules: ["../src/module"],
 
-  compatibilityDate: '2024-07-05',
+  compatibilityDate: "2024-07-05",
 
   nitro: {
     routeRules: {
-      '/clientonly': { ssr: false },
+      "/clientonly": { ssr: false },
+    },
+    rollupConfig: {
+      onwarn(warning, warn) {
+        const isSupabaseUnusedImportWarning =
+          warning.code === "UNUSED_EXTERNAL_IMPORT" &&
+          (warning.exporter?.includes("@supabase/") ||
+            warning.message.includes("@supabase/supabase-js/dist/index.mjs"));
+
+        const isNitroCircularRuntimeWarning =
+          warning.code === "CIRCULAR_DEPENDENCY" &&
+          warning.message.includes("node_modules/.pnpm/nitropack");
+
+        if (isSupabaseUnusedImportWarning || isNitroCircularRuntimeWarning) {
+          return;
+        }
+
+        warn(warning);
+      },
+    },
+  },
+
+  vite: {
+    build: {
+      rollupOptions: {
+        onwarn(warning, warn) {
+          const isSupabaseUnusedImportWarning =
+            warning.code === "UNUSED_EXTERNAL_IMPORT" &&
+            (warning.exporter?.includes("@supabase/") ||
+              warning.message.includes("@supabase/supabase-js/dist/index.mjs"));
+
+          if (isSupabaseUnusedImportWarning) {
+            return;
+          }
+
+          warn(warning);
+        },
+      },
     },
   },
 
@@ -23,10 +60,10 @@ export default defineNuxtConfig({
     // },
     // redirect: true,
     redirectOptions: {
-      login: '/login',
-      callback: '/confirm',
+      login: "/login",
+      callback: "/confirm",
       // include: ['/protected'],
-      exclude: ['/unprotected', '/public/*'],
+      exclude: ["/unprotected", "/public/*"],
     },
   },
-})
+});
