@@ -14,7 +14,14 @@ import {
 import type { CookieOptions } from "nuxt/app";
 import type { SupabaseClientOptions } from "@supabase/supabase-js";
 import type { NitroConfig, NitroRouteConfig } from "nitropack";
+import type { RollupLog, WarningHandlerWithDefault } from "rollup";
 import type { RedirectOptions } from "./types";
+
+declare module "@nuxt/schema" {
+  interface NuxtHooks {
+    "nitro:config": (nitroConfig: NitroConfig) => void;
+  }
+}
 
 export * from "./types";
 
@@ -161,11 +168,64 @@ export default defineNuxtModule<ModuleOptions>({
     clientOptions: {} as SupabaseClientOptions<string>,
   },
   setup(options, nuxt) {
+    const shouldSuppressSupabaseUnusedExternalImportWarning = (
+      warning: RollupLog,
+    ) =>
+      warning.code === "UNUSED_EXTERNAL_IMPORT" &&
+      warning.message.includes("@supabase/supabase-js/dist/index.mjs");
+
+    const shouldSuppressNitroCircularWarning = (warning: RollupLog) =>
+      warning.code === "CIRCULAR_DEPENDENCY" &&
+      warning.message.includes("node_modules/.pnpm/nitropack");
+
+    const createOnwarnHandler = (
+      shouldSuppress: (warning: RollupLog) => boolean,
+      previousOnwarn?: WarningHandlerWithDefault,
+    ): WarningHandlerWithDefault => {
+      return (warning, defaultHandler) => {
+        if (shouldSuppress(warning)) {
+          return;
+        }
+
+        if (typeof previousOnwarn === "function") {
+          return previousOnwarn(warning, defaultHandler);
+        }
+
+        defaultHandler(warning);
+      };
+    };
+
     const logger = useLogger("@nuxt/supabase");
     const { resolve, resolvePath } = createResolver(import.meta.url);
     const nuxtOptions = nuxt.options as typeof nuxt.options & {
       nitro?: NitroConfig;
     };
+
+    nuxt.hook("vite:extendConfig", (config) => {
+      const rollupOptions = config.build?.rollupOptions;
+
+      if (!rollupOptions) {
+        return;
+      }
+
+      const previousOnwarn = rollupOptions.onwarn;
+      rollupOptions.onwarn = createOnwarnHandler(
+        shouldSuppressSupabaseUnusedExternalImportWarning,
+        previousOnwarn,
+      );
+    });
+
+    nuxt.hook("nitro:config", (nitroConfig) => {
+      nitroConfig.rollupConfig = nitroConfig.rollupConfig || {};
+
+      const previousOnwarn = nitroConfig.rollupConfig.onwarn;
+      nitroConfig.rollupConfig.onwarn = createOnwarnHandler(
+        (warning) =>
+          shouldSuppressSupabaseUnusedExternalImportWarning(warning) ||
+          shouldSuppressNitroCircularWarning(warning),
+        previousOnwarn,
+      );
+    });
 
     // Public runtimeConfig
     nuxt.options.runtimeConfig.public.supabase = defu(
