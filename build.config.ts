@@ -1,8 +1,8 @@
-import { defineBuildConfig } from "unbuild";
+import { defineBuildConfig } from 'unbuild'
 
 export default defineBuildConfig({
-  declaration: "node16",
-  externals: ["nitropack"],
+  declaration: 'node16',
+  externals: ['nitropack'],
   rollup: {
     dts: {
       respectExternal: false,
@@ -11,4 +11,4 @@ export default defineBuildConfig({
       },
     },
   },
-});
+})

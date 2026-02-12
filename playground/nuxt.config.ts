@@ -1,11 +1,11 @@
 export default defineNuxtConfig({
-  modules: ["../src/module"],
+  modules: ['../src/module'],
 
-  compatibilityDate: "2024-07-05",
+  compatibilityDate: '2024-07-05',
 
   nitro: {
     routeRules: {
-      "/clientonly": { ssr: false },
+      '/clientonly': { ssr: false },
     },
   },
 
@@ -23,10 +23,10 @@ export default defineNuxtConfig({
     // },
     // redirect: true,
     redirectOptions: {
-      login: "/login",
-      callback: "/confirm",
+      login: '/login',
+      callback: '/confirm',
       // include: ['/protected'],
-      exclude: ["/unprotected", "/public/*"],
+      exclude: ['/unprotected', '/public/*'],
     },
   },
-});
+})
