@@ -21,7 +21,7 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground && nuxi prepare demo && nuxi prepare docs",
-    "build": "nuxt-module-build build",
+    "build": "nuxi prepare && nuxt-module-build build",
     "lint": "eslint .",
     "typecheck": "nuxi typecheck",
     "verify": "pnpm run dev:prepare && pnpm run lint && pnpm run typecheck && pnpm run dev:build && pnpm build",
