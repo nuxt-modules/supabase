@@ -232,6 +232,7 @@ export default defineNuxtModule<ModuleOptions>({
     if (mergedOptions.redirect && mergedOptions.redirectOptions.callback) {
       const routeRules: NitroConfig['routeRules'] = {}
       routeRules[mergedOptions.redirectOptions.callback] = { ssr: false } as NitroRouteConfig
+      // @ts-expect-error - nitro options does exist
       nuxt.options.nitro = defu(nuxt.options.nitro, {
         routeRules,
       })
@@ -253,6 +254,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Add composables imports
     addImportsDir(resolve('./runtime/composables'))
 
+    // @ts-expect-error - nitro:config is a valid hook
     nuxt.hook('nitro:config', (nitroConfig) => {
       nitroConfig.alias = nitroConfig.alias || {}
 
