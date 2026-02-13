@@ -22,9 +22,11 @@
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground && nuxi prepare demo && nuxi prepare docs",
     "build": "nuxt-module-build build",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "lint": "eslint .",
     "typecheck": "nuxi typecheck",
-    "verify": "pnpm run dev:prepare && pnpm run lint && pnpm run typecheck && pnpm run dev:build && pnpm build",
+    "verify": "pnpm run dev:prepare && pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run dev:build && pnpm build",
     "lint:fix": "eslint . --fix",
     "release": "pnpm lint && release-it",
     "pre:release": "pnpm lint && release-it --preRelease"
@@ -43,10 +45,13 @@
     "@release-it/conventional-changelog": "^10.0.5",
     "@types/node": "^25.2.3",
     "changelogen": "^0.6.2",
+    "consola": "^3.4.2",
     "eslint": "^10.0.0",
     "nuxt": "^4.3.1",
     "release-it": "^19.2.4",
     "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18",
     "vue-tsc": "^3.2.4"
   },
   "resolutions": {
