@@ -55,7 +55,7 @@
     "vue-tsc": "^3.2.4"
   },
   "resolutions": {
-    "typescript": "5.6.3"
+    "typescript": "5.9.3"
   },
   "release-it": {
     "git": {
