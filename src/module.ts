@@ -2,7 +2,7 @@ import { fileURLToPath } from 'node:url'
 import fs from 'node:fs'
 import { defu } from 'defu'
 import { relative } from 'pathe'
-import { defineNuxtModule, addPlugin, createResolver, addTemplate, extendViteConfig, useLogger, addImportsDir } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver, addTemplate, useLogger, addImportsDir } from '@nuxt/kit'
 import type { CookieOptions } from 'nuxt/app'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
 import type { NitroConfig, NitroRouteConfig } from 'nitropack'
@@ -260,7 +260,7 @@ export default defineNuxtModule<ModuleOptions>({
 
       // Inline module runtime in Nitro bundle
       nitroConfig.externals = defu(typeof nitroConfig.externals === 'object' ? nitroConfig.externals : {}, {
-        inline: [resolve('./runtime'), '@supabase/supabase-js'],
+        inline: [resolve('./runtime')],
       })
       nitroConfig.alias['#supabase/server'] = resolve('./runtime/server/services')
       nitroConfig.alias['#supabase/database'] = resolve(nitroConfig.buildDir!, 'types/supabase-database')
@@ -318,12 +318,5 @@ export default defineNuxtModule<ModuleOptions>({
     if (!nuxt.options.dev && !['cloudflare'].includes(process.env.NITRO_PRESET as string)) {
       nuxt.options.build.transpile.push('websocket')
     }
-
-    // Needed to fix https://github.com/supabase/auth-helpers/issues/725
-    extendViteConfig((config) => {
-      config.optimizeDeps = config.optimizeDeps || {}
-      config.optimizeDeps.include = config.optimizeDeps.include || []
-      config.optimizeDeps.include.push('@nuxtjs/supabase > cookie', '@nuxtjs/supabase > @supabase/postgrest-js', '@supabase/supabase-js')
-    })
   },
 })
