@@ -2,7 +2,7 @@ import { fileURLToPath } from 'node:url'
 import fs from 'node:fs'
 import { defu } from 'defu'
 import { relative } from 'pathe'
-import { defineNuxtModule, addPlugin, createResolver, addTemplate, useLogger, addImportsDir } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver, addTemplate, useLogger, addImportsDir, extendViteConfig } from '@nuxt/kit'
 import type { CookieOptions } from 'nuxt/app'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
 import type { NitroConfig, NitroRouteConfig } from 'nitropack'
@@ -318,5 +318,11 @@ export default defineNuxtModule<ModuleOptions>({
     if (!nuxt.options.dev && !['cloudflare'].includes(process.env.NITRO_PRESET as string)) {
       nuxt.options.build.transpile.push('websocket')
     }
+
+    extendViteConfig((config) => {
+      config.optimizeDeps = config.optimizeDeps || {}
+      config.optimizeDeps.include = config.optimizeDeps.include || []
+      config.optimizeDeps.include.push('@nuxtjs/supabase > cookie')
+    })
   },
 })
