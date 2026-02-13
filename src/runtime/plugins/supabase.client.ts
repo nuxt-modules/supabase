@@ -44,6 +44,16 @@ export default defineNuxtPlugin({
     const currentSession = useSupabaseSession()
     const currentUser = useSupabaseUser()
 
+    // In SPA mode, restore session from storage before auth middleware runs
+    // This prevents a race condition where middleware checks session before it's hydrated
+    // See: https://github.com/nuxt-modules/supabase/issues/496
+    if (!useSsrCookies) {
+      const { data } = await client.auth.getSession()
+      if (data.session) {
+        currentSession.value = data.session
+      }
+    }
+
     // Populate user before each page load to ensure the user state is correctly set before the page is rendered
     nuxtApp.hook('page:start', async () => {
       const { data } = await client.auth.getClaims()
