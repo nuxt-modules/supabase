@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.4](https://github.com/nuxt-modules/supabase/compare/v2.0.3...v2.0.4) (2026-02-13)
+
+
+### Bug Fixes
+
+* **module:** external module warnings ([1a60379](https://github.com/nuxt-modules/supabase/commit/1a60379f2ed325f23e76ed6b29ddffaa75dc4ca1))
+* **module:** optimize cookie dep ([#576](https://github.com/nuxt-modules/supabase/issues/576)) ([1726ab7](https://github.com/nuxt-modules/supabase/commit/1726ab7931be884847e91cbbb0576d9506b6bcf1))
+
 ## [2.0.3](/compare/v2.0.2...v2.0.3) (2025-12-05)
 
 
