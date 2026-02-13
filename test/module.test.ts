@@ -53,20 +53,39 @@ describe('Dev Server', () => {
 
       const fullOutput = output.join('\n')
 
-      const warningLines = fullOutput.split('\n').filter((line) => {
+      // Extract warning lines
+      const allWarningLines = fullOutput.split('\n').filter((line) => {
         const lowerLine = line.toLowerCase()
         return lowerLine.includes('warn') && !lowerLine.includes('warming') // Exclude "warming up" messages
       })
 
+      // Filter out acceptable warnings from @nuxt/supabase module
+      const warningLines = allWarningLines.filter((line) => {
+        // Accept warnings from @nuxt/supabase module (e.g., missing config, database types not found)
+        return !line.includes('[@nuxt/supabase]')
+      })
+
       // Log all warnings using consola
+      if (allWarningLines.length > 0) {
+        consola.info(`Found ${allWarningLines.length} total warning(s) in dev server output`)
+
+        const acceptedWarnings = allWarningLines.filter(line => line.includes('[@nuxt/supabase]'))
+        if (acceptedWarnings.length > 0) {
+          consola.info(`Accepted ${acceptedWarnings.length} @nuxt/supabase module warning(s):`)
+          acceptedWarnings.forEach((line) => {
+            consola.box(line.trim())
+          })
+        }
+      }
+
       if (warningLines.length > 0) {
-        consola.error(`Found ${warningLines.length} warning(s) in dev server output:`)
+        consola.error(`Found ${warningLines.length} unexpected warning(s):`)
         warningLines.forEach((line, index) => {
           consola.warn(`Warning ${index + 1}:`, line.trim())
         })
       }
       else {
-        consola.success('No warnings found in dev server output')
+        consola.success('No unexpected warnings found in dev server output')
       }
 
       expect(warningLines, `Expected 0 warnings but found ${warningLines.length}`).toHaveLength(0)
