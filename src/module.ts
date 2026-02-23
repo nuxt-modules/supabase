@@ -130,9 +130,14 @@ export default defineNuxtModule<ModuleOptions>({
   },
   defaults: {
     url: process.env.SUPABASE_URL as string,
-    key: process.env.SUPABASE_KEY as string,
+    key: (process.env.SUPABASE_KEY
+      ?? process.env.SUPABASE_PUBLISHABLE_KEY
+      ?? process.env.NUXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+      ?? process.env.SUPABASE_ANON_KEY
+      ?? process.env.NUXT_PUBLIC_SUPABASE_ANON_KEY) as string,
     serviceKey: process.env.SUPABASE_SERVICE_KEY as string,
-    secretKey: process.env.SUPABASE_SECRET_KEY as string,
+    secretKey: (process.env.SUPABASE_SECRET_KEY
+      ?? process.env.SUPABASE_SERVICE_ROLE_KEY) as string,
     redirect: true,
     redirectOptions: {
       login: '/login',
