@@ -29,7 +29,8 @@
     "verify": "pnpm run dev:prepare && pnpm run lint && pnpm run typecheck && pnpm run test && pnpm run dev:build && pnpm build",
     "lint:fix": "eslint . --fix",
     "release": "pnpm lint && release-it",
-    "pre:release": "pnpm lint && release-it --preRelease"
+    "pre:release": "pnpm lint && release-it --preRelease",
+    "clean": "rm -rf .nuxt .output node_modules docs/.nuxt docs/.data docs/node_modules demo/.nuxt demo/.data demo/node_modules pnpm-lock.yaml .pnpm-store"
   },
   "dependencies": {
     "@supabase/ssr": "^0.8.0",
