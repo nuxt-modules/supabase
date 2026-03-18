@@ -129,15 +129,14 @@ export default defineNuxtModule<ModuleOptions>({
     },
   },
   defaults: {
-    url: process.env.SUPABASE_URL as string,
-    key: (process.env.SUPABASE_KEY
-      ?? process.env.SUPABASE_PUBLISHABLE_KEY
-      ?? process.env.NUXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
-      ?? process.env.SUPABASE_ANON_KEY
-      ?? process.env.NUXT_PUBLIC_SUPABASE_ANON_KEY) as string,
-    serviceKey: process.env.SUPABASE_SERVICE_KEY as string,
-    secretKey: (process.env.SUPABASE_SECRET_KEY
-      ?? process.env.SUPABASE_SERVICE_ROLE_KEY) as string,
+    // Build-time fallbacks: at runtime, Nuxt maps NUXT_PUBLIC_SUPABASE_* automatically via runtimeConfig.
+    url: process.env.SUPABASE_URL || undefined,
+    key: process.env.SUPABASE_KEY
+      || process.env.SUPABASE_PUBLISHABLE_KEY
+      || process.env.SUPABASE_ANON_KEY || undefined,
+    serviceKey: process.env.SUPABASE_SERVICE_KEY || undefined,
+    secretKey: process.env.SUPABASE_SECRET_KEY
+      || process.env.SUPABASE_SERVICE_ROLE_KEY || undefined,
     redirect: true,
     redirectOptions: {
       login: '/login',
@@ -184,7 +183,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Warn if the url isn't set.
     if (!finalUrl) {
-      logger.warn('Missing supabase url, set it either in `nuxt.config.ts` or via env variable')
+      logger.warn('Missing `SUPABASE_URL`, set it in `.env` or via `runtimeConfig.public.supabase.url` in `nuxt.config.ts`.')
     }
     else {
       try {
@@ -205,14 +204,14 @@ export default defineNuxtModule<ModuleOptions>({
 
         // Fail build in production
         if (!nuxt.options.dev) {
-          throw new Error('Invalid Supabase URL configuration')
+          throw new Error(`Invalid Supabase URL: "${finalUrl}". Provide a valid URL or leave it unset for runtime configuration.`)
         }
       }
     }
 
     // Warn if the key isn't set.
     if (!nuxt.options.runtimeConfig.public.supabase.key) {
-      logger.warn('Missing supabase publishable key, set it either in `nuxt.config.ts` or via env variable')
+      logger.warn('Missing `SUPABASE_KEY`, set it in `.env` or via `runtimeConfig.public.supabase.key` in `nuxt.config.ts`.')
     }
 
     // Warn for deprecated features.
@@ -229,7 +228,7 @@ export default defineNuxtModule<ModuleOptions>({
     const hasSecretKey = !!supabaseConfig?.secretKey
 
     if (hasServiceKey && !hasSecretKey) {
-      logger.warn('`SUPABASE_SERVICE_KEY` is deprecated and will be removed in a future version. Please migrate to `SUPABASE_SECRET_KEY` (JWT signing key). See: https://supabase.com/blog/jwt-signing-keys')
+      logger.warn('`SUPABASE_SERVICE_KEY` is deprecated. Migrate to `SUPABASE_SECRET_KEY`. See: https://supabase.com/blog/jwt-signing-keys')
     }
 
     // ensure callback URL is not using SSR
