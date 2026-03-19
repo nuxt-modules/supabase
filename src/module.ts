@@ -13,7 +13,7 @@ export * from './types'
 export interface ModuleOptions {
   /**
    * Supabase API URL
-   * @default process.env.SUPABASE_URL
+   * @default process.env.NUXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL
    * @example 'https://*.supabase.co'
    * @type string
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
@@ -22,7 +22,7 @@ export interface ModuleOptions {
 
   /**
    * Supabase Client publishable API Key (previously known as 'anon key')
-   * @default process.env.SUPABASE_KEY
+   * @default process.env.NUXT_PUBLIC_SUPABASE_KEY || process.env.SUPABASE_KEY
    * @example '123456789'
    * @type string
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
@@ -31,7 +31,7 @@ export interface ModuleOptions {
 
   /**
    * Supabase Legacy 'service_role' key (deprecated)
-   * @default process.env.SUPABASE_SERVICE_KEY
+   * @default process.env.NUXT_SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_KEY
    * @example '123456789'
    * @type string
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
@@ -41,7 +41,7 @@ export interface ModuleOptions {
 
   /**
    * Supabase Secret key
-   * @default process.env.SUPABASE_SECRET_KEY
+   * @default process.env.NUXT_SUPABASE_SECRET_KEY || process.env.SUPABASE_SECRET_KEY
    * @example '123456789'
    * @type string
    * @docs https://supabase.com/blog/jwt-signing-keys
@@ -129,13 +129,17 @@ export default defineNuxtModule<ModuleOptions>({
     },
   },
   defaults: {
-    // Build-time fallbacks: at runtime, Nuxt maps NUXT_PUBLIC_SUPABASE_* automatically via runtimeConfig.
-    url: process.env.SUPABASE_URL || undefined,
-    key: process.env.SUPABASE_KEY
+    // Env var resolution order: NUXT_PUBLIC_*/NUXT_* (recommended) → SUPABASE_* (legacy fallback) → undefined
+    url: process.env.NUXT_PUBLIC_SUPABASE_URL
+      || process.env.SUPABASE_URL || undefined,
+    key: process.env.NUXT_PUBLIC_SUPABASE_KEY
+      || process.env.SUPABASE_KEY
       || process.env.SUPABASE_PUBLISHABLE_KEY
       || process.env.SUPABASE_ANON_KEY || undefined,
-    serviceKey: process.env.SUPABASE_SERVICE_KEY || undefined,
-    secretKey: process.env.SUPABASE_SECRET_KEY
+    serviceKey: process.env.NUXT_SUPABASE_SERVICE_KEY
+      || process.env.SUPABASE_SERVICE_KEY || undefined,
+    secretKey: process.env.NUXT_SUPABASE_SECRET_KEY
+      || process.env.SUPABASE_SECRET_KEY
       || process.env.SUPABASE_SERVICE_ROLE_KEY || undefined,
     redirect: true,
     redirectOptions: {
@@ -183,7 +187,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Warn if the url isn't set.
     if (!finalUrl) {
-      logger.warn('Missing `SUPABASE_URL`, set it in `.env` or via `runtimeConfig.public.supabase.url` in `nuxt.config.ts`.')
+      logger.warn('Missing `NUXT_PUBLIC_SUPABASE_URL`, set it in `.env` or via `runtimeConfig.public.supabase.url` in `nuxt.config.ts`.')
     }
     else {
       try {
@@ -211,7 +215,7 @@ export default defineNuxtModule<ModuleOptions>({
 
     // Warn if the key isn't set.
     if (!nuxt.options.runtimeConfig.public.supabase.key) {
-      logger.warn('Missing `SUPABASE_KEY`, set it in `.env` or via `runtimeConfig.public.supabase.key` in `nuxt.config.ts`.')
+      logger.warn('Missing `NUXT_PUBLIC_SUPABASE_KEY`, set it in `.env` or via `runtimeConfig.public.supabase.key` in `nuxt.config.ts`.')
     }
 
     // Warn for deprecated features.
@@ -228,7 +232,7 @@ export default defineNuxtModule<ModuleOptions>({
     const hasSecretKey = !!supabaseConfig?.secretKey
 
     if (hasServiceKey && !hasSecretKey) {
-      logger.warn('`SUPABASE_SERVICE_KEY` is deprecated. Migrate to `SUPABASE_SECRET_KEY`. See: https://supabase.com/blog/jwt-signing-keys')
+      logger.warn('`SUPABASE_SERVICE_KEY` is deprecated. Migrate to `NUXT_SUPABASE_SECRET_KEY`. See: https://supabase.com/blog/jwt-signing-keys')
     }
 
     // ensure callback URL is not using SSR
