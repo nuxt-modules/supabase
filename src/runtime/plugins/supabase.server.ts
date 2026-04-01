@@ -1,17 +1,17 @@
-import { createServerClient, parseCookieHeader } from "@supabase/ssr";
-import { getHeader } from "h3";
-import type { SupabaseClient } from "@supabase/supabase-js";
-import { fetchWithRetry } from "../utils/fetch-retry";
-import { setCookies } from "../utils/cookies";
-import { serverSupabaseUser, serverSupabaseSession } from "../server/services";
-import { useSupabaseSession } from "../composables/useSupabaseSession";
-import { useSupabaseUser } from "../composables/useSupabaseUser";
-import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig } from "#imports";
-import type { CookieOptions, Plugin } from "#app";
+import { createServerClient, parseCookieHeader } from '@supabase/ssr'
+import { getHeader } from 'h3'
+import type { SupabaseClient } from '@supabase/supabase-js'
+import { fetchWithRetry } from '../utils/fetch-retry'
+import { setCookies } from '../utils/cookies'
+import { serverSupabaseUser, serverSupabaseSession } from '../server/services'
+import { useSupabaseSession } from '../composables/useSupabaseSession'
+import { useSupabaseUser } from '../composables/useSupabaseUser'
+import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig } from '#imports'
+import type { CookieOptions, Plugin } from '#app'
 
 export default defineNuxtPlugin({
-  name: "supabase",
-  enforce: "pre",
+  name: 'supabase',
+  enforce: 'pre',
   async setup({ provide }) {
     const {
       url,
@@ -20,17 +20,17 @@ export default defineNuxtPlugin({
       useSsrCookies,
       cookieOptions,
       clientOptions,
-    } = useRuntimeConfig().public.supabase;
+    } = useRuntimeConfig().public.supabase
 
-    const event = useRequestEvent()!;
+    const event = useRequestEvent()!
 
     // @ts-expect-error - https://supabase.com/docs/guides/auth/server-side/creating-a-client?queryGroups=environment&environment=middleware
     const client = createServerClient(url, key, {
       ...clientOptions,
       cookies: {
-        getAll: () => parseCookieHeader(getHeader(event, "Cookie") ?? ""),
+        getAll: () => parseCookieHeader(getHeader(event, 'Cookie') ?? ''),
         setAll: (
-          cookies: { name: string; value: string; options: CookieOptions }[],
+          cookies: { name: string, value: string, options: CookieOptions }[],
           headers: Record<string, string>,
         ) => setCookies(event, cookies, headers),
       },
@@ -42,19 +42,19 @@ export default defineNuxtPlugin({
         fetch: fetchWithRetry,
         ...clientOptions.global,
       },
-    });
+    })
 
-    provide("supabase", { client });
+    provide('supabase', { client })
 
     // Initialize user and session states if available.
     if (useSsrCookies) {
       const [session, user] = await Promise.all([
         serverSupabaseSession(event).catch(() => null),
         serverSupabaseUser(event).catch(() => null),
-      ]);
+      ])
 
-      useSupabaseSession().value = session;
-      useSupabaseUser().value = user;
+      useSupabaseSession().value = session
+      useSupabaseUser().value = user
     }
   },
-}) as Plugin<{ client: SupabaseClient }>;
+}) as Plugin<{ client: SupabaseClient }>
