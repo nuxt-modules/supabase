@@ -1,25 +1,12 @@
 {
+  "name": "nuxt-app",
   "private": true,
-  "engines": {
-    "node": ">=20.9.0"
-  },
+  "type": "module",
   "scripts": {
-    "dev": "nuxi dev",
-    "build": "nuxi build",
-    "start": "node .output/server/index.mjs",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "build": "nuxt build",
+    "dev": "nuxt dev"
   },
-  "devDependencies": {
-    "@iconify-json/heroicons": "^1.2.0",
-    "@iconify-json/heroicons-outline": "^1.2.0",
-    "@iconify-json/mdi": "^1.2.0",
-    "@nuxt/ui": "2.18.4",
-    "@nuxtjs/supabase": "^1.4.0",
-    "nuxt": "^3.13.1",
-    "typescript": "^5.5.4"
-  },
-  "resolutions": {
-    "@nuxt/icon": "^1.5.1"
+  "dependencies": {
+    "@nuxtjs/supabase": "link:.."
   }
 }

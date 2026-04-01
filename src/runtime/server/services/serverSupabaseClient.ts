@@ -1,7 +1,9 @@
 import type { SupabaseClient } from '@supabase/supabase-js'
-import { createServerClient, parseCookieHeader, type CookieOptions } from '@supabase/ssr'
-import { getHeader, setCookie, type H3Event } from 'h3'
+import { createServerClient, parseCookieHeader } from '@supabase/ssr'
+import { getHeader, type H3Event } from 'h3'
 import { fetchWithRetry } from '../../utils/fetch-retry'
+import { setCookies } from '../../utils/cookies'
+import type { CookieOptions } from '#app'
 import { useRuntimeConfig } from '#imports'
 // @ts-expect-error - `#supabase/database` is a runtime alias
 import type { Database } from '#supabase/database'
@@ -10,19 +12,14 @@ export const serverSupabaseClient: <T = Database>(event: H3Event) => Promise<Sup
   // No need to recreate client if exists in request context
   if (!event.context._supabaseClient) {
     // get settings from runtime config
-    const { url, key, cookiePrefix, cookieOptions, clientOptions: { auth = {}, global = {} } } = useRuntimeConfig().public.supabase
+    const { url, key, cookiePrefix, cookieOptions, clientOptions: { auth = {}, global = {} } } = useRuntimeConfig(event).public.supabase
 
+    // @ts-expect-error - https://supabase.com/docs/guides/auth/server-side/creating-a-client?queryGroups=environment&environment=middleware
     event.context._supabaseClient = createServerClient(url, key, {
       auth,
       cookies: {
         getAll: () => parseCookieHeader(getHeader(event, 'Cookie') ?? ''),
-        setAll: (
-          cookies: {
-            name: string
-            value: string
-            options: CookieOptions
-          }[],
-        ) => cookies.forEach(({ name, value, options }) => setCookie(event, name, value, options)),
+        setAll: (cookies: { name: string, value: string, options: CookieOptions }[]) => setCookies(event, cookies),
       },
       cookieOptions: {
         ...cookieOptions,

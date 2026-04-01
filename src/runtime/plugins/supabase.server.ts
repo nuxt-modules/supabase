@@ -1,32 +1,28 @@
 import { createServerClient, parseCookieHeader } from '@supabase/ssr'
-import { getHeader, setCookie } from 'h3'
+import { getHeader } from 'h3'
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { fetchWithRetry } from '../utils/fetch-retry'
-import logger from '../utils/logger'
+import { setCookies } from '../utils/cookies'
 import { serverSupabaseUser, serverSupabaseSession } from '../server/services'
-import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig, useSupabaseSession, useSupabaseUser } from '#imports'
+import { useSupabaseSession } from '../composables/useSupabaseSession'
+import { useSupabaseUser } from '../composables/useSupabaseUser'
+import { defineNuxtPlugin, useRequestEvent, useRuntimeConfig } from '#imports'
 import type { CookieOptions, Plugin } from '#app'
 
 export default defineNuxtPlugin({
   name: 'supabase',
   enforce: 'pre',
   async setup({ provide }) {
-    logger.info('Initializing server-side Supabase client')
     const { url, key, cookiePrefix, useSsrCookies, cookieOptions, clientOptions } = useRuntimeConfig().public.supabase
 
     const event = useRequestEvent()!
 
+    // @ts-expect-error - https://supabase.com/docs/guides/auth/server-side/creating-a-client?queryGroups=environment&environment=middleware
     const client = createServerClient(url, key, {
       ...clientOptions,
       cookies: {
         getAll: () => parseCookieHeader(getHeader(event, 'Cookie') ?? ''),
-        setAll: (
-          cookies: {
-            name: string
-            value: string
-            options: CookieOptions
-          }[],
-        ) => cookies.forEach(({ name, value, options }) => setCookie(event, name, value, options)),
+        setAll: (cookies: { name: string, value: string, options: CookieOptions }[]) => setCookies(event, cookies),
       },
       cookieOptions: {
         ...cookieOptions,
@@ -42,44 +38,16 @@ export default defineNuxtPlugin({
 
     // Initialize user and session states if available.
     if (useSsrCookies) {
-      logger.info('Attempting to retrieve server-side Supabase session and user')
-      try {
-        const [
-          session,
-          user,
-        ] = await Promise.all([
-          serverSupabaseSession(event).catch((error) => {
-            logger.error('Failed to retrieve server-side Supabase session', error)
-            return null
-          }),
-          serverSupabaseUser(event).catch((error) => {
-            logger.error('Failed to retrieve server-side Supabase user', error)
-            return null
-          }),
-        ])
+      const [
+        session,
+        user,
+      ] = await Promise.all([
+        serverSupabaseSession(event).catch(() => null),
+        serverSupabaseUser(event).catch(() => null),
+      ])
 
-        useSupabaseSession().value = session
-        useSupabaseUser().value = user
-
-        if (session && user) {
-          logger.info('Successfully retrieved server-side Supabase session and user', {
-            userId: user.id,
-            hasSession: !!session,
-          })
-        }
-        else {
-          logger.info('No active server-side Supabase session or user found', {
-            hasSession: !!session,
-            hasUser: !!user,
-          })
-        }
-      }
-      catch (error) {
-        logger.error('Error initializing server-side Supabase authentication', error)
-      }
-    }
-    else {
-      logger.info('SSR cookies disabled, skipping server-side auth initialization')
+      useSupabaseSession().value = session
+      useSupabaseUser().value = user
     }
   },
 }) as Plugin<{ client: SupabaseClient }>

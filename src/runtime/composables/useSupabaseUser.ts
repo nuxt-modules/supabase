@@ -1,8 +1,7 @@
-import type { User } from '@supabase/supabase-js'
+import type { JwtPayload } from '@supabase/supabase-js'
 import { useState, type Ref } from '#imports'
 
 /**
- * Reactive `User` state from Supabase. This is initialized in both client and server plugin
- * and, on the client, also updated through `onAuthStateChange` events.
+ * Reactive `User` state from Supabase. This is populated by the JWT Payload from the auth.getClaims() call.
  */
-export const useSupabaseUser = (): Ref<User | null> => useState<User | null>('supabase_user', () => null)
+export const useSupabaseUser = (): Ref<JwtPayload | null> => useState<JwtPayload | null>('supabase_user', () => null)

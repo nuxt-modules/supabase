@@ -1,5 +1,88 @@
 # Changelog
 
+## [2.0.4](https://github.com/nuxt-modules/supabase/compare/v2.0.3...v2.0.4) (2026-02-13)
+
+
+### Bug Fixes
+
+* **module:** external module warnings ([1a60379](https://github.com/nuxt-modules/supabase/commit/1a60379f2ed325f23e76ed6b29ddffaa75dc4ca1))
+* **module:** optimize cookie dep ([#576](https://github.com/nuxt-modules/supabase/issues/576)) ([1726ab7](https://github.com/nuxt-modules/supabase/commit/1726ab7931be884847e91cbbb0576d9506b6bcf1))
+
+## [2.0.3](/compare/v2.0.2...v2.0.3) (2025-12-05)
+
+
+### Bug Fixes
+
+* **module:** optimize supabase-js in dev 0830cfc
+
+## [2.0.2](/compare/v2.0.1...v2.0.2) (2025-12-03)
+
+
+### Bug Fixes
+
+* **demo:** use sub instead of id c55a8f1
+* **module:** bundle supabase-js into nitro build 13c6e48
+
+## [2.0.1](https://github.com/nuxt-modules/supabase/compare/v2.0.0...v2.0.1) (2025-10-08)
+
+
+### Features
+
+* **dx:** improve error handling and add fetch retry backoff ([#534](https://github.com/nuxt-modules/supabase/issues/534)) ([87b6c84](https://github.com/nuxt-modules/supabase/commit/87b6c8455ed6eba6157aba6ea119d0b17acfcbaf))
+
+# [2.0.0](https://github.com/nuxt-modules/supabase/compare/v1.6.2...v2.0.0) (2025-09-29)
+
+
+### Features
+
+* **auth:** jwt signing keys ([#531](https://github.com/nuxt-modules/supabase/issues/531)) ([82cf862](https://github.com/nuxt-modules/supabase/commit/82cf86220c88a68a0c0ca4e2baf2582767b1fac6))
+
+## [1.6.2](https://github.com/nuxt-modules/supabase/compare/v1.6.1...v1.6.2) (2025-09-09)
+
+
+### Bug Fixes
+
+* **cookies:** guard writes when response headers already sent ([#525](https://github.com/nuxt-modules/supabase/issues/525)) ([2338991](https://github.com/nuxt-modules/supabase/commit/2338991fc17a7956b789da7bd90b88a51ca92cb6))
+
+## [1.6.1](https://github.com/nuxt-modules/supabase/compare/v1.6.0...v1.6.1) (2025-08-22)
+
+
+### Bug Fixes
+
+* **demo:** database types ([8da11e6](https://github.com/nuxt-modules/supabase/commit/8da11e65b97ba56ff4efd378c40f62c6c0c18f4a))
+* **demo:** link module ([25cae97](https://github.com/nuxt-modules/supabase/commit/25cae97ad3dfce26a2b9cb7f60bb91a770567742))
+* **playground:** database types ([58549ab](https://github.com/nuxt-modules/supabase/commit/58549ab1f4571ac82ba4d9e70d60d5ab1e06f8d8))
+* **types:** use "unjs/pathe" to make the exported type use relative path ([#516](https://github.com/nuxt-modules/supabase/issues/516)) ([28d04b0](https://github.com/nuxt-modules/supabase/commit/28d04b0e6e3c6084b2e855bd99e605438e979e4d))
+
+# [1.6.0](https://github.com/nuxt-modules/supabase/compare/v1.5.3...v1.6.0) (2025-07-22)
+
+## [1.5.3](https://github.com/nuxt-modules/supabase/compare/v1.5.2...v1.5.3) (2025-06-27)
+
+
+### Bug Fixes
+
+* **ci:** pnpm version ([1acc409](https://github.com/nuxt-modules/supabase/commit/1acc409f225bf11fbcffb9c2f286c0b3a9f954cb))
+* **config:** logo paths ([891d3c8](https://github.com/nuxt-modules/supabase/commit/891d3c899d2481b7058356f004105aaad73cbed0))
+
+## [1.5.2](https://github.com/nuxt-modules/supabase/compare/v1.5.1...v1.5.2) (2025-06-12)
+
+
+### Bug Fixes
+
+* **demo:** login screen height ([09f697b](https://github.com/nuxt-modules/supabase/commit/09f697b31abcc57a3bd00cf2fa70716694eeab67))
+* **demo:** redirect github provider ([be12884](https://github.com/nuxt-modules/supabase/commit/be12884fd2756d58b6321e8253141f64035b8da4))
+* **demo:** redirect url for github provider ([1fd67f8](https://github.com/nuxt-modules/supabase/commit/1fd67f8cd90cb38b180714ad37f5bea875edc73a))
+* **demo:** remove toggle ([e741537](https://github.com/nuxt-modules/supabase/commit/e74153749e71522cb7f10510d4308fc536282efa))
+* **demo:** use head ([65832ba](https://github.com/nuxt-modules/supabase/commit/65832ba113af0d5ea8035b42fc6b7748b39fec4d))
+
+## [1.5.1](https://github.com/nuxt-modules/supabase/compare/v1.5.0...v1.5.1) (2025-05-13)
+
+
+### Bug Fixes
+
+* **plugins:** do not set states on client ([#490](https://github.com/nuxt-modules/supabase/issues/490)) ([6152a64](https://github.com/nuxt-modules/supabase/commit/6152a6435421d5e111a57e46ddf71279a45286ba))
+* **serverSupabaseClient:** pass H3Event into useRuntimeConfig ([#491](https://github.com/nuxt-modules/supabase/issues/491)) ([548e21e](https://github.com/nuxt-modules/supabase/commit/548e21e3756b01e31f1c531bc66008f0a072b799))
+
 # [1.5.0](https://github.com/nuxt-modules/supabase/compare/v1.4.6...v1.5.0) (2025-03-04)
 
 

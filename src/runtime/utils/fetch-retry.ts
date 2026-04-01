@@ -14,6 +14,9 @@ export async function fetchWithRetry(req: RequestInfo | URL, init?: RequestInit)
         throw error
       }
       console.warn(`Retrying fetch attempt ${attempt + 1} for request: ${req}`)
+
+      // Small incremental delay before retry
+      await new Promise(resolve => setTimeout(resolve, 100 * attempt))
     }
   }
   throw new Error('Unreachable code')

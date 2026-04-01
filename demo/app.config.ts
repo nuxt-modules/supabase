@@ -1,5 +1,20 @@
 export default defineAppConfig({
   ui: {
-    primary: 'green',
+    colors: {
+      primary: 'cyan',
+      neutral: 'zinc',
+    },
+    input: {
+      variants: {
+        variant: {
+          subtle: 'ring-default bg-elevated/50',
+        },
+      },
+    },
+    header: {
+      slots: {
+        root: 'border-none',
+      },
+    },
   },
 })
