@@ -4,7 +4,4 @@ export default defineNuxtConfig({
   site: {
     name: 'Nuxt Supabase',
   },
-  future: {
-    compatibilityVersion: 4,
-  },
 })
