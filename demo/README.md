@@ -43,8 +43,8 @@ CREATE TABLE tasks (
 Go to your supabase project settings, API section and get the project API key and url and fill the `.env` with them:
 
 ```
-SUPABASE_URL="https://example.supabase.co"
-SUPABASE_KEY="<your_key>"
+NUXT_PUBLIC_SUPABASE_URL="https://example.supabase.co"
+NUXT_PUBLIC_SUPABASE_KEY="<your_key>"
 ```
 
 ### GitHub Oauth Setup
