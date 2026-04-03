@@ -129,7 +129,8 @@ export default defineNuxtModule<ModuleOptions>({
     },
   },
   defaults: {
-    url: process.env.SUPABASE_URL as string,
+    url: (process.env.SUPABASE_URL
+      ?? process.env.NUXT_PUBLIC_SUPABASE_URL) as string,
     key: (process.env.SUPABASE_KEY
       ?? process.env.SUPABASE_PUBLISHABLE_KEY
       ?? process.env.NUXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
