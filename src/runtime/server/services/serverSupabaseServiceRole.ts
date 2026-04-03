@@ -17,7 +17,7 @@ export const serverSupabaseServiceRole: <T = Database>(event: H3Event) => Supaba
 
   // Make sure a server key is set
   if (!serverKey) {
-    throw new Error('Missing server key. Set either `SUPABASE_SECRET_KEY` (recommended) or `SUPABASE_SERVICE_KEY` (deprecated) in your environment variables.')
+    throw new Error('Missing server key. Set `NUXT_SUPABASE_SECRET_KEY` in your environment variables.')
   }
 
   // No need to recreate client if exists in request context
