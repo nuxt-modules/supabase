@@ -13,7 +13,14 @@ export default defineNuxtPlugin({
   name: 'supabase',
   enforce: 'pre',
   async setup({ provide }) {
-    const { url, key, cookiePrefix, useSsrCookies, cookieOptions, clientOptions } = useRuntimeConfig().public.supabase
+    const {
+      url,
+      key,
+      cookiePrefix,
+      useSsrCookies,
+      cookieOptions,
+      clientOptions,
+    } = useRuntimeConfig().public.supabase
 
     const event = useRequestEvent()!
 
@@ -22,7 +29,10 @@ export default defineNuxtPlugin({
       ...clientOptions,
       cookies: {
         getAll: () => parseCookieHeader(getHeader(event, 'Cookie') ?? ''),
-        setAll: (cookies: { name: string, value: string, options: CookieOptions }[]) => setCookies(event, cookies),
+        setAll: (
+          cookies: { name: string, value: string, options: CookieOptions }[],
+          headers: Record<string, string>,
+        ) => setCookies(event, cookies, headers),
       },
       cookieOptions: {
         ...cookieOptions,
@@ -38,10 +48,7 @@ export default defineNuxtPlugin({
 
     // Initialize user and session states if available.
     if (useSsrCookies) {
-      const [
-        session,
-        user,
-      ] = await Promise.all([
+      const [session, user] = await Promise.all([
         serverSupabaseSession(event).catch(() => null),
         serverSupabaseUser(event).catch(() => null),
       ])

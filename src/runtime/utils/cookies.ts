@@ -1,4 +1,4 @@
-import { setCookie, type H3Event } from 'h3'
+import { setCookie, setHeader, type H3Event } from 'h3'
 import type { CookieOptions } from '#app'
 
 export function setCookies(
@@ -8,9 +8,11 @@ export function setCookies(
     value: string
     options: CookieOptions
   }[],
+  headers: Record<string, string> = {},
 ) {
   const response = event.node.res
-  const headersWritable = () => !response.headersSent && !response.writableEnded
+  const headersWritable = () =>
+    !response.headersSent && !response.writableEnded
 
   if (!headersWritable()) {
     return
@@ -21,5 +23,13 @@ export function setCookies(
       break
     }
     setCookie(event, name, value, options)
+  }
+
+  // Apply cache control headers to prevent CDN caching of auth responses
+  for (const [key, value] of Object.entries(headers)) {
+    if (!headersWritable()) {
+      break
+    }
+    setHeader(event, key, value)
   }
 }

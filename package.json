@@ -33,29 +33,28 @@
     "clean": "rm -rf .nuxt .output node_modules docs/.nuxt docs/.data docs/node_modules demo/.nuxt demo/.data demo/node_modules pnpm-lock.yaml .pnpm-store"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.8.0",
-    "@supabase/supabase-js": "^2.97.0",
-    "defu": "^6.1.4",
+    "@supabase/ssr": "^0.10.0",
+    "@supabase/supabase-js": "^2.101.1",
+    "defu": "^6.1.5",
     "pathe": "^2.0.3"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^1.15.1",
+    "@nuxt/eslint": "^1.15.2",
     "@nuxt/kit": "^4.4.2",
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.4.2",
-    "@release-it/conventional-changelog": "^10.0.5",
-    "@types/node": "^25.3.0",
+    "@release-it/conventional-changelog": "^10.0.6",
+    "@types/node": "^25.5.0",
     "changelogen": "^0.6.2",
     "consola": "^3.4.2",
-    "eslint": "^10.0.1",
+    "eslint": "^10.1.0",
     "nuxt": "^4.4.2",
     "release-it": "^19.2.4",
-    "typescript": "^5.9.3",
+    "typescript": "5.6.3",
     "vite": "^7.3.1",
-    "vitest": "^4.0.18",
-    "vue-tsc": "^3.2.5"
+    "vitest": "^4.1.2",
+    "vue-tsc": "^3.2.6"
   },
-
   "resolutions": {
     "minimark": "0.2.0",
     "typescript": "5.6.3"
