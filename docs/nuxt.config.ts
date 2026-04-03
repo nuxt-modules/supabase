@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
   extends: ['docus'],
-  modules: ['@nuxtjs/plausible'],
+  modules: ['@nuxtjs/plausible', '@vercel/analytics/nuxt', '@vercel/speed-insights/nuxt'],
   site: {
     name: 'Nuxt Supabase',
   },
