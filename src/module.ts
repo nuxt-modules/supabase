@@ -135,7 +135,9 @@ export default defineNuxtModule<ModuleOptions>({
     key: process.env.NUXT_PUBLIC_SUPABASE_KEY
       || process.env.SUPABASE_KEY
       || process.env.SUPABASE_PUBLISHABLE_KEY
-      || process.env.SUPABASE_ANON_KEY || undefined,
+      || process.env.SUPABASE_ANON_KEY
+      || process.env.NUXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+      || process.env.NUXT_PUBLIC_SUPABASE_ANON_KEY || undefined,
     serviceKey: process.env.NUXT_SUPABASE_SERVICE_KEY
       || process.env.SUPABASE_SERVICE_KEY || undefined,
     secretKey: process.env.NUXT_SUPABASE_SECRET_KEY
