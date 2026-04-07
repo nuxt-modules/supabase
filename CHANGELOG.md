@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.5](https://github.com/nuxt-modules/supabase/compare/v2.0.4...v2.0.5) (2026-04-07)
+
+
+### Bug Fixes
+
+* **deps:** minimark resolution ([#580](https://github.com/nuxt-modules/supabase/issues/580)) ([4379ca3](https://github.com/nuxt-modules/supabase/commit/4379ca3b7fc93674cd9af51be41bdbfd9e6c9f49))
+* **env:** check NUXT_PUBLIC_SUPABASE_* env ([#587](https://github.com/nuxt-modules/supabase/issues/587)) ([97b4a56](https://github.com/nuxt-modules/supabase/commit/97b4a5683e0d1ec3bba79a31fe71c4c19416e6fa))
+* **env:** support runtime nuxt env variables ([#589](https://github.com/nuxt-modules/supabase/issues/589)) ([2bf427f](https://github.com/nuxt-modules/supabase/commit/2bf427f1ebee14f81879996d94de4f7a37eeacad))
+* **module:** enhance key and secretKey retrieval logic ([#577](https://github.com/nuxt-modules/supabase/issues/577)) ([8928e50](https://github.com/nuxt-modules/supabase/commit/8928e503b64455e15196477880d8496cc66cd5eb))
+* **session:** restore session before auth middleware in SPA mode ([#571](https://github.com/nuxt-modules/supabase/issues/571)) ([06674fd](https://github.com/nuxt-modules/supabase/commit/06674fddb7daeeb88f5cf296da659435f66a01e4))
+* **ssr:** apply @supabase/ssr CDN cache prevention ([#592](https://github.com/nuxt-modules/supabase/issues/592)) ([eaee981](https://github.com/nuxt-modules/supabase/commit/eaee9817649c76dfe78b6b2f615a2e30a0d1c8ce))
+
 ## [2.0.4](https://github.com/nuxt-modules/supabase/compare/v2.0.3...v2.0.4) (2026-02-13)
 
 
