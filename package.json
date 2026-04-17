@@ -50,14 +50,14 @@
     "eslint": "^10.1.0",
     "nuxt": "^4.4.2",
     "release-it": "^19.2.4",
-    "typescript": "5.6.3",
+    "typescript": "6.0.3",
     "vite": "^7.3.1",
     "vitest": "^4.1.2",
     "vue-tsc": "^3.2.6"
   },
   "resolutions": {
     "minimark": "0.2.0",
-    "typescript": "5.6.3"
+    "typescript": "6.0.3"
   },
   "release-it": {
     "git": {
