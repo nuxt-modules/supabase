@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.6](https://github.com/nuxt-modules/supabase/compare/v2.0.5...v2.0.6) (2026-04-23)
+
+
+### Bug Fixes
+
+* **security:** remove headers from logs ([#599](https://github.com/nuxt-modules/supabase/issues/599)) ([57eb9c1](https://github.com/nuxt-modules/supabase/commit/57eb9c1421339286f8dd698085b5b7850ec7b5c7))
+
 ## [2.0.5](https://github.com/nuxt-modules/supabase/compare/v2.0.4...v2.0.5) (2026-04-07)
 
 
