@@ -10,7 +10,8 @@ export async function fetchWithRetry(req: RequestInfo | URL, init?: RequestInit)
         throw error
       }
       if (attempt === retries) {
-        console.error(`Error fetching request ${req}`, error, init)
+        const { headers: _headers, ...safeInit } = init ?? {}
+        console.error(`Error fetching request ${req}`, error, safeInit)
         throw error
       }
       console.warn(`Retrying fetch attempt ${attempt + 1} for request: ${req}`)
