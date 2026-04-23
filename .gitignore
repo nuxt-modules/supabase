@@ -11,3 +11,4 @@ sw.js
 .output
 .env
 .history
+*.tgz
