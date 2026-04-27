@@ -43,7 +43,7 @@
     "@nuxt/kit": "^4.4.2",
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.4.2",
-    "@release-it/conventional-changelog": "^10.0.6",
+    "@release-it/conventional-changelog": "^11.0.0",
     "@types/node": "^25.5.1",
     "changelogen": "^0.6.2",
     "consola": "^3.4.2",
