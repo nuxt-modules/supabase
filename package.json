@@ -7,7 +7,7 @@
     "url": "git+https://github.com/nuxt-modules/supabase.git"
   },
   "license": "MIT",
-  "packageManager": "pnpm@10.33.0",
+  "packageManager": "pnpm@10.33.3",
   "exports": {
     ".": {
       "import": "./dist/module.mjs"
@@ -33,9 +33,9 @@
     "clean": "rm -rf .nuxt .output node_modules docs/.nuxt docs/.data docs/node_modules demo/.nuxt demo/.data demo/node_modules pnpm-lock.yaml .pnpm-store"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.10.0",
-    "@supabase/supabase-js": "^2.101.1",
-    "defu": "^6.1.6",
+    "@supabase/ssr": "^0.10.2",
+    "@supabase/supabase-js": "^2.105.3",
+    "defu": "^6.1.7",
     "pathe": "^2.0.3"
   },
   "devDependencies": {
@@ -44,20 +44,20 @@
     "@nuxt/module-builder": "^1.0.2",
     "@nuxt/schema": "^4.4.2",
     "@release-it/conventional-changelog": "^10.0.6",
-    "@types/node": "^25.5.1",
+    "@types/node": "^25.6.0",
     "changelogen": "^0.6.2",
     "consola": "^3.4.2",
-    "eslint": "^10.1.0",
+    "eslint": "^10.3.0",
     "nuxt": "^4.4.2",
     "release-it": "^19.2.4",
-    "typescript": "5.6.3",
+    "typescript": "5.9.3",
     "vite": "^7.3.1",
-    "vitest": "^4.1.2",
-    "vue-tsc": "^3.2.6"
+    "vitest": "^4.1.5",
+    "vue-tsc": "^3.2.8"
   },
   "resolutions": {
     "minimark": "0.2.0",
-    "typescript": "5.6.3"
+    "typescript": "5.9.3"
   },
   "release-it": {
     "git": {
