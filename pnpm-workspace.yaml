@@ -4,6 +4,14 @@ packages:
   - docs
   - demo
 
+allowBuilds:
+  '@parcel/watcher': false
+  better-sqlite3: true
+  esbuild: false
+  sharp: true
+  unrs-resolver: false
+  vue-demi: false
+
 ignoredBuiltDependencies:
   - '@tailwindcss/oxide'
   - vue-demi
