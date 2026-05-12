@@ -101,15 +101,17 @@ onUnmounted(() => {
 
 ## Typescript
 
-Database typings are passed to the client out of the box if the database generated types are found at `./types/database.types.ts` or [your configured types path](/getting-started/introduction#types). Check Supabase [documentation](https://supabase.com/docs/reference/javascript/release-notes#typescript-support) for further information.
+Database typings are passed to the client out of the box if the database generated types are found at `~/types/database.types.ts` (where `~/` is your Nuxt [srcDir](https://nuxt.com/docs/api/nuxt-config#srcdir)) or [your configured types path](/getting-started/introduction#types). Check Supabase [documentation](https://supabase.com/docs/reference/javascript/release-notes#typescript-support) for further information.
 
 ```shell
 ## Generate types from live database
-supabase gen types typescript --project-id YourProjectId > types/database.types.ts
+supabase gen types typescript --project-id YourProjectId > app/types/database.types.ts
 
 ## Generate types when using local environment
-supabase gen types typescript --local > types/database.types.ts
+supabase gen types typescript --local > app/types/database.types.ts
 ```
+
+Drop the `app/` prefix if your project doesn't have an `app/` directory.
 
 You can also pass Database typings to the client manually:
 
