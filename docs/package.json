@@ -13,5 +13,5 @@
     "better-sqlite3": "^12.8.0",
     "docus": "^5.9.0"
   },
-  "packageManager": "pnpm@10.33.0"
+  "packageManager": "pnpm@11.1.0"
 }
