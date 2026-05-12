@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.0.7](https://github.com/nuxt-modules/supabase/compare/v2.0.6...v2.0.7) (2026-05-12)
+
+
+### Bug Fixes
+
+* **module:** optimize cookie deps ([f71ae8e](https://github.com/nuxt-modules/supabase/commit/f71ae8e1f758c3460f24fca4c9b0484abee8d7bb))
+* **spa:** populate user claims alongside session ([#594](https://github.com/nuxt-modules/supabase/issues/594)) ([4ad80bd](https://github.com/nuxt-modules/supabase/commit/4ad80bd391c259206ead287a4bb37a872c589bf8))
+
 ## [2.0.6](https://github.com/nuxt-modules/supabase/compare/v2.0.5...v2.0.6) (2026-04-23)
 
 
