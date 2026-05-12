@@ -7,7 +7,7 @@
     "url": "git+https://github.com/nuxt-modules/supabase.git"
   },
   "license": "MIT",
-  "packageManager": "pnpm@11.1.0",
+  "packageManager": "pnpm@11.1.1",
   "exports": {
     ".": {
       "import": "./dist/module.mjs"
