@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.8](https://github.com/nuxt-modules/supabase/compare/v2.0.7...v2.0.8) (2026-05-13)
+
+
+### Bug Fixes
+
+* **module:** chained optimize deps ([7bc3a03](https://github.com/nuxt-modules/supabase/commit/7bc3a03ed3b96614cabf855fef4288d880a69187))
+
+
+### Reverts
+
+* Revert "fix(module): optimize cookie deps" ([153e8c1](https://github.com/nuxt-modules/supabase/commit/153e8c1c37b56013bf2074c7d97c7596b43a4927))
+
 ## [2.0.7](https://github.com/nuxt-modules/supabase/compare/v2.0.6...v2.0.7) (2026-05-12)
 
 
