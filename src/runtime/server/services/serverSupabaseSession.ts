@@ -8,7 +8,10 @@ export const serverSupabaseSession = async (event: H3Event): Promise<Omit<Sessio
 
   const { data: { session }, error } = await client.auth.getSession()
   if (error) {
-    throw createError({ statusMessage: error?.message })
+    throw createError({
+      statusCode: error.status ?? 500,
+      statusMessage: error.message,
+    })
   }
 
   // @ts-expect-error we need to delete user from the session object here to suppress the warning coming from GoTrueClient

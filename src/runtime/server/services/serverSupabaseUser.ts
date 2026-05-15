@@ -8,7 +8,10 @@ export const serverSupabaseUser = async (event: H3Event): Promise<JwtPayload | n
 
   const { data, error } = await client.auth.getClaims()
   if (error) {
-    throw createError({ statusMessage: error?.message })
+    throw createError({
+      statusCode: error.status ?? 500,
+      statusMessage: error.message,
+    })
   }
 
   return data?.claims ?? null
