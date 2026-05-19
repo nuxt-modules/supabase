@@ -41,9 +41,9 @@
   "devDependencies": {
     "@nuxt/eslint": "^1.15.2",
     "@nuxt/eslint-config": "^1.15.2",
-    "@nuxt/kit": "^4.4.5",
+    "@nuxt/kit": "^4.4.6",
     "@nuxt/module-builder": "^1.0.2",
-    "@nuxt/schema": "^4.4.5",
+    "@nuxt/schema": "^4.4.6",
     "@release-it/conventional-changelog": "^11.0.0",
     "@types/node": "^25.7.0",
     "changelogen": "^0.6.2",
