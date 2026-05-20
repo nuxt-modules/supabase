@@ -22,3 +22,5 @@ onlyBuiltDependencies:
   - esbuild
   - sharp
   - unrs-resolver
+
+minimumReleaseAge: 2880
