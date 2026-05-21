@@ -12,3 +12,4 @@ sw.js
 .env
 .history
 *.tgz
+.claude
