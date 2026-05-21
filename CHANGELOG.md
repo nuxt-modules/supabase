@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.9](https://github.com/nuxt-modules/supabase/compare/v2.0.8...v2.0.9) (2026-05-21)
+
+
+### Bug Fixes
+
+* **spa:** populate user state when not already hydrated ([#619](https://github.com/nuxt-modules/supabase/issues/619)) ([0e1d03d](https://github.com/nuxt-modules/supabase/commit/0e1d03d227453aefd5489c6ff7d3f0f1feb71326))
+
 ## [2.0.8](https://github.com/nuxt-modules/supabase/compare/v2.0.7...v2.0.8) (2026-05-13)
 
 
