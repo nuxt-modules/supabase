@@ -28,3 +28,4 @@ minimumReleaseAge: 2880
 minimumReleaseAgeExclude:
   - '@nuxt/*'
   - nuxt
+  - docus
