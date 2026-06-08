@@ -4,14 +4,14 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev"
+    "dev": "TMPDIR=/tmp nuxt dev"
   },
   "dependencies": {
     "@nuxtjs/plausible": "3.0.2",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "better-sqlite3": "^12.10.0",
-    "docus": "^5.11.0"
+    "docus": "^5.12.1"
   },
-  "packageManager": "pnpm@11.1.1"
+  "packageManager": "pnpm@11.5.2"
 }
