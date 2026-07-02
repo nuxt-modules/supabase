@@ -210,7 +210,7 @@ export default defineNuxtModule<ModuleOptions>({
 
         // Fail build in production
         if (!nuxt.options.dev) {
-          throw new Error(`Invalid Supabase URL: "${finalUrl}". Provide a valid URL or leave it unset for runtime configuration.`)
+          throw new Error(`Invalid Supabase URL: "${finalUrl}". Provide a valid URL or leave it unset for runtime configuration.`, { cause: error })
         }
       }
     }
