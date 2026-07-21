@@ -10,8 +10,11 @@
     "@nuxtjs/plausible": "3.0.2",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "better-sqlite3": "^12.10.0",
-    "docus": "^5.12.1"
+    "better-sqlite3": "^12.11.1",
+    "docus": "^5.12.3"
   },
-  "packageManager": "pnpm@11.5.2"
+  "packageManager": "pnpm@11.15.0",
+  "devDependencies": {
+    "@iconify-json/lucide": "^1.2.118"
+  }
 }
