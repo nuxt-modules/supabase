@@ -4,6 +4,9 @@ packages:
   - docs
   - demo
 
+overrides:
+  h3: ^1.15.11
+
 allowBuilds:
   '@parcel/watcher': false
   better-sqlite3: true
