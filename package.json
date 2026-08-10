@@ -50,7 +50,7 @@
     "consola": "^3.4.2",
     "eslint": "^10.7.0",
     "nuxt": "^4.4.8",
-    "release-it": "^20.2.1",
+    "release-it": "^21.0.2",
     "typescript": "6.0.3",
     "vite": "^8.1.4",
     "vitest": "^4.1.10",
