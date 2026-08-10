@@ -3,6 +3,7 @@
   "description": "Nuxt x Supabase Module Docs",
   "type": "module",
   "scripts": {
+    "prebuild": "cd .. && nuxt-module-build prepare",
     "build": "nuxt build",
     "dev": "TMPDIR=/tmp nuxt dev"
   },
