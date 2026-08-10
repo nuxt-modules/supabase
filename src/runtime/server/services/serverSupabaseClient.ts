@@ -22,7 +22,6 @@ export const serverSupabaseClient: <T = Database>(
       clientOptions: { auth = {}, global = {} },
     } = useRuntimeConfig(event).public.supabase
 
-    // @ts-expect-error - https://supabase.com/docs/guides/auth/server-side/creating-a-client?queryGroups=environment&environment=middleware
     event.context._supabaseClient = createServerClient(url, key, {
       auth,
       cookies: {

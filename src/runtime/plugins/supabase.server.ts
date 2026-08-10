@@ -24,7 +24,6 @@ export default defineNuxtPlugin({
 
     const event = useRequestEvent()!
 
-    // @ts-expect-error - https://supabase.com/docs/guides/auth/server-side/creating-a-client?queryGroups=environment&environment=middleware
     const client = createServerClient(url, key, {
       ...clientOptions,
       cookies: {
