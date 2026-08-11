@@ -7,6 +7,7 @@ import type { CookieOptions } from 'nuxt/app'
 import type { SupabaseClientOptions } from '@supabase/supabase-js'
 import type { NitroConfig, NitroRouteConfig } from 'nitropack'
 import type { RedirectOptions } from './types'
+import { resolveUseSsrCookies } from './utils/resolveUseSsrCookies'
 
 export * from './types'
 
@@ -87,7 +88,7 @@ export interface ModuleOptions {
    * Some `clientOptions` are not configurable when this is enabled. See the docs for more details.
    *
    * If false, the server will not be able to access the session.
-   * @default true
+   * @default true when ssr is enabled, false when ssr: false
    * @type boolean
    */
   useSsrCookies?: boolean
@@ -153,7 +154,7 @@ export default defineNuxtModule<ModuleOptions>({
     },
     cookieName: 'sb',
     cookiePrefix: undefined,
-    useSsrCookies: true,
+    useSsrCookies: undefined,
     cookieOptions: {
       maxAge: 60 * 60 * 8,
       sameSite: 'lax',
@@ -165,6 +166,7 @@ export default defineNuxtModule<ModuleOptions>({
   setup(options, nuxt) {
     const logger = useLogger('@nuxt/supabase')
     const { resolve, resolvePath } = createResolver(import.meta.url)
+    const useSsrCookies = resolveUseSsrCookies(options.useSsrCookies, nuxt.options.ssr)
 
     // Public runtimeConfig
     nuxt.options.runtimeConfig.public.supabase = defu(nuxt.options.runtimeConfig.public.supabase, {
@@ -174,7 +176,7 @@ export default defineNuxtModule<ModuleOptions>({
       redirectOptions: options.redirectOptions,
       cookieName: options.cookieName,
       cookiePrefix: options.cookiePrefix,
-      useSsrCookies: options.useSsrCookies,
+      useSsrCookies,
       cookieOptions: options.cookieOptions,
       clientOptions: options.clientOptions,
     })
