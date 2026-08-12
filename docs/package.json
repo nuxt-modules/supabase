@@ -8,7 +8,7 @@
     "dev": "TMPDIR=/tmp nuxt dev"
   },
   "dependencies": {
-    "@nuxtjs/plausible": "3.0.2",
+    "@nuxtjs/plausible": "4.0.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "better-sqlite3": "^12.11.1",
