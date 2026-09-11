@@ -12,10 +12,10 @@
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "better-sqlite3": "^12.11.1",
-    "docus": "^5.12.3"
+    "docus": "^5.13.0"
   },
-  "packageManager": "pnpm@11.15.0",
+  "packageManager": "pnpm@11.26.0",
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.118"
+    "@iconify-json/lucide": "^1.2.131"
   }
 }
