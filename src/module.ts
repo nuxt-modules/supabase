@@ -118,6 +118,22 @@ export interface ModuleOptions {
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
   clientOptions?: SupabaseClientOptions<string>
+
+  /**
+   * Time zone PostgREST should answer in, sent as the `Prefer: timezone` header.
+   *
+   * Set to `'browser'` to use the viewer's own zone, resolved in the browser. Any other value is
+   * used verbatim and must be an IANA name, which pins the client and the server to the same zone.
+   *
+   * `now()::date`, `current_date` and any `timestamptz` cast to a date resolve in the connection's
+   * time zone, and PostgREST leaves that at UTC. A `timestamptz` in the response is rendered with
+   * this offset too, rather than `+00:00`.
+   *
+   * @default undefined
+   * @type string
+   * @docs https://docs.postgrest.org/en/v12/references/api/preferences.html#timezone
+   */
+  timezone?: 'browser' | (string & {})
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -161,6 +177,7 @@ export default defineNuxtModule<ModuleOptions>({
     } as CookieOptions,
     types: '~/types/database.types.ts',
     clientOptions: {} as SupabaseClientOptions<string>,
+    timezone: undefined,
   },
   setup(options, nuxt) {
     const logger = useLogger('@nuxt/supabase')
@@ -177,6 +194,7 @@ export default defineNuxtModule<ModuleOptions>({
       useSsrCookies: options.useSsrCookies,
       cookieOptions: options.cookieOptions,
       clientOptions: options.clientOptions,
+      timezone: options.timezone,
     })
 
     // Private runtimeConfig
