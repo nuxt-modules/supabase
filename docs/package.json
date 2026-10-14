@@ -11,11 +11,11 @@
     "@nuxtjs/plausible": "4.0.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "better-sqlite3": "^12.11.1",
-    "docus": "^5.12.3"
+    "better-sqlite3": "^13.0.3",
+    "docus": "^5.15.0"
   },
-  "packageManager": "pnpm@12.4.1",
+  "packageManager": "pnpm@12.11.2",
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.118"
+    "@iconify-json/lucide": "^1.2.143"
   }
 }

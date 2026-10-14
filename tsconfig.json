@@ -9,5 +9,6 @@
   ],
   "include": [
     "src",
+    ".nuxt/nuxt.d.ts",
   ],
 }
