@@ -1,5 +1,15 @@
 # Changelog
 
+# [2.1.0](https://github.com/nuxt-modules/supabase/compare/v2.0.10...v2.1.0) (2026-10-15)
+
+### Bug Fixes
+
+* **fetch-retry:** don't log request body on final failure ([#647](https://github.com/nuxt-modules/supabase/issues/647)) ([367dd40](https://github.com/nuxt-modules/supabase/commit/367dd40ec549a95035a9f75c27d05961986848aa))
+
+### Features
+
+* **client:** add `timezone` option to send PostgREST's `Prefer: timezone` ([#644](https://github.com/nuxt-modules/supabase/issues/644)) ([cd0aa41](https://github.com/nuxt-modules/supabase/commit/cd0aa4136b43d74f338db8028acd0932487bc882))
+
 ## [2.0.10](https://github.com/nuxt-modules/supabase/compare/v2.0.9...v2.0.10) (2026-08-10)
 
 ## [2.0.9](https://github.com/nuxt-modules/supabase/compare/v2.0.8...v2.0.9) (2026-05-21)
