@@ -5,7 +5,7 @@ import {
   createClient,
 } from '@supabase/supabase-js'
 import { fetchWithRetry } from '../utils/fetch-retry'
-import { preferTimezone } from '../utils/prefer-timezone'
+import { withTimezoneHeader } from '../utils/timezone'
 import { useSupabaseSession } from '../composables/useSupabaseSession'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
 import type { Plugin } from '#app'
@@ -26,20 +26,13 @@ export default defineNuxtPlugin({
       timezone,
     } = useRuntimeConfig().public.supabase
 
-    // `Prefer: timezone` is the only way to tell a *view* whose day to answer on, since a view
-    // cannot take one as an argument. 'browser' has to be resolved here rather than in
-    // `clientOptions`, which is serialised into the build and so cannot carry a per-viewer value.
     const globalOptions = {
       fetch: fetchWithRetry,
       ...clientOptions.global,
-      ...(timezone
-        ? {
-            headers: preferTimezone(
-              timezone === 'browser' ? Intl.DateTimeFormat().resolvedOptions().timeZone : timezone,
-              clientOptions.global?.headers,
-            ),
-          }
-        : {}),
+      headers: withTimezoneHeader(
+        clientOptions.global?.headers,
+        timezone === 'browser' ? Intl.DateTimeFormat().resolvedOptions().timeZone : timezone,
+      ),
     }
 
     let client

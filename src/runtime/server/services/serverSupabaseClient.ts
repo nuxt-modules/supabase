@@ -2,6 +2,7 @@ import type { SupabaseClient } from '@supabase/supabase-js'
 import { createServerClient, parseCookieHeader } from '@supabase/ssr'
 import { getHeader, type H3Event } from 'h3'
 import { fetchWithRetry } from '../../utils/fetch-retry'
+import { withTimezoneHeader } from '../../utils/timezone'
 import { setCookies } from '../../utils/cookies'
 import type { CookieOptions } from '#app'
 import { useRuntimeConfig } from '#imports'
@@ -20,6 +21,7 @@ export const serverSupabaseClient: <T = Database>(
       cookiePrefix,
       cookieOptions,
       clientOptions: { auth = {}, global = {} },
+      timezone,
     } = useRuntimeConfig(event).public.supabase
 
     event.context._supabaseClient = createServerClient(url, key, {
@@ -38,6 +40,7 @@ export const serverSupabaseClient: <T = Database>(
       global: {
         fetch: fetchWithRetry,
         ...global,
+        headers: withTimezoneHeader(global.headers, timezone),
       },
     })
   }
