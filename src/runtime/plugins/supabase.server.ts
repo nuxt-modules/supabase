@@ -2,6 +2,7 @@ import { createServerClient, parseCookieHeader } from '@supabase/ssr'
 import { getHeader } from 'h3'
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { fetchWithRetry } from '../utils/fetch-retry'
+import { withTimezoneHeader } from '../utils/timezone'
 import { setCookies } from '../utils/cookies'
 import { serverSupabaseUser, serverSupabaseSession } from '../server/services'
 import { useSupabaseSession } from '../composables/useSupabaseSession'
@@ -20,6 +21,7 @@ export default defineNuxtPlugin({
       useSsrCookies,
       cookieOptions,
       clientOptions,
+      timezone,
     } = useRuntimeConfig().public.supabase
 
     const event = useRequestEvent()!
@@ -40,6 +42,7 @@ export default defineNuxtPlugin({
       global: {
         fetch: fetchWithRetry,
         ...clientOptions.global,
+        headers: withTimezoneHeader(clientOptions.global?.headers, timezone),
       },
     })
 

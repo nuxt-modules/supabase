@@ -14,6 +14,7 @@ declare module '@nuxt/schema' {
       cookieOptions: CookieOptions
       types: string | false
       clientOptions: SupabaseClientOptions<string>
+      timezone: string
     }
   }
 }

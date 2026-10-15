@@ -5,6 +5,7 @@ import {
   createClient,
 } from '@supabase/supabase-js'
 import { fetchWithRetry } from '../utils/fetch-retry'
+import { withTimezoneHeader } from '../utils/timezone'
 import { useSupabaseSession } from '../composables/useSupabaseSession'
 import { useSupabaseUser } from '../composables/useSupabaseUser'
 import type { Plugin } from '#app'
@@ -22,7 +23,17 @@ export default defineNuxtPlugin({
       cookiePrefix,
       useSsrCookies,
       clientOptions,
+      timezone,
     } = useRuntimeConfig().public.supabase
+
+    const globalOptions = {
+      fetch: fetchWithRetry,
+      ...clientOptions.global,
+      headers: withTimezoneHeader(
+        clientOptions.global?.headers,
+        timezone === 'browser' ? Intl.DateTimeFormat().resolvedOptions().timeZone : timezone,
+      ),
+    }
 
     let client
 
@@ -34,19 +45,13 @@ export default defineNuxtPlugin({
           name: cookiePrefix,
         },
         isSingleton: true,
-        global: {
-          fetch: fetchWithRetry,
-          ...clientOptions.global,
-        },
+        global: globalOptions,
       })
     }
     else {
       client = createClient(url, key, {
         ...clientOptions,
-        global: {
-          fetch: fetchWithRetry,
-          ...clientOptions.global,
-        },
+        global: globalOptions,
       })
     }
 

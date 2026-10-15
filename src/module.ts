@@ -118,6 +118,16 @@ export interface ModuleOptions {
    * @docs https://supabase.com/docs/reference/javascript/initializing#parameters
    */
   clientOptions?: SupabaseClientOptions<string>
+
+  /**
+   * Time zone sent to PostgREST in the `Prefer: timezone` header.
+   * Use `'browser'` for the viewer's zone, ignored on the server.
+   * @default ''
+   * @example 'America/New_York'
+   * @type string
+   * @docs https://docs.postgrest.org/en/v12/references/api/preferences.html#timezone
+   */
+  timezone?: 'browser' | (string & {})
 }
 
 export default defineNuxtModule<ModuleOptions>({
@@ -161,6 +171,7 @@ export default defineNuxtModule<ModuleOptions>({
     } as CookieOptions,
     types: '~/types/database.types.ts',
     clientOptions: {} as SupabaseClientOptions<string>,
+    timezone: '',
   },
   setup(options, nuxt) {
     const logger = useLogger('@nuxt/supabase')
@@ -177,6 +188,7 @@ export default defineNuxtModule<ModuleOptions>({
       useSsrCookies: options.useSsrCookies,
       cookieOptions: options.cookieOptions,
       clientOptions: options.clientOptions,
+      timezone: options.timezone,
     })
 
     // Private runtimeConfig
