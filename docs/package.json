@@ -14,8 +14,8 @@
     "better-sqlite3": "^13.0.3",
     "docus": "^5.15.0"
   },
-  "packageManager": "pnpm@12.11.2",
+  "packageManager": "pnpm@12.14.0",
   "devDependencies": {
-    "@iconify-json/lucide": "^1.2.143"
+    "@iconify-json/lucide": "^1.2.145"
   }
 }

@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "type": "module",
-  "packageManager": "pnpm@12.11.2",
+  "packageManager": "pnpm@12.14.0",
   "exports": {
     ".": {
       "import": "./dist/module.mjs"
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.7",
-    "@supabase/supabase-js": "^2.117.3",
+    "@supabase/supabase-js": "^2.118.0",
     "defu": "^6.1.7",
     "pathe": "^2.0.3"
   },
@@ -49,12 +49,12 @@
     "@types/node": "^26.6.5",
     "changelogen": "^0.6.2",
     "consola": "^3.4.2",
-    "eslint": "^10.12.0",
+    "eslint": "^10.13.0",
     "nuxt": "^4.6.2",
     "release-it": "^21.1.1",
     "typescript": "6.0.3",
     "vite": "^8.3.4",
-    "vitest": "^5.0.4",
+    "vitest": "^5.0.5",
     "vue-tsc": "^3.3.13"
   },
   "resolutions": {
