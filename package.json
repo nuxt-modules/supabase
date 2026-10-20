@@ -52,14 +52,14 @@
     "eslint": "^10.13.0",
     "nuxt": "^4.6.2",
     "release-it": "^21.1.1",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "vite": "^8.3.4",
     "vitest": "^5.0.5",
     "vue-tsc": "^3.3.13"
   },
   "resolutions": {
     "minimark": "0.2.0",
-    "typescript": "5.9.3"
+    "typescript": "7.0.2"
   },
   "release-it": {
     "git": {
