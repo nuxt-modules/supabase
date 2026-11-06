@@ -37,6 +37,7 @@
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.118.0",
     "defu": "^6.1.7",
+    "h3": "^1.15.11",
     "pathe": "^2.0.3"
   },
   "devDependencies": {
