@@ -82,9 +82,13 @@ export default defineNuxtPlugin({
       if (JSON.stringify(currentSession.value) !== JSON.stringify(session)) {
         currentSession.value = session
         if (session?.user) {
-          client.auth.getClaims().then(({ data }) => {
-            currentUser.value = data?.claims ?? null
-          })
+          // A token refresh for the same user doesn't change the user, and fetching claims here
+          // can trigger another refresh (and event) when the device clock is ahead.
+          if (session.user.id !== currentUser.value?.sub) {
+            client.auth.getClaims().then(({ data }) => {
+              currentUser.value = data?.claims ?? null
+            })
+          }
         }
         else {
           currentUser.value = null
