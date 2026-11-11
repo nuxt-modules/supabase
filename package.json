@@ -58,7 +58,7 @@
     "vue-tsc": "^3.3.13"
   },
   "resolutions": {
-    "minimark": "0.2.0",
+    "minimark": "1.0.0",
     "typescript": "5.9.3"
   },
   "release-it": {
