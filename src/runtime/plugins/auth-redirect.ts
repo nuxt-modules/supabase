@@ -1,7 +1,8 @@
+import { useSupabaseClient } from '../composables/useSupabaseClient'
 import { useSupabaseCookieRedirect } from '../composables/useSupabaseCookieRedirect'
 import { useSupabaseSession } from '../composables/useSupabaseSession'
 import type { Plugin } from '#app'
-import { defineNuxtPlugin, addRouteMiddleware, defineNuxtRouteMiddleware, useRuntimeConfig, navigateTo } from '#imports'
+import { defineNuxtPlugin, addRouteMiddleware, defineNuxtRouteMiddleware, useRuntimeConfig, navigateTo, useRouter } from '#imports'
 import type { RouteLocationNormalized } from '#vue-router'
 
 function matchesAnyPattern(path: string, patterns: (string | undefined)[]): boolean {
@@ -47,5 +48,16 @@ export default defineNuxtPlugin({
       }),
       { global: true },
     )
+
+    // Re-run the middleware on the current route when the session ends, so an open page doesn't stay on screen
+    if (import.meta.client && useRuntimeConfig().public.supabase.redirectOptions.redirectOnSignOut) {
+      const router = useRouter()
+      useSupabaseClient().auth.onAuthStateChange((event) => {
+        if (event !== 'SIGNED_OUT') return
+        // Not returned: auth-js awaits callbacks while holding its lock
+        const { path, query, hash } = router.currentRoute.value
+        navigateTo({ path, query, hash, force: true })
+      })
+    }
   },
 }) as Plugin

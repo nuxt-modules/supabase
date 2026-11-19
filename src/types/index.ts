@@ -34,4 +34,10 @@ export interface RedirectOptions {
    * @default false
    */
   saveRedirectToCookie?: boolean
+
+  /**
+   * If true, when the session ends (sign out, revoked or expired session) the current route is re-checked, redirecting to the login page unless it is excluded.
+   * @default false
+   */
+  redirectOnSignOut?: boolean
 }
