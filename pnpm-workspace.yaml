@@ -31,4 +31,5 @@ minimumReleaseAge: 2880
 minimumReleaseAgeExclude:
   - '@nuxt/*'
   - nuxt
+  - nitropack
   - docus
