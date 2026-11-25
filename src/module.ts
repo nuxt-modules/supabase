@@ -160,6 +160,7 @@ export default defineNuxtModule<ModuleOptions>({
       exclude: [],
       cookieRedirect: false,
       saveRedirectToCookie: false,
+      redirectOnSignOut: false,
     },
     cookieName: 'sb',
     cookiePrefix: undefined,
